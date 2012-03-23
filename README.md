@@ -1,7 +1,7 @@
 # developer.exoplatform.org
 
 This site groups together all documentations useful to develop or contribute to eXo Platform projects.
-It is built using [Jekill](https://github.com/mojombo/jekyll) and its extension [Jekyll Bootstrap](http://jekyllbootstrap.com/)
+It is built using [Jekyll](https://github.com/mojombo/jekyll) and its extension [Jekyll Bootstrap](http://jekyllbootstrap.com/)
 
 ## How to contribute ?
 
@@ -9,13 +9,15 @@ Feel free to fork the repository and to propose pull requests.
 
 ## How to preview the site ?
 
-- [Install Jekyll](https://github.com/mojombo/jekyll/wiki/install). It is a ruby gem and often it is just :
+1.   [Install Jekyll](https://github.com/mojombo/jekyll/wiki/install). It is a ruby gem and often it is just :
 
-`sudo gem install jekyll` 
+    sudo gem install jekyll rdiscount
+    
+    sudo easy_install Pygments
 
-- In order to get a server up and running with your Jekyll site, run:
+2.   In order to get a server up and running with your Jekyll site, run:
 
-`jekyll --server` 
+    jekyll --server
 
 and then browse to <http://localhost:4000>.
 
