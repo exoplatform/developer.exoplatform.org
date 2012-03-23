@@ -1,41 +1,16 @@
 ---
-layout: default
+layout: page
 title: Home
 group: navigation
 ---
 
 {% include JB/setup %}
 
-<div class="page-header">
-  <h1>eXo<small> : developer</small></h1>
-</div>
-
 <div class="row">
-
-<div class="span8">
-<h2>About</h2>
-
-This site is dedicated to eXo Platform developers and contributors. It proposes a set of documentations, rules, advices to develop eXo projects and products.
-
-<h2>Documentations</h2>
-
-<ul>
-  <li><a href="/git/howto.html">Git - How to ?</a></li>
-  <li><a href="/git/migration.html">Git - Migration from SVN guide</a></li>
-</ul>
-</div>
-
-<div class="span4">
-<h2>Posts</h2>
-<ul>
-{% for post in site.posts %}
-  {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
-  {% capture this_month %}{{ post.date | date: "%B" }}{% endcapture %}
-  {% capture next_year %}{{ post.previous.date | date: "%Y" }}{% endcapture %}
-  {% capture next_month %}{{ post.previous.date | date: "%B" }}{% endcapture %}
-  <li><span>{{ post.date | date: "%B %e, %Y" }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>  
-{% endfor %}
-</ul>
-</div>
-
+    <div class="span6 offset3">
+        <div class="hero-unit">
+            <h1>Welcome</h1>
+            <p>Soon, you'll find here a set of documentations dedicated for eXo developers and contributors.</p>
+        </div>
+    </div>
 </div>

@@ -1,10 +1,13 @@
 ---
 layout: page
 title : Posts
-header : Posts Archive
 group: navigation
 ---
 {% include JB/setup %}
 
-{% assign posts_collate = site.posts %}
-{% include JB/posts_collate %}
+<div class="row">
+    <div class="span12">
+        {% assign posts_collate = site.posts %}
+        {% include JB/posts_collate %}
+    </div>
+</div>
