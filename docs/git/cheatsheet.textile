@@ -1,0 +1,179 @@
+---
+layout: page
+title: "Git Cheat Sheet"
+tags: [git,cheatsheet]
+---
+{% include JB/setup %}
+
+<div class="row">
+  <div class="span6">
+
+h2. Create
+
+*From existing data*
+
+bc. cd ~/my_project_dir
+git init
+git add .
+
+*From existing repo*
+
+bc. git clone ~/existing/repo ~/new/repo
+git clone you@host.org:dir/project.git
+
+default protocol is ssh
+
+h2. Update
+
+*Fetch latest changes from origin*
+
+bc. git fetch
+
+this does not merge them
+
+*Pull latest changes from origin*
+
+bc. git pull
+
+does a fetch followed by a merge
+
+*Apply a patch that someone sent to you*
+
+bc. git am -3 patch.mbox
+
+In case of conflict, resolve the conflict and
+
+bc. git am --resolve
+
+h2. Commit
+
+*Commit all local changes*
+
+bc. git commit -a
+
+h2. Publish
+
+*Prepare a patch for other developers*
+
+bc. git format-patch origin
+
+Push changes to origin
+
+bc. git push [origin] [branch]
+
+*Make a version or milestone*
+
+bc. git tag <version_name>
+
+  </div>
+  <div class="span6">
+
+h2. Browse
+
+*Files changed in working directory*
+
+bc. git status
+
+*Changes to tracked files*
+
+bc. git diff
+
+*Changes between ID1 and ID2*
+
+bc. git diff <ID1> <ID2>
+
+*History of changes*
+
+bc. git log
+
+*Who changed what and when in a file*
+
+bc. git blame <file>
+
+*A commit identified by ID*
+
+bc. git show <ID>
+
+*A specific file from a specific ID*
+
+bc. git diff <ID>:<FILE>
+
+*Search for patterns*
+
+bc. git grep <pattern> [path]
+
+h2.Branch
+
+*List all branches*
+
+bc. git branch
+
+*Switch to the BRANCH branch*
+
+bc. git checkout <BRANCH>
+
+*Merge branch B1 into branch B2*
+
+bc. git checkout <B2>
+git merge <B1>
+
+*Create branch based on HEAD*
+
+bc. git branch <BRANCH>
+
+*Create branch based on another*
+
+bc.git branch <new> <base>
+
+*Delete a local branch*
+
+bc.git branch -d <branch>
+
+*Delete a remotel branch*
+
+bc.git push <origin> :<branch>
+
+h2. Revert
+
+*Return to the last committed state*
+
+bc. git checkout -f | git reset --hard
+
+you cannot undo a hard reset
+
+*Revert the last commit*
+
+bc. git revert HEAD
+
+Creates a new commit
+
+*Revert specific commit*
+
+bc. git revert $id
+
+Creates a new commit
+
+*Fix the last commit*
+
+bc. git commit -a --amend
+
+after editing the broken files
+
+*Checkout the ID version of a file*
+
+bc. git checkout <ID> <file>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <div class="well">
+
+h2. Sources
+
+* "Alex Zeitler Git cheat sheet":https://github.com/AlexZeitler/gitcheatsheet
+
+    </div>
+  </div>
+</div>
