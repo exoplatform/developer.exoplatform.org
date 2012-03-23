@@ -18,8 +18,9 @@ group: navigation
             <h2>Last posts</h2>
             <ul>
                 {% for post in site.posts %}
-                <li><span>{{ post.date | date: "%B %e, %Y" }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{post.title }}</a>
-                    {% unless post.tags == empty %}{% for tag in post.tag %}<span class="label">{{ tag }}</span>{% endfor %}{% endunless %}</li>
+                <li><span>{{ post.date | date: "%B %e, %Y" }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{post.title }}</a><br/>
+                    {% for tag in post.tags %}&nbsp;<span class="label label-{{ tag }}">{{ tag }}</span>{% endfor %}
+                </li>
                 {% endfor %}
             </ul>
         </div>
