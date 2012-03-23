@@ -7,10 +7,19 @@ group: navigation
 {% include JB/setup %}
 
 <div class="row">
-    <div class="span6 offset3">
+    <div class="span6 offset1">
         <div class="hero-unit">
             <h1>Welcome</h1>
             <p>Soon, you'll find here a set of documentations dedicated for eXo developers and contributors.</p>
+        </div>
+    </div>
+    <div class="span4 offset1">
+        <div class="well">
+            <h2>Last posts</h2>
+            <ul>
+                {% assign posts_collate = site.posts %}
+                {% include JB/posts_collate %}
+            </ul>
         </div>
     </div>
 </div>
