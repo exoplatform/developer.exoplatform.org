@@ -1,0 +1,16 @@
+---
+layout: page
+title: Pages
+header: Pages
+group: navigation
+---
+{% include JB/setup %}
+
+<div class="row">
+    <div class="span12">
+        <ul>
+            {% assign pages_list = site.pages %}
+            {% include JB/pages_list %}
+        </ul>
+    </div>
+</div>
