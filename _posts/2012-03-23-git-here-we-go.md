@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Git, here we go\!"
+title: "Git, here we go !"
 category: 
 tags: [git, announce]
 ---
