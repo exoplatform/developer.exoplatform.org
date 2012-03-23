@@ -2,7 +2,7 @@
 layout: post
 title: "Git, here we go !"
 category: 
-tags: [git, announce]
+tags: [announce, git, important]
 ---
 {% include JB/setup %}
 
