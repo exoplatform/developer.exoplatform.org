@@ -21,6 +21,17 @@ Feel free to fork the repository and to propose pull requests.
 
 and then browse to <http://localhost:4000>.
 
+## How to create a new post ?
+
+    rake post title="A Title" [date="2012-02-09"]
+
+## How to create a new page ?
+
+    rake page name="about.md"
+
+You can also specify a sub-directory path.
+If you don't specify a file extention we create an index.html at the path specified
+
 ## License
 
 [Creative Commons BY-NC-SA](http://creativecommons.org/licenses/by-nc-sa/3.0/)
