@@ -8,6 +8,14 @@ tags: [git,cheatsheet]
 <div class="row">
   <div class="span6">
 
+<ul class="thumbnails">
+  <li class="span6">
+    <a href="git-overview.png" class="thumbnail">
+      <img src="git-overview.png" alt="">
+    </a>
+  </li>
+</ul>
+
 h2. Create
 
 *From existing data*
@@ -16,6 +24,7 @@ h2. Create
 cd ~/my_project_dir
 git init
 git add .
+git commit
 {% endhighlight %}
 
 *From existing repo*
@@ -49,6 +58,38 @@ In case of conflict, resolve the conflict and
 
 {% highlight sh %}
 git am --resolve
+{% endhighlight %}
+
+h2. Track Files
+
+*Start tracking files*
+
+{% highlight sh %}
+git add <FILES>
+{% endhighlight %}
+
+*Interactive selection of files to track*
+
+{% highlight sh %}
+git add -i .
+{% endhighlight %}
+
+*Move/Rename a file*
+
+{% highlight sh %}
+git mv <OLD> <NEW>
+{% endhighlight %}
+
+*Stop tracking and delete files in working directories*
+
+{% highlight sh %}
+git rm <FILES>
+{% endhighlight %}
+
+*Stop tracking but keep files in working directory*
+
+{% highlight sh %}
+git rm --cached <FILES>
 {% endhighlight %}
 
 h2. Commit
@@ -227,6 +268,7 @@ git checkout <ID> <FILE>
 h2. Sources
 
 * "Alex Zeitler Git cheat sheet":https://github.com/AlexZeitler/gitcheatsheet
+* "Jan Krueger Git cheat sheet":http://jan-krueger.net/git
 
     </div>
   </div>
