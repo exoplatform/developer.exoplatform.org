@@ -11,7 +11,9 @@ Feel free to fork the repository and to propose pull requests.
 
 1.   [Install Jekyll](https://github.com/mojombo/jekyll/wiki/install). It is a ruby gem and often it is just :
 
-    sudo gem install jekyll rdiscount
+    sudo gem update --system
+
+    sudo gem install jekyll rdiscount RedCloth
     
     sudo easy_install Pygments
 
