@@ -7,7 +7,8 @@ title: Git @ eXo
 <div class="row">
     <div class="span12">
         <ul>
-            {% assign pages_list = site.pages.category. %}
+            {% assign pages_list = site.pages %}
+            {% assign group = "git" %}
             {% include JB/pages_list %}
         </ul>
     </div>

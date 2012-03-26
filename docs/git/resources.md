@@ -2,6 +2,7 @@
 layout: page
 title: "Git Resources"
 tags: [git,howto]
+group: git
 ---
 {% include JB/setup %}
 

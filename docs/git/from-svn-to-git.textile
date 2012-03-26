@@ -2,6 +2,7 @@
 layout: page
 title: "From SVN to Git"
 tags: [git,svn]
+group: git
 ---
 {% include JB/setup %}
 
@@ -45,6 +46,12 @@ deletes them. You can remove them with @git push :<BRANCH>@
 * fix/<BRANCH_NAME> : If this is a branch to develop a fix
 * feature/<BRANCH_NAME> : If this is a branch to develop a new feature
 
+
+# Update build
+
+## Update SCM infos
+
+## Upgrade plugins versions
 
     <div class="well">
 

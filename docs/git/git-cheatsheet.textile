@@ -2,6 +2,7 @@
 layout: page
 title: "Git Cheat Sheet"
 tags: [git,cheatsheet]
+group: git
 ---
 {% include JB/setup %}
 
