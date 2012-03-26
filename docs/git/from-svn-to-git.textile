@@ -22,36 +22,47 @@ table(table).
 |@svn update@         | @git pull@                  | Update your local copy with remote changes       |
 |@svn commit@         | @git commit -a && git push@ | Send your local changes to the remote repository |
 
+TODO : More commands
 
-h2. How to convert a project
+h2. Post migration cleanup
 
 Technical conversion of eXo projects stored in Subversion will be processed by the Software Factory Team. Once the migration
 done each team will have to process some tasks to finalize the project migration
 
 # Clean-up project branches
 
-  Due to the migration process you'll find in the new Git repository corresponding to your project in SVN various branches you
-  didn't have.
-  These branches may have various origins :
+Due to the migration process you'll find in the new Git repository corresponding to your project in SVN various branches you didn't have.
+
+These branches may have various origins :
 
 ## It has the name of a tag. You edited a tag in SVN (It's BAAAAAD). Thus the conversion process considered that you started
-a branch and then you did a tag. A tag cannot be edited in Git. You can just create/delete them.
+a branch and then you did a tag.
+
+TODO : Decide what we do with them
 
 ## It was a development branch removed in SVN. The migration process restore all branches found in SVN history but never
 deletes them. You can remove them with @git push :<BRANCH>@
 
-  To follow our Git conventions you are invited to rename existing branches to :
+To follow our Git conventions you are invited to rename existing branches to :
 
 * stable/<BRANCH_NAME> : If this is a stable branch integration
 * fix/<BRANCH_NAME> : If this is a branch to develop a fix
 * feature/<BRANCH_NAME> : If this is a branch to develop a new feature
 
+TODO : Links to Git Norms @ eXo
+
+# Clean-up tags
+
+The migration process
 
 # Update build
 
 ## Update SCM infos
 
 ## Upgrade plugins versions
+
+TODO : Issue with projects inheriting from eXo Parent POM < 2
+
 
     <div class="well">
 
