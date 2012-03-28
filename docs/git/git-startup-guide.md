@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Git Startup Guide"
+title: "Git - Startup Guide"
 tags: [git]
 group: git
 ---
