@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Git Cheat Sheet"
+title: "Git - Cheat Sheet"
 tags: [git,cheatsheet]
 group: git
 ---
