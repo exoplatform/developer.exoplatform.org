@@ -1,6 +1,8 @@
 ---
 layout: page
 title: "Git - eXo Conventions"
+tags: [git,convention,norm,standard]
+group: git
 ---
 {% include JB/setup %}
 
