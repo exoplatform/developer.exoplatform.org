@@ -11,9 +11,7 @@ group: git
 
 h2. Introduction
 
-Git is a powerful SCM but there are so many features and possibilities that it can be quickly the jungle in your projects sources.
-Where is the official repository ? The one with latest sources ? In which branch do I have to take the code ?
-So many questions that are difficult to reply without few conventions.
+Git is a powerful VCS but there are so many features and possibilities that it can be quickly the jungle in your projects sources. Where is the official repository ? Were are latest sources ? In which branch do I have to take the code ? So many questions that are difficult to reply without few conventions.
 
 To limit these issues all eXo projects have to follow rules described here which will ensure a coherency for developers and contributors.
 
@@ -22,14 +20,15 @@ Our model is based on "A successful Git branching model by Vincent Driessen":htt
 An overview of the branching model is given beside.
 
 Key points of our model is :
-* Standardized branches :
+* A *centralized repositories management* managed under "eXo's GitHub organization":https://github.com/organizations/exoplatform
+* A set of *Standardized branches* :
 ** @master@ : master is the *ready for production* branch for latest developments (@HEAD@)
 ** @develop@ : develop branch also known as *integration branch* is the main branch where the source code of @HEAD@ always reflects a state with the latest delivered development changes for the next release. This is where any automatic nightly builds are built from.
+** @stable/xxxx@ : they are similar to @master@ and are used for maintenance of products and to ensure support on them.
 ** @feature/xxxx@ : feature branches (or sometimes called topic branches) are used to develop new features for the upcoming or a distant future release. They are branched from and merged to @develop@. *feature* branches are stored on developer repositories and aren't pushed into @origin@.
 ** @release/xxxx@ :
-** @stable/xxxx@ : *ready for production* branches, also known as *maintenance branches*
 ** @fix/xxxx@ :
-* A centralized repositories management
+* A *default branch (@HEAD@) always set to @develop@* and not to @master@ to avoid any erroneous push into @master@ which must be kept stable.
 
   </div>
   <div class="span8">
@@ -38,28 +37,47 @@ Key points of our model is :
 </div>
 
 <div class="row">
-  <div class="span8">
+  <div class="span12">
+
+h2. Decentralized but centralized repositories
+
+!<{margin-right:20px}git-repositories.png!
+
+The repository setup used is that with a central “truth” repository. Note that this repository is only considered to be the central one (since Git is a DVCS, there is no such thing as a central repository at a technical level). We will refer to this repository as @origin@, since this name is familiar to all Git users.
+
+Each developer pulls and pushes to @origin@. But besides the centralized push-pull relationships, each developer may also pull changes from other peers to form sub teams. For example, this might be useful to work together with two or more developers on a big new feature, before pushing the work in progress to @origin@ prematurely. In the figure above, there are subteams of Alice and Bob, Alice and David, and Clair and David.
+
+Technically, this means nothing more than that Alice has defined a Git remote, named bob, pointing to Bob’s repository, and vice versa.
+
+At eXo all @origin@ repositories are stored under our "GitHub organization":https://github.com/organizations/exoplatform . Rights to pull on them are limited to Technical Leaders, Products Leaders and Releases Managers. All coworkers and contributors are working on there own GitHub accounts and create pull requests to integrate changes in @origin@ repositories.
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="span12">
 
 h2. The main branches
+
+!>{margin-left:20px}git-main-branches.png!
 
 At the core, the development model is greatly inspired by existing models out there. The central repository holds two main branches with an infinite lifetime:
 
 * @master@
 * @develop@
 
-The @master@ branch at @origin@ should be familiar to every Git user. Parallel to the @master@ branch, another branch exists called develop.
+The @master@ branch at @origin@ should be familiar to every Git user. Parallel to the @master@ branch, another branch exists called @develop@.
 
-We consider @origin/master@ to be the main branch where the source code of @HEAD@ always reflects a *production-ready state*.
+We consider @origin/master@ to be the main branch where the source code of @HEAD@ *always reflects a production-ready state*.
 
-We consider @origin/develop@ to be the main branch where the source code of @HEAD@ always reflects a state with the latest delivered development changes for the next release. Some would call this the “integration branch”. This is where any automatic nightly builds are built from.
+We consider @origin/develop@ to be the main branch where the source code of @HEAD@ always reflects a state with the latest delivered development changes for the next release.Some would call this the “integration branch”. This is where any automatic nightly builds are built from.
 
-When the source code in the develop branch reaches a stable point and is ready to be released, all of the changes should be merged back into @master@ somehow and then tagged with a release number. How this is done in detail will be discussed further on.
+When the source code in the develop branch reaches a stable point and is ready to be released, all of the changes should be merged back into @master@ somehow and then tagged with a release number.How this is done in detail will be discussed further on.
 
-Therefore, each time when changes are merged back into @master@, this is a new production release *by definition*. We tend to be very strict at this, so that theoretically, we could use a Git hook script to automatically build and roll-out our software to our production servers everytime there was a commit on master.
+Therefore, each time when changes are merged back into @master@, this is a new production release *by definition*. We tend to be very strict at this, so that theoretically, we could use a Git hook script to automatically build and roll-out our software to customers or our production servers everytime there was a commit on master.
 
-  </div>
-  <div class="span4">
-    !git-main-branches.png!
+In all eXo Git repositories *the default branch* (configured in Github repositories settings) *is set to @develop@ and not to @master@* to ensure that nobody tries to push something wrong in @master@ that must be kept as stable as possible. This is a constraint as many of us are learning to use Git.
+
   </div>
 </div>
 
@@ -68,8 +86,7 @@ Therefore, each time when changes are merged back into @master@, this is a new p
 
 h2. Supporting branches
 
-Next to the main branches @master@ and develop, our development model uses a variety of supporting branches to aid parallel development between team members, ease tracking of features, prepare for production releases, assist in quickly fixing live production problems and to support our customers for years.
-Unlike the main branches, these branches always have a limited life time, since they will be removed eventually.
+Next to the main branches @master@ and develop, our development model uses a variety of supporting branches to aid parallel development between team members, ease tracking of features, prepare for releases, assist in fixing production problems or maintenance branches. Unlike the main branches, these branches always have a limited life time, since they will be removed eventually.
 
 The different types of branches we may use are:
 
@@ -86,22 +103,22 @@ By no means are these branches “special” from a technical perspective. The b
 </div>
 
 <div class="row">
-  <div class="span8">
+  <div class="span10">
 
 h3. Feature branches
 
+<div class="well">
 *May branch off from*: @develop@
 *Must merge back into*: @develop@
 *Branch naming convention*: @feature/xxxx@ where @xxx@ is a short explanation of the branch content
+</div>
 
-Feature branches (or sometimes called topic branches) are used to develop new features for the upcoming or a distant future release.
-When starting development of a feature, the target release in which this feature will be incorporated may well be unknown at that point.
-The essence of a feature branch is that it exists as long as the feature is in development, but will eventually be merged back into develop (to definitely add the new feature to the upcoming release) or discarded (in case of a disappointing experiment).
+Feature branches (or sometimes called topic branches) are used to develop new features for the upcoming or a distant future release. When starting development of a feature, the target release in which this feature will be incorporated may well be unknown at that point.  The essence of a feature branch is that it exists as long as the feature is in development, but will eventually be merged back into develop (to definitely add the new feature to the upcoming release) or discarded (in case of a disappointing experiment).
 
 *Feature branches typically exist in developer repository only, not in @origin@.*
 
   </div>
-  <div class="span4">
+  <div class="span2">
     !git-feature-branch.png!
   </div>
 </div>
@@ -133,13 +150,10 @@ Deleted branch feature/my-new-feature (was 05e9557).
 $ git push origin develop
 {% endhighlight %}
 
-The @--no-ff@ flag causes the merge to always create a new commit object, even if the merge could be performed with a fast-forward.
-This avoids losing information about the historical existence of a feature branch and groups together all commits that together added the feature. Compare:
-
+The @--no-ff@ flag causes the merge to always create a new commit object, even if the merge could be performed with a fast-forward. This avoids losing information about the historical existence of a feature branch and groups together all commits that together added the feature. Compare:
 !git-merge-without-ff.png!
 
-In the latter case, it is impossible to see from the Git history which of the commit objects together have implemented a feature—you would have to manually read all the log messages.
-Reverting a whole feature (i.e. a group of commits), is a true headache in the latter situation, whereas it is easily done if the @--no-ff@ flag was used.
+In the latter case, it is impossible to see from the Git history which of the commit objects together have implemented a feature—you would have to manually read all the log messages. Reverting a whole feature (i.e. a group of commits), is a true headache in the latter situation, whereas it is easily done if the @--no-ff@ flag was used.
 
 Yes, it will create a few more (empty) commit objects, but the gain is much bigger that that cost.
 
@@ -153,29 +167,20 @@ Unfortunately, I have not found a way to make @--no-ff@ the default behaviour of
 
 h3. Release branches
 
+<div class="well">
 *May branch off from*: develop
 *Must merge back into*: @develop@ and @master@
 *Branch naming convention*: @release/xxxx@ where @xxx@ is the name of the tag that you target to create.
+</div>
+Release branches support preparation of a new release based on the current @HEAD@ developments from the @develop@ branch. They allow for last-minute dotting of i’s and crossing t’s. Furthermore, they allow for minor bug fixes and preparing meta-data for a release (version number, build dates, etc.). *This is where the maven release plugin will run.* By doing all of this work on a release branch, the @develop@ branch is cleared to receive features for the next big release.
 
-Release branches support preparation of a new release based on the current @HEAD@ developments from the @develop@ branch.
-They allow for last-minute dotting of i’s and crossing t’s.
-Furthermore, they allow for minor bug fixes and preparing meta-data for a release (version number, build dates, etc.).
-*This is where the maven release plugin will run.*
-By doing all of this work on a release branch, the @develop@ branch is cleared to receive features for the next big release.
+The key moment to branch off a new release branch from @develop@ is when @develop@ (almost) reflects the desired state of the new release. At least all features that are targeted for the release-to-be-built must be merged in to @develop@ at this point in time. All features targeted at future releases may not—they must wait until after the release branch is branched off.
 
-The key moment to branch off a new release branch from @develop@ is when @develop@ (almost) reflects the desired state of the new release.
-At least all features that are targeted for the release-to-be-built must be merged in to @develop@ at this point in time.
-All features targeted at future releases may not—they must wait until after the release branch is branched off.
-
-It is exactly at the start of a release branch that the upcoming release gets assigned a version number—not any earlier.
-Up until that moment, the develop branch reflected changes for the “next release”, but it is unclear whether that “next release” will eventually become 0.3 or 1.0, until the release branch is started.
-That decision is made on the start of the release branch and is carried out by the project’s rules on version number bumping.
+It is exactly at the start of a release branch that the upcoming release gets assigned a version number—not any earlier. Up until that moment, the develop branch reflected changes for the “next release”, but it is unclear whether that “next release” will eventually become 0.3 or 1.0, until the release branch is started. That decision is made on the start of the release branch and is carried out by the project’s rules on version number bumping.
 
 h4. Creating a release branch
 
-Release branches are created from the @develop@ branch.
-For example, say version 1.1.5 is the current production release and we have a big release coming up.
-The state of develop is ready for the “next release” and we have decided that this will become version 1.2 (rather than 1.1.6 or 2.0).
+Release branches are created from the @develop@ branch. For example, say version 1.1.5 is the current production release and we have a big release coming up. The state of develop is ready for the “next release” and we have decided that this will become version 1.2 (rather than 1.1.6 or 2.0).
 
 So we branch off and give the release branch a name reflecting the new version number:
 
@@ -189,22 +194,13 @@ $ git commit -a -m "Bumped version number to 1.2"
 1 files changed, 1 insertions(+), 1 deletions(-)
 {% endhighlight %}
 
-After creating a new branch and switching to it, we bump the version number.
-Here, bump-version.sh is a fictional shell script that changes some files in the working copy to reflect the new version.
-(This can of course be a manual change—the point being that some files change.)
-Then, the bumped version number is committed.
+After creating a new branch and switching to it, we bump the version number. Here, bump-version.sh is a fictional shell script that changes some files in the working copy to reflect the new version. (This can of course be a manual change—the point being that some files change.) Then, the bumped version number is committed.
 
-This new branch may exist there for a while, until the release may be rolled out definitely.
-During that time, bug fixes may be applied in this branch (rather than on the @develop@ branch).
-*Adding large new features here is strictly prohibited.*
-They must be merged into @develop@, and therefore, wait for the next big release.
+This new branch may exist there for a while, until the release may be rolled out definitely. During that time, bug fixes may be applied in this branch (rather than on the @develop@ branch). *Adding large new features here is strictly prohibited.* They must be merged into @develop@, and therefore, wait for the next big release.
 
 h4. Finishing a release branch
 
-When the state of the release branch is ready to become a real release, some actions need to be carried out.
-First, the release branch is merged into @master@ (since every commit on @master@ is a new release by definition, remember).
-Next, that commit on @master@ must be tagged for easy future reference to this historical version.
-Finally, the changes made on the release branch need to be merged back into develop, so that future releases also contain these bug fixes.
+When the state of the release branch is ready to become a real release, some actions need to be carried out. First, the release branch is merged into @master@ (since every commit on @master@ is a new release by definition, remember). Next, that commit on @master@ must be tagged for easy future reference to this historical version. Finally, the changes made on the release branch need to be merged back into develop, so that future releases also contain these bug fixes.
 
 The first two steps in Git:
 
@@ -245,26 +241,23 @@ TODO : UPDATE with the release process using Maven. We may propose to use @mvn v
 </div>
 
 <div class="row">
-  <div class="span8">
+  <div class="span12">
 
 h3. Fix branches
 
+<div class="well">
 *May branch off from:* @master@ or @stable/xxx@
 *Must merge back into:* @develop@ and @master@ or @stable/xxx@
 *Branch naming convention:* fix/xxx*
+</div>
 
 TODO : To be improved to manage stable branches case.
 
-Fix branches are very much like release branches in that they are also meant to prepare for a new production release, albeit unplanned.
-They arise from the necessity to act immediately upon an undesired state of a live production version.
-When a critical bug in a production version must be resolved immediately, a fix branch may be branched off from the corresponding tag on the master branch that marks the production version.
+Fix branches are very much like release branches in that they are also meant to prepare for a new production release, albeit unplanned. They arise from the necessity to act immediately upon an undesired state of a live production version. When a critical bug in a production version must be resolved immediately, a fix branch may be branched off from the corresponding tag on the master branch that marks the production version.
 
 The essence is that work of team members (on the develop branch) can continue, while another person is preparing a quick production fix.
 
-
-  </div>
-  <div class="span4">
-    !git-fix-branch.png!
+!git-fix-branch.png!
   </div>
 </div>
 
@@ -273,10 +266,7 @@ The essence is that work of team members (on the develop branch) can continue, w
 
 h4. Creating the fix branch
 
-Fix branches are created from the @master@ branch.
-For example, say version 1.2 is the current production release running live and causing troubles due to a severe bug.
-But changes on develop are yet unstable.
-We may then branch off a fix branch and start fixing the problem:
+Fix branches are created from the @master@ branch. For example, say version 1.2 is the current production release running live and causing troubles due to a severe bug. But changes on develop are yet unstable. We may then branch off a fix branch and start fixing the problem:
 
 {% highlight sh %}
 $ git checkout -b fix/1.2.1 master
@@ -299,8 +289,7 @@ $ git commit -m "Fixed severe production problem"
 
 h4. Finishing a fix branch
 
-When finished, the fix needs to be merged back into @master@, but also needs to be merged back into develop, in order to safeguard that the bugfix is included in the next release as well.
-This is completely similar to how release branches are finished.
+When finished, the fix needs to be merged back into @master@, but also needs to be merged back into develop, in order to safeguard that the bugfix is included in the next release as well. This is completely similar to how release branches are finished.
 
 First, update @master@ and tag the release.
 
@@ -324,9 +313,7 @@ Merge made by recursive.
 (Summary of changes)
 {% endhighlight %}
 
-The one exception to the rule here is that, when a release branch currently exists, the fix changes need to be merged into that release branch, instead of develop.
-Back-merging the bugfix into the release branch will eventually result in the bugfix being merged into develop too, when the release branch is finished.
-(If work in develop immediately requires this bugfix and cannot wait for the release branch to be finished, you may safely merge the bugfix into develop now already as well.)
+The one exception to the rule here is that, when a release branch currently exists, the fix changes need to be merged into that release branch, instead of develop. Back-merging the bugfix into the release branch will eventually result in the bugfix being merged into develop too, when the release branch is finished. (If work in develop immediately requires this bugfix and cannot wait for the release branch to be finished, you may safely merge the bugfix into develop now already as well.)
 
 Finally, remove the temporary branch:
 
@@ -334,27 +321,6 @@ Finally, remove the temporary branch:
 $ git branch -d fix/1.2.1
 Deleted branch fix/1.2.1 (was abbe5d6).
 {% endhighlight %}
-
-  </div>
-</div>
-
-
-<div class="row">
-  <div class="span12">
-
-h2. Decentralized but centralized repositories
-
-The repository setup that we use and that works well with this branching model, is that with a central “truth” repository.
-Note that this repository is only considered to be the central one (since Git is a DVCS, there is no such thing as a central repository at a technical level).
-We will refer to this repository as @origin@, since this name is familiar to all Git users.
-
-!git-repositories.png!
-
-Each developer pulls and pushes to @origin@. But besides the centralized push-pull relationships, each developer may also pull changes from other peers to form sub teams.
-For example, this might be useful to work together with two or more developers on a big new feature, before pushing the work in progress to @origin@ prematurely.
-In the figure above, there are subteams of Alice and Bob, Alice and David, and Clair and David.
-
-Technically, this means nothing more than that Alice has defined a Git remote, named bob, pointing to Bob’s repository, and vice versa.
 
   </div>
 </div>
