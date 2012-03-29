@@ -12,7 +12,7 @@ group: git
 h2. Commands mapping
 
 This table gives you a quick overview of *similar* commands between Subversion and Git.
-Be careful that Subversion and Git are two really different SCM the first one being centralized and the second one distributed.
+Be careful that Subversion and Git are two really different VCS the first one being centralized and the second one distributed.
 Because of this difference of architecture and their inner implementations this mapping must be taken as a guideline just to start.
 **Git isn't just like SVN. It is more powerful than Subversion but also more dangerous :** **{color:red}With great power comes great responsibility ((c) Stan Lee)**
 
