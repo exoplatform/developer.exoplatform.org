@@ -24,45 +24,112 @@ table(table).
 
 TODO : More commands
 
-h2. Post migration cleanup
+h2. Post migration cleanup by projects teams
 
 Technical conversion of eXo projects stored in Subversion into Git repositories will be processed by the Software Factory Team.
 Once the migration done each team will have to process some tasks to finalize the project migration.
 
 h3. Clean-up project branches
 
-Due to the migration process you'll find in the new Git repository corresponding to your project in SVN various branches you didn't have.
+Due to the migration process you may find in the new Git repository various branches you didn't have in your SVN project.
 
 These branches may have various origins :
 
-## It has the name of a tag. This is because in SVN history you edited a tag (It's BAAAAAD). Thus the conversion process considered that you started a branch and then you did a tag.
-**TODO : Decide what we do with them**
+## It has the name of a tag. This is because in SVN history you edited a tag (It's BAAAAAD). Thus the conversion process considered that you started a branch and then you did a tag. Following our "conventions":./git-conventions.html this is a @release@ branch and must be renamed @release/X.X.X@ where X.X.X is the tag (often the release number).
 ## It was a development branch removed in SVN. The migration process restore all branches found in SVN history but never deletes them. You can remove them with @git push :<BRANCH>@
-To follow our Git conventions you are invited to rename existing branches to :
-* stable/<BRANCH_NAME> : If this is a stable branch integration
-* fix/<BRANCH_NAME> : If this is a branch to develop a fix
-* feature/<BRANCH_NAME> : If this is a branch to develop a new feature
-**TODO : Links and synchro with Git Norms @ eXo**
+## It is a real maintenance branch. Following our "conventions":./git-conventions.html it has be renamed @stable/A.B.x@.
+## It is a real development branch with some work in progress and is not yet merged. Following our "conventions":./git-conventions.html it has be renamed @feature/my-super-cool-feature@ where @my-super-cool-feature@ describes this feature.
+## Following our "conventions":./git-conventions.html @develop@ must be created from @master@ and must contain the latest codebase of the project. 
+## @develop@ must set as default branch in the repository configuration in GitHub.
+!git-default-branch.png!
 
 h3. Clean-up tags
 
-The migration process
+Due to the migration process you may find in the new Git repository various tags you didn't have in your SVN project.
+Like branches this is because the migration process never delete what it found in SVN history.
+The tag existed and was renamed or deleted.
+It can be safely deleted with :
 
-# Update build
+{% highlight sh %}
+# remove it locally
+$ git tag -d 12345
+# remove it on remote
+$ git push origin :refs/tags/12345
+{% endhighlight %}
 
-## Update SCM infos
+h3. Update your maven build
 
-## Upgrade plugins versions
+h4. Update SCM infos
 
-TODO : Issue with projects inheriting from eXo Parent POM < 2
+Has you changed where sources are stored you have to reflect it in your "project POM":http://maven.apache.org/scm/git.html.
+These changes have to be done in *ALL* active branches of the project.
 
+Replace such entries :
 
-    <div class="well">
+{% highlight xml %}
+<scm>
+ <connection>scm:svn:http://svn.exoplatform.org/projects/ks/trunk</connection>
+ <developerConnection>scm:svn:http://svn.exoplatform.org/projects/ks/trunk</developerConnection>
+ <url>http://fisheye.exoplatform.org/browse/ks</url>
+</scm>
+{% endhighlight %}
 
-h2. Sources
+by
 
-* "Git SVN Crash Course":https://git.wiki.kernel.org/articles/g/i/t/GitSvnCrashCourse_512d.html
+{% highlight xml %}
+<scm>
+ <connection>scm:git:ssh://github.com/exoplatform/ks.git</connection>
+ <developerConnection>scm:git:ssh://github.com/exoplatform/ks.git</developerConnection>
+ <url>http://fisheye.exoplatform.org/browse/ks</url>
+</scm>
+{% endhighlight %}
 
-    </div>
+The URL is something like @scm:git:ssh://github.com/exoplatform/XXX.git@ where XXX is the repository name where is stored your project codebase.
+
+h4. Upgrade plugins versions
+
+Few maven plugins weren't compatible with Git (or had issues).
+* maven-release-plugin : Version 2.2.1 is recommanded
+* buildnumber-maven-plugin : Version 1.0 min is required
+
+For projects inheriting from eXo parent POM version >= 2 you just have to had/update these properties in your project parent POM :
+
+{% highlight xml %}
+<version.release.plugin>2.2.1</version.release.plugin>
+<version.buildnumber.plugin>1.0</version.buildnumber.plugin>
+{% endhighlight %}
+
+For projects inheriting from eXo parent POM version 1.x you have to had the following entry in your project parent POM :
+
+{% highlight xml %}
+<pluginManagement>
+  <!-- All plugins ordered by shortname (antrun, assembly ...) -->
+  <plugins>
+    <plugin>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>buildnumber-maven-plugin</artifactId>
+      <version>1.0</version>
+    </plugin>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-release-plugin</artifactId>
+      <version>2.2.1</version>
+    </plugin>
+  <plugins>
+</pluginManagement>
+{% endhighlight %}
+
+It is recommended to plan to upgrade your eXo Parent POM version if you have to maintain this branch
+
+h4. Build tags
+
+You may have a build issue if the @buildnumber-maven-plugin@ is too old while trying to build an old tagged release.
+If the tagged project inherit from an eXo parent POM >= version 2 thus add this option in the comand line : @-Dversion.buildnumber.plugin=1.0@
+For 1.x eXo parent POM add @-DrevisionOnScmFailure=NONE@
+
+h2. Post migration cleanup by SWF Team
+
+When a project was cleaned by its team this one has to open a task for the SWF team to ask it to update related continuous integration jobs and fisheye repositories.
+
   </div>
 </div>
