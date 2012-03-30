@@ -276,16 +276,18 @@ TODO : UPDATE with the release process using Maven. We may propose to use @mvn v
 h2. Fix branches
 
 <div class="well">
-*May branch off from:* @master@ or @stable/xxx@
-*Must merge back into:* @develop@ and @master@ or @stable/xxx@
+*May branch off from:* 
+** @master@ 
+** or @stable/xxx@
+*Must merge back into:* 
+** @develop@ and @master@ 
+** or @stable/xxx@ and if required/useful @develop@
 *Branch naming convention:* fix/xxx*
 </div>
 
-TODO : To be improved to manage stable branches case.
+Fix branches are very much like release branches in that they are also meant to prepare for a new production release, albeit unplanned. They arise from the necessity to act immediately upon an undesired state of a live production version or a product delivered to customers. When a bug must be resolved, a fix branch may be branched off from the corresponding tag on the master or stable branch that marks the version on which the problem occurs.
 
-Fix branches are very much like release branches in that they are also meant to prepare for a new production release, albeit unplanned. They arise from the necessity to act immediately upon an undesired state of a live production version. When a critical bug in a production version must be resolved immediately, a fix branch may be branched off from the corresponding tag on the master branch that marks the production version.
-
-The essence is that work of team members (on the develop branch) can continue, while another person is preparing a quick production fix.
+The essence is that work of team members (on the develop branch) can continue, while another person is preparing a fix. It allows also to prepare in parallel several bug fixes for a stable branch to release a new version to our customers.
 
 !git-fix-branch.png!
   </div>
@@ -296,15 +298,15 @@ The essence is that work of team members (on the develop branch) can continue, w
 
 h3. Creating the fix branch
 
-Fix branches are created from the @master@ branch. For example, say version 1.2 is the current production release running live and causing troubles due to a severe bug. But changes on develop are yet unstable. We may then branch off a fix branch and start fixing the problem:
+Fix branches are created from the @master@ branch. For example, say version 1.1 is the current production release running live and causing troubles due to a severe bug. But changes on develop are yet unstable. We may then branch off a fix branch and start fixing the problem:
 
 {% highlight sh %}
-$ git checkout -b fix/1.2.1 master
-Switched to a new branch "fix/1.2.1"
-$ ./bump-version.sh 1.2.1
-Files modified successfully, version bumped to 1.2.1.
-$ git commit -a -m "Bumped version number to 1.2.1"
-[fix/1.2.1 41e61bb] Bumped version number to 1.2.1
+$ git checkout -b fix/1.1.1 master
+Switched to a new branch "fix/1.1.1"
+$ ./bump-version.sh 1.1.1
+Files modified successfully, version bumped to 1.1.1.
+$ git commit -a -m "Bumped version number to 1.1.1"
+[fix/1.1.1 41e61bb] Bumped version number to 1.1.1
 1 files changed, 1 insertions(+), 1 deletions(-)
 {% endhighlight %}
 Don’t forget to bump the version number after branching off!
@@ -313,7 +315,7 @@ Then, fix the bug and commit the fix in one or more separate commits.
 
 {% highlight sh %}
 $ git commit -m "Fixed severe production problem"
-[fix/1.2.1 abbe5d6] Fixed severe production problem
+[fix/1.1.1 abbe5d6] Fixed severe production problem
 5 files changed, 32 insertions(+), 17 deletions(-)
 {% endhighlight %}
 
@@ -326,10 +328,10 @@ First, update @master@ and tag the release.
 {% highlight sh %}
 $ git checkout master
 Switched to branch 'master'
-$ git merge --no-ff fix/1.2.1
+$ git merge --no-ff fix/1.1.1
 Merge made by recursive.
 (Summary of changes)
-$ git tag -a 1.2.1
+$ git tag -a 1.1.1
 {% endhighlight %}
 Edit: You might as well want to use the -s or -u <key> flags to sign your tag cryptographically.
 
@@ -338,7 +340,7 @@ Next, include the bugfix in develop, too:
 {% highlight sh %}
 $ git checkout develop
 Switched to branch 'develop'
-$ git merge --no-ff fix-1.2.1
+$ git merge --no-ff fix-1.1.1
 Merge made by recursive.
 (Summary of changes)
 {% endhighlight %}
@@ -348,8 +350,8 @@ The one exception to the rule here is that, when a release branch currently exis
 Finally, remove the temporary branch:
 
 {% highlight sh %}
-$ git branch -d fix/1.2.1
-Deleted branch fix/1.2.1 (was abbe5d6).
+$ git branch -d fix/1.1.1
+Deleted branch fix/1.1.1 (was abbe5d6).
 {% endhighlight %}
 
   </div>
