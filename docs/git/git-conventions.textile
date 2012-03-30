@@ -45,9 +45,9 @@ h2. Decentralized but centralized repositories
 
 The repository setup used is that with a central “truth” repository. Note that this repository is only considered to be the central one (since Git is a DVCS, there is no such thing as a central repository at a technical level). We will refer to this repository as @origin@, since this name is familiar to all Git users.
 
-Each developer pulls and pushes to @origin@. But besides the centralized push-pull relationships, each developer may also pull changes from other peers to form sub teams. For example, this might be useful to work together with two or more developers on a big new feature, before pushing the work in progress to @origin@ prematurely. In the figure above, there are subteams of Alice and Bob, Alice and David, and Clair and David.
+Each developer pulls and pushes to @origin@. But besides the centralized push-pull relationships, each developer may also pull changes from other peers to form sub teams. For example, this might be useful to work together with two or more developers on a big new feature, before pushing the work in progress to @origin@ prematurely. In the figure above, there are subteams of Tung and Marine, Tung and Peter, and Peter and Khemais.
 
-Technically, this means nothing more than that Alice has defined a Git remote, named bob, pointing to Bob’s repository, and vice versa.
+Technically, this means nothing more than that Tung has defined a Git remote, named marine, pointing to Marine’s repository, and vice versa.
 
 At eXo all @origin@ repositories are stored under our "GitHub organization":https://github.com/organizations/exoplatform . Rights to pull on them are limited to Technical Leaders, Products Leaders and Releases Managers. All coworkers and contributors are working on there own GitHub accounts and create pull requests to integrate changes in @origin@ repositories.
 
