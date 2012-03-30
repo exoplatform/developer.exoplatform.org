@@ -84,21 +84,42 @@ In all eXo Git repositories *the default branch* (configured in Github repositor
 <div class="row">
   <div class="span12">
 
-h2. Supporting branches
+h2. Additional branches
 
-Next to the main branches @master@ and develop, our development model uses a variety of supporting branches to aid parallel development between team members, ease tracking of features, prepare for releases, assist in fixing production problems or maintenance branches. Unlike the main branches, these branches always have a limited life time, since they will be removed eventually.
+Next to the main branches @master@ and @develop@, our development model uses a variety of supporting branches to aid parallel development between team members, ease tracking of features, prepare for releases, assist in fixing production problems or maintenance branches. Unlike the main branches, these branches always have a limited life time, since they will be removed eventually.
 
 The different types of branches we may use are:
 
+* Stable branches
 * Feature branches
 * Release branches
-* Stable branches
 * Fix branches
 
 Each of these branches have a specific purpose and are bound to strict rules as to which branches may be their originating branch and which branches must be their merge targets.
 
 By no means are these branches “special” from a technical perspective. The branch types are categorized by how we use them. They are of course plain old Git branches.
 
+  </div>
+</div>
+
+<div class="row">
+  <div class="span10">
+
+h3. Stable branches
+
+<div class="well">
+*May branch off from*: a tag from @master@
+*Must merge back into*: nothing
+*Branch naming convention*: @stable/VVV.x@ where @VVV@ is the version from which the branch is created.
+</div>
+
+Stable branches (or sometimes called maintenance branches) are used to provide supports on released versions for customers. They are created by branching a tag. They'll become permanent branches and will be kept stable like @master@. Only @fix@ branches may be merged on @stable@ branches. Releases are done directly on @stable@ branches as they never introduce new developments that may require a stabilization period.
+
+*Stable branches are permanently kept up to date on @orgin@ repository*
+
+  </div>
+  <div class="span2">
+    !git-stable-branch.png!
   </div>
 </div>
 
@@ -157,7 +178,7 @@ In the latter case, it is impossible to see from the Git history which of the co
 
 Yes, it will create a few more (empty) commit objects, but the gain is much bigger that that cost.
 
-Unfortunately, I have not found a way to make @--no-ff@ the default behaviour of git merge yet, but it really should be.
+Unfortunately, I have not found a way to make @--no-ff@ the default behavior of git merge yet, but it really should be.
 
   </div>
 </div>
