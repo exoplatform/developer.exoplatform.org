@@ -9,7 +9,7 @@ group: git
 <div class="row">
   <div class="span4">
 
-h2. Introduction
+h1. Introduction
 
 Git is a powerful VCS but there are so many features and possibilities that it can be quickly the jungle in your projects sources. Where is the official repository ? Were are latest sources ? In which branch do I have to take the code ? So many questions that are difficult to reply without few conventions.
 
@@ -39,7 +39,7 @@ Key points of our model is :
 <div class="row">
   <div class="span12">
 
-h2. Decentralized but centralized repositories
+h1. Decentralized but centralized repositories
 
 !<{margin-right:20px}git-repositories.png!
 
@@ -57,7 +57,7 @@ At eXo all @origin@ repositories are stored under our "GitHub organization":http
 <div class="row">
   <div class="span12">
 
-h2. The main branches
+h1. The main branches
 
 !>{margin-left:20px}git-main-branches.png!
 
@@ -84,7 +84,7 @@ In all eXo Git repositories *the default branch* (configured in Github repositor
 <div class="row">
   <div class="span12">
 
-h2. Additional branches
+h1. Additional branches
 
 Next to the main branches @master@ and @develop@, our development model uses a variety of supporting branches to aid parallel development between team members, ease tracking of features, prepare for releases, assist in fixing production problems or maintenance branches. Unlike the main branches, these branches always have a limited life time, since they will be removed eventually.
 
@@ -105,7 +105,7 @@ By no means are these branches “special” from a technical perspective. The b
 <div class="row">
   <div class="span10">
 
-h3. Stable branches
+h2. Stable branches
 
 <div class="well">
 *May branch off from*: a tag from @master@
@@ -117,6 +117,15 @@ Stable branches (or sometimes called maintenance branches) are used to provide s
 
 *Stable branches are permanently kept up to date on @orgin@ repository*
 
+h3. Creating a feature branch
+
+When it is decided to support a new version after its release branch off from the tag.
+
+{% highlight sh %}
+$ git checkout -b stable/1.0.x 1.0
+Switched to a new branch "stable/1.0.x"
+{% endhighlight %}
+
   </div>
   <div class="span2">
     !git-stable-branch.png!
@@ -126,7 +135,7 @@ Stable branches (or sometimes called maintenance branches) are used to provide s
 <div class="row">
   <div class="span10">
 
-h3. Feature branches
+h2. Feature branches
 
 <div class="well">
 *May branch off from*: @develop@
@@ -147,7 +156,7 @@ Feature branches (or sometimes called topic branches) are used to develop new fe
 <div class="row">
   <div class="span12">
 
-h4. Creating a feature branch
+h3. Creating a feature branch
 
 When starting work on a new feature, branch off from the develop branch.
 
@@ -156,7 +165,7 @@ $ git checkout -b feature/my-new-feature develop
 Switched to a new branch "feature/my-new-feature"
 {% endhighlight %}
 
-h4. Incorporating a finished feature on develop
+h3. Incorporating a finished feature on develop
 
 Finished features may be merged into the develop branch definitely add them to the upcoming release:
 
@@ -186,7 +195,7 @@ Unfortunately, I have not found a way to make @--no-ff@ the default behavior of 
 <div class="row">
   <div class="span12">
 
-h3. Release branches
+h2. Release branches
 
 <div class="well">
 *May branch off from*: develop
@@ -199,7 +208,7 @@ The key moment to branch off a new release branch from @develop@ is when @develo
 
 It is exactly at the start of a release branch that the upcoming release gets assigned a version number—not any earlier. Up until that moment, the develop branch reflected changes for the “next release”, but it is unclear whether that “next release” will eventually become 0.3 or 1.0, until the release branch is started. That decision is made on the start of the release branch and is carried out by the project’s rules on version number bumping.
 
-h4. Creating a release branch
+h3. Creating a release branch
 
 Release branches are created from the @develop@ branch. For example, say version 1.1.5 is the current production release and we have a big release coming up. The state of develop is ready for the “next release” and we have decided that this will become version 1.2 (rather than 1.1.6 or 2.0).
 
@@ -219,7 +228,7 @@ After creating a new branch and switching to it, we bump the version number. Her
 
 This new branch may exist there for a while, until the release may be rolled out definitely. During that time, bug fixes may be applied in this branch (rather than on the @develop@ branch). *Adding large new features here is strictly prohibited.* They must be merged into @develop@, and therefore, wait for the next big release.
 
-h4. Finishing a release branch
+h3. Finishing a release branch
 
 When the state of the release branch is ready to become a real release, some actions need to be carried out. First, the release branch is merged into @master@ (since every commit on @master@ is a new release by definition, remember). Next, that commit on @master@ must be tagged for easy future reference to this historical version. Finally, the changes made on the release branch need to be merged back into develop, so that future releases also contain these bug fixes.
 
@@ -264,7 +273,7 @@ TODO : UPDATE with the release process using Maven. We may propose to use @mvn v
 <div class="row">
   <div class="span12">
 
-h3. Fix branches
+h2. Fix branches
 
 <div class="well">
 *May branch off from:* @master@ or @stable/xxx@
@@ -285,7 +294,7 @@ The essence is that work of team members (on the develop branch) can continue, w
 <div class="row">
   <div class="span12">
 
-h4. Creating the fix branch
+h3. Creating the fix branch
 
 Fix branches are created from the @master@ branch. For example, say version 1.2 is the current production release running live and causing troubles due to a severe bug. But changes on develop are yet unstable. We may then branch off a fix branch and start fixing the problem:
 
@@ -308,7 +317,7 @@ $ git commit -m "Fixed severe production problem"
 5 files changed, 32 insertions(+), 17 deletions(-)
 {% endhighlight %}
 
-h4. Finishing a fix branch
+h3. Finishing a fix branch
 
 When finished, the fix needs to be merged back into @master@, but also needs to be merged back into develop, in order to safeguard that the bugfix is included in the next release as well. This is completely similar to how release branches are finished.
 
