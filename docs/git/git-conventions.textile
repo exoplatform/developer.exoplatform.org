@@ -41,6 +41,8 @@ Key points of our model is :
 
 h1. Decentralized but centralized repositories
 
+TO UPDATE using an Integration-Manager Workflow (http://progit.org/book/ch5-1.html) but with an organization for blessed repos and another for devs repo
+
 !<{margin-right:20px}git-repositories.png!
 
 The repository setup used is that with a central “truth” repository. Note that this repository is only considered to be the central one (since Git is a DVCS, there is no such thing as a central repository at a technical level). We will refer to this repository as @origin@, since this name is familiar to all Git users.
