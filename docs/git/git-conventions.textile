@@ -119,7 +119,7 @@ Stable branches (or sometimes called maintenance branches) are used to provide s
 
 *Stable branches are permanently kept up to date on @orgin@ repository*
 
-h3. Creating a feature branch
+h3. Creating a stable branch
 
 When it is decided to support a new version after its release branch off from the tag.
 
