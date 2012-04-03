@@ -41,6 +41,8 @@ Key points of our model is :
 
 h1. Decentralized but centralized repositories
 
+TO UPDATE using an Integration-Manager Workflow (http://progit.org/book/ch5-1.html) but with an organization for blessed repos and another for devs repo
+
 !<{margin-right:20px}git-repositories.png!
 
 The repository setup used is that with a central “truth” repository. Note that this repository is only considered to be the central one (since Git is a DVCS, there is no such thing as a central repository at a technical level). We will refer to this repository as @origin@, since this name is familiar to all Git users.
@@ -49,7 +51,7 @@ Each developer pulls and pushes to @origin@. But besides the centralized push-pu
 
 Technically, this means nothing more than that Tung has defined a Git remote, named marine, pointing to Marine’s repository, and vice versa.
 
-At eXo all @origin@ repositories are stored under our "GitHub organization":https://github.com/organizations/exoplatform . Rights to pull on them are limited to Technical Leaders, Products Leaders and Releases Managers. All coworkers and contributors are working on there own GitHub accounts and create pull requests to integrate changes in @origin@ repositories.
+At eXo all @origin@ repositories are stored under our "GitHub organization":https://github.com/organizations/exoplatform . Rights to push on them are limited to Technical Leaders, Products Leaders and Releases Managers. All coworkers and contributors are working on there own GitHub accounts and create pull requests to integrate changes in @origin@ repositories.
 
   </div>
 </div>
@@ -117,7 +119,7 @@ Stable branches (or sometimes called maintenance branches) are used to provide s
 
 *Stable branches are permanently kept up to date on @orgin@ repository*
 
-h3. Creating a feature branch
+h3. Creating a stable branch
 
 When it is decided to support a new version after its release branch off from the tag.
 
