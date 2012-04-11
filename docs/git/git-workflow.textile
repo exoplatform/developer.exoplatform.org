@@ -1,0 +1,200 @@
+---
+layout: page
+title: "Git - Workflow"
+tags: [git,workflow]
+group: git
+---
+{% include JB/setup %}
+
+<div class="row">
+  <div class="span12">
+
+h2. Branching model
+
+Branching model is quite simple, there are 4 kinds of branch :
+* @master@ : Master branch is used as main branch.
+* @feature/xxx@ : Feature branches are dedicated branch for one big feature (lot of commits), "xxx" is the feature name.
+* @stable/xxx@ : Stable branch are used to perform releases and write / accept fix. "xxx" is the stable version name (e.g 1.0.x).
+* @fix/xxx@ : Fix branch is dedicated to integrate bugfix on stable branch. When the branch is ready, a pull request will be done. "xxx" could be for example "PROJECT-12345".
+
+h2. Repository architecture
+
+Aiming security and backup purpose, we are using two repository kinds (owned by two distinct organizations). There are @development@ and @blessed@ repositories.
+Both repository set are owned by two organizations : "exoplatform":https://github.com/exoplatform and "exodev":https://github.com/exodev.
+Development repositories are forked from blessed repositories.
+
+!git-organization.png!
+
+h3. Blessed repository
+  </div>
+</div>
+<div class="row">
+  <div class="span2">
+    !<{margin-right:20px}git-branches-blessed.png!
+  </div>
+  <div class="span10">
+
+In this repository you can find stable branches and release tags. There is master branch also (as backup).
+Only some people are able to write on this repository :
+* @sl3@ : To integrate pull request to stable branches.
+* @release manager@ : To perform release operations.
+* @keepers@ : Repository keepers are @Project Leader@, @Team Leader@ and @Technical Leader@. Keepers are able to pull changes from dev to blessed when the master is stable enough.
+
+The continuous integration is applied on stables branches (@stable/1.0.x@, @stable/1.1.x@, etc). No ci for master on blessed repository.
+
+  </div>
+</div>
+<div class="row">
+  <div class="span12">
+
+h3. Development repository
+
+
+  </div>
+</div>
+<div class="row">
+  <div class="span3">
+    !<{margin-right:20px}git-branches-dev.png!
+  </div>
+  <div class="span9">
+
+This repository is the developers repository. The main development branch is master branch. Depending the contribution kind (one shot contribution or feature contribution), the developer can use a dedicated feature branch if needed.
+The most of development activity will be done in this repository by a lot of contributors :
+* @sl3@ : To write stable fix on some stable version.
+* @all development teams@ : To do one shot contribution and handle feature branch life cycle.
+
+In this repository, only master branch will be under CI. The CI on feature branch is not supported yet, if you want to have a ci, you will need to merge the branch (only when the branch is stable enough).
+
+  </div>
+</div>
+<div class="row">
+  <div class="span12">
+  
+h2. Flow
+
+h3. New feature
+
+When starting work on a new feature, branch off from the develop branch.
+
+{% highlight sh %}
+$ git checkout -b feature/my-new-feature master
+Switched to a new branch "feature/my-new-feature"
+{% endhighlight %}
+
+Finished features may be merged into the develop branch definitely add them to the upcoming release:
+
+{% highlight sh %}
+$ git checkout master
+Switched to branch 'master'
+$ git merge --no-ff feature/my-new-feature
+Updating ea1b82a..05e9557
+(Summary of changes)
+$ git branch -d feature/my-new-feature
+Deleted branch feature/my-new-feature (was 05e9557).
+$ git push origin master
+{% endhighlight %}
+
+The @--no-ff@ flag causes the merge to always create a new commit object, even if the merge could be performed with a fast-forward. This avoids losing information about the historical existence of a feature branch and groups together all commits that together added the feature. Compare:
+!git-merge-without-ff.png!
+
+In the latter case, it is impossible to see from the Git history which of the commit objects together have implemented a feature—you would have to manually read all the log messages. Reverting a whole feature (i.e. a group of commits), is a true headache in the latter situation, whereas it is easily done if the @--no-ff@ flag was used.
+
+Yes, it will create a few more (empty) commit objects, but the gain is much bigger that that cost.
+
+Unfortunately, I have not found a way to make @--no-ff@ the default behavior of git merge yet, but it really should be.
+
+h3. One shot contribution
+
+One shot contribution is the simplest case. Just commit directly on master branch and push it to dev repository.
+Assuming your remote origin is development repository :
+
+{% highlight sh %}
+$ git checkout master
+Switched to a new branch "master"
+{% endhighlight %}
+
+Now commit your changes. Then you only need to push your commits to origin :
+
+{% highlight sh %}
+$ git push origin master
+{% endhighlight %}
+
+h3. Fix a stable version
+
+Each stable branch on blessed repository can be updated via Pull Request. Before to do you pull request, let's create and publish your fix on dedicated @fix/xxx@ branch on development repository.
+Assuming you are working on issue PROJECT-12345, you already configured two remote repository :
+* @origin@ : The cloned repository (development).
+* @upstream@ : The blessed repository.
+Your clone was done from development repository.
+
+Create fix branch :
+
+{% highlight sh %}
+$ git checkout -b fix/PROJECT-12345 upstream/stable/1.0.x
+Switched to a new branch "fix/PROJECT-12345"
+{% endhighlight %}
+
+Now you can write your code, and commit these changes. When the fix is ready to be integrated to stable branch on blessed repository, let's publish your code :
+
+{% highlight sh %}
+$ git push origin fix/PROJECT-12345
+{% endhighlight %}
+
+Now your contribution is pushed in dedicated branch on development repository, you can do a pull request. On github project page (dev repository) click on !git-pull-request.png! and ask  the merge from @fix/PROJECT-12345@ (dev repository) to @stable/1.0.x@ (blessed repository).
+
+Last step is to fill the pull request URL on jira issue. Go to jira issue and fill pull request field :
+
+!git-jira-pull-request.png!
+
+h3. Integrate a fix to stable version
+
+When a pull request is reviewed, validated and ready to be integrated, @slv3@ will merge the pull request.
+You already configured two remote :
+* @origin@ : The cloned repository (blessed).
+* @dev@ : The development repository.
+Your clone was done from blessed repository.
+
+{% highlight sh %}
+$ git checkout stable/1.0.x
+Switched to branch 'stable/1.0.x'
+$ git merge --no-ff dev/fix/PROJECT-12345
+Updating ea1b82a..05e9557
+(Summary of changes)
+$ git push origin stable/1.0.x
+{% endhighlight %}
+
+h3. Update blessed master branch.
+
+When the master branch is stable enough on development repository, repository keepers have to move commits from development to blessed repository.
+Since this operation don't perform merging operation, it's quite simple.
+You already have configured two remotes :
+* @origin@ : The cloned repository (blessed).
+* @dev@ : The development repository.
+Your clone was done from blessed repository.
+
+h3. Perform a release
+
+The release is in charge of release manager. The release is performed directly on blessed repository on stable branch.
+Assuming your remote origin is the blessed repository :
+
+{% highlight sh %}
+$ git checkout stable/1.0.x
+Switched to a new branch "stable/1.0.x"
+{% endhighlight %}
+
+Now, let's do your release operations (mvn release:prepare & mvn release:perform).
+
+h3. Move a release tag
+
+In special case (when the test campaign show a critical issue after taging but before nexus publishing) release manager still can apply a last minute commit and move the tag.
+After your commit, just delete the remote tag, and create another one in this way :
+
+{% highlight sh %}
+$ git tag -d 1.0.0
+$ git push origin :refs/tags/1.0.0
+$ git tag 1.0.0
+$ git push origin 1.0.0
+{% endhighlight %}
+
+  </div>
+</div>
