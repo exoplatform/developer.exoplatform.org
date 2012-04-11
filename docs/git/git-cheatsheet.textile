@@ -136,6 +136,34 @@ git tag <TAG_NAME>
   </div>
   <div class="span6">
 
+h2. Remote
+
+*List all your remote repositories*
+
+{% highlight sh %}
+$ git remote -v
+origin	git@github.com:exodev/platform (fetch)
+origin	git@github.com:exodev/platform (push)
+{% endhighlight %}
+
+*Add a new remote repository*
+
+{% highlight sh %}
+$ git remote add upstream git@github.com:exoplatform/platform.git
+{% endhighlight %}
+
+*Rename a remote repository*
+
+{% highlight sh %}
+$ git remote rename upstream foo
+{% endhighlight %}
+
+*Delete a remote repository*
+
+{% highlight sh %}
+$ git remote rm upstream foo
+{% endhighlight %}
+
 h2. Browse
 
 *Files changed in working directory*
