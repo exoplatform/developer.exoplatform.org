@@ -9,21 +9,6 @@ group: git
 <div class="row">
   <div class="span12">
 
-h2. Commands mapping
-
-This table gives you a quick overview of *similar* commands between Subversion and Git.
-Be careful that Subversion and Git are two really different VCS the first one being centralized and the second one distributed.
-Because of this difference of architecture and their inner implementations this mapping must be taken as a guideline just to start.
-**Git isn't just like SVN. It is more powerful than Subversion but also more dangerous :** **{color:red}With great power comes great responsibility ((c) Stan Lee)**
-
-table(table).
-|_.Subversion command |_.Git command                |_.Description                                      |
-|@svn checkout url@   | @git clone url@             | Retrieves a local copy to work                    |
-|@svn update@         | @git pull@                  | Updates your local copy with remote changes       |
-|@svn commit@         | @git commit -a && git push@ | Sends your local changes to the remote repository |
-
-TODO : More commands
-
 h2. Post migration cleanup by projects teams
 
 Technical conversion of eXo projects stored in Subversion into Git repositories will be processed by the Software Factory Team.
@@ -35,13 +20,9 @@ Due to the migration process you may find in the new Git repository various bran
 
 These branches may have various origins :
 
-## It has the name of a tag. This is because in SVN history you edited a tag (It's BAAAAAD). Thus the conversion process considered that you started a branch and then you did a tag. Following our "conventions":./git-conventions.html this is a @release@ branch and must be renamed @release/X.X.X@ where X.X.X is the tag (often the release number).
 ## It was a development branch removed in SVN. The migration process restore all branches found in SVN history but never deletes them. You can remove them with @git push :<BRANCH>@
-## It is a real maintenance branch. Following our "conventions":./git-conventions.html it has be renamed @stable/A.B.x@.
-## It is a real development branch with some work in progress and is not yet merged. Following our "conventions":./git-conventions.html it has be renamed @feature/my-super-cool-feature@ where @my-super-cool-feature@ describes this feature.
-## Following our "conventions":./git-conventions.html @develop@ must be created from @master@ and must contain the latest codebase of the project. 
-## @develop@ must set as default branch in the repository configuration in GitHub.
-!git-default-branch.png!
+## It is a real stable branch. Following our "workflow":./git-workflow.html it has be renamed @stable/A.B.x@.
+## It is a real development branch with some work in progress and is not yet merged. Following our "workflow":./git-workflow.html it has be renamed @feature/my-super-cool-feature@ where @my-super-cool-feature@ describes this feature.
 
 h3. Clean-up tags
 
@@ -56,6 +37,24 @@ $ git tag -d 12345
 # remove it on remote
 $ git push origin :refs/tags/12345
 {% endhighlight %}
+
+h3. Rename a branch
+
+For almost all branche have to be renamed (feature and stable branch).
+To do it, follow these steps :
+
+{% highlight sh %}
+# Move to branch
+git checkout branch-name
+# Rename the branch
+git branch -m branch-name feature/branch-name
+# Push new branch
+git push origin feature/branch-name
+# remove old branch
+git push origin :branch-name
+{% endhighlight %}
+
+If the branch is a stable branch, use @stable/@ instead of @feature/@
 
 h3. Update your maven build
 
