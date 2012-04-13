@@ -133,6 +133,51 @@ Use option @--all@ to push all local references (branches, tags..), @--tags@ to 
 git tag <TAG_NAME>
 {% endhighlight %}
 
+h2. Branch
+
+*List all branches*
+
+{% highlight sh %}
+git branch
+{% endhighlight %}
+
+*Switch to the BRANCH branch*
+
+{% highlight sh %}
+git checkout <BRANCH>
+{% endhighlight %}
+
+*Merge branch B1 into branch B2*
+
+{% highlight sh %}
+git checkout <B2>
+git merge <B1>
+{% endhighlight %}
+
+*Create branch based on HEAD*
+
+{% highlight sh %}
+git branch <BRANCH>
+{% endhighlight %}
+
+*Create branch based on another*
+
+{% highlight sh %}
+git branch <NEW> <BASE>
+{% endhighlight %}
+
+*Delete a local branch*
+
+{% highlight sh %}
+git branch -d <BRANCH>
+{% endhighlight %}
+
+*Delete a remote branch*
+
+{% highlight sh %}
+git push <origin> :<BRANCH>
+{% endhighlight %}
+
   </div>
   <div class="span6">
 
@@ -212,51 +257,6 @@ git diff <ID>:<FILE>
 
 {% highlight sh %}
 git grep <PATTERN> <PATH>
-{% endhighlight %}
-
-h2. Branch
-
-*List all branches*
-
-{% highlight sh %}
-git branch
-{% endhighlight %}
-
-*Switch to the BRANCH branch*
-
-{% highlight sh %}
-git checkout <BRANCH>
-{% endhighlight %}
-
-*Merge branch B1 into branch B2*
-
-{% highlight sh %}
-git checkout <B2>
-git merge <B1>
-{% endhighlight %}
-
-*Create branch based on HEAD*
-
-{% highlight sh %}
-git branch <BRANCH>
-{% endhighlight %}
-
-*Create branch based on another*
-
-{% highlight sh %}
-git branch <NEW> <BASE>
-{% endhighlight %}
-
-*Delete a local branch*
-
-{% highlight sh %}
-git branch -d <BRANCH>
-{% endhighlight %}
-
-*Delete a remote branch*
-
-{% highlight sh %}
-git push <origin> :<BRANCH>
 {% endhighlight %}
 
 h2. Revert
