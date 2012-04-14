@@ -2,18 +2,34 @@
 layout: page
 title: Home
 group: navigation
+comments: false
 ---
 
 {% include JB/setup %}
 
 <div class="row">
-    <div class="span6 offset1">
-        <div class="hero-unit">
-            <h1>Welcome</h1>
-            <p>Soon, you'll find here a set of documentations dedicated for eXo developers and contributors.</p>
+    <div class="span8">
+		<div class="row">
+    	    <div class="span8">
+			  <h3>Welcome on developer.exoplatform.org !</h3>
+			  <p>This website is centralizing all resources useful for eXo developers or contributors.</p>
+			  <h3>Documentations</h3>
+	        </div>
         </div>
-    </div>
-    <div class="span4 offset1">
+		<div class="row">
+    	    <div class="span4">
+    			<ul class="nav nav-list">
+	    		  <li class="nav-header"><i class="icon-book"></i>Git</li>
+    	          {% assign pages_list = site.pages %}
+	              {% assign group = "git" %}
+	              {% include JB/pages_list %}
+    			</ul>	
+	        </div>
+	        <div class="span4">
+	        </div>
+        </div>
+    </div>	
+    <div class="span4">
         <div class="well">
             <h2>Last posts</h2>
             <ul>
@@ -24,5 +40,13 @@ group: navigation
                 {% endfor %}
             </ul>
         </div>
+		<div class="alert alert-error">
+		  <h4 class="alert-heading">Warning!</h4>			
+		  Construction in progress... These documentations might evolve quickly.
+		</div>	
+		<div class="alert alert-info">
+		  <h4 class="alert-heading">How to contribute</h4>
+		  This website is built using <a href="https://github.com/mojombo/jekyll" target="_blank">Jekyll</a>. Read <a href="https://github.com/exoplatform/developer.exoplatform.org" target="_blank">instructions</a> on Github to contribute.
+		</div>
     </div>
 </div>
