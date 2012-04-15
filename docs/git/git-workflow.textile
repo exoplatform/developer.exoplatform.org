@@ -36,7 +36,7 @@ h3. Blessed repository
 
 In this repository you can find stable branches and release tags. There is master branch also (as backup).
 Only some people are able to write on this repository :
-* @sl3@ : To integrate pull request to stable branches.
+* @maintainers@ (formerly known as @sl3@) : To integrate pull request to stable branches.
 * @release manager@ : To perform release operations.
 * @keepers@ : Repository keepers are @Project Leader@, @Team Leader@ and @Technical Leader@. Keepers are able to pull changes from dev to blessed when the master is stable enough.
 
@@ -60,7 +60,7 @@ h3. Development repository
 
 This repository is the developers repository. The main development branch is master branch. Depending the contribution kind (one shot contribution or feature contribution), the developer can use a dedicated feature branch if needed.
 The most of development activity will be done in this repository by a lot of contributors :
-* @sl3@ : To write stable fix on some stable version.
+* @maintainers@ : To write stable fix on some stable version.
 * @all development teams@ : To do one shot contribution and handle feature branch life cycle.
 
 In this repository, only master branch will be under CI. The CI on feature branch is not supported yet, if you want to have a ci, you will need to merge the branch (only when the branch is stable enough).
@@ -74,14 +74,14 @@ h2. Flow
 
 h3. New feature
 
-When starting work on a new feature, branch off from the develop branch.
+When starting work on a new feature, branch off from the master branch.
 
 {% highlight sh %}
 $ git checkout -b feature/my-new-feature master
 Switched to a new branch "feature/my-new-feature"
 {% endhighlight %}
 
-Finished features may be merged into the develop branch definitely add them to the upcoming release:
+Finished features may be merged into the master branch definitely add them to the upcoming release:
 
 {% highlight sh %}
 $ git checkout master
@@ -148,7 +148,7 @@ Last step is to fill the pull request URL on jira issue. Go to jira issue and fi
 
 h3. Integrate a fix to stable version
 
-When a pull request is reviewed, validated and ready to be integrated, @slv3@ will merge the pull request.
+When a pull request is reviewed, validated and ready to be integrated, @maintainers@ will merge the pull request.
 You already configured two remote :
 * @origin@ : The cloned repository (blessed).
 * @dev@ : The development repository.
