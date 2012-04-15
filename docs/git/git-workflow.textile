@@ -74,14 +74,14 @@ h2. Flow
 
 h3. New feature
 
-When starting work on a new feature, branch off from the develop branch.
+When starting work on a new feature, branch off from the master branch.
 
 {% highlight sh %}
 $ git checkout -b feature/my-new-feature master
 Switched to a new branch "feature/my-new-feature"
 {% endhighlight %}
 
-Finished features may be merged into the develop branch definitely add them to the upcoming release:
+Finished features may be merged into the master branch definitely add them to the upcoming release:
 
 {% highlight sh %}
 $ git checkout master
