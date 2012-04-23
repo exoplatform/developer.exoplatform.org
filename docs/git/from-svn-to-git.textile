@@ -63,7 +63,19 @@ h4. Update SCM infos
 Has you changed where sources are stored you have to reflect it in your "project POM":http://maven.apache.org/scm/git.html.
 These changes have to be done in *ALL* active branches of the project.
 
-Replace such entries :
+The SCM connection URL must allow pull access. It has to follow this pattern (XXX being your repository name in github) 
+
+{% highlight xml %}
+ <connection>scm:git:git://github.com/exoplatform/XXX.git</connection>
+{% endhighlight %}
+
+The SCM developer connection URL must allow pull and push access. It has to follow this pattern (XXX being your repository name in github) 
+
+{% highlight xml %}
+ <developerConnection>scm:git:git@github.com/exoplatform/XXX.git</developerConnection>
+{% endhighlight %}
+
+Here is a sample of an entry used with Subversion :
 
 {% highlight xml %}
 <scm>
@@ -73,17 +85,15 @@ Replace such entries :
 </scm>
 {% endhighlight %}
 
-by
+You have to replace it by this entry for Git(hub) :
 
 {% highlight xml %}
 <scm>
- <connection>scm:git:ssh://github.com/exoplatform/ks.git</connection>
- <developerConnection>scm:git:ssh://github.com/exoplatform/ks.git</developerConnection>
+ <connection>scm:git:git://github.com/exoplatform/ks.git</connection>
+ <developerConnection>scm:git:git@github.com/exoplatform/ks.git</developerConnection>
  <url>http://fisheye.exoplatform.org/browse/ks</url>
 </scm>
 {% endhighlight %}
-
-The URL is something like @scm:git:ssh://github.com/exoplatform/XXX.git@ where XXX is the repository name where is stored your project codebase.
 
 h4. Upgrade plugins versions
 
