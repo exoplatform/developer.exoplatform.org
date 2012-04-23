@@ -72,7 +72,7 @@ The SCM connection URL must allow pull access. It has to follow this pattern (XX
 The SCM developer connection URL must allow pull and push access. It has to follow this pattern (XXX being your repository name in github) 
 
 {% highlight xml %}
- <developerConnection>scm:git:git@github.com/exoplatform/XXX.git</developerConnection>
+ <developerConnection>scm:git:git@github.com:exoplatform/XXX.git</developerConnection>
 {% endhighlight %}
 
 Here is a sample of an entry used with Subversion :
@@ -90,7 +90,7 @@ You have to replace it by this entry for Git(hub) :
 {% highlight xml %}
 <scm>
  <connection>scm:git:git://github.com/exoplatform/ks.git</connection>
- <developerConnection>scm:git:git@github.com/exoplatform/ks.git</developerConnection>
+ <developerConnection>scm:git:git@github.com:exoplatform/ks.git</developerConnection>
  <url>http://fisheye.exoplatform.org/browse/ks</url>
 </scm>
 {% endhighlight %}
