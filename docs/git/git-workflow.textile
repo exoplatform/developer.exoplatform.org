@@ -12,27 +12,44 @@ group: git
 h2. Branching model
 
 Branching model is quite simple, there are 4 kinds of branch :
-* @master@ : Master branch is used as main branch.
+* @master@ : Master branch is used as main branch where long term developments are done.
 * @feature/xxx@ : Feature branches are dedicated branch for one big feature (lot of commits), "xxx" is the feature name.
 * @stable/xxx@ : Stable branch are used to perform releases and write / accept fix. "xxx" is the stable version name (e.g 1.0.x).
-* @fix/xxx@ : Fix branch is dedicated to integrate bugfix on stable branch. When the branch is ready, a pull request will be done. "xxx" could be for example "PROJECT-12345".
+* @fix/yyy/xxx@ : Fix branch is dedicated to integrate bugfix on stable branch "yyy". When the branch is ready, a pull request will be done. "xxx" could be for example "PROJECT-12345" and "yyy" could be "1.0.x".
 
 h2. Repository architecture
 
-Aiming security and backup purpose, we are using two repository kinds (owned by two distinct organizations). There are @development@ and @blessed@ repositories.
-Both repository set are owned by two organizations : "exoplatform":https://github.com/exoplatform and "exodev":https://github.com/exodev.
-Development repositories are forked from blessed repositories.
-
-!git-organization.png!
-
-h3. Blessed repository
-  </div>
-</div>
 <div class="row">
-  <div class="span2">
-    !<{margin-right:20px}git-branches-blessed.png!
+  <div class="span3">
+Aiming security and backup purpose, we are using two repository kinds (owned by two distinct github organizations).
+*This strategy is applied to all repositories/projects involved in eXo products.*
+These are @blessed@ and @development@ repositories hosted respectively on "exoplatform":https://github.com/exoplatform and "exodev":https://github.com/exodev organizations.
+Development repositories are forked from blessed repositories.
   </div>
-  <div class="span10">
+  <div class="span5">!git-organization.png!</div>
+</div>
+
+<div class="row">
+  <div class="span7">
+
+Focusing on one set of dev/blessed repository we have the following overview :
+
+!=git-branches.png!
+
+	</div>
+  <div class="span5">
+
+h3. Development repository
+
+This repository is the developers repository. The main development branch is master branch. Depending the contribution kind (one shot contribution or feature contribution), the developer can use a dedicated feature branch if needed.
+The most of development activity will be done in this repository by a lot of contributors :
+* @maintainers@ : To write stable fix on some stable version.
+* @all development teams@ : To do one shot contribution and handle feature branch life cycle.
+
+In this repository, only master branch will be under CI. The CI on feature branch is not supported yet, if you want to have a ci, you will need to merge the branch (only when the branch is stable enough).
+
+  	
+h3. Blessed repository
 
 In this repository you can find stable branches and release tags. There is master branch also (as backup).
 Only some people are able to write on this repository :
@@ -44,32 +61,7 @@ The continuous integration is applied on stables branches (@stable/1.0.x@, @stab
 
   </div>
 </div>
-<div class="row">
-  <div class="span12">
 
-h3. Development repository
-
-
-  </div>
-</div>
-<div class="row">
-  <div class="span3">
-    !<{margin-right:20px}git-branches-dev.png!
-  </div>
-  <div class="span9">
-
-This repository is the developers repository. The main development branch is master branch. Depending the contribution kind (one shot contribution or feature contribution), the developer can use a dedicated feature branch if needed.
-The most of development activity will be done in this repository by a lot of contributors :
-* @maintainers@ : To write stable fix on some stable version.
-* @all development teams@ : To do one shot contribution and handle feature branch life cycle.
-
-In this repository, only master branch will be under CI. The CI on feature branch is not supported yet, if you want to have a ci, you will need to merge the branch (only when the branch is stable enough).
-
-  </div>
-</div>
-<div class="row">
-  <div class="span12">
-  
 h2. Flow
 
 h3. New feature
@@ -196,5 +188,5 @@ $ git tag 1.0.0
 $ git push origin 1.0.0
 {% endhighlight %}
 
-  </div>
-</div>
+  </div><!-- span12 -->
+</div><!-- row -->
