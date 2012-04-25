@@ -9,6 +9,10 @@ group: git
 <div class="row">
   <div class="span12">
 
+Our workflow is built on two principles :
+* The *branching model* that has to be followed by *all projects** at eXo
+* The *repository architecture** (development vs blessed) that has to be followed by *all projects involved in products* produced eXo
+
 h2. Branching model
 
 Branching model is quite simple, there are 4 kinds of branch :
