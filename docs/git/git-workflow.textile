@@ -9,6 +9,10 @@ group: git
 <div class="row">
   <div class="span12">
 
+Our workflow is built on two principles :
+* The *branching model* that has to be followed by *all projects** at eXo
+* The *repository architecture** (development vs blessed) that has to be followed by *all projects involved in products* produced eXo (and thus that require to be supported).
+
 h2. Branching model
 
 Branching model is quite simple, there are 4 kinds of branch :
@@ -50,8 +54,8 @@ h3. Blessed repository
 In this repository you can find @stable@ branches and release tags. There is @master@ branch also (as backup).
 Only some people are able to write on this repository :
 * @maintainers@ : To integrate pull request on stable branches.
-* @release manager@ : To perform release operations.
-* @keepers@ : Repository keepers are @Project Leader@, @Team Leader@ and @Technical Leader@. Keepers are able to pull changes from dev to blessed when the master is stable enough.
+* @release manager@ : To perform release operations on stable (supported) branches.
+* @keepers@ : Repository keepers are @Project Leader@, @Team Leader@ and @Technical Leader@. They are able to pull changes from dev to blessed when the master is stable enough and they can process releases on master branch for non supported versions of products (alpha, beta, RCs, ...)
 
 The continuous integration is applied on stables branches (@stable/1.0.x@, @stable/1.1.x@, etc). No CI for master on blessed repository.
 
