@@ -64,26 +64,48 @@ The continuous integration is applied on stables branches (@stable/1.0.x@, @stab
 
 h2. Flow
 
+h3. Environment setup
+
+We suppose you are working in the project hosted in the git repository @xxx@
+The first time you need create a local clone of the development repository of @xxx@
+
+{% highlight sh %}
+git clone git@github.com:exodev/xxx.git
+cd xxx
+{% endhighlight %}
+
+You may also need to add a remote repository to access to the blessed repository (to create @fix@ branches or if you are a @maintainer@ or a @keeper@)
+
+{% highlight sh %}
+git remote add blessed git@github.com:exoplatform/xxx.git
+git fetch blessed
+{% endhighlight %}
+
+Don't forget to regularly fetch changes from both repositories to keep your synchronization with them.
+
 h3. New feature
 
 When starting work on a new feature, branch off from the master branch.
 
 {% highlight sh %}
-$ git checkout -b feature/my-new-feature master
-Switched to a new branch "feature/my-new-feature"
+git checkout -b feature/my-new-feature master
 {% endhighlight %}
 
-Finished features may be merged into the master branch definitely add them to the upcoming release:
+You work on this feature : @git add@, @git commit@, ....
+
+Finished features may be merged into the master branch definitely add them to the upcoming release.
+You checkout the @master@ branch and update it (from @origin@ repository thus the development repository)
 
 {% highlight sh %}
-$ git checkout master
-Switched to branch 'master'
-$ git merge --no-ff feature/my-new-feature
-Updating ea1b82a..05e9557
-(Summary of changes)
-$ git branch -d feature/my-new-feature
-Deleted branch feature/my-new-feature (was 05e9557).
-$ git push origin master
+git checkout master
+git pull origin
+{% endhighlight %}
+
+You merge all changes you did in the feature branch and push your changes in the development repository
+
+{% highlight sh %}
+git merge --no-ff feature/my-new-feature
+git push origin master
 {% endhighlight %}
 
 The @--no-ff@ flag causes the merge to always create a new commit object, even if the merge could be performed with a fast-forward. This avoids losing information about the historical existence of a feature branch and groups together all commits that together added the feature. Compare:
@@ -93,99 +115,146 @@ In the latter case, it is impossible to see from the Git history which of the co
 
 Yes, it will create a few more (empty) commit objects, but the gain is much bigger that that cost.
 
-Unfortunately, I have not found a way to make @--no-ff@ the default behavior of git merge yet, but it really should be.
+You can now safely delete your local feature branch and if required the remote one on the development repository if you shared it with others.
+
+{% highlight sh %}
+git branch -d feature/my-new-feature
+git push origin :feature/my-new-feature
+{% endhighlight %}
 
 h3. One shot contribution
 
-One shot contribution is the simplest case. Just commit directly on master branch and push it to dev repository.
-Assuming your remote origin is development repository :
+One shot contribution is the simplest case. 
+Just commit directly on master branch and push it to dev repository.
+You checkout the @master@ branch and update it (from @origin@ repository thus the development repository)
 
 {% highlight sh %}
-$ git checkout master
-Switched to a new branch "master"
+git checkout master
+git pull origin
 {% endhighlight %}
 
-Now commit your changes. Then you only need to push your commits to origin :
+You work on your contribution : @git add@, @git commit@, ....
+
+You push your commits into the development repository
 
 {% highlight sh %}
-$ git push origin master
+git push origin master
 {% endhighlight %}
 
 h3. Fix a stable version
 
-Each stable branch on blessed repository can be updated via Pull Request. Before to do you pull request, let's create and publish your fix on dedicated @fix/xxx@ branch on development repository.
-Assuming you are working on issue PROJECT-12345, you already configured two remote repository :
-* @origin@ : The cloned repository (development).
-* @upstream@ : The blessed repository.
-Your clone was done from development repository.
+Each stable branch on blessed repository can be updated via Pull Request. 
+Assuming you are working on issue PROJECT-12345 to fix a problem on @stable/A.B.x@ branch
+Before to do you pull request, let's create and publish your fix on dedicated @fix/A.B.x/xxx@ branch on development repository.
 
-Create fix branch :
+Create a local branch to work on the issue from the stable branch
 
 {% highlight sh %}
-$ git checkout -b fix/PROJECT-12345 upstream/stable/1.0.x
-Switched to a new branch "fix/PROJECT-12345"
+git checkout -b fix/A.B.x/PROJECT-12345 blessed/stable/A.B.x
 {% endhighlight %}
 
-Now you can write your code, and commit these changes. When the fix is ready to be integrated to stable branch on blessed repository, let's publish your code :
+You work on your fix : @git add@, @git commit@, ....
+
+When you are satisfied of the fix you push it on development repository to share it with the team
 
 {% highlight sh %}
-$ git push origin fix/PROJECT-12345
+git push origin fix/A.B.x/PROJECT-12345
 {% endhighlight %}
 
-Now your contribution is pushed in dedicated branch on development repository, you can do a pull request. On github project page (dev repository) click on !git-pull-request.png! and ask  the merge from @fix/PROJECT-12345@ (dev repository) to @stable/1.0.x@ (blessed repository).
+Now your contribution is pushed in dedicated branch on development repository, you can do a pull request. On github project page (dev repository) click on !git-pull-request.png! and ask  the merge from @fix/A.B.x/PROJECT-12345@ (development repository) to @stable/A.B.x@ (blessed repository).
+
+!=git-pull-request-creation.png!
+
+The pull request must include the link to the Jira issue related to the fix. You have to favor the Jira issue to comment the resolution you did.
 
 Last step is to fill the pull request URL on jira issue. Go to jira issue and fill pull request field :
 
 !git-jira-pull-request.png!
 
+If the fix is refused you can push new commits in this branch and the pull request will be automatically updated
+
 h3. Integrate a fix to stable version
 
-When a pull request is reviewed, validated and ready to be integrated, @maintainers@ will merge the pull request.
-You already configured two remote :
-* @origin@ : The cloned repository (blessed).
-* @dev@ : The development repository.
-Your clone was done from blessed repository.
+When a pull request is submitted @maintainers@ will have to review, validate it and then integrate it into the stable branch.
+
+Assuming you are working on issue PROJECT-12345 to fix a problem on @stable/A.B.x@ branch
+
+You checkout a copy of the stable branch
 
 {% highlight sh %}
-$ git checkout stable/1.0.x
-Switched to branch 'stable/1.0.x'
-$ git merge --no-ff dev/fix/PROJECT-12345
-Updating ea1b82a..05e9557
-(Summary of changes)
-$ git push origin stable/1.0.x
+git checkout -b blessed/stable/A.B.x
+{% endhighlight %}
+
+You merge the content of fix branch into the local stable branch
+
+{% highlight sh %}
+git merge --no-ff origin/fix/A.B.x/PROJECT-12345
+{% endhighlight %}
+
+You can build and test the change.
+At any time you can comment the pull request to ask to the developer to improve it
+If you decide to refuse it you comment the Jira issue and the developer will have to send an update of the fix.
+You can re-merge the updated fix branch as many time as needed.
+When you are satisfied of the fix you push the merge the new stable branch content into the blessed repo.
+
+{% highlight sh %}
+git push blessed stable/A.B.x
+{% endhighlight %}
+
+The Pull Request is automatically closed by Github when it catches that PR commits are integrated into the target repository/branch.
+You resolve/close the PROJECT-12345 issue in Jira.
+
+You can delete the fix branch in the development repo
+
+{% highlight sh %}
+git push origin :fix/A.B.x/PROJECT-12345
 {% endhighlight %}
 
 h3. Update blessed master branch.
 
 When the master branch is stable enough on development repository, repository keepers have to move commits from development to blessed repository.
-Since this operation don't perform merging operation, it's quite simple.
-You already have configured two remotes :
-* @origin@ : The cloned repository (blessed).
-* @dev@ : The development repository.
-Your clone was done from blessed repository.
+
+{% highlight sh %}
+git checkout master
+git pull origin master
+git push blessed master
+{% endhighlight %}
 
 h3. Perform a release
 
-The release is in charge of release manager. The release is performed directly on blessed repository on stable branch.
-Assuming your remote origin is the blessed repository :
+The release is in charge of @release managers@. 
+The release is performed directly on stable branch of a blessed repository.
+
+In that case we consider that you directly fork the blessed repository
 
 {% highlight sh %}
-$ git checkout stable/1.0.x
-Switched to a new branch "stable/1.0.x"
+git clone git@github.com:exoplatform/xxx.git
+cd xxx
 {% endhighlight %}
 
-Now, let's do your release operations (mvn release:prepare & mvn release:perform).
+You checkout the release branch on which you need to perform a release.
+
+{% highlight sh %}
+git checkout stable/A.B.x
+{% endhighlight %}
+
+You follow the classical maven release process
+
+{% highlight sh %}
+mvn release:prepare
+mvn release:perform
+{% endhighlight %}
 
 h3. Move a release tag
 
-In special case (when the test campaign show a critical issue after taging but before nexus publishing) release manager still can apply a last minute commit and move the tag.
+*In really special case* (when the test campaign show a critical issue after tagging but before nexus publishing) release manager still can apply a last minute commit and move the tag.
 After your commit, just delete the remote tag, and create another one in this way :
 
 {% highlight sh %}
-$ git tag -d 1.0.0
-$ git push origin :refs/tags/1.0.0
-$ git tag 1.0.0
-$ git push origin 1.0.0
+git tag -d 1.0.0
+git push origin :refs/tags/1.0.0
+git tag 1.0.0
+git push origin 1.0.0
 {% endhighlight %}
 
   </div><!-- span12 -->
