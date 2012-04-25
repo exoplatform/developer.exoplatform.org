@@ -56,6 +56,66 @@ git push origin :branch-name
 
 If the branch is a stable branch, use @stable/@ instead of @feature/@
 
+h3. Split development and blessed repositories
+
+Following our workflow all projects involved in products development have two repositories, one dedicated for development stuffs and one blessed repository to centralize stable stuffs.
+
+By default in the migration process, both repositories will be synchronized before the opening of push rights on @blessed@ repositories.
+@Projects keepers@ will have to remove useless branches in both repositories :
+
+* No @stable@ branch in @development@ repositories
+* No @fix@ branch in @blessed@ repositories
+* No @feature@ branch in @blessed@ repositories
+
+h4. How to cleanup branches
+
+We suppose you are working in the project hosted in the git repository @xxx@.
+The first time you need create a local clone of the development repository of @xxx@.
+
+{% highlight sh %}
+git clone git@github.com:exodev/xxx.git
+cd xxx
+{% endhighlight %}
+
+And you add a remote repository to access to the @blessed@ repository
+
+{% highlight sh %}
+git remote add blessed git@github.com:exoplatform/xxx.git
+git fetch blessed
+{% endhighlight %}
+
+You can list all branches with
+
+{% highlight sh %}
+git branch -a
+{% endhighlight %}
+
+You have to remove each fix branch from the @blessed@ repository with
+
+{% highlight sh %}
+git push blessed :fix/A.B.x/ISSUE-123
+{% endhighlight %}
+
+You have to remove each feature branch from the blessed repository with
+
+{% highlight sh %}
+git push blessed :feature/branch-name
+{% endhighlight %}
+
+After having synchronized a last time changes from development repository to blessed repository you have to remove each stable branch from development repository
+
+{% highlight sh %}
+# Checkout the current stable branch from blessed repo
+git checkout -b stable/A.B.x blessed/stable/A.B.x
+# Merge changes from developement repo
+git merge origin/stable/A.B.x
+# You shouldn't have any conflict
+# Push changes in blessed repo
+git push blessed
+# Delete stable branch in development repo
+git push origin :stable/A.B.x
+{% endhighlight %}
+
 h3. Update your maven build
 
 h4. Update SCM infos
