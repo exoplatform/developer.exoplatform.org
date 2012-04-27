@@ -184,7 +184,7 @@ For projects inheriting from eXo parent POM version 1.x you have to had the foll
       <artifactId>maven-release-plugin</artifactId>
       <version>2.2.1</version>
     </plugin>
-  <plugins>
+  </plugins>
 </pluginManagement>
 {% endhighlight %}
 
