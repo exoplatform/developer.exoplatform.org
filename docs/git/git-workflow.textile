@@ -216,12 +216,14 @@ git push origin :fix/A.B.x/PROJECT-12345
 
 h3. Update blessed master branch.
 
-When the master branch is stable enough on development repository, repository keepers have to move commits from development to blessed repository.
+An "automated job":https://ci.exoplatform.org/job/synchronize-dev-blessed-masters/ is responsible to push every days all changes done in the master branch of the development repository into the blessed repository.
+If someone pushes in the development repository a non fast-forward change the job won't accept to push it into the blessed repository (It is really not recommended to push in a shared repository a non fast-forward change).
+In that exceptionnal case if the team validates this change, a keeper of the blessed repository will have to force the update of the blessed repository.
 
 {% highlight sh %}
 git checkout master
 git pull origin master
-git push blessed master
+git push --force blessed master
 {% endhighlight %}
 
 h3. Perform a release
