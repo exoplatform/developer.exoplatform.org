@@ -19,7 +19,7 @@ GitHub is the platform we chose to host our Git repositories.
 For eXo employees it is recommended to create one with the same username as the one provided by the company (GoogleApp Id) when you joined us.
 **You have to commit using your exoplatform.com email by setting it in your global git configuration or locally into each eXo repository clone** (see below).
 
-TODO : Info about rights management
+To retrieve your rights to push changes or to pull private repositories you have to register your github account into your profile in our internal IDM [My eXo](https://my.exoplatform.org).
 
 GitHub provides a lot of [documentation](http://help.github.com/) and especially an installation/configuration guide for each operating system :
 
