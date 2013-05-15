@@ -29,6 +29,6 @@ set MAVEN_OPTS=-Xshare:auto -Xms128M -Xmx1G -XX:MaxPermSize=256M
 export MAVEN_OPTS="-Xshare:auto -Xms128M -Xmx1G -XX:MaxPermSize=256M"
 {% endhighlight %}
 
-To build eXo projects no specific Maven settings are required.
+Since Platform 4, to build eXo projects no specific Maven settings are required.
 
 If you are using a repository manager you'll have to reference in it our [public repository](http://repository.exoplatform.org/public) to retrieve our dependencies required to build.
