@@ -2,7 +2,7 @@
 layout: page
 title: "Git - Workflow"
 tags: [git,workflow]
-group: git
+group: scm
 ---
 {% include JB/setup %}
 

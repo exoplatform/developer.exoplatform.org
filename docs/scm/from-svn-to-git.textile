@@ -2,7 +2,7 @@
 layout: page
 title: "From SVN to Git"
 tags: [git,svn]
-group: git
+group: scm
 ---
 {% include JB/setup %}
 

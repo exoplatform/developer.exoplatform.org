@@ -2,7 +2,7 @@
 layout: page
 title: "Git - Startup Guide"
 tags: [git]
-group: git
+group: scm
 ---
 {% include JB/setup %}
 
