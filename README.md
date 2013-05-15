@@ -19,7 +19,7 @@ Feel free to fork the repository and to propose pull requests.
 
 2.   In order to get a server up and running with your Jekyll site, run:
 
-    jekyll --server
+    jekyll serve
 
 and then browse to <http://localhost:4000>.
 
