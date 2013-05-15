@@ -26,6 +26,12 @@ comments: false
     			</ul>	
 	        </div>
 	        <div class="span4">
+    			<ul class="nav nav-list">
+	    		  <li class="nav-header"><i class="icon-cog"></i>Build Management</li>
+    	          {% assign pages_list = site.pages %}
+	              {% assign group = "build" %}
+	              {% include JB/pages_list %}
+    			</ul>	
 	        </div>
         </div>
     </div>	
