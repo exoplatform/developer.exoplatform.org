@@ -263,5 +263,64 @@ git tag 1.0.0
 git push origin 1.0.0
 {% endhighlight %}
 
+
+h3. Master <-> Stabilization branches synchronization
+
+Frequency : Every Monday
+By whom : Each team
+
+{% highlight sh %}
+# Go into the project directory
+cd project-XX
+# Update stabilization and master branches from remote
+git checkout feature/stabilization; git pull; git checkout master; git pull
+# Merge into master changes from stabilization 
+git merge feature/stabilization --no-commit --no-ff 
+{% endhighlight %}
+
+Analyze changes that will be merged into master and potentially reset useless changes (like wrong pom versions updates)
+
+{% highlight sh %}
+# Manually commit the merge (don't be afraid, it might be empty) and push it
+git commit; git push
+# Checkout the stabilization branch
+git checkout feature/stabilization 
+# Merge into stabilization changes from master (it might contain a FB previously merged ...)
+git merge master --no-commit --no-ff 
+{% endhighlight %}
+
+Analyze changes that will be merged into stabilization and potentially reset useless changes (like wrong pom versions updates)
+
+{% highlight sh %}
+# Manually commit the merge (don't be afraid, it might be empty) and push it
+git commit; git push
+{% endhighlight %}
+	   
+At the end you should have in acceptance sources screen (https://acceptance.exoplatform.org/features.php#stabilization) only one commit ahead and 0 commit behind for the stabilization branch.
+
+h3. Master -> Feature branches updates
+
+Frequency : Regularly (every week ?)
+By whom : Each FB responsible team
+	  
+
+{% highlight sh %}
+# Go into the project directory
+cd project-XX
+# Update feature and master branches from remote
+git checkout master; git pull; git checkout feature/XXXXX; git pull
+# Merge into feature branch changes from master (it might contain a FB previously merged ...)
+git merge master --no-commit --no-ff
+{% endhighlight %}
+
+Analyze changes that will be merged into feature branch and potentially reset useless changes (like wrong pom versions updates)
+
+{% highlight sh %}
+# Manually commit the merge (don't be afraid, it might be empty) and push it
+git commit; git push
+{% endhighlight %}	   
+
+At the end you should have in acceptance sources screen (https://acceptance.exoplatform.org/features.php) 0 commit behind for the feature branch.
+
   </div><!-- span12 -->
 </div><!-- row -->
