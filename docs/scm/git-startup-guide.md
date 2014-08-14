@@ -51,15 +51,31 @@ $ git config --global user.email "jdoe@exoplatform.com"
 We recommend also :
 
 * to configure git to activate use colors if you terminal supports it :
-
 {% highlight sh %}
 $ git config color.ui true
 {% endhighlight %}
 
 * to configure git to push only the current branch by default to avoid to send to the server some changes in others branches you weren't ready to share
-
 {% highlight sh %}
 $ git config --global push.default current
+{% endhighlight %}
+
+* to setup line endings preferences for Unix/Mac users
+{% highlight sh %}
+$ git config --global core.autocrlf input
+$ git config --global core.safecrlf true
+{% endhighlight %}
+
+* to setup line endings preferences for Windows users
+{% highlight sh %}
+$ git config --global core.autocrlf true
+$ git config --global core.safecrlf true
+{% endhighlight %}
+
+* to reduce the number of files to consider when performing rename detection during a merge.  The merge is working pretty well on small repositories (with move and rename of files). But it's not working on large repositories as the detection of file renaming is O(n²), so we need to update some threshold (more explanations are available in this post : [http://blogs.atlassian.com/2011/10/confluence_git_rename_merge_oh_my/](http://blogs.atlassian.com/2011/10/confluence_git_rename_merge_oh_my/)) :
+
+{% highlight sh %}
+    git config --global merge.renameLimit 10000
 {% endhighlight %}
 
 * to configure git to add some command aliases to easily call them with `git <ALIAS_NAME>`.
@@ -68,78 +84,98 @@ You just add a section `[alias]`in your `~/.gitconfig` file with entries like be
 {% highlight ini %}
 [alias]
 
-	##### Basic aliases
-	# Long status
-	st = status
-	# Short status
-	s = status -s
-	# Show all branches
-	br = branch -a
-	# Show branches with commit message
-	sb = show-branch
-	# Commit
-	ci = commit
-	# Checkout
-	co = checkout
+    ##### Basic aliases
+    # Long status
+    st = status
+    # Short status
+    s = status -s
+    # Show all branches
+    br = branch -a
+    # Show branches with commit message
+    sb = show-branch
+    # Commit
+    ci = commit
+    # Checkout
+    co = checkout
     # Show remote repositories
-	r  = remote -v
+    r  = remote -v
     # Amend last commit
     amend = ci --amend
-	# Removes files/directories from staging
-	unadd = rm -r --cached
-
+    # Removes files/directories from staging
+    unadd = rm -r --cached
+    
     ##### Diff aliases
-	# Diff and show commands with word-diff style
-	wd = diff --word-diff
-	ws = show --word-diff
-	# Show diff before pull
-	do = diff ORIG_HEAD HEAD
-	# Show modified lines in the index
-	staged = diff --cached
-	# Show modified files
+    # Diff and show commands with word-diff style
+    wd = diff --word-diff
+    ws = show --word-diff
+    # Show diff before pull
+    do = diff ORIG_HEAD HEAD
+    # Show modified lines in the index
+    staged = diff --cached
+    # Show modified files
     changes= diff --name-status -r
-	# Diff with statistics
+    # Diff with statistics
     ds = diff --stat -r
-
+    
     ##### Log aliases
     # Show HEAD commit
-	head = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -n1
-	# Short one line logs with ref-names
-	l  = log --oneline --decorate=short
-	# Shows the last git logentry (hash, author, date commitmessage)
-	llm = log -1
-	# Short one line logs with ref-names and statistics
-	gl = log --oneline --decorate --stat --graph
+    head = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -n1
+    # Short one line logs with ref-names
+    l  = log --oneline --decorate=short
+    # Shows the last git logentry (hash, author, date commitmessage)
+    llm = log -1
+    # Short one line logs with ref-names and statistics
+    gl = log --oneline --decorate --stat --graph
     # Short one line logs with ref-names (yellow, date (green) and author (blue)
-	glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	# Show last commit
-	lc = log ORIG_HEAD.. --stat --no-merges
-	# Graph log with full commit message
-	glaaa = log --graph --abbrev-commit --date=relative
-
+    glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    # Show last commit
+    lc = log ORIG_HEAD.. --stat --no-merges
+    # Graph log with full commit message
+    glaaa = log --graph --abbrev-commit --date=relative
+    
     ##### Misc
-	# Show last commiter
-	whois = !sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -
-	# Show last commit message
+    # Show last commiter
+    whois = !sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -
+    # Show last commit message
     whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
-	# Hash of HEAD
-	h = rev-list --max-count=1 HEAD
-	# Show users which have commits in current branch
-	ul = !git log --format='%aN' | sort -u
-	# Number of commits in current branch
-	c  = !git log --oneline | wc -l
-	# Creates a tar.gz archive named after the last commits hash from HEAD! in the directory above the repository
-	ahg = !git archive HEAD --format=tar | gzip > ../`git h`.tar.gz
-	# shows ignored directories
-	ignored = !git ls-files --others -i --exclude-standard --directory
+    # Hash of HEAD
+    h = rev-list --max-count=1 HEAD
+    # Show users which have commits in current branch
+    ul = !git log --format='%aN' | sort -u
+    # Number of commits in current branch
+    c  = !git log --oneline | wc -l
+    # Creates a tar.gz archive named after the last commits hash from HEAD! in the directory above the repository
+    ahg = !git archive HEAD --format=tar | gzip > ../`git h`.tar.gz
+    # shows ignored directories
+    ignored = !git ls-files --others -i --exclude-standard --directory
     # Move to the root of the repository
-	root = !cd $(git rev-parse --show-cdup)
-	# Show the root directory of the repository
-	sroot = rev-parse --show-toplevel
-	# Prune remote branches
-	prune-all = !git remote | xargs -n 1 git remote prune
-	# Show aliases
-	aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
-	# Show upstream for the current branch
+    root = !cd $(git rev-parse --show-cdup)
+    # Show the root directory of the repository
+    sroot = rev-parse --show-toplevel
+    # Prune remote branches
+    prune-all = !git remote | xargs -n 1 git remote prune
+    # Show aliases
+    aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+    # Show upstream for the current branch
     upstream = !git for-each-ref --format='%(upstream:short)' `git symbolic-ref HEAD`
 {% endhighlight %}
+    
+# Commit messages
+
+Commits must relate to a JIRA issue. Convention for messages inspired by [http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html) :
+
+* The first line must be short (50 chars or less) and auto-descriptive in a format "<JIRA KEY> <DESCRIPTION>", for example "AM-101 : Fix the behavior of archives download"
+* Write your commit message in the present tense: "Fix bug" and not "Fixed bug".
+* The second line is blank.
+* Next lines optionally define a short summary of changes (wrap them to about 72 chars or so).
+
+Example :
+
+    AM-101 : Fix the behavior of archives download
+    
+    * --no-cache has no effect on it
+    * The add-ons manager always retry to download the archive from the downloadUrl. The download is skipped if the local file exists, it has the same size as the remote one and its modifiedDate is > to the remote one (It will allow to install new SNAPSHOTs without enforcing to download the archive each time)
+    * The same behavior is applied for all URLs (http(s), file)
+
+
+
