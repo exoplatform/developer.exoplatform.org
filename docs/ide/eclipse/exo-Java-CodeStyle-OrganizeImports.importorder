@@ -1,0 +1,8 @@
+#Organize Import Order
+#Thu Aug 14 15:26:07 CEST 2014
+5=com.exoplatform
+4=org.exoplatform
+3=com
+2=org
+1=javax
+0=java
