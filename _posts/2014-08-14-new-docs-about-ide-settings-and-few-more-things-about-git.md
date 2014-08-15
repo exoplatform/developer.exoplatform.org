@@ -9,7 +9,7 @@ tags: [update, git, ide, eclipse, intellij]
 
 Few updates today :
 
-[Eclipse Settings](/docs/ide/eclipse-settings.html), [IntelliJ Settings](/docs/ide/eclipse-settings.html): 
+[Eclipse Settings](/docs/ide/eclipse-settings.html), [IntelliJ Settings](/docs/ide/intellij-settings.html): 
 
 * New documentations to explain how to configure your [Eclipse](https://www.eclipse.org) or [IntelliJ](http://www.jetbrains.com/idea/) IDE to follow the formatting rules used by eXo and controlled by [Sonar](https://sonar.exoplatform.org).
 
