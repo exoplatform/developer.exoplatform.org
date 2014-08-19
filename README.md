@@ -9,17 +9,23 @@ Feel free to fork the repository and to propose pull requests.
 
 ## How to preview the site ?
 
-1.   [Install Jekyll](https://github.com/mojombo/jekyll/wiki/install). It is a ruby gem and often it is just :
+1.    Install RVM and ruby
 
-    sudo gem update --system
+    curl -sSL https://get.rvm.io | bash -s stable
 
-    sudo gem install jekyll rdiscount RedCloth
-    
-    sudo easy_install Pygments
+    rvm install 2.1.1
+
+    rvm use 2.1.1
+
+2.   [Install Github Pages](https://help.github.com/articles/using-jekyll-with-pages) which will [Install Jekyll](https://github.com/mojombo/jekyll/wiki/install) too. In your developer.exoplatform.org local clone directory just call :
+
+    gem install bundler
+
+    bundle install 
 
 2.   In order to get a server up and running with your Jekyll site, run:
 
-    jekyll serve --watch
+    jekyll serve --watch --drafts
 
 and then browse to <http://localhost:4000>.
 
