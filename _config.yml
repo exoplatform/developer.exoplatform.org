@@ -10,12 +10,12 @@ markdown: rdiscount
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : {{ site.github.repository_name }}
-tagline: {{ site.github.project_tagline }}
+title : developer.exoplatform.org
+tagline: All resources to contribute to eXo projects
 author :
   name : eXo Platform
   email : exo-swf@exoplatform.com
-  github : {{ site.github.owner_name }}
+  github : exoplatform
   twitter : exoswf
 #  feedburner : feedname
 
@@ -27,7 +27,7 @@ author :
 # Else if you are pushing to username.github.io, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url : http://{{ site.github.repository_name }}
+production_url : http://developer.exoplatform.org
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
