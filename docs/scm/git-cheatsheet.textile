@@ -104,6 +104,27 @@ h2. Commit
 git commit -a
 {% endhighlight %}
 
+*Commit messages*
+
+Commits must relate to a JIRA issue.
+Convention for messages inspired by "this article":http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html :
+
+* The first line must be short (50 chars or less) and auto-descriptive in a format "<JIRA KEY> <DESCRIPTION>", for example "AM-101 : Fix the behavior of archives download"
+* Write your commit message in the present tense: "Fix bug" and not "Fixed bug".
+* The second line is blank.
+* Next lines optionally define a short summary of changes (wrap them to about 72 chars or so).
+
+Example :
+
+{% highlight sh %}
+
+AM-101 : Fix the behavior of archives download
+
+* --no-cache has no effect on it
+* The add-ons manager always retry to download the archive from the downloadUrl. The download is skipped if the local file exists, it has the same size as the remote one and its modifiedDate is > to the remote one (It will allow to install new SNAPSHOTs without enforcing to download the archive each time)
+* The same behavior is applied for all URLs (http(s), file)
+{% endhighlight %}
+
 h2. Publish
 
 *Prepare a patch for other developers*

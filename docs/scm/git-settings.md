@@ -1,15 +1,10 @@
 ---
 layout: page
-title: "Git - Startup Guide"
+title: "Git - Settings"
 tags: [git]
 group: scm
 ---
 {% include JB/setup %}
-
-Early in April 2012, eXo moved its projects from [Subversion](https://svn.exoplatform.org) to [Git](http://git-scm.com/).
-Our Git repositories will be hosted on [GitHub](https://www.github.com/exoplatform/).
-
-This guide doesn't target to learn you everything about Git but just to give you the necessary skills and pointers to start.
 
 # GitHub
 
@@ -28,14 +23,6 @@ GitHub provides a lot of [documentation](http://help.github.com/) and especially
 * [MacOS](http://help.github.com/mac-set-up-git/)
 
 Please follow these guides to setup your environment.
-
-# Git & IDE
-
-Git is natively supported by all IDE :
-
-* Eclipse : [EGit plugin](http://www.eclipse.org/egit/) bundled by default in the major part of eclipse distributions.
-* IntelliJ : [Native](http://www.jetbrains.com/idea/webhelp/using-git-integration.html)
-* Netbeans : [Native since 7.1](http://netbeans.org/projects/versioncontrol/pages/Git_main)
 
 # Git Configuration
 
@@ -159,23 +146,12 @@ You just add a section `[alias]`in your `~/.gitconfig` file with entries like be
     # Show upstream for the current branch
     upstream = !git for-each-ref --format='%(upstream:short)' `git symbolic-ref HEAD`
 {% endhighlight %}
-    
-# Commit messages
 
-Commits must relate to a JIRA issue. Convention for messages inspired by [http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html) :
+# Git & IDEs
 
-* The first line must be short (50 chars or less) and auto-descriptive in a format "<JIRA KEY> <DESCRIPTION>", for example "AM-101 : Fix the behavior of archives download"
-* Write your commit message in the present tense: "Fix bug" and not "Fixed bug".
-* The second line is blank.
-* Next lines optionally define a short summary of changes (wrap them to about 72 chars or so).
+Git is natively supported by all IDE :
 
-Example :
-
-    AM-101 : Fix the behavior of archives download
-    
-    * --no-cache has no effect on it
-    * The add-ons manager always retry to download the archive from the downloadUrl. The download is skipped if the local file exists, it has the same size as the remote one and its modifiedDate is > to the remote one (It will allow to install new SNAPSHOTs without enforcing to download the archive each time)
-    * The same behavior is applied for all URLs (http(s), file)
-
-
+* Eclipse : [EGit plugin](http://www.eclipse.org/egit/) bundled by default in the major part of eclipse distributions.
+* IntelliJ : [Native](http://www.jetbrains.com/idea/webhelp/using-git-integration.html)
+* Netbeans : [Native since 7.1](http://netbeans.org/projects/versioncontrol/pages/Git_main)
 
