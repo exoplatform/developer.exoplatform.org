@@ -29,6 +29,10 @@ Feel free to fork the repository and to propose pull requests.
 
 and then browse to <http://localhost:4000>.
 
+4.   In order to update jekyll and related :
+
+    bundle update
+
 ## How to create a new post ?
 
     rake post title="A Title" [date="2012-02-09"]
