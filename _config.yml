@@ -10,7 +10,7 @@ markdown: rdiscount
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : {{ site.github.project_title }}
+title : {{ site.github.repository_name }}
 tagline: {{ site.github.project_tagline }}
 author :
   name : eXo Platform
