@@ -13,15 +13,8 @@
   <!-- Enable responsive viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Bootstrap styles -->
-  <link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Optional theme -->
-  <link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
-  <!-- Sticky Footer -->
-  <link href="{{ ASSET_PATH }}/bootstrap/css/sticky-footer-navbar.css" rel="stylesheet">
-
-  <!-- Custom styles -->
-  <link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+  <!-- Customized Bootstrap styles -->
+  <link href="{{ ASSET_PATH }}/bootstrap/less/exo.less" rel="stylesheet/less" type="text/css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -42,6 +35,8 @@
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
   -->
+
+  <script src="{{ ASSET_PATH }}/less.js/less-1.7.4.min.js"></script>
 
   <!-- atom & rss feed -->
   <link href="{{ BASE_PATH }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
@@ -108,7 +103,7 @@
 
 <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="{{ ASSET_PATH }}/jquery/jquery-1.11.1.min.js"></script>
 <script src="{{ ASSET_PATH }}/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
