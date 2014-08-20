@@ -13,3 +13,4 @@ Thumbs.db
 
 .rbenv-version
 .rvmrc
+Gemfile.lock

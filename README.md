@@ -23,7 +23,7 @@ Feel free to fork the repository and to propose pull requests.
 
     bundle install 
 
-2.   In order to get a server up and running with your Jekyll site, run:
+3.   In order to get a server up and running with your Jekyll site, run:
 
     jekyll serve --watch --drafts
 
