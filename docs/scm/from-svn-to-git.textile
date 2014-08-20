@@ -7,7 +7,7 @@ group: scm
 {% include JB/setup %}
 
 <div class="row">
-  <div class="span12">
+  <div class="col-md-12">
 
 h2. Post migration cleanup by projects teams
 

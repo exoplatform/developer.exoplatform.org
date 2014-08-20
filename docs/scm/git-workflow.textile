@@ -7,7 +7,7 @@ group: scm
 {% include JB/setup %}
 
 <div class="row">
-  <div class="span12">
+  <div class="col-md-12">
 
 Our workflow is built on two principles :
 * The *branching model* that has to be followed by *all projects** at eXo
@@ -322,5 +322,5 @@ git commit; git push
 
 At the end you should have in acceptance sources screen (https://acceptance.exoplatform.org/features.php) 0 commit behind for the feature branch.
 
-  </div><!-- span12 -->
+  </div><!-- col-md-12 -->
 </div><!-- row -->
