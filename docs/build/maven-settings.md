@@ -1,7 +1,7 @@
 ---
 layout: page
-title: "Build - Pre-requisites"
-tags: [maven,jdk]
+title: "Maven - Settings"
+tags: [maven]
 group: build
 ---
 {% include JB/setup %}
