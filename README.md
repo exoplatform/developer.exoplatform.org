@@ -2,6 +2,7 @@
 
 This site groups together all documentations useful to develop or contribute to eXo Platform projects.
 It is built using [Jekyll](https://github.com/mojombo/jekyll) and its extension [Jekyll Bootstrap](http://jekyllbootstrap.com/)
+ and deployed on [Github Pages](https://pages.github.com).
 
 ## How to contribute ?
 
