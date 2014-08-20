@@ -42,7 +42,7 @@ and then browse to <http://localhost:4000>.
     rake page name="about.md"
 
 You can also specify a sub-directory path.
-If you don't specify a file extention we create an index.html at the path specified
+If you don't specify a file extension we create an index.html at the path specified
 
 ## License
 
