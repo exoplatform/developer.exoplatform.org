@@ -1,8 +1,9 @@
 ---
 layout: post
-title: "Git, here we go !"
-category: 
-tags: [announce, git, important]
+title: "Git Migration"
+tagline: "Here we go !"
+category: announce
+tags: [git, important]
 ---
 {% include JB/setup %}
 

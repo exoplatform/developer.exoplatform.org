@@ -2,8 +2,8 @@
 layout: post
 title: "New docs about IDE settings and few more things about Git"
 description: ""
-category: 
-tags: [update, git, ide, eclipse, intellij]
+category: update
+tags: [git, ide, eclipse, intellij]
 ---
 {% include JB/setup %}
 
