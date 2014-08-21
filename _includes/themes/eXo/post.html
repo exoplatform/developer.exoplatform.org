@@ -2,7 +2,7 @@
   <h1>{{ page.title }} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h1>
 </div>
 <div class="row post-full">
-  <div class="col-xs-12">
+  <div class="col-md-12">
     <div class="date">
       <span>{{ page.date | date_to_long_string }}</span>
     </div>
@@ -11,19 +11,13 @@
     </div>
 
     {% unless page.categories == empty %}
-    <ul class="tag_box inline">
-      <li><i class="glyphicon glyphicon-list"></i></li>
-      {% assign categories_list = page.categories %}
-      {% include JB/categories_list %}
-    </ul>
+    {% assign categories_list = page.categories %}
+    {% include JB/categories_list %}
     {% endunless %}
 
     {% unless page.tags == empty %}
-    <ul class="tag_box inline">
-      <li><i class="glyphicon glyphicon-tags"></i></li>
-      {% assign tags_list = page.tags %}
-      {% include JB/tags_list %}
-    </ul>
+    {% assign tags_list = page.tags %}
+    {% include JB/tags_list %}
     {% endunless %}
 
     <hr>

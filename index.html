@@ -11,59 +11,61 @@ group: navigation
     <div class="row">
       <div class="col-md-12">
         <h3>Welcome on developer.exoplatform.org !</h3>
+
         <p>This website is centralizing all resources useful for eXo developers and contributors.</p>
-        <h3>Documentations</h3>
       </div>
     </div>
+
     <div class="row">
-      <div class="col-md-6">
-        <div class="panel panel-default">
-          <div class="panel-heading"><i class="glyphicon glyphicon-book"></i> Sources Management</div>
-          <div class="list-group">
-            {% assign pages_list = site.pages %}
-            {% assign group = "scm" %}
-            {% assign type = "div" %}
-            {% include JB/pages_list %}
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="panel panel-default">
-          <div class="panel-heading"><i class="glyphicon glyphicon-cog"></i> Build Management</div>
-          <div class="list-group">
-            {% assign pages_list = site.pages %}
-            {% assign group = "build" %}
-            {% assign type = "div" %}
-            {% include JB/pages_list %}
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading"><i class="glyphicon glyphicon-file"></i> IDE</div>
-          <div class="list-group">
-            {% assign pages_list = site.pages %}
-            {% assign group = "ide" %}
-            {% assign type = "div" %}
-            {% include JB/pages_list %}
-          </div>
-        </div>
+      <div class="col-md-12">
+        <h3>Latest news</h3>
+        {% for post in site.posts %}
+        <span>{{ post.date | date: "%B %e, %Y" }}</span> &raquo;
+        <a href="{{ BASE_PATH }}{{ post.url }}">{{post.title}}</a>&nbsp;
+        <br/>
+        {% endfor %}
       </div>
     </div>
   </div>
   <div class="col-md-4">
-    <div class="well">
-      <h2>Last posts</h2>
-      <ul>
-        {% for post in site.posts %}
-        <li><span>{{ post.date | date: "%B %e, %Y" }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{post.title}}</a><br/>
-          {% for tag in post.tags %}&nbsp;<span class="label {% if tag == " important" %}label-danger{% else %}label-default{%endif %}">{{ tag }}</span>{% endfor %}
-        </li>
-        {% endfor %}
-      </ul>
+    <h3>Documentations</h3>
+
+    <div class="panel panel-default">
+      <div class="panel-heading"><i class="glyphicon glyphicon-book"></i> Sources Management</div>
+      <div class="list-group">
+        {% assign pages_list = site.pages %}
+        {% assign group = "scm" %}
+        {% assign type = "div" %}
+        {% include JB/pages_list %}
+      </div>
     </div>
-    <div class="alert alert-info">
-      <h4 class="alert-heading">How to contribute</h4>
-      This website is built using <a href="https://github.com/mojombo/jekyll" target="_blank">Jekyll</a>. Read <a
-        href="https://github.com/exoplatform/developer.exoplatform.org" target="_blank">instructions</a> on Github to contribute.
+    <div class="panel panel-default">
+      <div class="panel-heading"><i class="glyphicon glyphicon-cog"></i> Build Management</div>
+      <div class="list-group">
+        {% assign pages_list = site.pages %}
+        {% assign group = "build" %}
+        {% assign type = "div" %}
+        {% include JB/pages_list %}
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading"><i class="glyphicon glyphicon-file"></i> IDE</div>
+      <div class="list-group">
+        {% assign pages_list = site.pages %}
+        {% assign group = "ide" %}
+        {% assign type = "div" %}
+        {% include JB/pages_list %}
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="glyphicon glyphicon-wrench"></i> How to contribute</h3>
+      </div>
+      <div class="panel-body">
+        This website is built using <a href="https://github.com/mojombo/jekyll" target="_blank">Jekyll</a>. Read <a
+          href="https://github.com/exoplatform/developer.exoplatform.org" target="_blank">instructions</a> on Github to
+        contribute.
+      </div>
     </div>
   </div>
 </div>

@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "New docs about IDE settings and few more things about Git"
-description: ""
-category: update
+category: website
 tags: [git, ide, eclipse, intellij]
 ---
 {% include JB/setup %}
