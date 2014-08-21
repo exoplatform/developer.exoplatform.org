@@ -6,9 +6,9 @@ It is built using [Jekyll](https://github.com/mojombo/jekyll) and its extension 
 
 ## How to contribute ?
 
-Feel free to fork the repository and to propose pull requests.
+Feel free to fork the repository and submit pull requests.
 
-## How to preview the site ?
+## How to install the environment ?
 
 1.    Install RVM and ruby
 
@@ -24,19 +24,17 @@ Feel free to fork the repository and to propose pull requests.
 
     bundle install 
 
-3.   In order to get a server up and running with your Jekyll site, run:
-
-    jekyll serve --watch --drafts
-
-and then browse to <http://localhost:4000>.
-
-4.   In order to update jekyll and related :
+3.   In order to update jekyll and related in the future :
 
     bundle update
 
 ## How to create a new post ?
 
-    rake post title="A Title" [date="2012-02-09"]
+    rake post title="A Title"
+    rake post title="A Title" date="2012-02-09"
+    rake post title="A Title" tags=[tag1,tag2]
+    rake post title="A Title" category="category"
+    rake post title="A Title" date="2012-02-09" tags=[tag1,tag2] category="category"
 
 ## How to create a new page ?
 
@@ -44,6 +42,27 @@ and then browse to <http://localhost:4000>.
 
 You can also specify a sub-directory path.
 If you don't specify a file extension we create an index.html at the path specified
+
+## How to preview the site ?
+
+In order to get a server up and running with your Jekyll site, run:
+
+    rake preview
+
+and then browse to <http://localhost:4000>.
+
+## How to switch from one theme to another for your blog ?
+
+    rake theme:switch name="the-program"
+
+## How to install a theme using the theme packager ?
+
+    rake theme:install git="https://github.com/jekyllbootstrap/theme-twitter.git"
+    rake theme:install name="cool-theme"
+
+## How to package a theme using the theme packager ?
+
+    rake theme:package name="twitter"
 
 ## License
 
