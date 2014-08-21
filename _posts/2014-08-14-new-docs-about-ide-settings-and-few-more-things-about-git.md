@@ -6,7 +6,9 @@ tags: [git, ide, eclipse, intellij]
 ---
 {% include JB/setup %}
 
-Few updates today :
+Few updates today on the website
+
+<!--more-->
 
 [Eclipse Settings](/docs/ide/eclipse-settings.html), [IntelliJ Settings](/docs/ide/intellij-settings.html): 
 

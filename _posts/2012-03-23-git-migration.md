@@ -2,12 +2,14 @@
 layout: post
 title: "Git Migration"
 tagline: "Here we go !"
-category: website
+category: forge
 tags: [git]
 ---
 {% include JB/setup %}
 
 Early in April, eXo moves its projects from the centralized SCM [Subversion](https://svn.exoplatform.org) to the Distributed SCM [Git](http://git-scm.com/). Our Git repositories will be hosted on [GitHub](https://www.github.com/exoplatform/).
+
+<!--more-->
 
 This move/conversion will be processed the first week of April and all projects will be updated just after (Maven settings, repositories clean-up, …).
 

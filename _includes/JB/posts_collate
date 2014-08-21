@@ -32,17 +32,20 @@ Usage:
       <ul>
     {% endif %}
   
-    <li><span>{{ post.date | date: "%B %e, %Y" }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a><br/>
-      {% unless post.categories == empty %}
-      {% assign categories_list = post.categories %}
-      {% include JB/categories_list %}
-      {% endunless %}
-      {% unless post.tags == empty %}
-      {% assign tags_list = post.tags %}
-      {% include JB/tags_list %}
-      {% endunless %}
-    </li>
-  
+    <h4><span>{{ post.date | date: "%B %e, %Y" }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title}}</a></h4>
+    <p class="pull-right">
+    {% unless post.categories == empty %}
+    {% assign categories_list = post.categories %}
+    {% include JB/categories_list %}
+    {% endunless %}
+    {% unless post.tags == empty %}
+    {% assign tags_list = post.tags %}
+    {% include JB/tags_list %}
+    {% endunless %}
+    </p>
+
+    <blockquote>{{ post.excerpt}}</blockquote>
+
     {% if forloop.last %}
       </ul>
     {% else %}
