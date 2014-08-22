@@ -1,32 +1,37 @@
-# This is the default format. 
-# For more see: http://jekyllrb.com/docs/permalinks/
-permalink: /news/:categories/:year/:month/:day/:title
+# Where things are
+collections: null
 
-exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
-highlighter: pygments
+# Handling Reading
+exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile"]
+
+# Plugins
+gems: []
+
+# Conversion
 # Use rdiscount to avoid errors like "REXML could not parse this XML/HTML"
-markdown: rdiscount
+markdown:          rdiscount
+highlighter:       pygments
 excerpt_separator: "<!--more-->"
+
+# Outputting
+permalink: /news/:categories/:year/:month/:day/:title/
+
+defaults: []
 
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
 title : developer.exoplatform.org
-tagline: All resources to contribute to eXo projects
 author :
-  name : eXo Platform
+  name : eXo Platform SAS
   email : exo-swf@exoplatform.com
   github : exoplatform
   twitter : exoswf
 #  feedburner : feedname
 
 # The production_url is only used when full-domain names are needed
-# such as sitemap.txt 
+# such as sitemap.txt, atom or rss feeds
 # Most places will/should use BASE_PATH to make the urls
-#
-# If you have set a CNAME (pages.github.com) set your custom domain here.
-# Else if you are pushing to username.github.io, replace with your username.
-# Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
 production_url : http://developer.exoplatform.org
 
