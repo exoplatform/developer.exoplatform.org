@@ -1,5 +1,7 @@
 # Where things are
-collections: null
+collections:
+  docs:
+    output: true
 
 # Handling Reading
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile"]
@@ -24,6 +26,12 @@ defaults:
   -
     scope:
       path: ""
+    values:
+      theme :
+        name : eXo
+  -
+    scope:
+      path: ""
       type: "post"
     values:
       layout: "post"
@@ -39,6 +47,13 @@ defaults:
       type: "page"
     values:
       layout: "page"
+  -
+    scope:
+      path: ""
+      type: "docs"
+    values:
+      layout: "page"
+
 
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.

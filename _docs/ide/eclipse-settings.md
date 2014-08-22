@@ -3,7 +3,7 @@ title: "Eclipse - Settings"
 tags: [ide,eclipse]
 group: ide
 ---
-
+{{page.collection}}
 Eclipse settings are available in [/resources/ide/eclipse]({{site.github.repository_url}}/tree/master/resources/ide/eclipse/).
 
 Configure Eclipse at "Window" -> "Preferences..."
