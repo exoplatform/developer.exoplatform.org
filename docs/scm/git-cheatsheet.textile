@@ -6,7 +6,7 @@ group: scm
 
 <div class="row">
   <div class="col-md-12">
-    <img src="git-overview.png" class="img-responsive img-thumbnail" alt="Git Big Picture">
+    <img src="/resources/scm/graphics/git-overview.png" class="img-responsive img-thumbnail" alt="Git Big Picture">
   </div>
 </div>
 

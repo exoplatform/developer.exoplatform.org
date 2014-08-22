@@ -28,7 +28,7 @@ These are @blessed@ and @development@ repositories hosted respectively on "exopl
 Development repositories are forked from blessed repositories.
 *This strategy is applied to all repositories/projects involved in eXo products.* Others projects are using a single repository hosted on "exoplatform" organization.
   </div>
-  <div class="span5">!git-organization.png!</div>
+  <div class="span5">!/resources/scm/graphics/git-organization.png!</div>
 </div>
 
 h2. Branches and repositories
@@ -60,7 +60,7 @@ The continuous integration is applied on stables branches (@stable/1.0.x@, @stab
   </div>
 	  <div class="span7">
 *Focusing on one set of dev/blessed repository we have the following overview :*
-!git-branches.png!
+!/resources/scm/graphics/git-branches.png!
 		</div>
 </div>
 
@@ -111,7 +111,7 @@ git push origin master
 {% endhighlight %}
 
 The @--no-ff@ flag causes the merge to always create a new commit object, even if the merge could be performed with a fast-forward. This avoids losing information about the historical existence of a feature branch and groups together all commits that together added the feature. Compare:
-!git-merge-without-ff.png!
+!/resources/scm/graphics/git-merge-without-ff.png!
 
 In the latter case, it is impossible to see from the Git history which of the commit objects together have implemented a feature—you would have to manually read all the log messages. Reverting a whole feature (i.e. a group of commits), is a true headache in the latter situation, whereas it is easily done if the @--no-ff@ flag was used.
 
@@ -163,15 +163,15 @@ When you are satisfied of the fix you push it on development repository to share
 git push origin fix/A.B.x/PROJECT-12345
 {% endhighlight %}
 
-Now your contribution is pushed in dedicated branch on development repository, you can do a pull request. On github project page (dev repository) click on !git-pull-request.png! and ask  the merge from @fix/A.B.x/PROJECT-12345@ (development repository) to @stable/A.B.x@ (blessed repository).
+Now your contribution is pushed in dedicated branch on development repository, you can do a pull request. On github project page (dev repository) click on !/resources/scm/graphics/git-pull-request.png! and ask  the merge from @fix/A.B.x/PROJECT-12345@ (development repository) to @stable/A.B.x@ (blessed repository).
 
-!=git-pull-request-creation.png!
+!/resources/scm/graphics/git-pull-request-creation.png!
 
 The pull request must include the link to the Jira issue related to the fix. You have to favor the Jira issue to comment the resolution you did.
 
 Last step is to fill the pull request URL on jira issue. Go to jira issue and fill pull request field :
 
-!git-jira-pull-request.png!
+!/resources/scm/graphics/git-jira-pull-request.png!
 
 If the fix is refused you can push new commits in this branch and the pull request will be automatically updated
 
