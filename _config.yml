@@ -5,7 +5,11 @@ collections: null
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile"]
 
 # Plugins
-gems: []
+gems:
+- jekyll-mentions
+- jemoji
+- jekyll-redirect-from
+- jekyll-sitemap
 
 # Conversion
 # Use rdiscount to avoid errors like "REXML could not parse this XML/HTML"
@@ -30,7 +34,7 @@ author :
 #  feedburner : feedname
 
 # The production_url is only used when full-domain names are needed
-# such as sitemap.txt, atom or rss feeds
+# such as atom or rss feeds
 # Most places will/should use BASE_PATH to make the urls
 #
 production_url : http://developer.exoplatform.org
