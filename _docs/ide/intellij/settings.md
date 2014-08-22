@@ -3,7 +3,7 @@ title: "IntelliJ - Settings"
 permalink: /docs/ide/intellij/settings/
 redirect_from:
   - /docs/ide/intellij-settings.html
-tags: [ide,intellij]
+tags: [intellij]
 group: ide
 ---
 
