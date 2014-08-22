@@ -4,8 +4,6 @@ title: "Git - Cheat Sheet"
 tags: [git,cheatsheet]
 group: scm
 ---
-{% include JB/setup %}
-
 
 <div class="row">
   <div class="col-md-12">

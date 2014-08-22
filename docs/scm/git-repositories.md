@@ -4,7 +4,6 @@ title: "Git - Repositories"
 tags: [git,github]
 group: scm
 ---
-{% include JB/setup %}
 
 # Platform codebase
 

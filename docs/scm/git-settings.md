@@ -4,7 +4,6 @@ title: "Git - Settings"
 tags: [git]
 group: scm
 ---
-{% include JB/setup %}
 
 # GitHub
 

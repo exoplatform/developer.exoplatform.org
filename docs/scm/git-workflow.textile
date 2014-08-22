@@ -4,7 +4,6 @@ title: "Git - Workflow"
 tags: [git,workflow]
 group: scm
 ---
-{% include JB/setup %}
 
 <div class="row">
   <div class="col-md-12">

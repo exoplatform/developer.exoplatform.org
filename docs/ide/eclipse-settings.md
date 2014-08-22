@@ -4,7 +4,6 @@ title: "Eclipse - Settings"
 tags: [ide,eclipse]
 group: ide
 ---
-{% include JB/setup %}
 
 Eclipse settings are available in the directory [/resources/ide/eclipse](https://github.com/exoplatform/developer.exoplatform.org/tree/master/resources/ide/eclipse/).
 

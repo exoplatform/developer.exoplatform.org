@@ -4,7 +4,6 @@ title: "New docs about IDE settings and few more things about Git"
 category: website
 tags: [git, ide, eclipse, intellij]
 ---
-{% include JB/setup %}
 
 Few updates today on the website
 

@@ -4,7 +4,6 @@ title: "Maven - Settings"
 tags: [maven]
 group: build
 ---
-{% include JB/setup %}
 
 # Prerequisites
 
