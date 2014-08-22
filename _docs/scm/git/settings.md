@@ -1,5 +1,8 @@
 ---
 title: "Git - Settings"
+permalink: /docs/scm/git/settings/
+redirect_from:
+  - /docs/scm/git-settings.html
 tags: [git]
 group: scm
 ---

@@ -1,5 +1,8 @@
 ---
 title: "Maven - Settings"
+permalink: /docs/build/maven/settings/
+redirect_from:
+  - /docs/build/maven-settings.html
 tags: [maven]
 group: build
 ---

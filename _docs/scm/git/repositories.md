@@ -1,5 +1,8 @@
 ---
 title: "Git - Repositories"
+permalink: /docs/scm/git/repositories/
+redirect_from:
+  - /docs/scm/git-repositories.html
 tags: [git,github]
 group: scm
 ---

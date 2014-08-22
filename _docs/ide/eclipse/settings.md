@@ -1,5 +1,8 @@
 ---
 title: "Eclipse - Settings"
+permalink: /docs/ide/eclipse/settings/
+redirect_from:
+  - /docs/ide/eclipse-settings.html
 tags: [ide,eclipse]
 group: ide
 ---

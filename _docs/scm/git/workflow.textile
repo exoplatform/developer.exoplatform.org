@@ -1,5 +1,8 @@
 ---
 title: "Git - Workflow"
+permalink: /docs/scm/git/workflow/
+redirect_from:
+  - /docs/scm/git-workflow.html
 tags: [git,workflow]
 group: scm
 ---
