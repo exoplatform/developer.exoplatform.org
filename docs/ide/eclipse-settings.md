@@ -5,7 +5,7 @@ tags: [ide,eclipse]
 group: ide
 ---
 
-Eclipse settings are available in the directory [/resources/ide/eclipse](https://github.com/exoplatform/developer.exoplatform.org/tree/master/resources/ide/eclipse/).
+Eclipse settings are available in [/resources/ide/eclipse]({{site.github.repository_url}}/tree/master/resources/ide/eclipse/).
 
 Configure Eclipse at "Window" -> "Preferences..."
 
@@ -13,7 +13,7 @@ Configure Eclipse at "Window" -> "Preferences..."
 
 Java -> Code Style -> Clean Up
 
-Choose: "Import..." [/resources/ide/eclipse/exo-Java-CodeStyle-CleanUp.xml](/resources/ide/eclipse/exo-Java-CodeStyle-CleanUp.xml)
+Choose: "Import..." [exo-Java-CodeStyle-CleanUp.xml](/resources/ide/eclipse/exo-Java-CodeStyle-CleanUp.xml)
 
 ![Eclipse Clean Up Settings](eclipse-Java-CodeStyle-CleanUp.png)
 
@@ -21,7 +21,7 @@ Choose: "Import..." [/resources/ide/eclipse/exo-Java-CodeStyle-CleanUp.xml](/res
 
 Java -> Code Style -> Code Templates
 
-Choose: "Import..." [/resources/ide/eclipse/exo-Java-CodeStyle-CodeTemplates.xml](/resources/ide/eclipse/exo-Java-CodeStyle-CodeTemplates.xml)
+Choose: "Import..." [exo-Java-CodeStyle-CodeTemplates.xml](/resources/ide/eclipse/exo-Java-CodeStyle-CodeTemplates.xml)
 
 ![Eclipse Code Style Settings](eclipse-Java-CodeStyle-CodeTemplates.png)
 
@@ -29,7 +29,7 @@ Choose: "Import..." [/resources/ide/eclipse/exo-Java-CodeStyle-CodeTemplates.xml
 
 Java -> Code Style -> Formatter
 
-Choose: "Import..." [/resources/ide/eclipse/exo-Java-CodeStyle-Formatter.xml](/resources/ide/eclipse/exo-Java-CodeStyle-Formatter.xml)
+Choose: "Import..." [exo-Java-CodeStyle-Formatter.xml](/resources/ide/eclipse/exo-Java-CodeStyle-Formatter.xml)
 
 ![Eclipse Formatter Cleanup](eclipse-Java-CodeStyle-Formatter.png)
 
@@ -37,6 +37,6 @@ Choose: "Import..." [/resources/ide/eclipse/exo-Java-CodeStyle-Formatter.xml](/r
 
 Java -> Code Style -> Organize Imports
 
-Choose: "Import..." [/resources/ide/eclipse/exo-Java-CodeStyle-OrganizeImports.importorder](/resources/ide/eclipse/exo-Java-CodeStyle-OrganizeImports.importorder)
+Choose: "Import..." [exo-Java-CodeStyle-OrganizeImports.importorder](/resources/ide/eclipse/exo-Java-CodeStyle-OrganizeImports.importorder)
 
 ![Eclipse Organize Imports Settings](eclipse-Java-CodeStyle-OrganizeImports.png)
