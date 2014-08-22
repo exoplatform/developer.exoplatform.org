@@ -27,6 +27,7 @@ group: navigation
               {% endunless %}
               {% unless post.tags == empty %}
               {% assign tags_list = post.tags %}
+              {% assign is_post = true %}
               {% include custom/tags_list %}
               {% endunless %}
             </p>

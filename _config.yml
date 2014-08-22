@@ -141,7 +141,7 @@ JB :
   
   categories_list :
     provider : "custom"
-  posts_list :
+  posts_collate :
     provider : "custom"
   tags_list :
     provider : "custom"

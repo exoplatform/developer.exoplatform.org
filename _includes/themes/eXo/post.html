@@ -1,5 +1,24 @@
-<div class="page-header">
-  <h1>{{ page.title }} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h1>
+<div class="row">
+  <div class="col-md-12">
+    <div class="page-header">
+      <h1>{{ page.title }} {% if page.tagline %}<small>{{ page.tagline }}</small>{% endif %}</h1>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="pull-right">
+      {% unless page.categories == empty %}
+      {% assign categories_list = page.categories %}
+      {% include JB/categories_list %}
+      {% endunless %}
+      {% unless page.tags == empty %}
+      {% assign tags_list = page.tags %}
+      {% assign is_post = true %}
+      {% include JB/tags_list %}
+      {% endunless %}
+    </div>
+  </div>
 </div>
 <div class="row post-full">
   <div class="col-md-12">
@@ -9,16 +28,6 @@
     <div class="content">
       {{ content }}
     </div>
-
-    {% unless page.categories == empty %}
-    {% assign categories_list = page.categories %}
-    {% include JB/categories_list %}
-    {% endunless %}
-
-    {% unless page.tags == empty %}
-    {% assign tags_list = page.tags %}
-    {% include JB/tags_list %}
-    {% endunless %}
 
     <hr>
     <ul class="pagination">
