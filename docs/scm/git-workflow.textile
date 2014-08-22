@@ -10,8 +10,8 @@ group: scm
   <div class="col-md-12">
 
 Our workflow is built on two principles :
-* The *branching model* that has to be followed by *all projects** at eXo
-* The *repository architecture** (development vs blessed) that has to be followed by *all projects involved in products* produced eXo (and thus that require to be supported).
+* The *branching model* that has to be followed by *all projects* at eXo
+* The *repository architecture* (development vs blessed) that has to be followed by *all projects involved in products* produced eXo (and thus that require to be supported).
 
 h2. Branching model
 
