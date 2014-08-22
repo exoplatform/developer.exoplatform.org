@@ -1,5 +1,4 @@
 ---
-layout: page
 title: "IntelliJ - Settings"
 tags: [ide,intellij]
 group: ide

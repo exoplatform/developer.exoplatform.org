@@ -1,5 +1,4 @@
 ---
-layout: page
 title: "Maven - Settings"
 tags: [maven]
 group: build

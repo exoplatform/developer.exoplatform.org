@@ -1,5 +1,4 @@
 ---
-layout: page
 title: "Eclipse - Settings"
 tags: [ide,eclipse]
 group: ide

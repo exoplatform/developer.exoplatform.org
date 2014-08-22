@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Git Migration"
 tagline: "Here we go !"
 category: forge

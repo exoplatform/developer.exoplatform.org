@@ -1,5 +1,4 @@
 ---
-layout: page
 title: "Git - Repositories"
 tags: [git,github]
 group: scm

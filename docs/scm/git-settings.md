@@ -1,5 +1,4 @@
 ---
-layout: page
 title: "Git - Settings"
 tags: [git]
 group: scm

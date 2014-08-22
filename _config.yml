@@ -19,7 +19,26 @@ excerpt_separator: "<!--more-->"
 # Outputting
 permalink: /news/:categories/:year/:month/:day/:title/
 
-defaults: []
+# Default settings for pages, posts ...
+defaults:
+  -
+    scope:
+      path: ""
+      type: "post"
+    values:
+      layout: "post"
+  -
+    scope:
+      path: ""
+      type: "draft"
+    values:
+      layout: "post"
+  -
+    scope:
+      path: ""
+      type: "page"
+    values:
+      layout: "page"
 
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
