@@ -23,11 +23,11 @@ group: navigation
             <p>
               {% unless post.categories == empty %}
               {% assign categories_list = post.categories %}
-              {% include JB/categories_list %}
+              {% include custom/categories_list %}
               {% endunless %}
               {% unless post.tags == empty %}
               {% assign tags_list = post.tags %}
-              {% include JB/tags_list %}
+              {% include custom/tags_list %}
               {% endunless %}
             </p>
             <blockquote>{{ post.excerpt}} ...</blockquote>
@@ -45,8 +45,7 @@ group: navigation
       <div class="list-group">
         {% assign pages_list = site.pages %}
         {% assign group = "scm" %}
-        {% assign type = "div" %}
-        {% include JB/pages_list %}
+        {% include custom/pages_listgroup %}
       </div>
     </div>
     <div class="panel panel-default">
@@ -54,8 +53,7 @@ group: navigation
       <div class="list-group">
         {% assign pages_list = site.pages %}
         {% assign group = "build" %}
-        {% assign type = "div" %}
-        {% include JB/pages_list %}
+        {% include custom/pages_listgroup %}
       </div>
     </div>
     <div class="panel panel-default">
@@ -63,8 +61,7 @@ group: navigation
       <div class="list-group">
         {% assign pages_list = site.pages %}
         {% assign group = "ide" %}
-        {% assign type = "div" %}
-        {% include JB/pages_list %}
+        {% include custom/pages_listgroup %}
       </div>
     </div>
     <div class="panel panel-default">

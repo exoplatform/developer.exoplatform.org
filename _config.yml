@@ -139,3 +139,9 @@ JB :
   #   ./_includes/custom/[HELPER]
   # where [HELPER] is the name of the helper you are overriding.
   
+  categories_list :
+    provider : "custom"
+  posts_list :
+    provider : "custom"
+  tags_list :
+    provider : "custom"
