@@ -52,7 +52,7 @@ defaults:
       path: ""
       type: "docs"
     values:
-      layout: "page"
+      layout: "doc"
 
 
 # Themes are encouraged to use these universal variables 
