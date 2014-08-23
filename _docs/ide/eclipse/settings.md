@@ -4,7 +4,6 @@ permalink: /docs/ide/eclipse/settings/
 redirect_from:
   - /docs/ide/eclipse-settings.html
 tags: [eclipse]
-group: ide
 ---
 {{page.collection}}
 Eclipse settings are available in [/resources/ide/eclipse]({{site.github.repository_url}}/tree/master/resources/ide/eclipse/).

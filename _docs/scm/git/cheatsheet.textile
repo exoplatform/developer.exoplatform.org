@@ -4,7 +4,6 @@ permalink: /docs/scm/git/cheatsheet/
 redirect_from:
   - /docs/scm/git-cheatsheet.html
 tags: [git]
-group: scm
 ---
 
 <div class="row">

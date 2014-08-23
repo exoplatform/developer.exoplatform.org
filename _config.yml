@@ -53,6 +53,24 @@ defaults:
       type: "docs"
     values:
       layout: "doc"
+  -
+    scope:
+      path: "docs/build"
+      type: "docs"
+    values:
+      group: "build"
+  -
+    scope:
+      path: "docs/ide"
+      type: "docs"
+    values:
+      group: "ide"
+  -
+    scope:
+      path: "docs/scm"
+      type: "docs"
+    values:
+      group: "scm"
 
 
 # Themes are encouraged to use these universal variables 
