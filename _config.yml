@@ -2,6 +2,8 @@
 collections:
   docs:
     output: true
+  standards:
+    output: true
 
 # Handling Reading
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile"]
@@ -19,6 +21,8 @@ highlighter:       pygments
 excerpt_separator: "<!--more-->"
 
 # Outputting
+
+#permalink for posts
 permalink: /news/:categories/:year/:month/:day/:title/
 
 # Default settings for pages, posts ...
@@ -71,6 +75,48 @@ defaults:
       type: "docs"
     values:
       group: "scm"
+  -
+    scope:
+      path: ""
+      type: "standards"
+    values:
+      layout: "standard"
+  -
+    scope:
+      path: "standards/architecture"
+      type: "standards"
+    values:
+      group: "architecture"
+  -
+    scope:
+      path: "standards/build"
+      type: "standards"
+    values:
+      group: "build"
+  -
+    scope:
+      path: "standards/coding"
+      type: "standards"
+    values:
+      group: "coding"
+  -
+    scope:
+      path: "standards/ergonomics"
+      type: "standards"
+    values:
+      group: "ergonomics"
+  -
+    scope:
+      path: "standards/formatting"
+      type: "standards"
+    values:
+      group: "formatting"
+  -
+    scope:
+      path: "standards/run"
+      type: "standards"
+    values:
+      group: "run"
 
 
 # Themes are encouraged to use these universal variables 
