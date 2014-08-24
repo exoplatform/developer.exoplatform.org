@@ -239,6 +239,8 @@ JB :
   
   categories_list :
     provider : "custom"
+  pages_list :
+    provider : "custom"
   posts_collate :
     provider : "custom"
   tags_list :
