@@ -1,5 +1,8 @@
 ---
 title: Credits
+permalink: /credits/
+group: navigation-right
+order: 1
 comments: false
 published: false
 ---
@@ -8,11 +11,11 @@ published: false
     <div class="panel panel-default">
       <div class="panel-heading">Contributors</div>
       <div class="panel-body">
-        <p>They directly or indirectly contributed to {{ site.title }}</p>
+        <p>They contributed to {{ site.title }}</p>
       </div>
       <div class="list-group">
         {% for contributor in site.github.contributors %}
-        <a href="{{ BASE_PATH }}{{ contributor.html_url }}" class="list-group-item">{{contributor.login}}</a>
+        <a href="{{ BASE_PATH }}{{ contributor.html_url }}" target="_blank" class="list-group-item">{{contributor.login}}</a>
         {% endfor %}
       </div>
     </div>
