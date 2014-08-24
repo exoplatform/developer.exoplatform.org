@@ -1,8 +1,35 @@
 ---
 title: Standards
+tagline: All rules that all eXo contributors should follow
 permalink: /standards/
 group: navigation
 ---
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">eXo Development Standards</h3>
+      </div>
+      <div class="panel-body">
+        <p>This space contains <strong>all the rules and standards</strong> that <strong>each developer must know and
+          respect</strong> to be able to contribute on the codebase of eXo projects.</p>
+
+        <p>The respect of our quality rules can be monitored by our <a href="https://sonar.exoplatform.org"
+                                                                       target="_blank">SonarQube</a> instance</p>
+      </div>
+    </div>
+    <ul class="pager">
+      <li><a href="#validated">Validated rules</a></li>
+      <li><a href="#review">In review</a></li>
+      <li><a href="#drafts">Drafts</a></li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <script async class="speakerdeck-embed" data-id="1a85f7600d1b0132830c2aee0b50a552" data-ratio="1.41436464088398"
+            src="//speakerdeck.com/assets/embed.js"></script>
+  </div>
+</div>
+<a name="validated"></a><h2>Validated rules</h2>
 <div class="row">
   <div class="col-md-4">
     <div class="panel panel-default">
@@ -10,7 +37,8 @@ group: navigation
       <div class="list-group">
         {% assign pages_list = site.standards %}
         {% assign group = "architecture" %}
-        {% include custom/pages_listgroup %}
+        {% assign status = "validated" %}
+        {% include custom/standards_listgroup %}
       </div>
     </div>
   </div>
@@ -20,7 +48,8 @@ group: navigation
       <div class="list-group">
         {% assign pages_list = site.standards %}
         {% assign group = "build" %}
-        {% include custom/pages_listgroup %}
+        {% assign status = "validated" %}
+        {% include custom/standards_listgroup %}
       </div>
     </div>
   </div>
@@ -30,7 +59,8 @@ group: navigation
       <div class="list-group">
         {% assign pages_list = site.standards %}
         {% assign group = "coding" %}
-        {% include custom/pages_listgroup %}
+        {% assign status = "validated" %}
+        {% include custom/standards_listgroup %}
       </div>
     </div>
   </div>
@@ -42,7 +72,8 @@ group: navigation
       <div class="list-group">
         {% assign pages_list = site.standards %}
         {% assign group = "ergonomics" %}
-        {% include custom/pages_listgroup %}
+        {% assign status = "validated" %}
+        {% include custom/standards_listgroup %}
       </div>
     </div>
   </div>
@@ -52,7 +83,8 @@ group: navigation
       <div class="list-group">
         {% assign pages_list = site.standards %}
         {% assign group = "formatting" %}
-        {% include custom/pages_listgroup %}
+        {% assign status = "validated" %}
+        {% include custom/standards_listgroup %}
       </div>
     </div>
   </div>
@@ -62,7 +94,150 @@ group: navigation
       <div class="list-group">
         {% assign pages_list = site.standards %}
         {% assign group = "run" %}
-        {% include custom/pages_listgroup %}
+        {% assign status = "validated" %}
+        {% include custom/standards_listgroup %}
+      </div>
+    </div>
+  </div>
+</div>
+<a name="review"></a><h2>In review</h2>
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Architecture</div>
+      <div class="list-group">
+        {% assign pages_list = site.standards %}
+        {% assign group = "architecture" %}
+        {% assign status = "review" %}
+        {% include custom/standards_listgroup %}
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Build</div>
+      <div class="list-group">
+        {% assign pages_list = site.standards %}
+        {% assign group = "build" %}
+        {% assign status = "review" %}
+        {% include custom/standards_listgroup %}
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Coding</div>
+      <div class="list-group">
+        {% assign pages_list = site.standards %}
+        {% assign group = "coding" %}
+        {% assign status = "review" %}
+        {% include custom/standards_listgroup %}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Ergonomics</div>
+      <div class="list-group">
+        {% assign pages_list = site.standards %}
+        {% assign group = "ergonomics" %}
+        {% assign status = "review" %}
+        {% include custom/standards_listgroup %}
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Formatting</div>
+      <div class="list-group">
+        {% assign pages_list = site.standards %}
+        {% assign group = "formatting" %}
+        {% assign status = "review" %}
+        {% include custom/standards_listgroup %}
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Run</div>
+      <div class="list-group">
+        {% assign pages_list = site.standards %}
+        {% assign group = "run" %}
+        {% assign status = "review" %}
+        {% include custom/standards_listgroup %}
+      </div>
+    </div>
+  </div>
+</div>
+<a name="drafts"></a><h2>Drafts</h2>
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Architecture</div>
+      <div class="list-group">
+        {% assign pages_list = site.standards %}
+        {% assign group = "architecture" %}
+        {% assign status = "draft" %}
+        {% include custom/standards_listgroup %}
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Build</div>
+      <div class="list-group">
+        {% assign pages_list = site.standards %}
+        {% assign group = "build" %}
+        {% assign status = "draft" %}
+        {% include custom/standards_listgroup %}
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Coding</div>
+      <div class="list-group">
+        {% assign pages_list = site.standards %}
+        {% assign group = "coding" %}
+        {% assign status = "draft" %}
+        {% include custom/standards_listgroup %}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Ergonomics</div>
+      <div class="list-group">
+        {% assign pages_list = site.standards %}
+        {% assign group = "ergonomics" %}
+        {% assign status = "draft" %}
+        {% include custom/standards_listgroup %}
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Formatting</div>
+      <div class="list-group">
+        {% assign pages_list = site.standards %}
+        {% assign group = "formatting" %}
+        {% assign status = "draft" %}
+        {% include custom/standards_listgroup %}
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Run</div>
+      <div class="list-group">
+        {% assign pages_list = site.standards %}
+        {% assign group = "run" %}
+        {% assign status = "draft" %}
+        {% include custom/standards_listgroup %}
       </div>
     </div>
   </div>
