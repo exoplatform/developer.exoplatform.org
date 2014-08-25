@@ -72,3 +72,10 @@ code {
   vertical-align: super;
   font-size: 0.8em;
 }
+
+/* Fix for anchors due to fix navbar usage - see http://stackoverflow.com/questions/9047703/fixed-position-navbar-obscures-anchors */
+a[name] {
+  padding-top : 64px;
+  margin-top  : -64px;
+  display     : inline-block; /* required for webkit browsers */
+}
