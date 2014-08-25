@@ -20,7 +20,7 @@ Usage:
 -->{% endcomment %}
 
 {% for node in pages_list %}
-  {% if node.title != null %}
+  {% if node.title != null and node.published != false %}
     {% if group == null or group == node.group %}
       {% if page.url == node.url %}
       <a href="{{BASE_PATH}}{{node.url}}" class="list-group-item active">{{node.title}}</a>

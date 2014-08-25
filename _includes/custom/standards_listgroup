@@ -30,7 +30,7 @@ Usage:
 -->{% endcomment %}
 
 {% for node in pages_list %}
-  {% if node.title != null %}
+  {% if node.title != null and node.published != false %}
     {% if sinceLevel == null or sinceLevel == node.sinceLevel %}
       {% if group == null or group == node.group %}
         {% if status == null or status == node.status %}
