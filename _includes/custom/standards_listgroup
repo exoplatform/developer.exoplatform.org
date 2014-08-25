@@ -33,9 +33,9 @@ Usage:
   {% if node.title != null %}
     {% if (group == null or group == node.group) and (status == null or status == node.status) %}
       {% if page.url == node.url %}
-      <a href="{{BASE_PATH}}{{node.url}}" class="list-group-item active">{{node.title}}</a>
+      <a href="{{BASE_PATH}}{{node.url}}" class="list-group-item active">{{node.title}} {% if node.tagline %}<small>{{ node.tagline }}</small>{% endif %}</a>
       {% else %}
-      <a href="{{BASE_PATH}}{{node.url}}" class="list-group-item">{{node.title}}</a>
+      <a href="{{BASE_PATH}}{{node.url}}" class="list-group-item">{{node.title}} {% if node.tagline %}<small>{{ node.tagline }}</small>{% endif %}</a>
       {% endif %}
     {% endif %}
   {% endif %}
