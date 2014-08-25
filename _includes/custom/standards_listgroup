@@ -36,7 +36,10 @@ Usage:
         {% if status == null or status == node.status %}
           {% if node.url == page.url %}
 <a href="{{BASE_PATH}}{{node.url}}" class="list-group-item active">
+<p>
 <strong>{{node.title}}</strong> {% if node.tagline %}<small>{{ node.tagline }}</small>{% endif %}
+</p>
+<p class="text-right">
 {% unless node.group.empty? %}
 {% assign group = node.group %}
 {% include custom/group %}
@@ -49,10 +52,12 @@ Usage:
 {% assign severity_list = node.controlsSeverity %}
 {% include custom/severity_list %}
 {% endunless %}
+</p>
 </a>
           {% else %}
 <a href="{{BASE_PATH}}{{node.url}}" class="list-group-item">
 <strong>{{node.title}}</strong> {% if node.tagline %}<small>{{ node.tagline}}</small>{% endif %}
+<div class="text-right">
 {% unless node.group.empty? %}
 {% assign group = node.group %}
 {% include custom/group %}
@@ -65,6 +70,7 @@ Usage:
 {% assign severity_list = node.controlsSeverity %}
 {% include custom/severity_list %}
 {% endunless %}
+</div>
 </a>
           {% endif %}
         {% endif %}
