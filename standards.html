@@ -18,20 +18,73 @@ fa-icon: institution
 
         <p>The respect of our quality rules can be monitored by our <a href="https://sonar.exoplatform.org"
                                                                        target="_blank">SonarQube</a> instance</p>
+
+        <p>To help projects to continuously increase the level of quality of their developments we organized all rules in
+          <strong>levels</strong> that will add <strong>more and more quality controls.</strong></p>
+
+        <p><strong>Each level can :</strong></p>
+        <ul>
+          <li>add its own new set of rules over the previous level,</li>
+          <li>increase the severity of a rule already tracked in an inferior level,</li>
+        </ul>
       </div>
     </div>
-    <ul class="pager">
-      <li><a href="#validated">Validated rules</a></li>
-      <li><a href="#review">In review</a></li>
-      <li><a href="#drafts">Drafts</a></li>
-    </ul>
+    <div class="hidden-print hidden-xs hidden-sm" role="complementary">
+      <ul>
+        <li>
+          <a href="#levels">Quality Levels</a></li>
+        <ul>
+          <li><a href="#exo_1.2">Level 1.2</a></li>
+          <li><a href="#exo_1.1">Level 1.1</a></li>
+          <li><a href="#exo_1.0">Level 1.0</a></li>
+        </ul>
+        </li>
+        <li>
+          <a href="#rules">All Rules</a></li>
+        <ul>
+          <li><a href="#validated">Validated rules</a></li>
+          <li><a href="#review">In review</a></li>
+          <li><a href="#drafts">Drafts</a></li>
+        </ul>
+        </li>
+      </ul>
+    </div>
   </div>
   <div class="col-md-6">
     <script async class="speakerdeck-embed" data-id="1a85f7600d1b0132830c2aee0b50a552" data-ratio="1.41436464088398"
             src="//speakerdeck.com/assets/embed.js"></script>
   </div>
 </div>
-<a name="validated"></a><h2>Validated rules</h2>
+<a name="levels"></a><h2>Quality Levels</h2>
+<a name="exo_1.2"></a>
+<div class="panel panel-default">
+  <div class="panel-heading">Level 1.2</div>
+  <div class="list-group">
+    {% assign pages_list = site.standards %}
+    {% assign sinceLevel = "exo-1_2" %}
+    {% include custom/standards_listgroup %}
+  </div>
+</div>
+<a name="exo_1.1"></a>
+<div class="panel panel-default">
+  <div class="panel-heading">Level 1.1</div>
+  <div class="list-group">
+    {% assign pages_list = site.standards %}
+    {% assign sinceLevel = "exo-1_1" %}
+    {% include custom/standards_listgroup %}
+  </div>
+</div>
+<a name="exo_1.0"></a>
+<div class="panel panel-default">
+  <div class="panel-heading">Level 1.0</div>
+  <div class="list-group">
+    {% assign pages_list = site.standards %}
+    {% assign sinceLevel = "exo-1_0" %}
+    {% include custom/standards_listgroup %}
+  </div>
+</div>
+<a name="rules"></a><h2>All Rules</h2>
+<a name="validated"></a><h3>Validated rules</h3>
 <div class="row">
   <div class="col-md-4">
     <div class="panel panel-default">
@@ -102,7 +155,7 @@ fa-icon: institution
     </div>
   </div>
 </div>
-<a name="review"></a><h2>In review</h2>
+<a name="review"></a><h3>In review</h3>
 <div class="row">
   <div class="col-md-4">
     <div class="panel panel-default">
@@ -173,7 +226,7 @@ fa-icon: institution
     </div>
   </div>
 </div>
-<a name="drafts"></a><h2>Drafts</h2>
+<a name="drafts"></a><h3>Drafts</h3>
 <div class="row">
   <div class="col-md-4">
     <div class="panel panel-default">

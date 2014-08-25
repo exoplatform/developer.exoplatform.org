@@ -31,11 +31,43 @@ Usage:
 
 {% for node in pages_list %}
   {% if node.title != null %}
-    {% if (group == null or group == node.group) and (status == null or status == node.status) %}
-      {% if page.url == node.url %}
-      <a href="{{BASE_PATH}}{{node.url}}" class="list-group-item active">{{node.title}} {% if node.tagline %}<small>{{ node.tagline }}</small>{% endif %}</a>
-      {% else %}
-      <a href="{{BASE_PATH}}{{node.url}}" class="list-group-item">{{node.title}} {% if node.tagline %}<small>{{ node.tagline }}</small>{% endif %}</a>
+    {% if sinceLevel == null or sinceLevel == node.sinceLevel %}
+      {% if group == null or group == node.group %}
+        {% if status == null or status == node.status %}
+          {% if node.url == page.url %}
+<a href="{{BASE_PATH}}{{node.url}}" class="list-group-item active">
+<strong>{{node.title}}</strong> {% if node.tagline %}<small>{{ node.tagline }}</small>{% endif %}
+{% unless node.group.empty? %}
+{% assign group = node.group %}
+{% include custom/group %}
+{% endunless %}
+{% unless node.tags.empty? %}
+{% assign tags_list = node.tags %}
+{% include custom/tags_list %}
+{% endunless %}
+{% unless node.controls.empty? %}
+{% assign severity_list = node.controlsSeverity %}
+{% include custom/severity_list %}
+{% endunless %}
+</a>
+          {% else %}
+<a href="{{BASE_PATH}}{{node.url}}" class="list-group-item">
+<strong>{{node.title}}</strong> {% if node.tagline %}<small>{{ node.tagline}}</small>{% endif %}
+{% unless node.group.empty? %}
+{% assign group = node.group %}
+{% include custom/group %}
+{% endunless %}
+{% unless node.tags.empty? %}
+{% assign tags_list = node.tags %}
+{% include custom/tags_list %}
+{% endunless %}
+{% unless node.controls.empty? %}
+{% assign severity_list = node.controlsSeverity %}
+{% include custom/severity_list %}
+{% endunless %}
+</a>
+          {% endif %}
+        {% endif %}
       {% endif %}
     {% endif %}
   {% endif %}
@@ -43,3 +75,4 @@ Usage:
 {% assign pages_list = nil %}
 {% assign group = nil %}
 {% assign status = nil %}
+{% assign sinceLevel = nil %}
