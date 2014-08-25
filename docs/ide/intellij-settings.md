@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "IDE - Settings"
+title: "IntelliJ - Settings"
 tags: [ide,intellij]
 group: ide
 ---
