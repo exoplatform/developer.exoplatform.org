@@ -2,6 +2,7 @@
 title: SXY-000
 tagline: THIS IS THE EXCERPT OF THE STANDARD (have to be short)
 permalink: /standards/SXY-000/
+author: exoplatform
 tags: [foo,bar]
 controlsSeverity: [blocker,critical,major,minor,info]
 status: draft
