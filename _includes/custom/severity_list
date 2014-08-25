@@ -1,0 +1,57 @@
+{% comment %}<!--
+The severity_list include is a listing helper for severity.
+Usage:
+  1) assign the 'severity_list' variable to a valid array of severity.
+  2) include custom/severity_list
+  example:
+    <ul>
+  	  {% assign severity_list = site.severity %}
+  	  {% include custom/severity_list %}
+  	</ul>
+  
+  Notes: 
+    Tags can be either a Hash of severity objects (hashes) or an Array of severity-names (strings).
+    The encapsulating 'if' statement checks whether severity_list is a Hash or Array.
+    site.severity is a Hash while page.severity is an array.
+
+-->{% endcomment %}
+
+{% if severity_list.first[0] == null %}
+  {% for severity in severity_list %}
+    {% case severity %}
+      {% when 'blocker' %}
+        {% assign label = 'danger' %}
+      {% when 'critical' %}
+        {% assign label = 'danger' %}
+      {% when 'major' %}
+        {% assign label = 'warning' %}
+      {% when 'info' %}
+        {% assign label = 'success' %}
+      {% when 'minor' %}
+        {% assign label = 'info' %}
+      {% else %}
+        {% assign label = 'default' %}
+    {% endcase %}
+<span class="label label-{{label}}"><i class="fa fa-shield fa-fw"></i>&nbsp;{{severity}}</span>
+  {% endfor %}
+{% else %}
+  {% for severity in severity_list %}
+    {% case severity[0] %}
+      {% when 'blocker' %}
+        {% assign label = 'danger' %}
+      {% when 'critical' %}
+        {% assign label = 'danger' %}
+      {% when 'major' %}
+        {% assign label = 'warning' %}
+      {% when 'info' %}
+        {% assign label = 'success' %}
+      {% when 'minor' %}
+        {% assign label = 'info' %}
+      {% else %}
+        {% assign label = 'default' %}
+    {% endcase %}
+<span class="label label-{{label}}"><i class="fa fa-shield fa-fw"></i>&nbsp;{{severity[0]}}</span>
+  {% endfor %}
+{% endif %}
+{% assign severity_list = nil %}
+{% assign label = nil %}
