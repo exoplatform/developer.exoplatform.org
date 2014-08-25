@@ -1,6 +1,6 @@
 ---
 title: SXY-000
-tagline: about something
+tagline: THIS IS THE EXCERPT OF THE STANDARD (have to be short)
 permalink: /standards/SXY-000/
 tags: [foo,bar]
 controlsSeverity: [blocker,critical,major,minor,info]
@@ -15,16 +15,16 @@ published: false
 
 ### <i class="fa fa-info-circle"></i> The rule
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum pretium purus, in lobortis odio blandit et. Nulla facilisi. Donec sit amet consectetur nunc. Vestibulum dictum accumsan quam, non iaculis lectus viverra quis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent iaculis purus nisl, sed faucibus nibh ultricies id. Curabitur ut ipsum sed nulla eleifend viverra eget vitae arcu. Morbi finibus placerat congue.
+HERE YOU DESCRIBE THE RULE
 
 ### <i class="fa fa-lightbulb-o"></i> The solution
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum pretium purus, in lobortis odio blandit et. Nulla facilisi. Donec sit amet consectetur nunc. Vestibulum dictum accumsan quam, non iaculis lectus viverra quis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent iaculis purus nisl, sed faucibus nibh ultricies id. Curabitur ut ipsum sed nulla eleifend viverra eget vitae arcu. Morbi finibus placerat congue.
+HERE YOU CAN DESCRIBE A SOLUTION TO RESPECT THE RULE
 
 <a name="why"></a>
 ## Why?
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum pretium purus, in lobortis odio blandit et. Nulla facilisi. Donec sit amet consectetur nunc. Vestibulum dictum accumsan quam, non iaculis lectus viverra quis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent iaculis purus nisl, sed faucibus nibh ultricies id. Curabitur ut ipsum sed nulla eleifend viverra eget vitae arcu. Morbi finibus placerat congue.
+HERE YOU HAVE TO EXPLAIN WHY THE RULE IS DEFINED
 
 <a name="examples"></a>
 ## Examples
@@ -92,31 +92,24 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum pretium puru
     </thead>
     <tbody>
     <tr>
-      <td>Checkstyle</td>
-      <td><a href="http://checkstyle.sourceforge.net/config_sizes.html#LineLength">Sizes - LineLength</a></td>
+      <td>PMD</td>
+      <td>ex: <a href="http://pmd.sourceforge.net/rules/logging-java.html#AvoidPrintStackTrace">AvoidPrintStackTrace</a></td>
        <td>
 {% highlight text %}
-module name="LineLength"
-property name="max"
-value="130"
-property name="tabWidth"
-value="2"
+...
 {% endhighlight %}
        </td>
-       <td>MINOR</td>
+       <td>BLOCKER or CRITICAL or ... (Sonar level)</td>
      </tr>
      <tr>
        <td>Checkstyle</td>
-       <td><a href="http://checkstyle.sourceforge.net/config_whitespace.html#FileTabCharacter" >Whitespace -
-       FileTabCharacter</a></td>
+       <td><a href="http://checkstyle.sourceforge.net/config_coding.html#IllegalCatch" >IllegalCatch</a></td>
        <td>
 {% highlight text %}
-module name="FileTabCharacter"
-property name="eachLine" value="true"
-property name="fileExtensions" value="java,xml"
+...
 {% endhighlight %}
        </td>
-       <td>MAJOR</td>
+       <td>BLOCKER or CRITICAL or ... (Sonar level)</td>
      </tr>
    </tbody>
   </table>
