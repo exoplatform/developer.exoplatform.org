@@ -22,11 +22,11 @@ fa-icon: home
           <li>
             <h4><span>{{ post.date | date: "%B %e, %Y" }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{post.title}}</a></h4>
             <p>
-              {% unless post.categories == empty %}
+              {% unless post.categories.empty? %}
               {% assign categories_list = post.categories %}
               {% include custom/categories_list %}
               {% endunless %}
-              {% unless post.tags == empty %}
+              {% unless post.tags.empty? %}
               {% assign tags_list = post.tags %}
               {% assign is_post = true %}
               {% include custom/tags_list %}

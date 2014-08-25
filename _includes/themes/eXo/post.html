@@ -8,11 +8,11 @@
 <div class="row">
   <div class="col-md-12">
     <div class="pull-right">
-      {% unless page.categories == empty %}
+      {% unless page.categories.empty? %}
       {% assign categories_list = page.categories %}
       {% include JB/categories_list %}
       {% endunless %}
-      {% unless page.tags == empty %}
+      {% unless page.tags.empty? %}
       {% assign tags_list = page.tags %}
       {% assign is_post = true %}
       {% include JB/tags_list %}
