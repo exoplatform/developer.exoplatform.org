@@ -11,5 +11,5 @@ Usage:
   
 -->{% endcomment %}
 
-<span class="label label-primary"><i class="glyphicon glyphicon-folder-close"></i>&nbsp;{{group}}</span>
+<span class="label label-primary"><i class="fa fa-folder fa-fw"></i>&nbsp;{{group}}</span>
 {% assign group = nil %}

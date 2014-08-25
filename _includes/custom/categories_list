@@ -18,11 +18,11 @@ Usage:
 
 {% if categories_list.first[0] == null %}
   {% for category in categories_list %}
-    <a href="{{BASE_PATH}}{{site.JB.categories_path}}#{{category}}-ref" class="label label-primary"><i class="glyphicon glyphicon-folder-close"></i>&nbsp;{{category | join: "/"}} <span class="badge-counter">{{site.categories[category].size}}</span></a>
+    <a href="{{BASE_PATH}}{{site.JB.categories_path}}#{{category}}-ref" class="label label-primary"><i class="fa fa-folder fa-fw"></i>&nbsp;{{category | join: "/"}} <span class="badge-counter">{{site.categories[category].size}}</span></a>
   {% endfor %}
 {% else %}
   {% for category in categories_list %}
-    <a href="{{BASE_PATH}}{{site.JB.categories_path}}#{{category[0]}}-ref" class="label label-primary"><i class="glyphicon glyphicon-folder-close"></i>&nbsp;{{category[0] | join: "/"}} <span class="badge-counter">{{category[1].size}}</span></a>
+    <a href="{{BASE_PATH}}{{site.JB.categories_path}}#{{category[0]}}-ref" class="label label-primary"><i class="fa fa-folder fa-fw"></i>&nbsp;{{category[0] | join: "/"}} <span class="badge-counter">{{category[1].size}}</span></a>
   {% endfor %}
 {% endif %}
 {% assign categories_list = nil %}
