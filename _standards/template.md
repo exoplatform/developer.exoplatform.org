@@ -34,22 +34,13 @@ HERE YOU HAVE TO EXPLAIN WHY THE RULE IS DEFINED
 
 <div class="panel panel-danger">
   <div class="panel-heading">
-    <h3 class="panel-title"><i class="fa fa-thumbs-down pull-right"></i> Wrong example</h3>
+    <h3 class="panel-title"><i class="fa fa-thumbs-down pull-right"></i> Wrong Java example</h3>
   </div>
   <div class="panel-body">
 
 {% highlight java %}
-    if ((attribute == null)
-       || (This.attribute == null)
-       || (This.attribute == anotherAttribute)) {
-      this.attribute = attribute;
-    }
-    else {
-      this.attribute += "" + attribute;
-    }
+...
 {% endhighlight %}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum pretium purus, in lobortis odio blandit et. Nulla facilisi. Donec sit amet consectetur nunc. Vestibulum dictum accumsan quam, non iaculis lectus viverra quis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent iaculis purus nisl, sed faucibus nibh ultricies id. Curabitur ut ipsum sed nulla eleifend viverra eget vitae arcu. Morbi finibus placerat congue.
 
   </div>
 </div>
@@ -57,19 +48,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum pretium puru
 
 <div class="panel panel-success">
   <div class="panel-heading">
-    <h3 class="panel-title"><i class="fa fa-thumbs-up pull-right"></i> Good example</h3>
+    <h3 class="panel-title"><i class="fa fa-thumbs-up pull-right"></i> Good Java example</h3>
   </div>
   <div class="panel-body">
 
 {% highlight java %}
-    if ((attribute == null) ||
-         (This.attribute == null) ||
-         (This.attribute == anotherAttribute)) {
-      this.attribute = attribute;
-    }
-    else {
-      this.attribute += "" + attribute;
-    }
+...
 {% endhighlight %}
 
   </div>
@@ -94,7 +78,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum pretium puru
     <tbody>
     <tr>
       <td>PMD</td>
-      <td>ex: <a href="http://pmd.sourceforge.net/rules/logging-java.html#AvoidPrintStackTrace">AvoidPrintStackTrace</a></td>
+      <td><a href="http://pmd.sourceforge.net/rules/logging-java.html#AvoidPrintStackTrace">AvoidPrintStackTrace</a></td>
        <td>
 {% highlight text %}
 ...
