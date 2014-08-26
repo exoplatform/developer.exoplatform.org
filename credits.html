@@ -1,27 +1,34 @@
 ---
 title: Credits
+tagline: Give back to Caesar what is Caesar's
 permalink: /credits/
 group: navigation-right
 order: 1
 comments: false
 ---
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-1 col-md-offset-1">
+    <img src="/assets/images/caesar.jpg" alt="Caesar">
+  </div>
+  <div class="col-md-7 col-md-offset-2">
     <div class="panel panel-default">
       <div class="panel-heading">Contributors</div>
       <div class="panel-body">
-        <p>They contributed to {{ site.title }}</p>
+        <p>We would like to thank them for their contributions to this website:</p>
       </div>
-      <div class="list-group">
-        {% for contributor in site.github.contributors %}
-        <a href="{{ BASE_PATH }}{{ contributor.html_url }}" target="_blank" class="list-group-item">
-          <img src="{{contributor.avatar_url}}" alt="Avatar" class="img-thumbnail">{{contributor.login}}
-          <span class="badge pull-right">{{contributor.contributions}} contributions</span></a>
-        {% endfor %}
+      {% for contributor in site.github.contributors %}
+      <div class="media">
+        <a class="pull-left" href="{{ BASE_PATH }}{{ contributor.html_url }}">
+          <img class="media-object" src="{{contributor.avatar_url}}" alt="Avatar">
+        </a>
+
+        <div class="media-body">
+          <h4 class="media-heading">{{contributor.login}}</h4>
+          <span class="badge">{{contributor.contributions}}</span> contributions.
+        </div>
       </div>
+      {% endfor %}
     </div>
-  </div>
-  <div class="col-md-6">
     <div class="panel panel-default">
       <div class="panel-heading">Powered by</div>
       <ul class="list-group">
