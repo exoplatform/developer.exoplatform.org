@@ -34,45 +34,30 @@ Usage:
     {% if sinceLevel == null or sinceLevel == node.sinceLevel %}
       {% if group == null or group == node.group %}
         {% if status == null or status == node.status %}
-          {% if node.url == page.url %}
-<a href="{{BASE_PATH}}{{node.url}}" class="list-group-item active">
-<p>
-<strong>{{node.title}}</strong> {% if node.tagline %}<small>{{ node.tagline }}</small>{% endif %}
-</p>
-<p class="text-right">
+<tr>
+<td><a href="{{BASE_PATH}}{{node.url}}">
+<strong>{{node.title}}</strong></a></td>
+<td><a href="{{BASE_PATH}}{{node.url}}">
+{% if node.tagline %}<small>{{ node.tagline}}</small>{% endif %}</a></td>
+<td><a href="{{BASE_PATH}}{{node.url}}">
 {% unless node.group.empty? %}
 {% assign group = node.group %}
 {% include custom/group %}
 {% endunless %}
+</a></td>
+<td><a href="{{BASE_PATH}}{{node.url}}">
 {% unless node.tags.empty? %}
 {% assign tags_list = node.tags %}
 {% include custom/tags_list %}
 {% endunless %}
+</a></td>
+<td><a href="{{BASE_PATH}}{{node.url}}">
 {% unless node.controls.empty? %}
 {% assign severity_list = node.controlsSeverity %}
 {% include custom/severity_list %}
 {% endunless %}
-</p>
-</a>
-          {% else %}
-<a href="{{BASE_PATH}}{{node.url}}" class="list-group-item">
-<strong>{{node.title}}</strong> {% if node.tagline %}<small>{{ node.tagline}}</small>{% endif %}
-<div class="text-right">
-{% unless node.group.empty? %}
-{% assign group = node.group %}
-{% include custom/group %}
-{% endunless %}
-{% unless node.tags.empty? %}
-{% assign tags_list = node.tags %}
-{% include custom/tags_list %}
-{% endunless %}
-{% unless node.controls.empty? %}
-{% assign severity_list = node.controlsSeverity %}
-{% include custom/severity_list %}
-{% endunless %}
-</div>
-</a>
-          {% endif %}
+</a></td>
+</tr>
         {% endif %}
       {% endif %}
     {% endif %}
