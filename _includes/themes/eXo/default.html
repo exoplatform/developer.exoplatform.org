@@ -44,6 +44,8 @@
   <!-- atom & rss feed -->
   <link href="{{ BASE_PATH }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
   <link href="{{ BASE_PATH }}{{ site.JB.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  {% include JB/analytics %}
 </head>
 
 <body>
@@ -99,10 +101,7 @@
     </p>
   </div>
 </div>
-
-{% include JB/analytics %}
-
-
+</body>
 <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="{{ ASSET_PATH }}/jquery-1.11.1/jquery.min.js"></script>
@@ -114,5 +113,4 @@
     });
   });
 </script>
-</body>
 </html>
