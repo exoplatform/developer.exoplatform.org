@@ -17,7 +17,7 @@ Usage:
 -->{% endcomment %}
 
 {% if severity_list == nil or severity_list.empty? %}
-<span class="label label-danger"><i class="fa fa-shield fa-fw"></i>&nbsp;NO RULE !</span>
+<span class="label label-danger"><i class="fa fa-shield fa-fw"></i>&nbsp;CODE REVIEW</span>
 {% else %}
   {% if severity_list.first[0] == null %}
     {% for severity in severity_list %}
