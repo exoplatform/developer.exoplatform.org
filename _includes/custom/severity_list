@@ -22,13 +22,13 @@ Usage:
       {% when 'blocker' %}
         {% assign label = 'danger' %}
       {% when 'critical' %}
-        {% assign label = 'danger' %}
-      {% when 'major' %}
         {% assign label = 'warning' %}
+      {% when 'major' %}
+        {% assign label = 'primary' %}
       {% when 'info' %}
-        {% assign label = 'success' %}
-      {% when 'minor' %}
         {% assign label = 'info' %}
+      {% when 'minor' %}
+        {% assign label = 'default' %}
       {% else %}
         {% assign label = 'default' %}
     {% endcase %}
@@ -40,13 +40,13 @@ Usage:
       {% when 'blocker' %}
         {% assign label = 'danger' %}
       {% when 'critical' %}
-        {% assign label = 'danger' %}
-      {% when 'major' %}
         {% assign label = 'warning' %}
+      {% when 'major' %}
+        {% assign label = 'primary' %}
       {% when 'info' %}
-        {% assign label = 'success' %}
-      {% when 'minor' %}
         {% assign label = 'info' %}
+      {% when 'minor' %}
+        {% assign label = 'default' %}
       {% else %}
         {% assign label = 'default' %}
     {% endcase %}
