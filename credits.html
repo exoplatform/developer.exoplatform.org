@@ -16,18 +16,19 @@ comments: false
       <div class="panel-body">
         <p>We would like to thank them for their contributions to this website:</p>
       </div>
+      <ul class="media-list">
       {% for contributor in site.github.contributors %}
-      <div class="media">
-        <a class="pull-left" href="{{ BASE_PATH }}{{ contributor.html_url }}">
-          <img class="media-object" src="{{contributor.avatar_url}}" alt="Avatar">
-        </a>
-
-        <div class="media-body">
-          <h4 class="media-heading">{{contributor.login}}</h4>
-          <span class="badge">{{contributor.contributions}}</span> contributions.
-        </div>
-      </div>
+        <li class="media">
+          <a class="pull-left col-md-2" href="{{ BASE_PATH }}{{ contributor.html_url }}">
+            <img class="media-object" src="{{contributor.avatar_url}}" alt="Avatar">
+          </a>
+          <div class="media-body col-md-10">
+            <h4 class="media-heading">{{contributor.login}}</h4>
+            <span class="badge">{{contributor.contributions}}</span> contributions.
+          </div>
+        </li>
       {% endfor %}
+      </ul>
     </div>
     <div class="panel panel-default">
       <div class="panel-heading">Powered by</div>
