@@ -3,6 +3,11 @@
     <div class="page-header">
       <h1>{{ page.title }} {% if page.tagline %}<small>{{ page.tagline }}</small>{% endif %}</h1>
     </div>
+    <ol class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li><a href="/news/">News</a></li>
+      <li class="active">{{ page.title }}</li>
+    </ol>
   </div>
 </div>
 <div class="row">
