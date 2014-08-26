@@ -14,7 +14,9 @@ comments: false
       </div>
       <div class="list-group">
         {% for contributor in site.github.contributors %}
-        <a href="{{ BASE_PATH }}{{ contributor.html_url }}" target="_blank" class="list-group-item">{{contributor.login}}</a>
+        <a href="{{ BASE_PATH }}{{ contributor.html_url }}" target="_blank" class="list-group-item">
+          <img src="{{contributor.avatar_url}}" alt="Avatar" class="img-thumbnail">{{contributor.login}}
+          <span class="badge pull-right">{{contributor.contributions}} contributions</span></a>
         {% endfor %}
       </div>
     </div>
