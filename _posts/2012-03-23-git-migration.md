@@ -3,6 +3,7 @@ title: "Git Migration"
 tagline: "Here we go !"
 category: forge
 tags: [git]
+author: aheritier
 ---
 
 Early in April, eXo moves its projects from the centralized SCM [Subversion](https://svn.exoplatform.org) to the Distributed SCM [Git](http://git-scm.com/). Our Git repositories will be hosted on [GitHub](https://www.github.com/exoplatform/).

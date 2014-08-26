@@ -40,10 +40,10 @@
           <dt>Controls severity</dt>
           <dd>{% include custom/severity_list %}</dd>
           {% endunless %}
-          {% unless page.author.empty? %}
+          {% if page.author != nil and page.author != '' %}
           <dt>Author</dt>
           <dd><a href="https://github.com/{{ page.author }}" target="_blank">{{page.author}}</a></dd>
-          {% endunless %}
+          {% endif %}
         </dl>
       </div>
     </div>

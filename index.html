@@ -17,25 +17,9 @@ fa-icon: home
     <div class="row">
       <div class="col-md-12">
         <h3>Latest news</h3>
-        <ul>
-          {% for post in site.posts limit:5 %}
-          <li>
-            <h4><span>{{ post.date | date: "%B %e, %Y" }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{post.title}}</a></h4>
-            <p>
-              {% unless post.categories.empty? %}
-              {% assign categories_list = post.categories %}
-              {% include custom/categories_list %}
-              {% endunless %}
-              {% unless post.tags.empty? %}
-              {% assign tags_list = post.tags %}
-              {% assign is_post = true %}
-              {% include custom/tags_list %}
-              {% endunless %}
-            </p>
-            <blockquote>{{ post.excerpt}} ...</blockquote>
-          </li>
+          {% for post in site.posts limit:3 %}
+          {% include custom/post_excerpt %}
           {% endfor %}
-        </ul>
       </div>
     </div>
   </div>

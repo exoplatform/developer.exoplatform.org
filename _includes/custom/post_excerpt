@@ -1,0 +1,19 @@
+<div class="well">
+  <h4>&raquo; <a href="{{BASE_PATH}}{{post.url}}">{{post.title}}</a></h4>
+  <blockquote>
+  <p>{{ post.excerpt | remove: '<p>' | remove: '</p>' }} ...</p>
+  <footer>{{post.date | date: "%B %e, %Y"}} {% if post.author != nil and post.author != '' %}<cite title="{{post.author }}">by <a href="https://github.com/{{post.author }}" target="_blank">{{post.author}}</a></cite>{% endif%}</footer>
+  </blockquote>
+  <p class="text-right">
+  {% unless post.categories.empty? %}
+  {% assign categories_list = post.categories %}
+  {% include JB/categories_list %}
+  {% endunless %}
+  {% unless post.tags.empty? %}
+  {% assign tags_list = post.tags %}
+  {% assign is_post = true %}
+  {% include JB/tags_list %}
+  {% endunless %}
+  </p>
+</div>
+{% assign post = nil %}

@@ -25,15 +25,17 @@
     </div>
   </div>
 </div>
-<div class="row post-full">
+<div class="row">
   <div class="col-md-12">
-    <div class="date">
-      <span>{{ page.date | date_to_long_string }}</span>
+    <div class="pull-right">
+      <h3>{{ page.date | date_to_long_string }}
+        {% if page.author != nil and page.author != '' %}by <a href="https://github.com/{{ page.author }}" target="_blank">{{page.author}}</a>{% endif%}</h3>
     </div>
-    <div class="content">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
       {{ content }}
-    </div>
-
     <hr>
     <ul class="pagination">
       {% if page.previous %}
