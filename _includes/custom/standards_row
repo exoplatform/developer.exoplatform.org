@@ -34,29 +34,31 @@ Usage:
     {% if sinceLevel == null or sinceLevel == node.sinceLevel %}
       {% if group == null or group == node.group %}
         {% if status == null or status == node.status %}
-<tr>
-<td><a href="{{BASE_PATH}}{{node.url}}">
-<strong>{{node.title}}</strong></a></td>
-<td><a href="{{BASE_PATH}}{{node.url}}">
-{% if node.tagline %}<small>{{ node.tagline}}</small>{% endif %}</a></td>
-<td><a href="{{BASE_PATH}}{{node.url}}">
+<tr data-url="{{BASE_PATH}}{{node.url}}">
+<td>
+<strong>{{node.title}}</strong>
+</td>
+<td>
+{% if node.tagline %}<small>{{ node.tagline}}</small>{% endif %}
+</td>
+<td>
 {% unless node.group.empty? %}
 {% assign group = node.group %}
 {% include custom/group %}
 {% endunless %}
-</a></td>
-<td><a href="{{BASE_PATH}}{{node.url}}">
+</td>
+<td>
 {% unless node.tags.empty? %}
 {% assign tags_list = node.tags %}
 {% include custom/tags_list %}
 {% endunless %}
-</a></td>
-<td><a href="{{BASE_PATH}}{{node.url}}">
+</td>
+<td>
 {% unless node.controls.empty? %}
 {% assign severity_list = node.controlsSeverity %}
 {% include custom/severity_list %}
 {% endunless %}
-</a></td>
+</td>
 </tr>
         {% endif %}
       {% endif %}
