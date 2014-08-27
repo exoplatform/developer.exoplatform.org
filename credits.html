@@ -19,8 +19,8 @@ comments: false
       <ul class="media-list">
       {% for contributor in site.github.contributors %}
         <li class="media">
-          <a class="pull-left col-md-2" href="{{ BASE_PATH }}{{ contributor.html_url }}">
-            <img class="media-object" src="{{contributor.avatar_url}}" alt="Avatar">
+          <a class="pull-left" href="{{ BASE_PATH }}{{ contributor.html_url }}">
+            <img class="media-object col-md-2" src="{{contributor.avatar_url}}" alt="Avatar">
           </a>
           <div class="media-body col-md-10">
             <h4 class="media-heading">{{contributor.login}}</h4>
