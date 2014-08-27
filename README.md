@@ -1,8 +1,7 @@
 # developer.exoplatform.org
 
 This site groups together all documentations useful to develop or contribute to eXo Platform projects.
-It is built using [Jekyll](https://github.com/mojombo/jekyll) and its extension [Jekyll Bootstrap](http://jekyllbootstrap.com/)
- and deployed on [Github Pages](https://pages.github.com).
+It is built using [Jekyll](https://github.com/mojombo/jekyll) and deployed on [Github Pages](https://pages.github.com).
 
 ## How to contribute ?
 
@@ -67,6 +66,7 @@ and then browse to <http://localhost:4000>.
 ## Useful resources
 
    * [Jekyll](http://jekyllrb.com/docs/home/)
+   * [Jekyll Bootstrap](http://jekyllbootstrap.com/)
    * [Liquid Templating](http://docs.shopify.com/themes/liquid-documentation/basics)
    * [Bootstrap](http://getbootstrap.com)
    * [Font Awesome Icons](http://fontawesome.io)
