@@ -12,4 +12,4 @@ Intellij IDEA users must install the plugin [Eclipse Code Formatter](http://plug
 * Use the file [exo-Java-CodeStyle-Formatter.xml](/resources/ide/eclipse/exo-Java-CodeStyle-Formatter.xml) for "Eclipse Java Formatter config file"
 * Use the file [exo-Java-CodeStyle-OrganizeImports.importorder](/resources/ide/eclipse/exo-Java-CodeStyle-OrganizeImports.importorder) for "Optimize Imports from file"
 
-![IntelliJ Eclipse Code Formatter](/resources/ide/graphics/intellij-eclipse-code-formatter.png)
+![IntelliJ Eclipse Code Formatter](/assets/docs/ide/intellij-eclipse-code-formatter.png)

@@ -8,7 +8,7 @@ tags: [git]
 
 <div class="row">
   <div class="col-md-12">
-    <img src="/resources/scm/graphics/git-overview.png" class="img-responsive img-thumbnail" alt="Git Big Picture">
+    <img src="/assets/docs/scm/git-overview.png" class="img-responsive img-thumbnail" alt="Git Big Picture">
   </div>
 </div>
 
