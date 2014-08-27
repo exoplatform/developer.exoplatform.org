@@ -19,11 +19,9 @@ comments: false
       <ul class="list-group">
       {% for contributor in site.github.contributors %}
         <li class="list-group-item">
-          <a href="{{ BASE_PATH }}{{ contributor.html_url }}">
-            <img class="col-md-2 pull-left" src="{{contributor.avatar_url}}" alt="Avatar">
-            <h4 class="media-heading">{{contributor.login}}</h4>
-            <span class="badge">{{contributor.contributions}}</span> contributions.
-          </a>
+          <img class="col-md-2 pull-left" src="{{contributor.avatar_url}}" alt="Avatar">
+          <h4><a href="{{ BASE_PATH }}{{ contributor.html_url }}">{{contributor.login}}</a></h4>
+          <p><span class="badge pull-left">{{contributor.contributions}}</span> contributions.</p>
         </li>
       {% endfor %}
       </ul>
