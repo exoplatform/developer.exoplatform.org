@@ -63,6 +63,14 @@ and then browse to <http://localhost:4000>.
 ## How to package a theme using the theme packager ?
 
     rake theme:package name="twitter"
+    
+## Useful resources
+
+   * [Jekyll](http://jekyllrb.com/docs/home/)
+   * [Liquid Templating](http://docs.shopify.com/themes/liquid-documentation/basics)
+   * [Bootstrap](http://getbootstrap.com)
+   * [Font Awesome Icons](http://fontawesome.io)
+   * [Markdown Syntax](http://daringfireball.net/projects/markdown/syntax)
 
 ## License
 
