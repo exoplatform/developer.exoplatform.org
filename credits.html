@@ -7,25 +7,34 @@ order: 1
 comments: false
 ---
 <div class="row">
-  <div class="col-md-1 col-md-offset-1">
-    <img src="/assets/images/caesar.jpg" alt="Caesar">
+  <div class="col-md-2 text-center">
+    <h4>Hosted on</h4>
+    <a href="https://pages.github.com/">
+      <img src="/assets/images/GitHub-Mark-120px-plus.png" alt="Github Logo">
+      <br/>GitHub Pages
+    </a>
   </div>
-  <div class="col-md-7 col-md-offset-2">
+  <div class="col-md-5">
     <div class="panel panel-default">
       <div class="panel-heading">Contributors</div>
-      <div class="panel-body">
-        <p>We would like to thank them for their contributions to this website:</p>
+      <div class="list-group">
+        {% for contributor in site.github.contributors %}
+        <a href="{{ BASE_PATH }}{{ contributor.html_url }}" class="list-group-item">
+          <img class="pull-right img-thumbnail"
+               style="width: 50px; height: 50px; margin-top: -3px"
+               src="{{contributor.avatar_url}}"
+               alt="Avatar">
+          <h4 class="list-group-item-heading">{{contributor.login}}</h4>
+
+          <p class="list-group-item-text">
+            Contributed with <span class="badge">{{contributor.contributions}}</span>&nbsp;commits
+          </p>
+        </a>
+        {% endfor %}
       </div>
-      <ul class="list-group">
-      {% for contributor in site.github.contributors %}
-        <li class="list-group-item">
-          <img class="col-md-2 pull-left" src="{{contributor.avatar_url}}" alt="Avatar">
-          <h4><a href="{{ BASE_PATH }}{{ contributor.html_url }}">{{contributor.login}}</a></h4>
-          <p><span class="badge pull-left">{{contributor.contributions}}</span>&nbsp;&nbsp;contributions.</p>
-        </li>
-      {% endfor %}
-      </ul>
     </div>
+  </div>
+  <div class="col-md-5">
     <div class="panel panel-default">
       <div class="panel-heading">Powered by</div>
       <ul class="list-group">
