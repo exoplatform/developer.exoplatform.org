@@ -34,12 +34,12 @@ Usage:
     {% if sinceLevel == null or sinceLevel == node.sinceLevel %}
       {% if group == null or group == node.group %}
         {% if status == null or status == node.status %}
-<tr data-url="{{BASE_PATH}}{{node.url}}">
+<tr>
 <td>
-<strong>{{node.title}}</strong>
+<a href="{{BASE_PATH}}{{node.url}}">{{node.title}}</a>
 </td>
 <td>
-{% if node.tagline %}<small>{{ node.tagline}}</small>{% endif %}
+{% if node.tagline %}<a href="{{BASE_PATH}}{{node.url}}">{{ node.tagline}}</a>{% endif %}
 </td>
 <td>
 {% unless node.group.empty? %}
