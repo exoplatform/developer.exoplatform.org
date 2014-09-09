@@ -1,5 +1,34 @@
 ---
 layout: default
 ---
-{% include JB/setup %}
-{% include themes/eXo/page.html %}
+<div class="row">
+  <div class="col-md-12">
+    <ol class="breadcrumb">
+      {% if page.title != 'Home' %}
+      <li><a href="{{BASE_PATH}}/">Home</a></li>
+      {% endif %}
+      <li class="active">{{page.title}}</li>
+    </ol>
+    <div class="page-header">
+      <h1>{{page.title}} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h1>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="pull-right">
+      {% unless page.tags.empty? %}
+      {% assign tags_list = page.tags %}
+      {% include tags_list %}
+      {% endunless %}
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    {{content}}
+    <hr>
+    {% include comments %}
+  </div>
+</div>
+

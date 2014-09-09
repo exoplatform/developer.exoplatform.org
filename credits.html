@@ -10,7 +10,7 @@ comments: false
   <div class="col-md-2 text-center">
     <h4>Hosted on</h4>
     <a href="https://pages.github.com/">
-      <img src="/assets/images/GitHub-Mark-120px-plus.png" alt="Github Logo">
+      <img src="{{BASE_PATH}}/assets/images/GitHub-Mark-120px-plus.png" alt="Github Logo">
       <br/>GitHub Pages
     </a>
   </div>
@@ -19,7 +19,7 @@ comments: false
       <div class="panel-heading">Contributors</div>
       <div class="list-group">
         {% for contributor in site.github.contributors %}
-        <a href="{{ BASE_PATH }}{{ contributor.html_url }}" class="list-group-item">
+        <a href="{{BASE_PATH}}{{contributor.html_url}}" class="list-group-item">
           <img class="pull-right img-thumbnail"
                style="width: 50px; height: 50px; margin-top: -3px"
                src="{{contributor.avatar_url}}"

@@ -50,23 +50,9 @@ In order to get a server up and running with your Jekyll site, run:
 
 and then browse to <http://localhost:4000>.
 
-## How to switch from one theme to another for your blog ?
-
-    rake theme:switch name="the-program"
-
-## How to install a theme using the theme packager ?
-
-    rake theme:install git="https://github.com/jekyllbootstrap/theme-twitter.git"
-    rake theme:install name="cool-theme"
-
-## How to package a theme using the theme packager ?
-
-    rake theme:package name="twitter"
-    
 ## Useful resources
 
    * [Jekyll](http://jekyllrb.com/docs/home/)
-   * [Jekyll Bootstrap](http://jekyllbootstrap.com/)
    * [Liquid Templating](http://docs.shopify.com/themes/liquid-documentation/basics)
    * [Bootstrap](http://getbootstrap.com)
    * [Font Awesome Icons](http://fontawesome.io)

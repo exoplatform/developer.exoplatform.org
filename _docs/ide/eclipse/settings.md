@@ -13,30 +13,30 @@ Configure Eclipse at "Window" -> "Preferences..."
 
 Java -> Code Style -> Clean Up
 
-Choose: "Import..." [exo-Java-CodeStyle-CleanUp.xml](/resources/ide/eclipse/exo-Java-CodeStyle-CleanUp.xml)
+Choose: "Import..." [exo-Java-CodeStyle-CleanUp.xml]({{BASE_PATH}}/resources/ide/eclipse/exo-Java-CodeStyle-CleanUp.xml)
 
-![Eclipse Clean Up Settings](/assets/docs/ide/eclipse-Java-CodeStyle-CleanUp.png)
+![Eclipse Clean Up Settings]({{BASE_PATH}}/assets/images/docs/ide/eclipse-Java-CodeStyle-CleanUp.png)
 
 # Code Templates Settings:
 
 Java -> Code Style -> Code Templates
 
-Choose: "Import..." [exo-Java-CodeStyle-CodeTemplates.xml](/resources/ide/eclipse/exo-Java-CodeStyle-CodeTemplates.xml)
+Choose: "Import..." [exo-Java-CodeStyle-CodeTemplates.xml]({{BASE_PATH}}/resources/ide/eclipse/exo-Java-CodeStyle-CodeTemplates.xml)
 
-![Eclipse Code Style Settings](/assets/docs/ide/eclipse-Java-CodeStyle-CodeTemplates.png)
+![Eclipse Code Style Settings]({{BASE_PATH}}/assets/images/docs/ide/eclipse-Java-CodeStyle-CodeTemplates.png)
 
 # Formatter Settings:
 
 Java -> Code Style -> Formatter
 
-Choose: "Import..." [exo-Java-CodeStyle-Formatter.xml](/resources/ide/eclipse/exo-Java-CodeStyle-Formatter.xml)
+Choose: "Import..." [exo-Java-CodeStyle-Formatter.xml]({{BASE_PATH}}/resources/ide/eclipse/exo-Java-CodeStyle-Formatter.xml)
 
-![Eclipse Formatter Cleanup](/assets/docs/ide/eclipse-Java-CodeStyle-Formatter.png)
+![Eclipse Formatter Cleanup]({{BASE_PATH}}/assets/images/docs/ide/eclipse-Java-CodeStyle-Formatter.png)
 
 # Organize Imports Settings:
 
 Java -> Code Style -> Organize Imports
 
-Choose: "Import..." [exo-Java-CodeStyle-OrganizeImports.importorder](/resources/ide/eclipse/exo-Java-CodeStyle-OrganizeImports.importorder)
+Choose: "Import..." [exo-Java-CodeStyle-OrganizeImports.importorder]({{BASE_PATH}}/resources/ide/eclipse/exo-Java-CodeStyle-OrganizeImports.importorder)
 
-![Eclipse Organize Imports Settings](/assets/docs/ide/eclipse-Java-CodeStyle-OrganizeImports.png)
+![Eclipse Organize Imports Settings]({{BASE_PATH}}/assets/images/docs/ide/eclipse-Java-CodeStyle-OrganizeImports.png)

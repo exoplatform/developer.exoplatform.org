@@ -18,7 +18,7 @@ comments: false
       <div class="col-md-12">
         <h3>Latest news</h3>
           {% for post in site.posts limit:3 %}
-          {% include custom/post_excerpt %}
+          {% include post_excerpt %}
           {% endfor %}
       </div>
     </div>
@@ -30,7 +30,7 @@ comments: false
       <div class="list-group">
         {% assign pages_list = site.docs %}
         {% assign group = "scm" %}
-        {% include custom/pages_listgroup %}
+        {% include pages_listgroup %}
       </div>
     </div>
     <div class="panel panel-default">
@@ -38,7 +38,7 @@ comments: false
       <div class="list-group">
         {% assign pages_list = site.docs %}
         {% assign group = "build" %}
-        {% include custom/pages_listgroup %}
+        {% include pages_listgroup %}
       </div>
     </div>
     <div class="panel panel-default">
@@ -46,7 +46,7 @@ comments: false
       <div class="list-group">
         {% assign pages_list = site.docs %}
         {% assign group = "ide" %}
-        {% include custom/pages_listgroup %}
+        {% include pages_listgroup %}
       </div>
     </div>
     <div class="panel panel-default">

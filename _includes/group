@@ -1,0 +1,15 @@
+{% comment %}<!--
+The group include is a display helper for group.
+Usage:
+  1) assign the 'group' variable to a valid group.
+  2) include group
+  example:
+    <ul>
+  	  {% assign group = page.group %}
+  	  {% include group %}
+  	</ul>
+  
+-->{% endcomment %}
+
+<span class="label label-primary"><i class="fa fa-folder fa-fw"></i>&nbsp;{{group}}</span>
+{% assign group = nil %}

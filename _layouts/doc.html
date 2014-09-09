@@ -1,5 +1,37 @@
 ---
 layout: default
 ---
-{% include JB/setup %}
-{% include themes/eXo/doc.html %}
+<div class="row">
+  <div class="col-md-12">
+    <ol class="breadcrumb">
+      <li><a href="{{BASE_PATH}}/">Home</a></li>
+      <li><a href="{{BASE_PATH}}/docs/">Documentation</a></li>
+      <li class="active">{{page.title}}</li>
+    </ol>
+    <div class="page-header">
+      <h1>{{page.title}} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h1>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="pull-right">
+      {% unless page.group.empty? %}
+      {% assign group = page.group %}
+      {% include group %}
+      {% endunless %}
+      {% unless page.tags.empty? %}
+      {% assign tags_list = page.tags %}
+      {% include tags_list %}
+      {% endunless %}
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    {{content}}
+    <hr>
+    {% include comments %}
+  </div>
+</div>
+
