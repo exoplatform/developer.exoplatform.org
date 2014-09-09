@@ -2,7 +2,7 @@
 collections:
   docs:
     output: true
-  standards:
+  rules:
     output: true
 
 # Handling Reading
@@ -78,43 +78,43 @@ defaults:
   -
     scope:
       path: ""
-      type: "standards"
+      type: "rules"
     values:
-      layout: "standard"
+      layout: "rule"
   -
     scope:
-      path: "standards/architecture"
-      type: "standards"
+      path: "rules/architecture"
+      type: "rules"
     values:
       group: "architecture"
   -
     scope:
-      path: "standards/build"
-      type: "standards"
+      path: "rules/build"
+      type: "rules"
     values:
       group: "build"
   -
     scope:
-      path: "standards/coding"
-      type: "standards"
+      path: "rules/coding"
+      type: "rules"
     values:
       group: "coding"
   -
     scope:
-      path: "standards/ergonomics"
-      type: "standards"
+      path: "rules/ergonomics"
+      type: "rules"
     values:
       group: "ergonomics"
   -
     scope:
-      path: "standards/formatting"
-      type: "standards"
+      path: "rules/formatting"
+      type: "rules"
     values:
       group: "formatting"
   -
     scope:
-      path: "standards/run"
-      type: "standards"
+      path: "rules/run"
+      type: "rules"
     values:
       group: "run"
 
