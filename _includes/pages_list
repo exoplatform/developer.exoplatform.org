@@ -26,7 +26,7 @@ Usage:
       {% if page.url == node.url %}
       <li class="active"><a href="{{BASE_PATH}}{{node.url}}" class="active">{% if node.fa-icon != null %}<i class="fa fa-{{node.fa-icon}} fa-fw"></i>&nbsp;{% endif %}{{node.title}}</a></li>
       {% else %}
-      <li><a href="{{BASE_PATH}}{{node.url}}">{% if node.fa-icon != null %}<i class="fa fa-{{node.fa-icon}}"></i>&nbsp;{% endif %}{{node.title}}</a></li>
+      <li><a href="{{BASE_PATH}}{{node.url}}">{% if node.fa-icon != null %}<i class="fa fa-{{node.fa-icon}} fa-fw"></i>&nbsp;{% endif %}{{node.title}}</a></li>
       {% endif %}
     {% endif %}
   {% endif %}
