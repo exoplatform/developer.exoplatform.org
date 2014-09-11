@@ -1,5 +1,7 @@
 ---
 layout: null
+redirect_from:
+  - /rss.xml
 title : RSS Feed
 ---
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -7,7 +9,7 @@ title : RSS Feed
   <channel>
     <title>{{site.title}}</title>
     <description>{{site.title}} - {{site.author.name}}</description>
-    <link>{{site.production_url}}{{site.rss_path}}</link>
+    <link>{{site.production_url}}{{site.news.rss_path}}</link>
     <link>{{site.production_url}}</link>
     <lastBuildDate>{{site.time | date_to_xmlschema}}</lastBuildDate>
     <pubDate>{{site.time | date_to_xmlschema}}</pubDate>

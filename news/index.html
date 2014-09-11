@@ -8,9 +8,9 @@ fa-icon: rss
 comments: false
 ---
 <div class="pull-right">
-  <a class="btn btn-sm btn-default" href="{{BASE_PATH}}{{site.atom_path}}" title="Sitewide Atom Feed">
+  <a class="btn btn-sm btn-default" href="{{BASE_PATH}}{{site.news.atom_path}}" title="Sitewide Atom Feed">
     <i class="fa fa-rss-square fa-lg"></i> Atom feed</a>
-  <a class="btn btn-sm btn-default" href="{{BASE_PATH}}{{site.rss_path}}" title="Sitewide RSS Feed">
+  <a class="btn btn-sm btn-default" href="{{BASE_PATH}}{{site.news.rss_path}}" title="Sitewide RSS Feed">
     <i class="fa fa-rss-square fa-lg"></i> RSS feed</a>
 </div>
 {% assign posts_collate = site.posts %}

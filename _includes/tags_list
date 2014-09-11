@@ -16,7 +16,7 @@ Usage:
     site.tags is a Hash while page.tags is an array.
 
   Linking (optional):
-    assign the 'is_post' variable the value 'true' to create links to site.tags_path page
+    assign the 'is_post' variable the value 'true' to create links to site.news.tags_path page
     
 -->{% endcomment %}
 
@@ -26,7 +26,7 @@ Usage:
       {% assign label_text = tag %}
       {% assign label_counter = site.tags[tag].size %}
       {% assign label_fa_icon = 'fa-tag' %}
-      {% capture label_link %}{{BASE_PATH}}{{site.tags_path}}#{{tag}}-ref{% endcapture %}
+      {% capture label_link %}{{BASE_PATH}}{{site.news.tags_path}}#{{tag}}-ref{% endcapture %}
       {% include label %}
     {% endfor %}
   {% else %}
@@ -34,7 +34,7 @@ Usage:
       {% assign label_text = tag[0] %}
       {% assign label_counter = tag[1].size %}
       {% assign label_fa_icon = 'fa-tag' %}
-      {% capture label_link %}{{BASE_PATH}}{{site.tags_path}}#{{tag[0]}}-ref{% endcapture %}
+      {% capture label_link %}{{BASE_PATH}}{{site.news.tags_path}}#{{tag[0]}}-ref{% endcapture %}
       {% include label %}
     {% endfor %}
   {% endif %}

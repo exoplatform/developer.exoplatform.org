@@ -162,11 +162,12 @@ BASE_PATH : false
 
 # These paths are to the main pages used for news
 #
-archive_path: /news/
-categories_path : /news/categories/
-tags_path : /news/tags/
-atom_path : /atom.xml
-rss_path : /rss.xml
+news:
+  index_path: /news/
+  categories_path : /news/categories/
+  tags_path : /news/tags/
+  atom_path : /news/atom.xml
+  rss_path : /news/rss.xml
 
 # Settings for comments helper
 # Set 'provider' to the comment provider you want to use.

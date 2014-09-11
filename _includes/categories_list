@@ -22,7 +22,7 @@ Usage:
     {% assign label_counter = site.categories[category].size %}
     {% assign label_type = 'primary' %}
     {% assign label_fa_icon = 'fa-folder' %}
-    {% capture label_link %}{{BASE_PATH}}{{site.categories_path}}#{{category}}-ref{% endcapture %}
+    {% capture label_link %}{{BASE_PATH}}{{site.news.categories_path}}#{{category}}-ref{% endcapture %}
     {% include label %}
   {% endfor %}
 {% else %}
@@ -31,7 +31,7 @@ Usage:
     {% assign label_counter = category[1].size %}
     {% assign label_type = 'primary' %}
     {% assign label_fa_icon = 'fa-folder' %}
-    {% capture label_link %}{{BASE_PATH}}{{site.categories_path}}#{{category[0]}}-ref{% endcapture %}
+    {% capture label_link %}{{BASE_PATH}}{{site.news.categories_path}}#{{category[0]}}-ref{% endcapture %}
     {% include label %}
   {% endfor %}
 {% endif %}
