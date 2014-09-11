@@ -18,15 +18,13 @@ Usage:
 
 {% if tags_list.first[0] == null %}
   {% for tag in tags_list %}
-    {% assign label_text = tag %}
-    {% assign label_fa_icon = 'fa-tag' %}
-    {% include label %}
+    {% assign tag_text = tag %}
+    {% include tag %}
   {% endfor %}
 {% else %}
   {% for tag in tags_list %}
-    {% assign label_text = tag[0] %}
-    {% assign label_fa_icon = 'fa-tag' %}
-    {% include label %}
+    {% assign tag_text = tag[0] %}
+    {% include tag %}
   {% endfor %}
 {% endif %}
 {% assign tags_list = nil %}
