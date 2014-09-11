@@ -10,6 +10,8 @@ Usage:
   	</ul>
   
 -->{% endcomment %}
-
-<span class="label label-primary"><i class="fa fa-folder fa-fw"></i>&nbsp;{{group}}</span>
+{% assign label_text = group %}
+{% assign label_type = 'primary' %}
+{% assign label_fa_icon = 'fa-folder' %}
+{% include label %}
 {% assign group = nil %}

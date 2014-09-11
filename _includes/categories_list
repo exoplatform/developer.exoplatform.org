@@ -18,11 +18,21 @@ Usage:
 
 {% if categories_list.first[0] == null %}
   {% for category in categories_list %}
-    <a href="{{BASE_PATH}}{{site.categories_path}}#{{category}}-ref" class="label label-primary"><i class="fa fa-folder fa-fw"></i>&nbsp;{{category | join: "/"}} <span class="badge-counter">{{site.categories[category].size}}</span></a>
+    {% assign label_text = category | join: "/" %}
+    {% assign label_counter = site.categories[category].size %}
+    {% assign label_type = 'primary' %}
+    {% assign label_fa_icon = 'fa-folder' %}
+    {% capture label_link %}{{BASE_PATH}}{{site.categories_path}}#{{category}}-ref{% endcapture %}
+    {% include label %}
   {% endfor %}
 {% else %}
   {% for category in categories_list %}
-    <a href="{{BASE_PATH}}{{site.categories_path}}#{{category[0]}}-ref" class="label label-primary"><i class="fa fa-folder fa-fw"></i>&nbsp;{{category[0] | join: "/"}} <span class="badge-counter">{{category[1].size}}</span></a>
+    {% assign label_text = category[0] | join: "/" %}
+    {% assign label_counter = category[1].size %}
+    {% assign label_type = 'primary' %}
+    {% assign label_fa_icon = 'fa-folder' %}
+    {% capture label_link %}{{BASE_PATH}}{{site.categories_path}}#{{category[0]}}-ref{% endcapture %}
+    {% include label %}
   {% endfor %}
 {% endif %}
 {% assign categories_list = nil %}

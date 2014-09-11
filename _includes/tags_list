@@ -23,23 +23,33 @@ Usage:
 {% if is_post == true %}
   {% if tags_list.first[0] == null %}
     {% for tag in tags_list %}
-      <a href="{{BASE_PATH}}{{site.tags_path}}#{{tag}}-ref" class="label label-default">
-      <i class="fa fa-tag fa-fw"></i>&nbsp;{{tag}}&nbsp;<span class="badge-counter">{{site.tags[tag].size}}</span></a>
+      {% assign label_text = tag %}
+      {% assign label_counter = site.tags[tag].size %}
+      {% assign label_fa_icon = 'fa-tag' %}
+      {% capture label_link %}{{BASE_PATH}}{{site.tags_path}}#{{tag}}-ref{% endcapture %}
+      {% include label %}
     {% endfor %}
   {% else %}
     {% for tag in tags_list %}
-      <a href="{{BASE_PATH}}{{site.tags_path}}#{{tag[0]}}-ref" class="label label-default">
-      <i class="fa fa-tag fa-fw"></i>&nbsp;{{tag[0]}}&nbsp;<span class="badge-counter">{{tag[1].size}}</span></a>
+      {% assign label_text = tag[0] %}
+      {% assign label_counter = tag[1].size %}
+      {% assign label_fa_icon = 'fa-tag' %}
+      {% capture label_link %}{{BASE_PATH}}{{site.tags_path}}#{{tag[0]}}-ref{% endcapture %}
+      {% include label %}
     {% endfor %}
   {% endif %}
 {% else %}
   {% if tags_list.first[0] == null %}
     {% for tag in tags_list %}
-      <span class="label label-default"><i class="fa fa-tag fa-fw"></i>&nbsp;{{tag}}</span>
+      {% assign label_text = tag %}
+      {% assign label_fa_icon = 'fa-tag' %}
+      {% include label %}
     {% endfor %}
   {% else %}
     {% for tag in tags_list %}
-      <span class="label label-default"><i class="fa fa-tag fa-fw"></i>&nbsp;{{tag[0]}}</span>
+      {% assign label_text = tag[0] %}
+      {% assign label_fa_icon = 'fa-tag' %}
+      {% include label %}
     {% endfor %}
   {% endif %}
 {% endif %}
