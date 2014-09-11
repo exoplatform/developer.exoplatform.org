@@ -6,13 +6,12 @@
   </blockquote>
   <p class="text-right">
   {% unless post.categories.empty? %}
-  {% assign categories_list = post.categories %}
-  {% include categories_list %}
+  {% assign post_categories_list = post.categories %}
+  {% include post_categories_list %}
   {% endunless %}
   {% unless post.tags.empty? %}
   {% assign tags_list = post.tags %}
-  {% assign is_post = true %}
-  {% include tags_list %}
+  {% include post_tags_list %}
   {% endunless %}
   </p>
 </div>

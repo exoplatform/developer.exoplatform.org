@@ -18,11 +18,11 @@ layout: default
     <div class="pull-right">
       {% unless page.group.empty? %}
       {% assign group = page.group %}
-      {% include group %}
+      {% include doc_group %}
       {% endunless %}
       {% unless page.tags.empty? %}
       {% assign tags_list = page.tags %}
-      {% include tags_list %}
+      {% include doc_tags_list %}
       {% endunless %}
     </div>
   </div>

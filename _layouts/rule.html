@@ -26,14 +26,14 @@ layout: default
           {% unless page.group.empty? %}
           {% assign group = page.group %}
           <dt>Type</dt>
-          <dd>{% include group %}</dd>
+          <dd>{% include rule_group %}</dd>
           {% endunless %}
           <dt>Excerpt</dt>
           <dd>{{page.tagline}}</dd>
           {% unless page.tags.empty? %}
           {% assign tags_list = page.tags %}
           <dt>Tags</dt>
-          <dd>{% include tags_list %}</dd>
+          <dd>{% include rule_tags_list %}</dd>
           {% endunless %}
           {% unless page.controls.empty? %}
           {% assign severity_list = page.controlsSeverity %}

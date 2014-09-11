@@ -50,7 +50,7 @@ Usage:
 <td>
 {% unless node.tags.empty? %}
 {% assign tags_list = node.tags %}
-{% include tags_list %}
+{% include rule_tags_list %}
 {% endunless %}
 </td>
 <td>
