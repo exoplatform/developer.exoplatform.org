@@ -1,29 +1,29 @@
 {% comment %}<!--
-The severity_list include is a listing helper for severity.
+The rule_controls_severities_list include is a listing helper for severity.
 Usage:
-  1) assign the 'severity_list' variable to a valid array of severity.
-  2) include severity_list
+  1) assign the 'rule_controls_severities_list' variable to a valid array of severity.
+  2) include rule_controls_severities_list
   example:
     <ul>
-  	  {% assign severity_list = site.severity %}
-  	  {% include severity_list %}
+  	  {% assign rule_controls_severities_list = site.severity %}
+  	  {% include rule_controls_severities_list %}
   	</ul>
   
   Notes: 
     Tags can be either a Hash of severity objects (hashes) or an Array of severity-names (strings).
-    The encapsulating 'if' statement checks whether severity_list is a Hash or Array.
+    The encapsulating 'if' statement checks whether rule_controls_severities_list is a Hash or Array.
     site.severity is a Hash while page.severity is an array.
 
 -->{% endcomment %}
 
-{% if severity_list == nil or severity_list.empty? %}
+{% if rule_controls_severities_list == nil or rule_controls_severities_list.empty? %}
   {% assign label_text = 'CODE REVIEW' %}
   {% assign label_type = 'danger' %}
   {% assign label_fa_icon = 'fa-shield' %}
   {% include label %}
 {% else %}
-  {% if severity_list.first[0] == null %}
-    {% for severity in severity_list %}
+  {% if rule_controls_severities_list.first[0] == null %}
+    {% for severity in rule_controls_severities_list %}
       {% assign label_text = severity %}
       {% case severity %}
         {% when 'blocker' %}
@@ -43,7 +43,7 @@ Usage:
       {% include label %}
     {% endfor %}
   {% else %}
-    {% for severity in severity_list %}
+    {% for severity in rule_controls_severities_list %}
       {% assign label_text = severity[0] %}
       {% case severity[0] %}
         {% when 'blocker' %}
@@ -64,4 +64,4 @@ Usage:
     {% endfor %}
   {% endif %}
 {% endif %}
-{% assign severity_list = nil %}
+{% assign rule_controls_severities_list = nil %}

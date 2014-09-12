@@ -36,9 +36,9 @@ layout: default
           <dd>{% include rule_tags_list %}</dd>
           {% endunless %}
           {% unless page.controls.empty? %}
-          {% assign severity_list = page.controlsSeverity %}
+          {% assign rule_controls_severities_list = page.controlsSeverity %}
           <dt>Controls severity</dt>
-          <dd>{% include severity_list %}</dd>
+          <dd>{% include rule_controls_severities_list %}</dd>
           {% endunless %}
           {% if page.author != nil and page.author != '' %}
           <dt>Author</dt>

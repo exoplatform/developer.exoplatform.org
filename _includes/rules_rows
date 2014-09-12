@@ -55,8 +55,8 @@ Usage:
 </td>
 <td>
 {% unless node.controls.empty? %}
-{% assign severity_list = node.controlsSeverity %}
-{% include severity_list %}
+{% assign rule_controls_severities_list = node.controlsSeverity %}
+{% include rule_controls_severities_list %}
 {% endunless %}
 </td>
 </tr>
