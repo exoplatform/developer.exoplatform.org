@@ -1,0 +1,14 @@
+{% comment %}<!--
+The doc_category include is a display helper for documentation category.
+Usage:
+  1) assign the 'category' variable to a valid category.
+  2) include doc_category
+  example:
+    <ul>
+  	  {% assign category = page.category %}
+  	  {% include doc_category %}
+  	</ul>
+  
+-->{% endcomment %}
+{% include category %}
+{% assign category = nil %}

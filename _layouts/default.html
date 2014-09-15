@@ -76,12 +76,12 @@
     <div class="collapse navbar-collapse" id="jb-navbar-collapse">
       <ul class="nav navbar-nav">
         {% assign pages_list = site.pages | sort: "order" %}
-        {% assign group = 'navigation' %}
+        {% assign category = 'navigation' %}
         {% include pages_list %}
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {% assign pages_list = site.pages | sort: "order" %}
-        {% assign group = 'navigation-right' %}
+        {% assign category = 'navigation-right' %}
         {% include pages_list %}
         <li><a href="https://twitter.com/{{site.author.twitter}}" title="Follow us on twitter"><i
             class="fa fa-twitter-square fa-fw"></i>&nbsp;Follow us</a></li>

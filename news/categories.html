@@ -6,10 +6,10 @@ comments: false
 ---
 {% assign post_categories_list = site.categories %}
 {% include post_categories_list %}
-{% for category in site.categories %}
-<h2 id="{{category[0]}}-ref">{{category[0] | join: "/"}}</h2>
+{% for site_category in site.categories %}
+<h2 id="{{site_category[0]}}-ref">{{site_category[0] | join: "/"}}</h2>
 <ul>
-  {% assign pages_list = category[1] %}
+  {% assign pages_list = site_category[1] %}
   {% include pages_list %}
 </ul>
 {% endfor %}

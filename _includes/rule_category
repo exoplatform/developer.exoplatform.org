@@ -1,0 +1,14 @@
+{% comment %}<!--
+The rule_category include is a display helper for rule category.
+Usage:
+  1) assign the 'category' variable to a valid category.
+  2) include rule_category
+  example:
+    <ul>
+  	  {% assign category = page.category %}
+  	  {% include rule_category %}
+  	</ul>
+  
+-->{% endcomment %}
+{% include category %}
+{% assign category = nil %}

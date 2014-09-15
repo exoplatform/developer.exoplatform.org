@@ -16,9 +16,9 @@ layout: default
 <div class="row">
   <div class="col-md-12">
     <div class="pull-right">
-      {% unless page.group.empty? %}
-      {% assign group = page.group %}
-      {% include doc_group %}
+      {% unless page.category.empty? %}
+      {% assign category = page.category %}
+      {% include doc_category %}
       {% endunless %}
       {% unless page.tags.empty? %}
       {% assign tags_list = page.tags %}

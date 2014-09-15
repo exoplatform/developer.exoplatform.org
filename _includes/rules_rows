@@ -6,12 +6,12 @@ Usage:
   example:
     <ul>
       {% assign pages_list = site.pages %}  
-      {% include pages_listgroup %}
+      {% include rules_row %}
     </ul>
     
   Grouping (optional):
-    assign the 'group' variable to constrain the list to only nodes
-    in the given group. Note you must define the group manually in the node
+    assign the 'category' variable to constrain the list to only nodes
+    in the given category. Note you must define the category manually in the node
     meta-data to use this feature.
     Grouping is mainly helpful for non-post pages.
     If you want to group posts, it's easier/better to tag them, then pass the tagged posts array.
@@ -32,7 +32,7 @@ Usage:
 {% for node in pages_list %}
   {% if node.title != null and node.published != false %}
     {% if sinceLevel == null or sinceLevel == node.sinceLevel %}
-      {% if group == null or group == node.group %}
+      {% if category == null or category == node.category %}
         {% if status == null or status == node.status %}
 <tr>
 <td>
@@ -42,9 +42,9 @@ Usage:
 {% if node.tagline %}<a href="{{BASE_PATH}}{{node.url}}">{{node.tagline}}</a>{% endif %}
 </td>
 <td>
-{% unless node.group.empty? %}
-{% assign group = node.group %}
-{% include group %}
+{% unless node.category.empty? %}
+{% assign category = node.category %}
+{% include category %}
 {% endunless %}
 </td>
 <td>
@@ -66,6 +66,6 @@ Usage:
   {% endif %}
 {% endfor %}
 {% assign pages_list = nil %}
-{% assign group = nil %}
+{% assign category = nil %}
 {% assign status = nil %}
 {% assign sinceLevel = nil %}

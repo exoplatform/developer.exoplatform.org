@@ -62,19 +62,19 @@ defaults:
       path: "docs/build"
       type: "docs"
     values:
-      group: "build"
+      category: "build"
   -
     scope:
       path: "docs/ide"
       type: "docs"
     values:
-      group: "ide"
+      category: "ide"
   -
     scope:
       path: "docs/scm"
       type: "docs"
     values:
-      group: "scm"
+      category: "scm"
   -
     scope:
       path: ""
@@ -86,37 +86,37 @@ defaults:
       path: "rules/architecture"
       type: "rules"
     values:
-      group: "architecture"
+      category: "architecture"
   -
     scope:
       path: "rules/build"
       type: "rules"
     values:
-      group: "build"
+      category: "build"
   -
     scope:
       path: "rules/coding"
       type: "rules"
     values:
-      group: "coding"
+      category: "coding"
   -
     scope:
       path: "rules/ergonomics"
       type: "rules"
     values:
-      group: "ergonomics"
+      category: "ergonomics"
   -
     scope:
       path: "rules/formatting"
       type: "rules"
     values:
-      group: "formatting"
+      category: "formatting"
   -
     scope:
       path: "rules/run"
       type: "rules"
     values:
-      group: "run"
+      category: "run"
 
 
 # Themes are encouraged to use these universal variables 

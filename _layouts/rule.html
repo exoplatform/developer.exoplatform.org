@@ -23,10 +23,10 @@ layout: default
         <dl class="dl-horizontal">
           <dt>Code</dt>
           <dd>{{page.title}}</dd>
-          {% unless page.group.empty? %}
-          {% assign group = page.group %}
+          {% unless page.category.empty? %}
+          {% assign category = page.category %}
           <dt>Type</dt>
-          <dd>{% include rule_group %}</dd>
+          <dd>{% include rule_category %}</dd>
           {% endunless %}
           <dt>Excerpt</dt>
           <dd>{{page.tagline}}</dd>
