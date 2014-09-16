@@ -1,0 +1,14 @@
+{% comment %}<!--
+The post_category include is a display helper for documentation category.
+Usage:
+  1) assign the 'category_text' variable to a valid category.
+  2) include post_category
+  example:
+    <ul>
+  	  {% assign category_text = page.category %}
+  	  {% include post_category %}
+  	</ul>
+  
+-->{% endcomment %}
+{% include category %}
+{% assign category = nil %}

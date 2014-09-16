@@ -10,10 +10,12 @@ Usage:
   	</ul>
   
 -->{% endcomment %}
-{% assign label_text = category_text %}
+{% assign label_text = category_text | upcase %}
 {% assign label_link = category_link %}
+{% assign label_counter = category_counter %}
 {% assign label_type = 'primary' %}
 {% assign label_fa_icon = 'fa-folder' %}
 {% include label %}
 {% assign category_text = nil %}
 {% assign category_link = nil %}
+{% assign category_counter = nil %}

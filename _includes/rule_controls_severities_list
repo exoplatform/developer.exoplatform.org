@@ -24,7 +24,7 @@ Usage:
 {% else %}
   {% if rule_controls_severities_list.first[0] == null %}
     {% for severity in rule_controls_severities_list %}
-      {% assign label_text = severity %}
+      {% assign label_text = severity | upcase %}
       {% case severity %}
         {% when 'blocker' %}
           {% assign label_type = 'danger' %}
@@ -44,7 +44,7 @@ Usage:
     {% endfor %}
   {% else %}
     {% for severity in rule_controls_severities_list %}
-      {% assign label_text = severity[0] %}
+      {% assign label_text = severity[0] | upcase %}
       {% case severity[0] %}
         {% when 'blocker' %}
           {% assign label_type = 'danger' %}

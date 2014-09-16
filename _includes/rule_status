@@ -10,7 +10,7 @@ Usage:
   	</ul>
   
 -->{% endcomment %}
-{% assign label_text = status %}
+{% assign label_text = status | upcase %}
 {% case status %}
   {% when 'draft' %}
     {% assign label_type = 'danger' %}

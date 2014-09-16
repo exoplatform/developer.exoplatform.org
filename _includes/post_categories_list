@@ -18,21 +18,17 @@ Usage:
 
 {% if post_categories_list.first[0] == null %}
   {% for category in post_categories_list %}
-    {% assign label_text = category | join: "/" %}
-    {% assign label_counter = site.categories[category].size %}
-    {% assign label_type = 'primary' %}
-    {% assign label_fa_icon = 'fa-folder' %}
-    {% capture label_link %}{{BASE_PATH}}{{site.news.categories_path}}#{{category}}-ref{% endcapture %}
-    {% include label %}
+    {% assign category_text = category | join: "/" %}
+    {% assign category_counter = site.categories[category].size %}
+    {% capture category_link %}{{BASE_PATH}}{{site.news.categories_path}}#{{category}}-ref{% endcapture %}
+    {% include post_category %}
   {% endfor %}
 {% else %}
   {% for category in post_categories_list %}
-    {% assign label_text = category[0] | join: "/" %}
-    {% assign label_counter = category[1].size %}
-    {% assign label_type = 'primary' %}
-    {% assign label_fa_icon = 'fa-folder' %}
-    {% capture label_link %}{{BASE_PATH}}{{site.news.categories_path}}#{{category[0]}}-ref{% endcapture %}
-    {% include label %}
+    {% assign category_text = category[0] | join: "/" %}
+    {% assign category_counter = category[1].size %}
+    {% capture category_link %}{{BASE_PATH}}{{site.news.categories_path}}#{{category[0]}}-ref{% endcapture %}
+    {% include post_category %}
   {% endfor %}
 {% endif %}
 {% assign post_categories_list = nil %}
