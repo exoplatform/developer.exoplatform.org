@@ -7,7 +7,33 @@ order: 3
 fa-icon: institution
 ---
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-3">
+    <div class="well hidden-print hidden-xs hidden-sm" role="complementary">
+      <h4><a href="#levels">Rules by quality level</a></h4>
+      <ul>
+        <li><a href="#exo-1.2">Level 1.2</a></li>
+        <li><a href="#exo-1.1">Level 1.1</a></li>
+        <li><a href="#exo-1.0">Level 1.0</a></li>
+      </ul>
+      <h4><a href="#statuses">Rules by status</a></h4>
+      <ul>
+        <li><a href="#validated">Validated rules</a></li>
+        <li><a href="#review">Review in progress</a></li>
+        <li><a href="#draft">Drafts</a></li>
+      </ul>
+      <h4><a href="#categories">Rules by category</a></h4>
+      <ul>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#build">Build</a></li>
+        <li><a href="#coding">Coding</a></li>
+        <li><a href="#ergonomics">Ergonomics</a></li>
+        <li><a href="#formatting">Formatting</a></li>
+        <li><a href="#formatting">Run</a></li>
+      </ul>
+      <h4><a href="#sonarqube">About SonarQube</a></h4>
+    </div>
+  </div>
+  <div class="col-md-9">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">eXo Development Rules</h3>
@@ -29,34 +55,10 @@ fa-icon: institution
         </ul>
       </div>
     </div>
-    <div class="well hidden-print hidden-xs hidden-sm" role="complementary">
-      <ul>
-        <li>
-          <a href="#levels">Quality Levels</a></li>
-        <ul>
-          <li><a href="#exo_1.2">Level 1.2</a></li>
-          <li><a href="#exo_1.1">Level 1.1</a></li>
-          <li><a href="#exo_1.0">Level 1.0</a></li>
-        </ul>
-        </li>
-        <li>
-          <a href="#rules">All Rules</a></li>
-        <ul>
-          <li><a href="#validated">Validated rules</a></li>
-          <li><a href="#review">In review</a></li>
-          <li><a href="#drafts">Drafts</a></li>
-        </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <script async class="speakerdeck-embed" data-id="1a85f7600d1b0132830c2aee0b50a552" data-ratio="1.41436464088398"
-            src="//speakerdeck.com/assets/embed.js"></script>
   </div>
 </div>
-<a name="levels"></a><h2>Quality Levels</h2>
-<a name="exo_1.2"></a>
+<a name="levels"></a><h2>Rules by quality level</h2>
+<a name="exo-1.2"></a>
 <div class="panel panel-default">
   <div class="panel-heading">Level 1.2</div>
   <div class="table-responsive">
@@ -65,20 +67,21 @@ fa-icon: institution
       <tr>
         <th class="col-md-1">Identifier</th>
         <th class="col-md-4">Description</th>
-        <th class="col-md-1">Type</th>
-        <th class="col-md-4">Tags</th>
+        <th class="col-md-1">Category</th>
+        <th class="col-md-3">Tags</th>
         <th class="col-md-2">Controls</th>
+        <th class="col-md-1">Status</th>
       </tr>
       </thead>
       <tbody>
-      {% assign pages_list = site.rules %}
-      {% assign sinceLevel = "exo-1_2" %}
+      {% assign rules_list = site.rules %}
+      {% assign rule_sinceLevel = "exo-1.2" %}
       {% include rules_rows %}
       </tbody>
     </table>
   </div>
 </div>
-<a name="exo_1.1"></a>
+<a name="exo-1.1"></a>
 <div class="panel panel-default">
   <div class="panel-heading">Level 1.1</div>
   <div class="table-responsive">
@@ -87,20 +90,21 @@ fa-icon: institution
       <tr>
         <th class="col-md-1">Identifier</th>
         <th class="col-md-4">Description</th>
-        <th class="col-md-1">Type</th>
-        <th class="col-md-4">Tags</th>
+        <th class="col-md-1">Category</th>
+        <th class="col-md-3">Tags</th>
         <th class="col-md-2">Controls</th>
+        <th class="col-md-1">Status</th>
       </tr>
       </thead>
       <tbody>
-      {% assign pages_list = site.rules %}
-      {% assign sinceLevel = "exo-1_1" %}
+      {% assign rules_list = site.rules %}
+      {% assign rule_sinceLevel = "exo-1.1" %}
       {% include rules_rows %}
       </tbody>
     </table>
   </div>
 </div>
-<a name="exo_1.0"></a>
+<a name="exo-1.0"></a>
 <div class="panel panel-default">
   <div class="panel-heading">Level 1.0</div>
   <div class="table-responsive">
@@ -109,20 +113,21 @@ fa-icon: institution
       <tr>
         <th class="col-md-1">Identifier</th>
         <th class="col-md-4">Description</th>
-        <th class="col-md-1">Type</th>
-        <th class="col-md-4">Tags</th>
+        <th class="col-md-1">Category</th>
+        <th class="col-md-3">Tags</th>
         <th class="col-md-2">Controls</th>
+        <th class="col-md-1">Status</th>
       </tr>
       </thead>
       <tbody>
-      {% assign pages_list = site.rules %}
-      {% assign sinceLevel = "exo-1_0" %}
+      {% assign rules_list = site.rules %}
+      {% assign rule_sinceLevel = "exo-1.0" %}
       {% include rules_rows %}
       </tbody>
     </table>
   </div>
 </div>
-<a name="rules"></a><h2>All Rules</h2>
+<a name="statuses"></a><h2>Rules by status</h2>
 <a name="validated"></a>
 <div class="panel panel-default">
   <div class="panel-heading">Validated rules</div>
@@ -132,14 +137,15 @@ fa-icon: institution
       <tr>
         <th class="col-md-1">Identifier</th>
         <th class="col-md-4">Description</th>
-        <th class="col-md-1">Type</th>
-        <th class="col-md-4">Tags</th>
+        <th class="col-md-1">Category</th>
+        <th class="col-md-3">Tags</th>
         <th class="col-md-2">Controls</th>
+        <th class="col-md-1">Since</th>
       </tr>
       </thead>
       <tbody>
-      {% assign pages_list = site.rules %}
-      {% assign status = "validated" %}
+      {% assign rules_list = site.rules %}
+      {% assign rule_status = "validated" %}
       {% include rules_rows %}
       </tbody>
     </table>
@@ -154,20 +160,21 @@ fa-icon: institution
       <tr>
         <th class="col-md-1">Identifier</th>
         <th class="col-md-4">Description</th>
-        <th class="col-md-1">Type</th>
-        <th class="col-md-4">Tags</th>
+        <th class="col-md-1">Category</th>
+        <th class="col-md-3">Tags</th>
         <th class="col-md-2">Controls</th>
+        <th class="col-md-1">Since</th>
       </tr>
       </thead>
       <tbody>
-      {% assign pages_list = site.rules %}
-      {% assign status = "review" %}
+      {% assign rules_list = site.rules %}
+      {% assign rule_status = "review" %}
       {% include rules_rows %}
       </tbody>
     </table>
   </div>
 </div>
-<a name="drafts"></a>
+<a name="draft"></a>
 <div class="panel panel-default">
   <div class="panel-heading">Drafts</div>
   <div class="table-responsive">
@@ -176,16 +183,163 @@ fa-icon: institution
       <tr>
         <th class="col-md-1">Identifier</th>
         <th class="col-md-4">Description</th>
-        <th class="col-md-1">Type</th>
-        <th class="col-md-4">Tags</th>
+        <th class="col-md-1">Category</th>
+        <th class="col-md-3">Tags</th>
         <th class="col-md-2">Controls</th>
+        <th class="col-md-1">Since</th>
       </tr>
       </thead>
       <tbody>
-      {% assign pages_list = site.rules %}
-      {% assign status = "draft" %}
+      {% assign rules_list = site.rules %}
+      {% assign rule_status = "draft" %}
       {% include rules_rows %}
       </tbody>
     </table>
+  </div>
+</div>
+<a name="categories"></a><h2>Rules by category</h2>
+<a name="architecture"></a>
+<div class="panel panel-default">
+  <div class="panel-heading">Architecture rules</div>
+  <div class="table-responsive">
+    <table class="table table-hover table-condensed">
+      <thead>
+      <tr>
+        <th class="col-md-1">Identifier</th>
+        <th class="col-md-4">Description</th>
+        <th class="col-md-3">Tags</th>
+        <th class="col-md-2">Controls</th>
+        <th class="col-md-1">Status</th>
+        <th class="col-md-1">Since</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% assign rule_category = "architecture" %}
+      {% assign rules_list = site.rules %}
+      {% include rules_rows %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<a name="build"></a>
+<div class="panel panel-default">
+  <div class="panel-heading">Build rules</div>
+  <div class="table-responsive">
+    <table class="table table-hover table-condensed">
+      <thead>
+      <tr>
+        <th class="col-md-1">Identifier</th>
+        <th class="col-md-4">Description</th>
+        <th class="col-md-3">Tags</th>
+        <th class="col-md-2">Controls</th>
+        <th class="col-md-1">Status</th>
+        <th class="col-md-1">Since</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% assign rule_category = "build" %}
+      {% assign rules_list = site.rules %}
+      {% include rules_rows %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<a name="coding"></a>
+<div class="panel panel-default">
+  <div class="panel-heading">Coding rules</div>
+  <div class="table-responsive">
+    <table class="table table-hover table-condensed">
+      <thead>
+      <tr>
+        <th class="col-md-1">Identifier</th>
+        <th class="col-md-4">Description</th>
+        <th class="col-md-3">Tags</th>
+        <th class="col-md-2">Controls</th>
+        <th class="col-md-1">Status</th>
+        <th class="col-md-1">Since</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% assign rule_category = "coding" %}
+      {% assign rules_list = site.rules %}
+      {% include rules_rows %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<a name="ergonomics"></a>
+<div class="panel panel-default">
+  <div class="panel-heading">Ergonomics rules</div>
+  <div class="table-responsive">
+    <table class="table table-hover table-condensed">
+      <thead>
+      <tr>
+        <th class="col-md-1">Identifier</th>
+        <th class="col-md-4">Description</th>
+        <th class="col-md-3">Tags</th>
+        <th class="col-md-2">Controls</th>
+        <th class="col-md-1">Status</th>
+        <th class="col-md-1">Since</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% assign rule_category = "ergonomics" %}
+      {% assign rules_list = site.rules %}
+      {% include rules_rows %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<a name="formatting"></a>
+<div class="panel panel-default">
+  <div class="panel-heading">Formatting rules</div>
+  <div class="table-responsive">
+    <table class="table table-hover table-condensed">
+      <thead>
+      <tr>
+        <th class="col-md-1">Identifier</th>
+        <th class="col-md-4">Description</th>
+        <th class="col-md-3">Tags</th>
+        <th class="col-md-2">Controls</th>
+        <th class="col-md-1">Status</th>
+        <th class="col-md-1">Since</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% assign rule_category = "formatting" %}
+      {% assign rules_list = site.rules %}
+      {% include rules_rows %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<a name="run"></a>
+<div class="panel panel-default">
+  <div class="panel-heading">Run rules</div>
+  <div class="table-responsive">
+    <table class="table table-hover table-condensed">
+      <thead>
+      <tr>
+        <th class="col-md-1">Identifier</th>
+        <th class="col-md-4">Description</th>
+        <th class="col-md-3">Tags</th>
+        <th class="col-md-2">Controls</th>
+        <th class="col-md-1">Status</th>
+        <th class="col-md-1">Since</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% assign rule_category = "run" %}
+      {% assign rules_list = site.rules %}
+      {% include rules_rows %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<a name="sonarqube"></a><h2>About SonarQube</h2>
+<div class="row">
+  <div class="col-md-12">
+    <script async class="speakerdeck-embed" data-id="1a85f7600d1b0132830c2aee0b50a552" data-ratio="1.41436464088398"
+            src="//speakerdeck.com/assets/embed.js"></script>
   </div>
 </div>

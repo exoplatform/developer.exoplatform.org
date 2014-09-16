@@ -25,6 +25,7 @@ Usage:
 
 -->{% endcomment %}
 
+{% unless label_text == null %}
 {% if label_type == null %}
   {% assign label_type = "default" %}
 {% else %}
@@ -35,6 +36,7 @@ Usage:
 {% else %}
 <span class="label label-{{label_type}}">{% if label_fa_icon != null %}<i class="fa fa-fw {{label_fa_icon}}"></i>&nbsp;{% endif %}{{label_text}}{% if label_counter != null %}&nbsp;<span class="label-badge">{{label_counter}}</span>{% endif %}</span>
 {% endif %}
+{% endunless %}
 {% assign label_text = nil %}
 {% assign label_counter = nil %}
 {% assign label_type = nil %}

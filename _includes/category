@@ -1,17 +1,19 @@
 {% comment %}<!--
 The category include is a display helper for category.
 Usage:
-  1) assign the 'category' variable to a valid category.
+  1) assign the 'category_text' variable to a valid category.
   2) include category
   example:
     <ul>
-  	  {% assign category = page.category %}
+  	  {% assign category_text = page.category %}
   	  {% include category %}
   	</ul>
   
 -->{% endcomment %}
-{% assign label_text = category %}
+{% assign label_text = category_text %}
+{% assign label_link = category_link %}
 {% assign label_type = 'primary' %}
 {% assign label_fa_icon = 'fa-folder' %}
 {% include label %}
-{% assign category = nil %}
+{% assign category_text = nil %}
+{% assign category_link = nil %}

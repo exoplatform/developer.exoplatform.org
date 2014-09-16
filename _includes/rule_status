@@ -1,0 +1,25 @@
+{% comment %}<!--
+The rule_status include is a display helper.
+Usage:
+  1) assign the 'status' variable to a valid category.
+  2) include rule_status
+  example:
+    <ul>
+  	  {% assign status = rule.status %}
+  	  {% include rule_status %}
+  	</ul>
+  
+-->{% endcomment %}
+{% assign label_text = status %}
+{% case status %}
+  {% when 'draft' %}
+    {% assign label_type = 'danger' %}
+  {% when 'review' %}
+    {% assign label_type = 'warning' %}
+  {% when 'validated' %}
+    {% assign label_type = 'success' %}
+    {% assign label_fa_icon = 'fa-check' %}
+{% endcase %}
+{% capture label_link %}{{BASE_PATH}}/rules/#{{status}}{% endcapture %}
+{% include label %}
+{% assign status = nil %}

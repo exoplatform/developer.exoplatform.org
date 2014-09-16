@@ -17,7 +17,7 @@ layout: default
   <div class="col-md-12">
     <div class="pull-right">
       {% unless page.category.empty? %}
-      {% assign category = page.category %}
+      {% assign category_text = page.category %}
       {% include doc_category %}
       {% endunless %}
       {% unless page.tags.empty? %}

@@ -24,7 +24,7 @@ layout: default
           <dt>Code</dt>
           <dd>{{page.title}}</dd>
           {% unless page.category.empty? %}
-          {% assign category = page.category %}
+          {% assign category_text = page.category %}
           <dt>Type</dt>
           <dd>{% include rule_category %}</dd>
           {% endunless %}
@@ -56,12 +56,18 @@ layout: default
       <div class="panel-body">
         <dl class="dl-horizontal">
           <dt>Status</dt>
-          <dd>{{page.status}}</dd>
+          <dd>
+            {% assign status = page.status %}
+            {% include rule_status %}
+          </dd>
           {% if page.status == 'validated' %}
           <dt>Validated on</dt>
           <dd>{{page.validationDate}}</dd>
           <dt>Quality Level</dt>
-          <dd>{{page.sinceLevel}}</dd>
+          <dd>
+            {% assign sinceLevel = page.sinceLevel %}
+            {% include rule_sinceLevel %}
+          </dd>
           {% endif %}
         </dl>
       </div>

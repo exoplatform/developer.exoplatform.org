@@ -1,16 +1,16 @@
 {% comment %}<!--
-The pages_list include is a listing helper.
+The rules_list include is a listing helper.
 Usage:
-  1) assign the 'pages_list' variable to a valid array of pages or posts.
-  2) include pages_list
+  1) assign the 'rules_list' variable to a valid array of pages or posts.
+  2) include rules_list
   example:
     <ul>
-      {% assign pages_list = site.pages %}  
+      {% assign rules_list = site.pages %}  
       {% include rules_row %}
     </ul>
     
-  Grouping (optional):
-    assign the 'category' variable to constrain the list to only nodes
+  Category (optional):
+    assign the 'rule_category' variable to constrain the list to only nodes
     in the given category. Note you must define the category manually in the node
     meta-data to use this feature.
     Grouping is mainly helpful for non-post pages.
@@ -18,22 +18,22 @@ Usage:
     i.e. site.tags.cool_tag (this returns an array of posts tagged: cool_tag)
     
   Status (optional):
-    assign the 'status' variable to constrain the list to only nodes
+    assign the 'rule_status' variable to constrain the list to only nodes
     with a given status. Note you must define the status manually in the node
     meta-data to use this feature.
 
-  Since (optional):
-    assign the 'since' variable to constrain the list to only nodes
-    with a given since value. Note you must define the since property manually in the node
+  SinceLevel (optional):
+    assign the 'rule_sinceLevel' variable to constrain the list to only nodes
+    with a given sinceLevel value. Note you must define the sinceLevel property manually in the node
     meta-data to use this feature.
 
 -->{% endcomment %}
 
-{% for node in pages_list %}
+{% for node in rules_list %}
   {% if node.title != null and node.published != false %}
-    {% if sinceLevel == null or sinceLevel == node.sinceLevel %}
-      {% if category == null or category == node.category %}
-        {% if status == null or status == node.status %}
+    {% if rule_sinceLevel == null or rule_sinceLevel == node.sinceLevel %}
+      {% if rule_category == null or rule_category == node.category %}
+        {% if rule_status == null or rule_status == node.status %}
 <tr>
 <td>
 <a href="{{BASE_PATH}}{{node.url}}">{{node.title}}</a>
@@ -41,12 +41,14 @@ Usage:
 <td>
 {% if node.tagline %}<a href="{{BASE_PATH}}{{node.url}}">{{node.tagline}}</a>{% endif %}
 </td>
+{% unless rule_category != null %}
 <td>
 {% unless node.category.empty? %}
-{% assign category = node.category %}
-{% include category %}
+{% assign category_text = node.category %}
+{% include rule_category %}
 {% endunless %}
 </td>
+{% endunless %}
 <td>
 {% unless node.tags.empty? %}
 {% assign tags_list = node.tags %}
@@ -59,13 +61,29 @@ Usage:
 {% include rule_controls_severities_list %}
 {% endunless %}
 </td>
+{% unless rule_status != null %}
+<td>
+{% unless node.status.empty? %}
+{% assign status = node.status %}
+{% include rule_status %}
+{% endunless %}
+</td>
+{% endunless %}
+{% unless rule_sinceLevel != null %}
+<td>
+{% unless node.sinceLevel.empty? %}
+{% assign sinceLevel = node.sinceLevel %}
+{% include rule_sinceLevel %}
+{% endunless %}
+</td>
+{% endunless %}
 </tr>
         {% endif %}
       {% endif %}
     {% endif %}
   {% endif %}
 {% endfor %}
-{% assign pages_list = nil %}
-{% assign category = nil %}
-{% assign status = nil %}
-{% assign sinceLevel = nil %}
+{% assign rules_list = nil %}
+{% assign rule_category = nil %}
+{% assign rule_status = nil %}
+{% assign rule_sinceLevel = nil %}
