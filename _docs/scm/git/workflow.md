@@ -239,7 +239,7 @@ Stable branch are used to perform releases and write / accept fix.
 
 **How:**
 
-With a script similar to [https://github.com/exoplatform/swf-scripts/blob/master/createFB.sh](https://github.com/exoplatform/swf-scripts/blob/master/createFB.sh)
+With a script similar to [createFB.sh](https://github.com/exoplatform/swf-scripts/blob/master/createFB.sh)
 
 #### Create a Fix Branch to fix Stable Branch
 
