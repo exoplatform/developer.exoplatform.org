@@ -21,7 +21,7 @@ Development repositories are forked from blessed repositories.
 
 **This strategy is applied to all repositories/projects involved in eXo products.** Others projects are using a single repository hosted on "exoplatform" organization.
 
-![image alt text](/assets/images/docs/scm/git-organization.png)
+![git repositories](/assets/images/docs/scm/git-organization.png)
 
 ### Development repository
 
@@ -64,7 +64,7 @@ Master branch always reflect a production ready state (for community website for
 
 Commit directly to Master branch is FORBIDDEN (except exceptional circumstance: hotfix).
 
-![image alt text](/assets/images/docs/scm/master-branch.png =400x)
+![master branch workflow](/assets/images/docs/scm/master-branch.png =400x)
 
 ## Develop Branch
 
@@ -73,7 +73,7 @@ Commit directly to Master branch is FORBIDDEN (except exceptional circumstance: 
 Develop branch contains the latest delivered development changes.
 This is our backbone where all the different fix and new feature are mixed with each other.
 
-![image alt text](/assets/images/docs/scm/develop-branch.png =1000x)
+![develop branch workflow](/assets/images/docs/scm/develop-branch.png =1000x)
 
 ### Actions
 
@@ -101,7 +101,7 @@ git push
 
 Feature branches are dedicated branch to develop a new feature.
 
-![image alt text](/assets/images/docs/scm/feature-branch.png =300x)
+![feature branches workflow](/assets/images/docs/scm/feature-branch.png =300x)
 
 ### Actions
 
@@ -167,7 +167,7 @@ Fix Branch are dedicated branch to fix a bug. The validation process may be diff
 
 A fix branch is always created from Develop branch (except exceptional circumstance: fix on stable only).
 
-![image alt text](/assets/images/docs/scm/fix-branch.png =400x)
+![fix branches workflow](/assets/images/docs/scm/fix-branch.png =400x)
 
 ### Actions
 
@@ -227,7 +227,7 @@ git branch -d fix/issue
 
 Stable branch are used to perform releases and write / accept fix.
 
-![image alt text](/assets/images/docs/scm/stable-branch.png =800x)
+![stable branches workflow](/assets/images/docs/scm/stable-branch.png =800x)
 
 ### Actions
 
@@ -326,7 +326,7 @@ git push origin 1.0.0
 
 Integration branches are dedicated branch to automatic integration task (like Crowdin translation for instance).
 
-![image alt text](/assets/images/docs/scm/integration-branch.png =1000x)
+![integration branches workflow](/assets/images/docs/scm/integration-branch.png =1000x)
 
 ### Actions
 
@@ -344,7 +344,7 @@ Integration branches are dedicated branch to automatic integration task (like Cr
 
 Poc branches are dedicated branch to develop a Prove of Concept (PoC).
 
-![image alt text](/assets/images/docs/scm/poc-branch.png =300x)
+![poc branches workflow](/assets/images/docs/scm/poc-branch.png =300x)
 
 ### Actions
 
