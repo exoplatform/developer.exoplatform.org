@@ -358,7 +358,7 @@ Poc branches are dedicated branch to develop a Prove of Concept (PoC).
 {% highlight sh %}
 git checkout develop
 git pull
-git checkout -b PoC/x
+git checkout -b poc/x
 [Modify all pom: initial commit]
 git add pom.xml
 git commit -m "details"
