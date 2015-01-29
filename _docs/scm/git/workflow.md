@@ -81,7 +81,7 @@ This is our backbone where all the different fix and new feature are mixed with 
 
 *Release process applies on master*
 
-**When:** After FQA/TQA perform regression test on Develop Branch. VPs give a GO.
+**When:** Before releasing PLF (Milestone, Release Candidate, Release) to allow FQA/TQA to perform regression test on Master Branch. VPs give a GO.
 
 **Who:** PLF Team with support of team responsible of each project
 
@@ -91,7 +91,7 @@ git checkout develop
 git pull
 git checkout master
 git pull
-git merge --no-ff develop
+git merge develop
 git push
 {% endhighlight %}
 
