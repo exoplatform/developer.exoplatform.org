@@ -81,7 +81,7 @@ This is our backbone where all the different fix and new feature are mixed with 
 
 *Release process applies on master*
 
-**When:** Before releasing PLF (Milestone, Release Candidate, Release) to allow FQA/TQA to perform regression test on Master Branch. VPs give a GO.
+**When:** Before releasing PLF (Milestone, Release Candidate) to allow FQA/TQA to perform regression test on Master Branch. VPs give a GO.
 
 **Who:** PLF Team with support of team responsible of each project
 
@@ -364,6 +364,27 @@ git add pom.xml
 git commit -m "details"
 git push
 {% endhighlight %}
+
+## Release Process
+
+A release must never involve a freeze of the develop branch.
+This section explain the release process to follow when doing an intermediate release (Milestone, Release Candidate) or the final release.
+
+### Intermediate Release
+
+**When:** Product Leader give a go to do an intermediate release of PLF (Milestone, Release Candidate)
+
+**Who:** PLF Team with support of team responsible of each project
+
+[![Intermediate Release process](/assets/images/docs/scm/prepare-intermediate-Release.png =600x)](/assets/images/docs/scm/prepare-intermediate-Release.png "Full Size Image")
+
+### Final Release
+
+**When:** Product Leader give a go to do the final release of PLF
+
+**Who:** PLF Team with support of team responsible of each project
+
+[![Final Release process](/assets/images/docs/scm/prepare-final-Release.png =500x)](/assets/images/docs/scm/prepare-final-Release.png "Full Size Image")
 
 ## Improvement
 
