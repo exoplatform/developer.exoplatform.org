@@ -11,7 +11,9 @@ tags: [maven,installation,configuration]
 
 To build eXo projects you need to install a Java [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 6 or 7 depending of the Platform version you are targetting :
 
-* Platform 4.1+ : Java 7
+* Platform 4.4+ : Java 8
+* Platform 4.3 : Java 7 / Java 8
+* Platform 4.1 / 4.2 : Java 7
 * Platform 4.0.x : Java 6 / Java 7
 
 # Install Apache Maven
