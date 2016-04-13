@@ -1,0 +1,13 @@
+= Sources Management
+
+== Git - Cheat Sheet
+
+
+== Git - Repositories
+
+=== Platform codebase
+
+
+== Git Workflow
+
+image::../images/git-workflow-poc-branch.svg[]

@@ -17,9 +17,9 @@ after_failure:
   - docker logs asciidoc-to-html
 
 after_success:
-  - cd output ; mv README.html index.html ; cp -R ../images images
+  - cd output ; cp -R ../images images
   - git init
-  - git config user.name "${GH_USER_NAME}"
-  - git config user.email "{GH_USER_EMAIL}"
+  - git config user.name "${EXO_USER_NAME}"
+  - git config user.email "{EXO_USER_EMAIL}"
   - git add . ; git commit -m "Deploy developer.exoplatform.org HTML files"
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" asciidoc/source:asciidoc/html > /dev/null 2>&1
+  - git push --force --quiet "https://${EXO_TOKEN}@${EXO_REF}" asciidoc/source:asciidoc/html > /dev/null 2>&1

@@ -1,0 +1,6 @@
+= IDE Settings to work on eXo Platform projects
+
+== Eclipse Settings
+
+
+== IntellIj Settings

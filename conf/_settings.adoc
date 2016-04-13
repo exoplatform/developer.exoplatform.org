@@ -1,0 +1,10 @@
+:toc: right
+:toclevels: 4
+:numbered:
+:hide-uri-scheme:
+:show-authors:
+:icons: font
+:imagesdir: images
+:idprefix: id-
+:idseparator: -
+:source-highlighter: highlightjs
