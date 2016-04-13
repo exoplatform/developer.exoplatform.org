@@ -1,3 +1,7 @@
 # Directory for output files (HTML, PDF...)
 output/
 
+# Wercker
+_builds
+_steps
+_cache
