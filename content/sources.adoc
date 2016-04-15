@@ -1,24 +1,7 @@
 = Sources Management
 
-== Git - Cheat Sheet
+include::sources/repositories.adoc[leveloffset=+1]
 
+include::sources/settings.adoc[leveloffset=+1]
 
-== Git Settings
-
-=== GitHub
-
-GitHub is the platform we chose to host our Git repositories. To contribute to eXo projects you have to create a GitHub account. +
-For eXo employees it is recommended to create one with the same username as the one provided by the company (GoogleApp Id) when you joined us. You have to commit using your exoplatform.com email by setting it in your global git configuration or locally into each eXo repository clone (see below). +
-To retrieve your rights to push changes or to pull private repositories you have to register your github account into your profile in our internal IDM My eXo. +
-GitHub provides a lot of documentation and especially an installation/configuration guide for each operating system :
-
-
-
-== Git - Repositories
-
-=== Platform codebase
-
-
-== Git Workflow
-
-image::../images/git-workflow-poc-branch.svg[]
+include::sources/workflow.adoc[leveloffset=+1]

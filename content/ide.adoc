@@ -1,6 +1,5 @@
 = IDE Settings to work on eXo Platform projects
 
-== Eclipse Settings
+include::ide/eclipse/settings.adoc[leveloffset=+1]
 
-
-== IntellIj Settings
+include::ide/intellij/settings.adoc[leveloffset=+1]

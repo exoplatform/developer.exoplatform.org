@@ -1,0 +1,197 @@
+—
+title: "Maven - Setup guide"
+tagline: Install and configure Apache Maven for eXo projects
+permalink: /docs/build/maven/setup/
+redirect_from:
+ - /docs/build/maven-settings.html
+
+== tags: [maven,installation,configuration]
+
+= Prerequisites
+
+To build eXo projects you need to install a Java http://www.oracle.com/technetwork/java/javase/downloads/index.html[JDK] 6 or 7 depending of the Platform version you are targetting :
+
+* Platform 4.4+ : Java 8
+* Platform 4.3 : Java 7 / Java 8
+* Platform 4.1 / 4.2 : Java 7
+* Platform 4.0.x : Java 6 / Java 7
+
+= Install Apache Maven
+
+The version *3.2.3* of http://maven.apache.org/download.cgi[Apache Maven] is currently recommended to build eXo projects. _The minimal version required is 3.0.4. The version 3.2.2 must be avoided due to https://jira.codehaus.org/browse/MNG-5663[MNG-5663]._
+
+. Download a fresh and clean copy of http://maven.apache.org/download.cgi[Apache Maven]. It is critical to take a fresh copy to be sure that the file `apache-maven-X.Y.Z/conf/settings.xml` isn't modified !!
+. Unzip the distribution archive, i.e. apache-maven-X.Y.Z-bin.(zip|tar.gz) to the directory you wish to install Maven. The subdirectory `apache-maven-X.Y.Z` will be created from the archive. It is recommended to not store it under a path with spaces.
+. Add the path of `apache-maven-X.Y.Z/bin` in your `PATH` environment variable.
+** On Windows use the preferences screen of "Environment Variables"
+** On Linux/MacOS export the variable PATH from a startup script like .bash_profile (it depends of the OS and the shell you are using)
+* Add a system environment variable `MAVEN_OPTS` (it could be in a .profile startup script on Linux/MacOS operating systems or in the global environment variables panel on Windows)with the value `-Xshare:auto -Xms128M -Xmx1G -XX:MaxPermSize=256M`
+* Run `mvn --version` to verify that it is correctly installed.
+
+= Configure Apache Maven
+
+== Basic setup
+
+Since Platform 4, no specific settings are required to build eXo public projects. Just clone any project and launch `mvn install`
+
+<a name="Advanced"></a>
+
+== Advanced setup
+
+If you need to release a project or to build a project relying on private or staging binaries you'll need to customize your maven settings.
+
+Using link:/resources/build/maven/settings.xml[our template] create a file `settings.xml` in your `home directory` under a directory called `.m2` (if you already launched maven this directory must already exist and it should contain a subdirectory `repository` where Maven stores all artifacts it processes).
+
+{% gist exo-swf/a05132085d70c7541acb settings.xml %}
+
+In the `~/.m2/settings.xml` configuration file you have to fill your credentials to access to protected binaries or to publish artifacts on repository.exoplatform.org. For a better security, you can encrypt passwords in your settings file, however you must first configure a master password. For more information on both server passwords and the master password, see the http://maven.apache.org/guides/mini/guide-encryption.html[Guide to password encryption] and the dedicated chapter in the http://www.sonatype.com/books/mvnref-book/reference/appendix-settings-sect-encrypting-passwords.html[Maven Reference Guide]. To release a project you have also to define the GPG key to use and its passphase (see link:#GPG[the GPG setup guide]).
+
+When your setup is done you can activate the following profiles :
+
+* `-Pexo-release` : Automatically activated while releasing projects. This profile is also activated on our CI server. Your GPG key must be configured (see link:#GPG[the GPG setup guide]).
+* `-Pexo-private` : To access to private binaries on repository.exoplatform.org (eXo employees only).
+* `-Pexo-staging` : To access to staging binaries (releases in validation) on repository.exoplatform.org (eXo employees only). *TAKE CARE TO ACTIVATE IT ONLY IF REQUIRED.* These repositories are delivering binaries considered by maven as released but allowed to be replaced. Maven never updates released binaries thus you have to cleanup your local repository to grab an updated version.
+* `-Pexo-cp` : To access to custom projects binaries on repository.exoplatform.org (eXo employees only).
+* `-Pjboss-staging` : To access to staging binaries on repository.jboss.org. *TAKE CARE TO ACTIVATE IT ONLY IF REQUIRED.* These repositories are delivering binaries considered by maven as released but allowed to be replaced. Maven never updates released binaries thus you have to cleanup your local repository to grab an updated version.
+
+<a name="GPG"></a>
+
+== Maven and GPG
+
+=== Install gnupg for your OS.
+
+==== MacOS
+
+For http://brew.sh/[homebrew] users :
+
+{% highlight sh %}
+brew install gnupg
+{% endhighlight %}
+
+For https://www.macports.org/[macport] users :
+
+{% highlight sh %}
+sudo port install gnupg
+{% endhighlight %}
+
+Others, you can use the http://macgpg.sourceforge.net/[native package].
+
+==== Ubuntu
+
+{% highlight sh %}
+sudo aptitude install gnupg
+{% endhighlight %}
+
+==== Windows
+
+TBD
+
+=== Validate your installation
+
+{% highlight sh %}
+$ gpg –version
+gpg (GnuPG) 1.4.10
+Copyright (C) 2008 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later http://gnu.org/licenses/gpl.html[http://gnu.org/licenses/gpl.html]
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Home: ~/.gnupg
+Supported algorithms:
+Pubkey: RSA, RSA-E, RSA-S, ELG-E, DSA
+Cipher: 3DES, CAST5, BLOWFISH, AES, AES192, AES256, TWOFISH, CAMELLIA128,
+ CAMELLIA192, CAMELLIA256
+Hash: MD5, SHA1, RIPEMD160, SHA256, SHA384, SHA512, SHA224
+Compression: Uncompressed, ZIP, ZLIB, BZIP2
+{% endhighlight %}
+
+=== Generate your private GPG Key
+
+==== Configure GPG
+
+Enforce the level of encryption. Edit `~/.gnupg/gpg.conf`
+
+{% highlight sh %}
+$ vi .gnupg/gpg.conf
+{% endhighlight %}
+
+At the end of the file add :
+
+{% highlight sh %}
+personal-digest-preferences SHA512
+cert-digest-algo SHA512
+default-preference-list SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB BZIP2 ZIP Uncompressed
+{% endhighlight %}
+
+==== Generate the key
+
+Launch the key generation 
+
+{% highlight sh %}
+$ gpg –gen-key
+{% endhighlight %}
+
+*ALWAYS SELECT DEFAULT CHOICES AND DON'T USE AN EMPTY PASSPHRASE*
+
+Enter your personal information like here :
+
+* Real Name : Arnaud Héritier
+* Comment : eXo Platform CODE SIGNING KEY
+* Email Address : link:mailto:a&#x72;&#110;&#x61;&#x75;&#100;&#46;h&#x65;&#x72;i&#116;&#x69;&#x65;&#114;&#64;&#101;&#120;&#111;&#x70;&#x6c;&#97;&#116;&#102;&#111;&#x72;&#109;&#46;&#99;&#x6f;&#109;[a&#x72;&#110;&#x61;&#x75;&#100;&#46;h&#x65;&#x72;i&#116;&#x69;&#x65;&#114;&#64;&#101;&#120;&#111;&#x70;&#x6c;&#97;&#116;&#102;&#111;&#x72;&#109;&#46;&#99;&#x6f;&#109;]
+
+Your key is created.
+
+You can list the key you just generated with :
+
+{% highlight sh %}
+$ gpg –list-key
+
+== /Users/arnaud/.gnupg/pubring.gpg
+
+pub 4096R/2CF0CC82 2009-11-17
+uid Arnaud Héritier (eXo Platform CODE SIGNING KEY) link:mailto:&#97;&#x72;&#110;&#x61;&#x75;&#x64;&#x2e;&#104;&#x65;&#114;&#105;t&#105;&#x65;&#x72;@&#x65;&#120;&#111;&#112;&#x6c;&#97;t&#x66;&#111;&#114;&#x6d;&#46;&#x63;&#111;&#109;[&#97;&#x72;&#110;&#x61;&#x75;&#x64;&#x2e;&#104;&#x65;&#114;&#105;t&#105;&#x65;&#x72;@&#x65;&#120;&#111;&#112;&#x6c;&#97;t&#x66;&#111;&#114;&#x6d;&#46;&#x63;&#111;&#109;]
+sub 4096R/37540EAE 2009-11-17
+{% endhighlight %}
+
+You send your key to a PGP server (you use the ID from the "pub" line)
+
+{% highlight sh %}
+gpg –keyserver hkp://pgp.mit.edu[hkp://pgp.mit.edu] –send-keys 2CF0CC82
+{% endhighlight %}
+
+Your GPG key is now ready to be used
+
+=== Configure your GPG Key for Maven
+
+Fill the GPG keyname and passphrase in the exo-release profile of your maven settings like described in link:#Advanced[Advanced settings]
+
+{% highlight sh %}
+ <profile>
+ <id>exo-release</id>
+ <properties>
+ &lt;gpg.keyname&gt;2CF0CC82&lt;/gpg.keyname&gt;<!-- This is the public ID is displayed with the gpg list-key command described above -->
+ &lt;gpg.passphrase&gt;My awesome passphrase&lt;/gpg.passphrase&gt;
+ </properties>
+ </profile>
+{% endhighlight %}
+
+=== Test it
+
+Clone this project : `git@github.com:exodev/maven-sandbox-project.git`
+
+Launch the command : `mvn install -Pexo-release`
+
+You should see .asc files installed along others artifacts in the `target` directory of the project
+
+To end tests, try to release this project : `mvn release:prepare` followed by `mvn release:perform`.
+
+*You are ready. Your environment is setup to do a release with GPG signature.*
+
+Don't forget to logon into https://repository.exoplatform.org[https://repository.exoplatform.org] and drop your staging repository
+
+=== More info
+
+* http://www.sonatype.com/people/2010/01/how-to-generate-pgp-signatures-with-maven/[http://www.sonatype.com/people/2010/01/how-to-generate-pgp-signatures-with-maven/]
+* http://www.apache.org/dev/release-signing.html[http://www.apache.org/dev/release-signing.html]
+* http://www.apache.org/dev/publishing-maven-artifacts.html#gpg[http://www.apache.org/dev/publishing-maven-artifacts.html#gpg]
+* http://maven.apache.org/plugins/maven-gpg-plugin[http://maven.apache.org/plugins/maven-gpg-plugin]
