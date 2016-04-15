@@ -18,8 +18,8 @@ The version *3.2.3* of http://maven.apache.org/download.cgi[Apache Maven] is cur
 . Add the path of `apache-maven-X.Y.Z/bin` in your `PATH` environment variable.
 ** On Windows use the preferences screen of "Environment Variables"
 ** On Linux/MacOS export the variable PATH from a startup script like .bash_profile (it depends of the OS and the shell you are using)
-* Add a system environment variable `MAVEN_OPTS` (it could be in a .profile startup script on Linux/MacOS operating systems or in the global environment variables panel on Windows)with the value `-Xshare:auto -Xms128M -Xmx1G -XX:MaxPermSize=256M`
-* Run `mvn --version` to verify that it is correctly installed.
+. Add a system environment variable `MAVEN_OPTS` (it could be in a .profile startup script on Linux/MacOS operating systems or in the global environment variables panel on Windows)with the value `-Xshare:auto -Xms128M -Xmx1G -XX:MaxPermSize=256M`
+. Run `mvn --version` to verify that it is correctly installed.
 
 == Configure Apache Maven
 
@@ -27,27 +27,28 @@ The version *3.2.3* of http://maven.apache.org/download.cgi[Apache Maven] is cur
 
 Since Platform 4, no specific settings are required to build eXo public projects. Just clone any project and launch `mvn install`
 
-<a name="Advanced"></a>
-
 === Advanced setup
 
 If you need to release a project or to build a project relying on private or staging binaries you'll need to customize your maven settings.
 
-Using link:/resources/build/maven/settings.xml[our template] create a file `settings.xml` in your `home directory` under a directory called `.m2` (if you already launched maven this directory must already exist and it should contain a subdirectory `repository` where Maven stores all artifacts it processes).
+Using link:../resources/build/maven/settings.xml[our template] create a file `settings.xml` in your `home directory` under a directory called `.m2` (if you already launched maven this directory must already exist and it should contain a subdirectory `repository` where Maven stores all artifacts it processes).
 
-{% gist exo-swf/a05132085d70c7541acb settings.xml %}
+[source,xml]
+----
+include::../../../resources/build/maven/settings.xml[]
+----
 
-In the `~/.m2/settings.xml` configuration file you have to fill your credentials to access to protected binaries or to publish artifacts on repository.exoplatform.org. For a better security, you can encrypt passwords in your settings file, however you must first configure a master password. For more information on both server passwords and the master password, see the http://maven.apache.org/guides/mini/guide-encryption.html[Guide to password encryption] and the dedicated chapter in the http://www.sonatype.com/books/mvnref-book/reference/appendix-settings-sect-encrypting-passwords.html[Maven Reference Guide]. To release a project you have also to define the GPG key to use and its passphase (see link:#GPG[the GPG setup guide]).
+In the `~/.m2/settings.xml` configuration file you have to fill your credentials to access to protected binaries or to publish artifacts on repository.exoplatform.org. For a better security, you can encrypt passwords in your settings file, however you must first configure a master password. For more information on both server passwords and the master password, see the http://maven.apache.org/guides/mini/guide-encryption.html[Guide to password encryption] and the dedicated chapter in the http://www.sonatype.com/books/mvnref-book/reference/appendix-settings-sect-encrypting-passwords.html[Maven Reference Guide]. To release a project you have also to define the GPG key to use and its passphase (see xref:GPG[the GPG setup guide]).
 
 When your setup is done you can activate the following profiles :
 
-* `-Pexo-release` : Automatically activated while releasing projects. This profile is also activated on our CI server. Your GPG key must be configured (see link:#GPG[the GPG setup guide]).
+* `-Pexo-release` : Automatically activated while releasing projects. This profile is also activated on our CI server. Your GPG key must be configured (see xref:GPG[the GPG setup guide]).
 * `-Pexo-private` : To access to private binaries on repository.exoplatform.org (eXo employees only).
 * `-Pexo-staging` : To access to staging binaries (releases in validation) on repository.exoplatform.org (eXo employees only). *TAKE CARE TO ACTIVATE IT ONLY IF REQUIRED.* These repositories are delivering binaries considered by maven as released but allowed to be replaced. Maven never updates released binaries thus you have to cleanup your local repository to grab an updated version.
 * `-Pexo-cp` : To access to custom projects binaries on repository.exoplatform.org (eXo employees only).
 * `-Pjboss-staging` : To access to staging binaries on repository.jboss.org. *TAKE CARE TO ACTIVATE IT ONLY IF REQUIRED.* These repositories are delivering binaries considered by maven as released but allowed to be replaced. Maven never updates released binaries thus you have to cleanup your local repository to grab an updated version.
 
-<a name="GPG"></a>
+[[GPG]]
 
 === Maven and GPG
 
@@ -57,23 +58,26 @@ When your setup is done you can activate the following profiles :
 
 For http://brew.sh/[homebrew] users :
 
-{% highlight sh %}
+[source,shell]
+----
 brew install gnupg
-{% endhighlight %}
+----
 
 For https://www.macports.org/[macport] users :
 
-{% highlight sh %}
+[source,shell]
+----
 sudo port install gnupg
-{% endhighlight %}
+----
 
 Others, you can use the http://macgpg.sourceforge.net/[native package].
 
 ===== Ubuntu
 
-{% highlight sh %}
+[source,shell]
+----
 sudo aptitude install gnupg
-{% endhighlight %}
+----
 
 ===== Windows
 
@@ -81,7 +85,8 @@ TBD
 
 ==== Validate your installation
 
-{% highlight sh %}
+[source,shell]
+----
 $ gpg –version
 gpg (GnuPG) 1.4.10
 Copyright (C) 2008 Free Software Foundation, Inc.
@@ -96,7 +101,7 @@ Cipher: 3DES, CAST5, BLOWFISH, AES, AES192, AES256, TWOFISH, CAMELLIA128,
  CAMELLIA192, CAMELLIA256
 Hash: MD5, SHA1, RIPEMD160, SHA256, SHA384, SHA512, SHA224
 Compression: Uncompressed, ZIP, ZLIB, BZIP2
-{% endhighlight %}
+----
 
 ==== Generate your private GPG Key
 
@@ -104,25 +109,28 @@ Compression: Uncompressed, ZIP, ZLIB, BZIP2
 
 Enforce the level of encryption. Edit `~/.gnupg/gpg.conf`
 
-{% highlight sh %}
+[source,shell]
+----
 $ vi .gnupg/gpg.conf
-{% endhighlight %}
+----
 
 At the end of the file add :
 
-{% highlight sh %}
+[source,shell]
+----
 personal-digest-preferences SHA512
 cert-digest-algo SHA512
 default-preference-list SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB BZIP2 ZIP Uncompressed
-{% endhighlight %}
+----
 
 ===== Generate the key
 
 Launch the key generation 
 
-{% highlight sh %}
+[source,shell]
+----
 $ gpg –gen-key
-{% endhighlight %}
+----
 
 *ALWAYS SELECT DEFAULT CHOICES AND DON'T USE AN EMPTY PASSPHRASE*
 
@@ -136,21 +144,20 @@ Your key is created.
 
 You can list the key you just generated with :
 
-{% highlight sh %}
+[source,shell]
+----
 $ gpg –list-key
-
-=== /Users/arnaud/.gnupg/pubring.gpg
-
 pub 4096R/2CF0CC82 2009-11-17
-uid Arnaud Héritier (eXo Platform CODE SIGNING KEY) link:mailto:&#97;&#x72;&#110;&#x61;&#x75;&#x64;&#x2e;&#104;&#x65;&#114;&#105;t&#105;&#x65;&#x72;@&#x65;&#120;&#111;&#112;&#x6c;&#97;t&#x66;&#111;&#114;&#x6d;&#46;&#x63;&#111;&#109;[&#97;&#x72;&#110;&#x61;&#x75;&#x64;&#x2e;&#104;&#x65;&#114;&#105;t&#105;&#x65;&#x72;@&#x65;&#120;&#111;&#112;&#x6c;&#97;t&#x66;&#111;&#114;&#x6d;&#46;&#x63;&#111;&#109;]
+uid Arnaud Héritier (eXo Platform CODE SIGNING KEY) arnaud.heritier@exoplatform.com
 sub 4096R/37540EAE 2009-11-17
-{% endhighlight %}
+----
 
 You send your key to a PGP server (you use the ID from the "pub" line)
 
-{% highlight sh %}
-gpg –keyserver hkp://pgp.mit.edu[hkp://pgp.mit.edu] –send-keys 2CF0CC82
-{% endhighlight %}
+[source,shell]
+----
+$ gpg –keyserver hkp://pgp.mit.edu[hkp://pgp.mit.edu] –send-keys 2CF0CC82
+----
 
 Your GPG key is now ready to be used
 
@@ -158,15 +165,16 @@ Your GPG key is now ready to be used
 
 Fill the GPG keyname and passphrase in the exo-release profile of your maven settings like described in link:#Advanced[Advanced settings]
 
-{% highlight sh %}
+[source,xml]
+----
  <profile>
- <id>exo-release</id>
- <properties>
- &lt;gpg.keyname&gt;2CF0CC82&lt;/gpg.keyname&gt;<!-- This is the public ID is displayed with the gpg list-key command described above -->
- &lt;gpg.passphrase&gt;My awesome passphrase&lt;/gpg.passphrase&gt;
- </properties>
+   <id>exo-release</id>
+   <properties>
+     <gpg.keyname>2CF0CC82</gpg.keyname><!-- This is the public ID is displayed with the gpg list-key command described above -->
+     <gpg.passphrase>My awesome passphrase</gpg.passphrase>
+   </properties>
  </profile>
-{% endhighlight %}
+----
 
 ==== Test it
 

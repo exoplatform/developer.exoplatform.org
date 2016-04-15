@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings 
+  xmlns="http://maven.apache.org/SETTINGS/1.0.0" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+  <servers>
+    <!-- eXo Platform credentials -->
+    <!-- Used to upload binaries on repository.exoplatform.org -->
+    <server>
+      <id>repository.exoplatform.org</id>
+      <username><!-- Your eXo LDAP/Crowd Identifier --></username>
+      <password><!-- Your eXo LDAP/Crowd Password --></password>
+    </server>
+    <!-- Used to download private binaries from repository.exoplatform.org -->
+    <server>
+      <id>exo.private</id>
+      <username><!-- Your eXo LDAP/Crowd Identifier --></username>
+      <password><!-- Your eXo LDAP/Crowd Password --></password>
+    </server>
+    <!-- Used to download staging binaries from repository.exoplatform.org -->
+    <server>
+      <id>exo.staging</id>
+      <username><!-- Your eXo LDAP/Crowd Identifier --></username>
+      <password><!-- Your eXo LDAP/Crowd Password --></password>
+    </server>
+    <!-- Used to download custom projects binaries from repository.exoplatform.org -->
+    <server>
+      <id>exo.cp</id>
+      <username><!-- Your eXo LDAP/Crowd Identifier --></username>
+      <password><!-- Your eXo LDAP/Crowd Password --></password>
+    </server>
+    <!-- Used to release projects on repository.jboss.org -->
+     <server>
+      <id>jboss-releases-repository</id>
+      <username><!-- Your JBoss.org Identifier --></username>
+      <password><!-- Your JBoss.org Password --></password>
+    </server>
+  </servers>
+  <mirrors>
+    <mirror>
+      <id>exo-mirror</id>
+      <mirrorOf>external:*,!exo.private,!exo.cp,!exo.staging</mirrorOf>
+      <url>https://repository.exoplatform.org/public</url>
+    </mirror>
+  </mirrors>
+  <profiles>
+    <profile>
+      <id>exo-central</id>
+      <!-- This "hack" change the behavior of maven to let it use our public mirror
+      as the central repository (with snapshots activation). 
+      The URL is never used and is overrided by the mirror entry.
+      -->
+      <repositories>
+        <repository>
+          <id>central</id>
+          <url>http://fake</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>central</id>
+          <url>http://fake</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile> 
+    <!-- Specific settings used while releasing a project -->
+    <profile>
+      <id>exo-release</id>
+      <properties>
+        <gpg.keyname><!-- The GPG Key to use to sign eXo releases --></gpg.keyname>
+        <gpg.passphrase><!-- The passphrase of your GPG Key --></gpg.passphrase>
+      </properties>
+    </profile>
+    <profile>
+      <id>exo-private</id>
+      <!-- Repositories to download eXo private binaries -->
+      <repositories>
+        <repository>
+          <id>exo.private</id>
+          <url>https://repository.exoplatform.org/private</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>exo.private</id>
+          <url>https://repository.exoplatform.org/private</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+    <profile>
+      <!-- Repositories to download eXo custom projects binaries and products patchs -->    
+      <id>exo-cp</id>
+      <repositories>
+        <repository>
+          <id>exo.cp</id>
+          <url>https://repository.exoplatform.org/cp</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>exo.cp</id>
+          <url>https://repository.exoplatform.org/cp</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+    <profile>
+      <id>exo-staging</id>
+      <!-- Repositories to download eXo staging binairies -->
+      <!-- TAKE CARE TO ACTIVATE IT ONLY IF REQUIRED -->
+      <!-- These repositories are delivering binaries marked as released but allowed to be replaced -->
+      <!-- Maven never updates released binaries thus you have to cleanup your local repository to grab an updated version -->
+      <repositories>
+        <repository>
+          <id>exo.staging</id>
+          <url>https://repository.exoplatform.org/staging</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>exo.staging</id>
+          <url>https://repository.exoplatform.org/staging</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+    <profile>
+      <id>jboss-staging</id>
+      <!-- Repositories to download JBoss staging binairies -->
+      <!-- TAKE CARE TO ACTIVATE IT ONLY IF REQUIRED -->
+      <!-- These repositories are delivering binaries marked as released but allowed to be replaced -->
+      <!-- Maven never updates released binaries thus you have to cleanup your local repository to grab an updated version -->      
+      <repositories>
+        <repository>
+          <id>jboss.staging</id>
+          <url>https://repository.jboss.org/nexus/content/groups/staging/</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>jboss.staging</id>
+          <url>https://repository.jboss.org/nexus/content/groups/staging/</url>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+    <!-- This profile is always activated and let you define properties for dependent environment stuffs -->
+    <profile>
+      <id>local-properties</id>
+      <properties>
+        <!--
+        <exo.projects.directory.dependencies>${user.home}/Applications</exo.projects.directory.dependencies>
+        <exo.projects.app.tomcat.version>apache-tomcat-6.0.29</exo.projects.app.tomcat.version>
+        <exo.projects.app.jboss.version>jboss-5.1.0.GA</exo.projects.app.jboss.version>
+        -->
+      </properties>
+    </profile>    
+  </profiles>
+  <activeProfiles>
+    <!-- make these profiles active all the time -->
+    <activeProfile>exo-central</activeProfile>
+    <activeProfile>local-properties</activeProfile>
+  </activeProfiles>
+</settings>
