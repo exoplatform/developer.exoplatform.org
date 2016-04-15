@@ -1,5 +1,5 @@
 :toc: right
-:toclevels: 4
+:toclevels: 3
 :numbered:
 :hide-uri-scheme:
 :show-authors:
