@@ -74,10 +74,7 @@ You just add a section `[alias]` in your `~/.gitconfig` file with entries like b
 
 [source,shell]
 ----
-\[alias]
-
-\[source]
-\----
+[alias]
 ##### Basic aliases
 # Long status
 st = status
@@ -152,8 +149,6 @@ prune-all = !git remote | xargs -n 1 git remote prune
 aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
 # Show upstream for the current branch
 upstream = !git for-each-ref --format='%(upstream:short)' `git symbolic-ref HEAD`
-\----
-
 ----
 
 == Git & IDEs
