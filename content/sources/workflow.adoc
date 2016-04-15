@@ -50,14 +50,6 @@ Branching model are 7 kinds of branch :
 * `integration/xxx` : Integration branches are dedicated branch to automatic integration task (like Crowdin translation).
 * `poc/xxx` : Poc branches are dedicated branch to develop a Prove of Concept (PoC).
 
-=== Master Branch
-
-Master branch always reflect a production ready state (for community website for instance). It’s a snapshot of the Develop Branch at a given time.
-
-Commit directly to Master branch is FORBIDDEN (except exceptional circumstance: hotfix).
-
-[![master branch workflow](/assets/images/docs/scm/master-branch.png =400x)](/assets/images/docs/scm/master-branch.png "Full Size Image")
-
 === Develop Branch
 
 Develop branch contains the latest delivered development changes.
