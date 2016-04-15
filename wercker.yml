@@ -1,0 +1,16 @@
+box: asciidoctor/docker-asciidoctor
+dev:
+  steps:
+    # Web Server (port 8000)
+    - script:
+        name: start python webserver
+        code: |
+          cd /documents && python -m SimpleHTTPServer &
+          echo "HTTP Server listening..."
+    # listener to adoc files
+    - internal/watch:
+        code: |
+          asciidoctor-pdf -D /documents/ *.adoc **/*.adoc
+          asciidoctor -a stylesheet=css/exo.css -D /documents/ *.adoc **/*.adoc
+          cp -R images /documents/images
+        reload: true
