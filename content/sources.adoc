@@ -5,3 +5,5 @@ include::sources/repositories.adoc[leveloffset=+1]
 include::sources/settings.adoc[leveloffset=+1]
 
 include::sources/workflow.adoc[leveloffset=+1]
+
+include::sources/cheatsheet.adoc[leveloffset=+1]
