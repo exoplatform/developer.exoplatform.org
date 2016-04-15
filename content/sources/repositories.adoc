@@ -4,8 +4,6 @@ permalink: /docs/scm/git/repositories/
 redirect_from:
  - /docs/scm/git-repositories.html
 
-== tags: [git,github]
-
 = Platform codebase
 
 eXo Platform is built from several projects stored in different Git repositories.

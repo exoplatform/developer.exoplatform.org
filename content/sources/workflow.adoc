@@ -4,8 +4,6 @@ permalink: /docs/scm/git/workflow/
 redirect_from:
  - /docs/scm/git-workflow.html
 
-== tags: [git,gitflow]
-
 Our workflow is built on two principles :
 
 * The *repository architecture* (development vs blessed) that has to be followed by *all projects involved in products* produced eXo (and thus that require to be supported).

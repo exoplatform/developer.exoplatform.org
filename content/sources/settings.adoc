@@ -4,8 +4,6 @@ permalink: /docs/scm/git/settings/
 redirect_from:
  - /docs/scm/git-settings.html
 
-== tags: [git]
-
 = GitHub
 
 GitHub is the platform we chose to host our Git repositories.

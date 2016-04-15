@@ -5,8 +5,6 @@ permalink: /docs/build/maven/setup/
 redirect_from:
  - /docs/build/maven-settings.html
 
-== tags: [maven,installation,configuration]
-
 = Prerequisites
 
 To build eXo projects you need to install a Java http://www.oracle.com/technetwork/java/javase/downloads/index.html[JDK] 6 or 7 depending of the Platform version you are targetting :

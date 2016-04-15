@@ -4,8 +4,6 @@ permalink: /docs/ide/intellij/settings/
 redirect_from:
  - /docs/ide/intellij-settings.html
 
-== tags: [intellij]
-
 Intellij IDEA users must install the plugin http://plugins.jetbrains.com/plugin/?id=6546[Eclipse Code Formatter] and import Eclipse settings files from link:{{site.github.repository_url}}/tree/master/resources/ide/eclipse/[/resources/ide/eclipse].
 
 * Create a specific profile (ex: "eXo")
