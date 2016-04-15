@@ -1,9 +1,9 @@
 = IntelliJ - Settings
 
-Intellij IDEA users must install the plugin http://plugins.jetbrains.com/plugin/?id=6546[Eclipse Code Formatter] and import Eclipse settings files from link:{{site.github.repository_url}}/tree/master/resources/ide/eclipse/[/resources/ide/eclipse].
+Intellij IDEA users must install the plugin http://plugins.jetbrains.com/plugin/?id=6546[Eclipse Code Formatter] and import Eclipse settings files from link:https://github.com/exoplatform/developer.exoplatform.org/tree/master/resources/ide/eclipse/[/resources/ide/eclipse].
 
 * Create a specific profile (ex: "eXo")
-* Use the file link:{{BASE_PATH}}/resources/ide/eclipse/exo-Java-CodeStyle-Formatter.xml[exo-Java-CodeStyle-Formatter.xml] for "Eclipse Java Formatter config file"
-* Use the file link:{{BASE_PATH}}/resources/ide/eclipse/exo-Java-CodeStyle-OrganizeImports.importorder[exo-Java-CodeStyle-OrganizeImports.importorder] for "Optimize Imports from file"
+* Use the file link:../resources/ide/eclipse/exo-Java-CodeStyle-Formatter.xml[exo-Java-CodeStyle-Formatter.xml] for "Eclipse Java Formatter config file"
+* Use the file link:../resources/ide/eclipse/exo-Java-CodeStyle-OrganizeImports.importorder[exo-Java-CodeStyle-OrganizeImports.importorder] for "Optimize Imports from file"
 
-image:{{BASE_PATH}}/assets/images/docs/ide/intellij-eclipse-code-formatter.png[IntelliJ Eclipse Code Formatter]
+image::../../images/intellij-eclipse-code-formatter.png[IntelliJ Eclipse Code Formatter]
