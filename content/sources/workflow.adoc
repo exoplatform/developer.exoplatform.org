@@ -55,7 +55,7 @@ Branching model are 7 kinds of branch :
 Develop branch contains the latest delivered development changes.
 This is our backbone where all the different fix and new feature are mixed with each other.
 
-image::git-workflow-develop-branch.svg[alt="git workflow develop branch"), width="1000"]
+image::git-workflow-develop-branch.png[alt="git workflow develop branch", width="1000"]
 
 === Actions
 
@@ -82,7 +82,7 @@ git push
 
 Feature branches are dedicated branch to develop a new feature.
 
-image::git-workflow-feature-branch.svg[alt="git workflow feature branch"), width="300"]
+image::git-workflow-feature-branch.png[alt="git workflow feature branch", width="300"]
 
 === Actions
 
@@ -145,7 +145,7 @@ Fix Branch are dedicated branch to fix a bug. The validation process may be diff
 
 A fix branch is always created from Develop branch (except exceptional circumstance: fix on stable only).
 
-image::git-workflow-fix-branch.svg[alt="git workflow fix branch"), width="400"]
+image::git-workflow-fix-branch.png[alt="git workflow fix branch", width="400"]
 
 === Actions
 
@@ -206,7 +206,7 @@ git branch -d fix/issue
 
 Stable branch are used to perform releases and write / accept fix.
 
-image::git-workflow-stable-branch.svg[alt="git workflow stable branch"), width="800"]
+image::git-workflow-stable-branch.png[alt="git workflow stable branch", width="800"]
 
 === Actions
 
@@ -324,7 +324,7 @@ image::git-workflow-integration-branch.png[alt="git workflow integration branch"
 
 Poc branches are dedicated branch to develop a Prove of Concept (PoC).
 
-image::git-workflow-poc-branch.svg[alt="poc branches workflow", width="300")]
+image::git-workflow-poc-branch.png[alt="poc branches workflow", width="300")]
 
 === Actions
 
