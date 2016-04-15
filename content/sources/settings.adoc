@@ -24,59 +24,60 @@ It is recommended to create an SSH private key (with a password) and to use it t
 
 By default you have at least to setup your default identity that will be used for all git instances on the system if you don't override them locally.
 
-{% highlight sh %}
+[source,shell]
+----
 $ git config –global user.name "John Doe"
-$ git config –global user.email "link:mailto:&#106;d&#111;&#x65;&#x40;&#x65;&#x78;&#111;&#x70;&#x6c;a&#116;&#x66;&#111;r&#109;&#46;&#99;o&#109;[&#106;d&#111;&#x65;&#x40;&#x65;&#x78;&#111;&#x70;&#x6c;a&#116;&#x66;&#111;r&#109;&#46;&#99;o&#109;]"
-{% endhighlight %}
+$ git config –global user.email "jdoe@exoplatform.com"
+----
 
 We recommend also :
 
-* 
+* to configure git to activate use colors if you terminal supports it :
 
-to configure git to activate use colors if you terminal supports it :
-{% highlight sh %}
+[source,shell]
+----
 $ git config color.ui true
-{% endhighlight %}
+----
 
-* 
+* to configure git to push only the current branch by default to avoid to send to the server some changes in others branches you weren't ready to share
 
-to configure git to push only the current branch by default to avoid to send to the server some changes in others branches you weren't ready to share
-{% highlight sh %}
+[source,shell]
+----
 $ git config –global push.default current
-{% endhighlight %}
+----
 
-* 
+* to setup line endings preferences for Unix/Mac users
 
-to setup line endings preferences for Unix/Mac users
-{% highlight sh %}
+[source,shell]
+----
 $ git config –global core.autocrlf input
 $ git config –global core.safecrlf true
-{% endhighlight %}
+----
 
-* 
+* to setup line endings preferences for Windows users
 
-to setup line endings preferences for Windows users
-{% highlight sh %}
+[source,shell]
+----
 $ git config –global core.autocrlf true
 $ git config –global core.safecrlf true
-{% endhighlight %}
+----
 
-* 
+* to reduce the number of files to consider when performing rename detection during a merge. The merge is working pretty well on small repositories (with move and rename of files). But it's not working on large repositories as the detection of file renaming is O(n²), so we need to update some threshold (more explanations are available in this post : http://blogs.atlassian.com/2011/10/confluence_git_rename_merge_oh_my/[http://blogs.atlassian.com/2011/10/confluence_git_rename_merge_oh_my/]) :
 
-to reduce the number of files to consider when performing rename detection during a merge. The merge is working pretty well on small repositories (with move and rename of files). But it's not working on large repositories as the detection of file renaming is O(n²), so we need to update some threshold (more explanations are available in this post : http://blogs.atlassian.com/2011/10/confluence_git_rename_merge_oh_my/[http://blogs.atlassian.com/2011/10/confluence_git_rename_merge_oh_my/]) :
-
-{% highlight sh %}
+[source,shell]
+----
  git config –global merge.renameLimit 10000
-{% endhighlight %}
+----
 
 * to configure git to add some command aliases to easily call them with `git &lt;ALIAS_NAME&gt;`.
-You just add a section `[alias]`in your `~/.gitconfig` file with entries like bellow
+You just add a section `[alias]` in your `~/.gitconfig` file with entries like bellow
 
-{% highlight ini %}
-[alias]
-
-[source]
+[source,shell]
 ----
+\[alias]
+
+\[source]
+\----
 ##### Basic aliases
 # Long status
 st = status
@@ -151,11 +152,11 @@ prune-all = !git remote | xargs -n 1 git remote prune
 aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
 # Show upstream for the current branch
 upstream = !git for-each-ref --format='%(upstream:short)' `git symbolic-ref HEAD`
+\----
+
 ----
 
-{% endhighlight %}
-
-== Git &amp; IDEs
+== Git & IDEs
 
 Git is natively supported by all IDE :
 
