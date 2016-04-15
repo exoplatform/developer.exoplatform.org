@@ -21,6 +21,24 @@ The version *3.2.3* of http://maven.apache.org/download.cgi[Apache Maven] is cur
 . Add a system environment variable `MAVEN_OPTS` (it could be in a .profile startup script on Linux/MacOS operating systems or in the global environment variables panel on Windows)with the value `-Xshare:auto -Xms128M -Xmx1G -XX:MaxPermSize=256M`
 . Run `mvn --version` to verify that it is correctly installed.
 
+[NOTE]
+.Additional documentations
+====
+* link:http://www.sonatype.com/books/mvnref-book/reference/installation.html[Maven: The Complete Reference - Chapter 2. Installing Maven]
+* link:http://maven.apache.org/download.html[Maven website - Installing Maven]
+====
+
+[IMPORTANT]
+.Maven and MacOSX
+====
+Apple provides for several years now, Maven as a standard tool in MacOSX distributions.
+You can see the version provided with `mvn --version`.
+You can find where the mvn script is located with which mvn (in theory in /usr/bin).
+It recommended to deactivate the one provided with MacOS X to use the one you'll define yourself.
+Take care if you upgrade your system, because Apple can restore the default version on your system.
+To deactivate the Maven version bundled in OSX, just remove the symlink : `sudo rm /usr/bin/mvn`
+====
+
 == Configure Apache Maven
 
 === Basic setup
