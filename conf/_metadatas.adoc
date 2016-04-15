@@ -1,2 +1,2 @@
-Maxime Gréau <mgreau@xoplatform.com>; Thomas Delhoménie <tdelhomenie@exoplatform.com>
+Maxime Gréau <mgreau@exoplatform.com>; Thomas Delhoménie <tdelhomenie@exoplatform.com>
 v1.0.0, 2016-04-13
