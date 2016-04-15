@@ -15,7 +15,7 @@ Development repositories are forked from blessed repositories.
 
 *This strategy is applied to all repositories/projects involved in eXo products.* Others projects are using a single repository hosted on "exoplatform" organization.
 
-image:/assets/images/docs/scm/git-organization.png[git repositories,link=/assets/images/docs/scm/git-organization.png]
+image::../../images/git-organization.png[alt="git repositories")]
 
 === Development repository
 
@@ -52,23 +52,18 @@ Branching model are 7 kinds of branch :
 
 === Master Branch
 
-[source,Engineering```]
-----
-
 Master branch always reflect a production ready state (for community website for instance). It’s a snapshot of the Develop Branch at a given time.
 
 Commit directly to Master branch is FORBIDDEN (except exceptional circumstance: hotfix).
 
 [![master branch workflow](/assets/images/docs/scm/master-branch.png =400x)](/assets/images/docs/scm/master-branch.png "Full Size Image")
 
-## Develop Branch
-
-----
+=== Develop Branch
 
 Develop branch contains the latest delivered development changes.
 This is our backbone where all the different fix and new feature are mixed with each other.
 
-link:/assets/images/docs/scm/develop-branch.png[![develop branch workflow](/assets/images/docs/scm/develop-branch.png =1000x)]
+image::../../images/git-workflow-develop-branch.svg[alt="git workflow develop branch"), width="1000"]
 
 === Actions
 
@@ -81,61 +76,60 @@ _Release process applies on master_
 *Who:* PLF Team with support of team responsible of each project
 
 *How:*
-{% highlight sh %}
+[source,shell]
+----
 git checkout develop
 git pull
 git checkout master
 git pull
 git merge develop
 git push
-{% endhighlight %}
+----
 
 == Feature Branch
 
-[source,Engineering```]
-----
-
 Feature branches are dedicated branch to develop a new feature.
 
-[![feature branches workflow](/assets/images/docs/scm/feature-branch.png =300x)](/assets/images/docs/scm/feature-branch.png "Full Size Image")
+image::../../images/git-workflow-feature-branch.svg[alt="git workflow feature branch"), width="300"]
 
-### Actions
+=== Actions
 
-#### Create a new Feature Branch
+==== Create a new Feature Branch
 
-**When:** A new feature is specified and planified.
+*When:* A new feature is specified and planified.
 
-**Who:** PL/TL
+*Who:* PL/TL
 
-**How:**
+*How:*
 
-If you want the branch deploy on Acceptance, do not create the branch by yourself but create a SWF ticket on Jira for the full package (Branches+CI+Acceptance). 
+* If you want the branch deploy on Acceptance, do not create the branch by yourself but create a SWF ticket on Jira for the full package (Branches+CI+Acceptance).
+* If it’s a local feature project without need for CI or Acceptance you can create it by yourself.
 
-If it’s a local feature project without need for CI or Acceptance you can create it by yourself.
+==== Rebase Develop to Feature Branch
 
-#### Rebase Develop to Feature Branch
+*When:* Frequently
 
-**When:** Frequently
+*Who:* Team responsible of the branch with support of team responsible each project.
 
-**Who:** Team responsible of the branch with support of team responsible each project.
-
-**How:**
-{% highlight sh %}
+*How:*
+[source,shell]
+----
 git checkout develop
 git pull
 git checkout feature/x
 git rebase develop
 git push --force
-{% endhighlight %}
+----
 
-#### Merge Feature Branch to Develop
+==== Merge Feature Branch to Develop
 
-**When:** Feature has been successfully tested by FQA. VPs give a GO.
+*When:* Feature has been successfully tested by FQA. VPs give a GO.
 
-**Who:** Team responsible of the branch with support of team responsible of each project
+*Who:* Team responsible of the branch with support of team responsible of each project
 
-**How:**
-{% highlight sh %}
+*How:*
+[source,shell]
+----
 git checkout feature/x
 git rebase -i origin/develop
 (remove initial commit)
@@ -143,27 +137,23 @@ git checkout develop
 git pull
 git merge --no-ff feature/x
 git push
-{% endhighlight %}
-
-#### Remove a Feature Branch
-
-**When:** Just after the merge of the feature branch to Develop
-
-**Who:** PL/TL
-
-**How:**
-
-Create SWF ticket on Jira to remove the full package (Branches+CI+Acceptance).
-
-## Fix Branch
-
 ----
+
+==== Remove a Feature Branch
+
+*When:* Just after the merge of the feature branch to Develop
+
+*Who:* PL/TL
+
+*How:* Create SWF ticket on Jira to remove the full package (Branches+CI+Acceptance).
+
+== Fix Branch
 
 Fix Branch are dedicated branch to fix a bug. The validation process may be different if the bug has been raised by FQA/TQA or by SM.
 
 A fix branch is always created from Develop branch (except exceptional circumstance: fix on stable only).
 
-link:/assets/images/docs/scm/fix-branch.png[![fix branches workflow](/assets/images/docs/scm/fix-branch.png =400x)]
+image::../../images/git-workflow-fix-branch.svg[alt="git workflow fix branch"), width="400"]
 
 === Actions
 
@@ -174,12 +164,13 @@ link:/assets/images/docs/scm/fix-branch.png[![fix branches workflow](/assets/ima
 *Who:* Team responsible to fix the issue.
 
 *How:*
-{% highlight sh %}
+[source,shell]
+----
 git checkout develop
 git pull
 git checkout -b fix/issue
 git push
-{% endhighlight %}
+----
 
 ==== Merge a Fix Branch to Develop
 
@@ -194,7 +185,8 @@ git push
 * If issue raised by SM: SM
 
 *How:*
-{% highlight sh %}
+[source,shell]
+----
 git checkout fix/issue
 git pull
 git rebase origin/develop
@@ -203,7 +195,7 @@ git pull
 git merge fix/issue –squash
 git commit -a
 git push
-{% endhighlight %}
+----
 
 ==== Remove a Fix Branch
 
@@ -212,85 +204,85 @@ git push
 *Who:* Team responsible to fix the issue.
 
 *How:*
-{% highlight sh %}
+[source,shell]
+----
 git push origin –delete fix/issue
 git branch -d fix/issue
-{% endhighlight %}
+----
 
 == Stable Branch
 
-[source,GSS```]
-----
-
 Stable branch are used to perform releases and write / accept fix.
 
-[![stable branches workflow](/assets/images/docs/scm/stable-branch.png =800x)](/assets/images/docs/scm/stable-branch.png "Full Size Image")
+image::../../images/git-workflow-stable-branch.svg[alt="git workflow stable branch"), width="800"]
 
-### Actions
+=== Actions
 
-#### Create a new Stable Branch
+==== Create a new Stable Branch
 
-**When:** When create the first Release Candidate version
+*When:* When create the first Release Candidate version
 
-**Who:** SWF
+*Who:* SWF
 
-**How:**
+*How:* With a script similar to [createFB.sh](https://github.com/exoplatform/swf-scripts/blob/master/createFB.sh)
 
-With a script similar to [createFB.sh](https://github.com/exoplatform/swf-scripts/blob/master/createFB.sh)
+==== Create a Fix Branch to fix Stable Branch
 
-#### Create a Fix Branch to fix Stable Branch
+*In exceptional circumstance*
 
-**In exceptional circumstance**
+*When:* A fix need to be done on a specific version but not on the on development version (fix a performance issue for instance)
 
-**When:** A fix need to be done on a specific version but not on the on development version (fix a performance issue for instance) 
+*Who:* Team responsible to fix the issue after a Go from SM.
 
-**Who:** Team responsible to fix the issue after a Go from SM.
-
-**How:**
-{% highlight sh %}
+*How:*
+[source,shell]
+----
 git checkout stable/4.1.x
 git pull
 git checkout -b fix/4.1.x-issue
-{% endhighlight %}
+----
 
-#### Merge a Fix Branch to Stable
+==== Merge a Fix Branch to Stable
 
-**In exceptional circumstance**
+*In exceptional circumstance*
 
-**When:** After SM test
+*When:* After SM test
 
-**Who:** SM Team
+*Who:* SM Team
 
 **How:**
-{% highlight sh %}
+[source,shell]
+----
 git checkout fix/4.1.x-issue
 git checkout stable/4.1.x
 git pull
 git merge fix/4.1.x-issue --squash
 git commit -a
 git push
-{% endhighlight %}
+----
 
-#### Remove a Fix Branch
+==== Remove a Fix Branch
 
-**When:** After the merge of the fix branch to stable branch
+*When:* After the merge of the fix branch to stable branch
 
-**Who:** SM
+*Who:* SM
 
-**How:**
-{% highlight sh %}
+*How:*
+[source,shell]
+----
 git push origin --delete fix/4.1.x-issue
 git branch -d fix/4.1.x-issue
-{% endhighlight %}
+----
 
-#### Perform a release
+==== Perform a release
 
-**When:** After FQA/TQA test campaign. VPs give a GO.
+*When:* After FQA/TQA test campaign. VPs give a GO.
 
-**Who:** Release managers
+*Who:* Release managers
 
-**How:**
-{% highlight sh %}
+*How:*
+[source,shell]
+----
 git clone git@github.com:exoplatform/xxx.git
 cd xxx
 # You checkout the release branch on which you need to perform a release.
@@ -298,32 +290,31 @@ git checkout stable/A.B.x
 # You follow the classical maven release process
 mvn release:prepare
 mvn release:perform
-{% endhighlight %}
+----
 
-#### Move a release tag
+==== Move a release tag
 
-**In really special case** (when the test campaign show a critical issue after tagging but before nexus publishing) release manager still can apply a last minute commit and move the tag.
+*In really special case* (when the test campaign show a critical issue after tagging but before nexus publishing) release manager still can apply a last minute commit and move the tag.
 
-**When:** After FQA/TQA test campaign. VPs give a GO.
+*When:* After FQA/TQA test campaign. VPs give a GO.
 
-**Who:** Release managers
+*Who:* Release managers
 
 **How:**
-{% highlight sh %}
+[source,shell]
+----
 # After your commit, just delete the remote tag, and create another one in this way
 git tag -d 1.0.0
 git push origin :refs/tags/1.0.0
 git tag 1.0.0
 git push origin 1.0.0
-{% endhighlight %}
-
-## Integration Branch
-
 ----
+
+== Integration Branch
 
 Integration branches are dedicated branch to automatic integration task (like Crowdin translation for instance).
 
-link:/assets/images/docs/scm/integration-branch.png[![integration branches workflow](/assets/images/docs/scm/integration-branch.png =1000x)]
+image::../../images/git-workflow-integration-branch.png[alt="git workflow integration branch"), width="1000"]
 
 === Actions
 
@@ -352,7 +343,8 @@ image::../../images/git-workflow-poc-branch.svg[alt="poc branches workflow", wid
 *Who:* PL/TL
 
 *How:*
-{% highlight sh %}
+[source,shell]
+----
 git checkout develop
 git pull
 git checkout -b poc/x
@@ -360,7 +352,7 @@ git checkout -b poc/x
 git add pom.xml
 git commit -m "details"
 git push
-{% endhighlight %}
+----
 
 == Release Process
 
@@ -373,7 +365,7 @@ This section explain the release process to follow when doing an intermediate re
 
 *Who:* PLF Team with support of team responsible of each project
 
-link:/assets/images/docs/scm/prepare-intermediate-Release.png[![Intermediate Release process](/assets/images/docs/scm/prepare-intermediate-Release.png =600x)]
+image::../../images/prepare-intermediate-Release.png[alt="Intermediate Release process", width="600")]
 
 === Final Release
 
@@ -381,7 +373,7 @@ link:/assets/images/docs/scm/prepare-intermediate-Release.png[![Intermediate Rel
 
 *Who:* PLF Team with support of team responsible of each project
 
-link:/assets/images/docs/scm/prepare-final-Release.png[![Final Release process](/assets/images/docs/scm/prepare-final-Release.png =500x)]
+image::../../images/prepare-final-Release.png[alt="Final Release process", width="500")]
 
 == Improvement
 
