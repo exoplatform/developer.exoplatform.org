@@ -1,8 +1,3 @@
-—
-permalink: /docs/ide/eclipse/settings/
-redirect_from:
- - /docs/ide/eclipse-settings.html
-
 Eclipse settings are available in link:{{site.github.repository_url}}/tree/master/resources/ide/eclipse/[/resources/ide/eclipse].
 
 Configure Eclipse at "Window" -&gt; "Preferences…"

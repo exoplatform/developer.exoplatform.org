@@ -1,8 +1,3 @@
-—
-permalink: /docs/scm/git/settings/
-redirect_from:
- - /docs/scm/git-settings.html
-
 = Git - Settings
 
 == GitHub

@@ -1,8 +1,3 @@
-—
-permalink: /docs/scm/git/workflow/
-redirect_from:
- - /docs/scm/git-workflow.html
-
 = Git - Workflow
 
 Our workflow is built on two principles :

@@ -1,8 +1,3 @@
-—
-permalink: /docs/scm/git/repositories/
-redirect_from:
- - /docs/scm/git-repositories.html
-
 = Git - Repositories
 
 == Platform codebase

@@ -1,9 +1,3 @@
-—
-tagline: Install and configure Apache Maven for eXo projects
-permalink: /docs/build/maven/setup/
-redirect_from:
- - /docs/build/maven-settings.html
-
 = Maven - Setup guide
 
 == Prerequisites
