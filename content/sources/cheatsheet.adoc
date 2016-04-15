@@ -1,6 +1,6 @@
 = Git - Cheat Sheet
 
-image::../../images/git-overview.png[alt="Git Big Picture")]
+image::git-overview.png[alt="Git Big Picture")]
 
 == Create
 

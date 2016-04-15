@@ -6,4 +6,4 @@ Intellij IDEA users must install the plugin http://plugins.jetbrains.com/plugin/
 * Use the file link:../resources/ide/eclipse/exo-Java-CodeStyle-Formatter.xml[exo-Java-CodeStyle-Formatter.xml] for "Eclipse Java Formatter config file"
 * Use the file link:../resources/ide/eclipse/exo-Java-CodeStyle-OrganizeImports.importorder[exo-Java-CodeStyle-OrganizeImports.importorder] for "Optimize Imports from file"
 
-image::../../images/intellij-eclipse-code-formatter.png[IntelliJ Eclipse Code Formatter]
+image::intellij-eclipse-code-formatter.png[IntelliJ Eclipse Code Formatter]

@@ -15,7 +15,7 @@ Development repositories are forked from blessed repositories.
 
 *This strategy is applied to all repositories/projects involved in eXo products.* Others projects are using a single repository hosted on "exoplatform" organization.
 
-image::../../images/git-organization.png[alt="git repositories")]
+image::git-organization.png[alt="git repositories")]
 
 === Development repository
 
@@ -63,7 +63,7 @@ Commit directly to Master branch is FORBIDDEN (except exceptional circumstance: 
 Develop branch contains the latest delivered development changes.
 This is our backbone where all the different fix and new feature are mixed with each other.
 
-image::../../images/git-workflow-develop-branch.svg[alt="git workflow develop branch"), width="1000"]
+image::git-workflow-develop-branch.svg[alt="git workflow develop branch"), width="1000"]
 
 === Actions
 
@@ -90,7 +90,7 @@ git push
 
 Feature branches are dedicated branch to develop a new feature.
 
-image::../../images/git-workflow-feature-branch.svg[alt="git workflow feature branch"), width="300"]
+image::git-workflow-feature-branch.svg[alt="git workflow feature branch"), width="300"]
 
 === Actions
 
@@ -153,7 +153,7 @@ Fix Branch are dedicated branch to fix a bug. The validation process may be diff
 
 A fix branch is always created from Develop branch (except exceptional circumstance: fix on stable only).
 
-image::../../images/git-workflow-fix-branch.svg[alt="git workflow fix branch"), width="400"]
+image::git-workflow-fix-branch.svg[alt="git workflow fix branch"), width="400"]
 
 === Actions
 
@@ -214,7 +214,7 @@ git branch -d fix/issue
 
 Stable branch are used to perform releases and write / accept fix.
 
-image::../../images/git-workflow-stable-branch.svg[alt="git workflow stable branch"), width="800"]
+image::git-workflow-stable-branch.svg[alt="git workflow stable branch"), width="800"]
 
 === Actions
 
@@ -314,7 +314,7 @@ git push origin 1.0.0
 
 Integration branches are dedicated branch to automatic integration task (like Crowdin translation for instance).
 
-image::../../images/git-workflow-integration-branch.png[alt="git workflow integration branch"), width="1000"]
+image::git-workflow-integration-branch.png[alt="git workflow integration branch"), width="1000"]
 
 === Actions
 
@@ -332,7 +332,7 @@ image::../../images/git-workflow-integration-branch.png[alt="git workflow integr
 
 Poc branches are dedicated branch to develop a Prove of Concept (PoC).
 
-image::../../images/git-workflow-poc-branch.svg[alt="poc branches workflow", width="300")]
+image::git-workflow-poc-branch.svg[alt="poc branches workflow", width="300")]
 
 === Actions
 
@@ -365,7 +365,7 @@ This section explain the release process to follow when doing an intermediate re
 
 *Who:* PLF Team with support of team responsible of each project
 
-image::../../images/prepare-intermediate-Release.png[alt="Intermediate Release process", width="600")]
+image::prepare-intermediate-Release.png[alt="Intermediate Release process", width="600")]
 
 === Final Release
 
@@ -373,7 +373,7 @@ image::../../images/prepare-intermediate-Release.png[alt="Intermediate Release p
 
 *Who:* PLF Team with support of team responsible of each project
 
-image::../../images/prepare-final-Release.png[alt="Final Release process", width="500")]
+image::prepare-final-Release.png[alt="Final Release process", width="500")]
 
 == Improvement
 
