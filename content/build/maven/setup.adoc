@@ -1,11 +1,12 @@
 —
-title: "Maven - Setup guide"
 tagline: Install and configure Apache Maven for eXo projects
 permalink: /docs/build/maven/setup/
 redirect_from:
  - /docs/build/maven-settings.html
 
-= Prerequisites
+= Maven - Setup guide
+
+== Prerequisites
 
 To build eXo projects you need to install a Java http://www.oracle.com/technetwork/java/javase/downloads/index.html[JDK] 6 or 7 depending of the Platform version you are targetting :
 
@@ -14,7 +15,7 @@ To build eXo projects you need to install a Java http://www.oracle.com/technetwo
 * Platform 4.1 / 4.2 : Java 7
 * Platform 4.0.x : Java 6 / Java 7
 
-= Install Apache Maven
+== Install Apache Maven
 
 The version *3.2.3* of http://maven.apache.org/download.cgi[Apache Maven] is currently recommended to build eXo projects. _The minimal version required is 3.0.4. The version 3.2.2 must be avoided due to https://jira.codehaus.org/browse/MNG-5663[MNG-5663]._
 
@@ -26,15 +27,15 @@ The version *3.2.3* of http://maven.apache.org/download.cgi[Apache Maven] is cur
 * Add a system environment variable `MAVEN_OPTS` (it could be in a .profile startup script on Linux/MacOS operating systems or in the global environment variables panel on Windows)with the value `-Xshare:auto -Xms128M -Xmx1G -XX:MaxPermSize=256M`
 * Run `mvn --version` to verify that it is correctly installed.
 
-= Configure Apache Maven
+== Configure Apache Maven
 
-== Basic setup
+=== Basic setup
 
 Since Platform 4, no specific settings are required to build eXo public projects. Just clone any project and launch `mvn install`
 
 <a name="Advanced"></a>
 
-== Advanced setup
+=== Advanced setup
 
 If you need to release a project or to build a project relying on private or staging binaries you'll need to customize your maven settings.
 
@@ -54,11 +55,11 @@ When your setup is done you can activate the following profiles :
 
 <a name="GPG"></a>
 
-== Maven and GPG
+=== Maven and GPG
 
-=== Install gnupg for your OS.
+==== Install gnupg for your OS.
 
-==== MacOS
+===== MacOS
 
 For http://brew.sh/[homebrew] users :
 
@@ -74,17 +75,17 @@ sudo port install gnupg
 
 Others, you can use the http://macgpg.sourceforge.net/[native package].
 
-==== Ubuntu
+===== Ubuntu
 
 {% highlight sh %}
 sudo aptitude install gnupg
 {% endhighlight %}
 
-==== Windows
+===== Windows
 
 TBD
 
-=== Validate your installation
+==== Validate your installation
 
 {% highlight sh %}
 $ gpg –version
@@ -103,9 +104,9 @@ Hash: MD5, SHA1, RIPEMD160, SHA256, SHA384, SHA512, SHA224
 Compression: Uncompressed, ZIP, ZLIB, BZIP2
 {% endhighlight %}
 
-=== Generate your private GPG Key
+==== Generate your private GPG Key
 
-==== Configure GPG
+===== Configure GPG
 
 Enforce the level of encryption. Edit `~/.gnupg/gpg.conf`
 
@@ -121,7 +122,7 @@ cert-digest-algo SHA512
 default-preference-list SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB BZIP2 ZIP Uncompressed
 {% endhighlight %}
 
-==== Generate the key
+===== Generate the key
 
 Launch the key generation 
 
@@ -144,7 +145,7 @@ You can list the key you just generated with :
 {% highlight sh %}
 $ gpg –list-key
 
-== /Users/arnaud/.gnupg/pubring.gpg
+=== /Users/arnaud/.gnupg/pubring.gpg
 
 pub 4096R/2CF0CC82 2009-11-17
 uid Arnaud Héritier (eXo Platform CODE SIGNING KEY) link:mailto:&#97;&#x72;&#110;&#x61;&#x75;&#x64;&#x2e;&#104;&#x65;&#114;&#105;t&#105;&#x65;&#x72;@&#x65;&#120;&#111;&#112;&#x6c;&#97;t&#x66;&#111;&#114;&#x6d;&#46;&#x63;&#111;&#109;[&#97;&#x72;&#110;&#x61;&#x75;&#x64;&#x2e;&#104;&#x65;&#114;&#105;t&#105;&#x65;&#x72;@&#x65;&#120;&#111;&#112;&#x6c;&#97;t&#x66;&#111;&#114;&#x6d;&#46;&#x63;&#111;&#109;]
@@ -159,7 +160,7 @@ gpg –keyserver hkp://pgp.mit.edu[hkp://pgp.mit.edu] –send-keys 2CF0CC82
 
 Your GPG key is now ready to be used
 
-=== Configure your GPG Key for Maven
+==== Configure your GPG Key for Maven
 
 Fill the GPG keyname and passphrase in the exo-release profile of your maven settings like described in link:#Advanced[Advanced settings]
 
@@ -173,7 +174,7 @@ Fill the GPG keyname and passphrase in the exo-release profile of your maven set
  </profile>
 {% endhighlight %}
 
-=== Test it
+==== Test it
 
 Clone this project : `git@github.com:exodev/maven-sandbox-project.git`
 
@@ -187,7 +188,7 @@ To end tests, try to release this project : `mvn release:prepare` followed by `m
 
 Don't forget to logon into https://repository.exoplatform.org[https://repository.exoplatform.org] and drop your staging repository
 
-=== More info
+==== More info
 
 * http://www.sonatype.com/people/2010/01/how-to-generate-pgp-signatures-with-maven/[http://www.sonatype.com/people/2010/01/how-to-generate-pgp-signatures-with-maven/]
 * http://www.apache.org/dev/release-signing.html[http://www.apache.org/dev/release-signing.html]

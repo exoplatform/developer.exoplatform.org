@@ -1,10 +1,11 @@
 —
-title: "Git - Settings"
 permalink: /docs/scm/git/settings/
 redirect_from:
  - /docs/scm/git-settings.html
 
-= GitHub
+= Git - Settings
+
+== GitHub
 
 GitHub is the platform we chose to host our Git repositories.
 *To contribute to eXo projects you have to create a https://www.github.com/[GitHub] account.*
@@ -22,7 +23,7 @@ GitHub provides a lot of http://help.github.com/[documentation] and especially a
 
 Please follow these guides to setup your environment.
 
-= Git Configuration
+== Git Configuration
 
 It is recommended to create an SSH private key (with a password) and to use it to access to your Git(Hub) repositories (see Github guides above).
 
@@ -159,7 +160,7 @@ upstream = !git for-each-ref --format='%(upstream:short)' `git symbolic-ref HEAD
 
 {% endhighlight %}
 
-= Git &amp; IDEs
+== Git &amp; IDEs
 
 Git is natively supported by all IDE :
 

@@ -1,10 +1,11 @@
 —
-title: "Git - Repositories"
 permalink: /docs/scm/git/repositories/
 redirect_from:
  - /docs/scm/git-repositories.html
 
-= Platform codebase
+= Git - Repositories
+
+== Platform codebase
 
 eXo Platform is built from several projects stored in different Git repositories.
 You'll find below the list of blessed (reference) repositories useful to build Platform 4

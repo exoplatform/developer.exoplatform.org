@@ -1,5 +1,4 @@
 —
-title: "Eclipse - Settings"
 permalink: /docs/ide/eclipse/settings/
 redirect_from:
  - /docs/ide/eclipse-settings.html
@@ -8,7 +7,9 @@ Eclipse settings are available in link:{{site.github.repository_url}}/tree/maste
 
 Configure Eclipse at "Window" -&gt; "Preferences…"
 
-= Clean Up Settings:
+= Eclipse - Settings
+
+== Clean Up Settings:
 
 Java -&gt; Code Style -&gt; Clean Up
 
@@ -16,7 +17,7 @@ Choose: "Import…" link:{{BASE_PATH}}/resources/ide/eclipse/exo-Java-CodeStyle-
 
 image:{{BASE_PATH}}/assets/images/docs/ide/eclipse-Java-CodeStyle-CleanUp.png[Eclipse Clean Up Settings]
 
-= Code Templates Settings:
+== Code Templates Settings:
 
 Java -&gt; Code Style -&gt; Code Templates
 
@@ -24,7 +25,7 @@ Choose: "Import…" link:{{BASE_PATH}}/resources/ide/eclipse/exo-Java-CodeStyle-
 
 image:{{BASE_PATH}}/assets/images/docs/ide/eclipse-Java-CodeStyle-CodeTemplates.png[Eclipse Code Style Settings]
 
-= Formatter Settings:
+== Formatter Settings:
 
 Java -&gt; Code Style -&gt; Formatter
 
@@ -32,7 +33,7 @@ Choose: "Import…" link:{{BASE_PATH}}/resources/ide/eclipse/exo-Java-CodeStyle-
 
 image:{{BASE_PATH}}/assets/images/docs/ide/eclipse-Java-CodeStyle-Formatter.png[Eclipse Formatter Cleanup]
 
-= Organize Imports Settings:
+== Organize Imports Settings:
 
 Java -&gt; Code Style -&gt; Organize Imports
 
