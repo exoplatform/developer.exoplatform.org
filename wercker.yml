@@ -11,6 +11,6 @@ dev:
     - internal/watch:
         code: |
           asciidoctor-pdf -D /documents/ *.adoc **/*.adoc
-          asciidoctor -a stylesheet=css/exo.css -D /documents/ *.adoc **/*.adoc
+          asciidoctor -a stylesheet=./css/exo.css -D /documents/ *.adoc **/*.adoc
           cp -R images /documents/images
         reload: true
