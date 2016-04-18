@@ -40,7 +40,7 @@ The continuous integration is applied on stables branches (`stable/1.0.x`, `stab
 
 == Branching model
 
-Branching model are 7 kinds of branch :
+Branching model are 6 kinds of branch :
 
 * `develop` : Develop branch contains the latest delivered development changes.
 * `feature/xxx` : Feature branches are dedicated branch for one big feature (lot of commits), "xxx" is the feature name.
