@@ -356,7 +356,7 @@ should be in the clear to restore it.
 
 [source,shell]
 ----
-git cherry-pick ORIG_HEAD +
+git cherry-pick ORIG_HEAD
 ----
 
 *HEAD vs ORIG_HEAD*
