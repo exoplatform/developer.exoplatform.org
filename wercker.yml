@@ -10,8 +10,8 @@ dev:
     # listener to adoc files
     - internal/watch:
         code: |
-          asciidoctor-pdf -D /documents/ *.adoc **/*.adoc
-          asciidoctor -a stylesheet=./css/exo.css -D /documents/ *.adoc **/*.adoc
+          asciidoctor-pdf -D /documents/ -o exo-developer-guide.pdf index.adoc
+          asciidoctor -a stylesheet=./css/exo.css -D /documents/ index.adoc
           cp -R images /documents/images
           cp -R resources /documents/resources
         reload: true
