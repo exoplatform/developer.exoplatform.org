@@ -304,7 +304,7 @@ b.button:after { content: "]"; padding: 0 2px 0 3px; }
 
 #content:before { content: none; }
 
-#header > h1:first-child { color: black; margin-top: 2.25rem; margin-bottom: 0; }
+#header > h1:first-child { color: black; margin-top: 2.25rem; margin-bottom: 0; padding-left: 3em ; background-image: url('images/exo-logo.png'); background-size: 120px ; background-repeat: no-repeat; background-position-y: -0.8em}
 #header > h1:first-child + #toc { margin-top: 8px; border-top: 1px solid #dddddd; }
 #header > h1:only-child, body.toc2 #header > h1:nth-last-child(2) { border-bottom: 1px solid #dddddd; padding-bottom: 8px; }
 #header .details { border-bottom: 1px solid #dddddd; line-height: 1.45; padding-top: 0.25em; padding-bottom: 0.25em; padding-left: 0.25em; color: #518ccf; display: -ms-flexbox; display: -webkit-flex; display: flex; -ms-flex-flow: row wrap; -webkit-flex-flow: row wrap; flex-flow: row wrap; }
