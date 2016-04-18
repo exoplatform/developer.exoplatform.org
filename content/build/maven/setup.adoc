@@ -10,7 +10,11 @@ To build eXo projects you need to install a Java http://www.oracle.com/technetwo
 
 == Install Apache Maven
 
-The version *3.2.3* of http://maven.apache.org/download.cgi[Apache Maven] is currently recommended to build eXo projects. _The minimal version required is 3.0.4. The version 3.2.2 must be avoided due to https://jira.codehaus.org/browse/MNG-5663[MNG-5663]._
+The version *3.2.3* of http://maven.apache.org/download.cgi[Apache Maven] is currently recommended to build eXo projects. +
+
+[IMPORTANT]
+_The minimal version required is 3.0.4. +
+The version 3.2.2 must be avoided due to https://jira.codehaus.org/browse/MNG-5663[MNG-5663]._
 
 . Download a fresh and clean copy of http://maven.apache.org/download.cgi[Apache Maven]. It is critical to take a fresh copy to be sure that the file `apache-maven-X.Y.Z/conf/settings.xml` isn't modified !!
 . Unzip the distribution archive, i.e. apache-maven-X.Y.Z-bin.(zip|tar.gz) to the directory you wish to install Maven. The subdirectory `apache-maven-X.Y.Z` will be created from the archive. It is recommended to not store it under a path with spaces.
@@ -142,7 +146,7 @@ default-preference-list SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB
 
 ===== Generate the key
 
-Launch the key generation 
+Launch the key generation
 
 [source,shell]
 ----
