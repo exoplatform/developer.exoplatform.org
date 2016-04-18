@@ -17,7 +17,7 @@ after_failure:
   - docker logs asciidoc-to-html
 
 after_success:
-  - cd output ; cp -R ../images images
+  - cd output ; cp -R ../images images ; cp -R ../resources resources
   - git init
   - git config user.name "${EXO_USER_NAME}"
   - git config user.email "{EXO_USER_EMAIL}"

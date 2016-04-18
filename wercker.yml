@@ -13,4 +13,5 @@ dev:
           asciidoctor-pdf -D /documents/ *.adoc **/*.adoc
           asciidoctor -a stylesheet=./css/exo.css -D /documents/ *.adoc **/*.adoc
           cp -R images /documents/images
+          cp -R resources /documents/resources
         reload: true
