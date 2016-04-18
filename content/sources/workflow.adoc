@@ -7,7 +7,7 @@ Our workflow is built on two principles :
 
 == Repository architecture
 
-Aiming security and backup purpose, we are using two repository kinds (owned by two distinct github organizations).
+Aiming +security+ and backup purpose, we are using two repository kinds (owned by two distinct github organizations).
 
 These are `blessed` and `development` repositories hosted respectively on https://github.com/exoplatform[exoplatform] and https://github.com/exodev[exodev] organizations.
 
@@ -39,48 +39,6 @@ Only some people are able to write on this repository :
 * `keepers` : Repository keepers are `Project Leader`, `Team Leader` and `Technical Leader`. They are able to pull changes from dev to blessed when the develop is stable enough and they can process releases for non supported versions of products (alpha, beta, RCs, …)
 
 The continuous integration is applied on stables branches (`stable/1.0.x`, `stable/1.1.x`, etc) on blessed repository.
-
-== Contribution Workflow
-
-The contribution workflow mainly relies on Github Pull Requests. Here are the rules :
-
-* `PR for everything` +
-For every fix/feature, for all platform projects and supported addons, create a PR.
-Creating a PR is easy and allows to share, discuss on validate more easily the fix/feature.
-To create a PR :
-** create a branch locally with your fix and push it to Github
-** in Github, select your branch, and click on *New pull request* image:git-pr-create-01.png[alt="Git PR Create",align="center"]
-** select the right base branch (most of the time *develop*) and check that the PR contains only your commits image:git-pr-create-02.png[alt="Git PR Create",width="700",align="center"]
-** fill the description
-** click on *Create pull request*
-* `PR on develop` +
-++
-PR must always be done on exodev:develop or exo-addons:develop, not on exoplatform:develop (we fix on develop first, then we backport to stable if needed).
-Remember that exoplatform:develop is read-only.
-There are only 2 exceptions :
-++
-** the fix is different between develop dans stable - in such a case, 2 PRs are necessary, one on develop, one on stable
-** the bug only occurs on stable - in such a case, PR must be done on stable
-* `Explain your PR`
-+
-The description of the PR must always be filled to describe precisely what was the root cause of the problem and how it has been solved.
-* `Update the PR, do not recreate it`
-+
-To update a PR, just push a new commit in the same branch, no need to create a new branch and a new PR.
-Creating a new PR for each update prevents from following easily the discussion and the updates history.
-* `PR must be validated by peers`
-+
-When a PR is submitted, it has to be reviewed by at least one peer.
-When the PR is validated by the peer, the PR can be merged in the target branch.
-* `Merge the PR correctly`
-+
-Before merging the PR in the target branch, make sure the branch of the PR is up to date (push --force), otherwise the PR will not appear as *Merged* in Github.
-
-image::git-pr-merged.png[alt="Git PR Merged",width="700",align="center"]
-
-* `Clean your mess`
-+
-Once the PR has been merged, delete the branch in Github, and close the PR if it is not already marked as *Merged* or *Closed*.
 
 == Branching model
 
@@ -373,13 +331,13 @@ image::git-workflow-poc-branch.png[Git Workflow - POC Branch, 300, align=center,
 *How:*
 [source,shell]
 ----
-git checkout develop
-git pull
-git checkout -b poc/x
+$ git checkout develop
+$ git pull
+$ git checkout -b poc/x
 [Modify all pom: initial commit]
-git add pom.xml
-git commit -m "details"
-git push
+$ git add pom.xml
+$ git commit -m "details"
+$ git push
 ----
 
 == Release Process

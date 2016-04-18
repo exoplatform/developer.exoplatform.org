@@ -225,21 +225,21 @@ origin git@github.com:exodev/platform (push)
 
 [source,shell]
 ----
-$ git remote add upstream git@github.com:exoplatform/platform.git
+git remote add upstream git@github.com:exoplatform/platform.git
 ----
 
 *Rename a remote repository*
 
 [source,shell]
 ----
-$ git remote rename upstream foo
+git remote rename upstream foo
 ----
 
 *Delete a remote repository*
 
 [source,shell]
 ----
-$ git remote rm upstream foo
+git remote rm upstream foo
 ----
 
 === Browse
