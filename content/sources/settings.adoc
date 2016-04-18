@@ -5,6 +5,7 @@
 GitHub is the platform we chose to host our Git repositories.
 *To contribute to eXo projects you have to create a https://www.github.com/[GitHub] account.*
 
+[IMPORTANT]
 For eXo employees it is recommended to create one with the same username as the one provided by the company (GoogleApp Id) when you joined us.
 *You have to commit using your exoplatform.com email by setting it in your global git configuration or locally into each eXo repository clone* (see below).
 
@@ -75,6 +76,8 @@ You just add a section `[alias]` in your `~/.gitconfig` file with entries like b
 [source,shell]
 ----
 [alias]
+
+[source]
 ##### Basic aliases
 # Long status
 st = status
@@ -149,6 +152,8 @@ prune-all = !git remote | xargs -n 1 git remote prune
 aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
 # Show upstream for the current branch
 upstream = !git for-each-ref --format='%(upstream:short)' `git symbolic-ref HEAD`
+
+
 ----
 
 == Git & IDEs

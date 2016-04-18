@@ -15,7 +15,9 @@ Development repositories are forked from blessed repositories.
 
 *This strategy is applied to all repositories/projects involved in eXo products.* Others projects are using a single repository hosted on "exoplatform" organization.
 
-image::git-organization.png[alt="git repositories")]
+[[git_organization]]
+.Git Repository Architecture
+image::git-organization.png[Git Organization, 600, align=center, link={imagesdir}/git-organization.png]
 
 === Development repository
 
@@ -25,7 +27,7 @@ The most of development activity will be done in this repository by a lot of con
 * `maintainers` (formerly known as `sl3`) : To develop fix. These developments are done in dedicated `fix` branches (more details below).
 * `all development teams` : To do one shot contribution and handle feature branch life cycle.
 
-In this repository, `develop` branch and `feature` branch will be under CI. 
+In this repository, `develop` branch and `feature` branch will be under CI.
 
 === Blessed repository
 
@@ -54,13 +56,17 @@ Branching model are 6 kinds of branch :
 Develop branch contains the latest delivered development changes.
 This is our backbone where all the different fix and new feature are mixed with each other.
 
-image::git-workflow-develop-branch.png[alt="git workflow develop branch", width="1000"]
+[[git-workflow-develop-branch]]
+.Git Workflow - Develop Branch
+image::git-workflow-develop-branch.png[Git Workflow - Develop Branch, 600, align=center, link={imagesdir}/git-workflow-develop-branch.png]
 
 == Feature Branch
 
 Feature branches are dedicated branch to develop a new feature.
 
-image::git-workflow-feature-branch.png[alt="git workflow feature branch", width="300"]
+[[git-workflow-feature-branch]]
+.Git Workflow - Feature Branch
+image::git-workflow-feature-branch.png[Git Workflow - Feature Branch, 300, align=center, link={imagesdir}/git-workflow-feature-branch.png]
 
 === Actions
 
@@ -123,7 +129,9 @@ Fix Branch are dedicated branch to fix a bug. The validation process may be diff
 
 A fix branch is always created from Develop branch (except exceptional circumstance: fix on stable only).
 
-image::git-workflow-fix-branch.png[alt="git workflow fix branch", width="400"]
+[[git-workflow-fix-branch]]
+.Git Workflow - Fix Branch
+image::git-workflow-fix-branch.png[Git Workflow - Fix Branch, 400, align=center, link={imagesdir}/git-workflow-fix-branch.png]
 
 === Actions
 
@@ -184,7 +192,10 @@ git branch -d fix/issue
 
 Stable branch are used to perform releases and write / accept fix.
 
-image::git-workflow-stable-branch.png[alt="git workflow stable branch", width="800"]
+[[git-workflow-stable-branch]]
+.Git Workflow - Stable Branch
+image::git-workflow-stable-branch.png[Git Workflow - Stable Branch, 600, align=center, link={imagesdir}/git-workflow-stable-branch.png]
+
 
 === Actions
 
@@ -284,7 +295,10 @@ git push origin 1.0.0
 
 Integration branches are dedicated branch to automatic integration task (like Crowdin translation for instance).
 
-image::git-workflow-integration-branch.png[alt="git workflow integration branch"), width="1000"]
+[[git-workflow-integration-branch]]
+.Git Workflow - Integration Branch
+image::git-workflow-integration-branch.png[Git Workflow - Integration Branch, 800, align=center, link={imagesdir}/git-workflow-integration-branch.png]
+
 
 === Actions
 
@@ -302,7 +316,9 @@ image::git-workflow-integration-branch.png[alt="git workflow integration branch"
 
 Poc branches are dedicated branch to develop a Prove of Concept (PoC).
 
-image::git-workflow-poc-branch.png[alt="poc branches workflow", width="300")]
+[[git-workflow-poc-branch]]
+.Git Workflow - POC Branch
+image::git-workflow-poc-branch.png[Git Workflow - POC Branch, 300, align=center, link={imagesdir}/git-workflow-poc-branch.png]
 
 === Actions
 
@@ -335,7 +351,9 @@ This section explain the release process to follow when doing an intermediate re
 
 *Who:* PLF Team with support of team responsible of each project
 
-image::prepare-intermediate-Release.png[alt="Intermediate Release process", width="600")]
+[[release-intermediate]]
+.Intermediate Release
+image::release-prepare-intermediate.png[Intermediate Release, 600, align=center, link={imagesdir}/release-prepare-intermediate.png]
 
 === Final Release
 
@@ -343,7 +361,7 @@ image::prepare-intermediate-Release.png[alt="Intermediate Release process", widt
 
 *Who:* PLF Team with support of team responsible of each project
 
-image::prepare-final-Release.png[alt="Final Release process", width="500")]
+image::release-prepare-final.png[alt="Final Release process", width="500")]
 
 == Improvement
 
