@@ -9,3 +9,4 @@
 :idprefix: id-
 :idseparator: -
 :source-highlighter: highlightjs
+:nofooter:

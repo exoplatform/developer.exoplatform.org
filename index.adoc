@@ -1,5 +1,4 @@
 = Welcome on developer.exoplatform.org!
-include::conf/_metadatas.adoc[]
 include::conf/_settings.adoc[]
 include::conf/_properties.adoc[]
 
