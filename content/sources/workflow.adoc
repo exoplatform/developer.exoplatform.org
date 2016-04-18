@@ -29,20 +29,19 @@ In this repository, `develop` branch and `feature` branch will be under CI.
 
 === Blessed repository
 
-In this repository you can find `stable` branches and release tags. There is `master` branch also.
+In this repository you can find `stable` branches and release tags.
 Only some people are able to write on this repository :
 
 * `maintainers` : To integrate pull request on stable branches.
 * `release manager` : To perform release operations on stable (supported) branches.
-* `keepers` : Repository keepers are `Project Leader`, `Team Leader` and `Technical Leader`. They are able to pull changes from dev to blessed when the develop is stable enough and they can process releases on master branch for non supported versions of products (alpha, beta, RCs, …)
+* `keepers` : Repository keepers are `Project Leader`, `Team Leader` and `Technical Leader`. They are able to pull changes from dev to blessed when the develop is stable enough and they can process releases for non supported versions of products (alpha, beta, RCs, …)
 
-The continuous integration is applied on stables branches (`stable/1.0.x`, `stable/1.1.x`, etc) and `master` on blessed repository.
+The continuous integration is applied on stables branches (`stable/1.0.x`, `stable/1.1.x`, etc) on blessed repository.
 
 == Branching model
 
 Branching model are 7 kinds of branch :
 
-* `master` : Master branch always reflect a production ready state (for community website for instance). It’s a snapshot of the Develop Branch at a given time.
 * `develop` : Develop branch contains the latest delivered development changes.
 * `feature/xxx` : Feature branches are dedicated branch for one big feature (lot of commits), "xxx" is the feature name.
 * `stable/xxx` : Stable branch are used to perform releases and write / accept fix. "xxx" is the stable version name (e.g 1.0.x).
@@ -56,27 +55,6 @@ Develop branch contains the latest delivered development changes.
 This is our backbone where all the different fix and new feature are mixed with each other.
 
 image::git-workflow-develop-branch.png[alt="git workflow develop branch", width="1000"]
-
-=== Actions
-
-==== Merge Develop to Master Branch
-
-_Release process applies on master_
-
-*When:* Before releasing PLF (Milestone, Release Candidate) to allow FQA/TQA to perform regression test on Master Branch. VPs give a GO.
-
-*Who:* PLF Team with support of team responsible of each project
-
-*How:*
-[source,shell]
-----
-git checkout develop
-git pull
-git checkout master
-git pull
-git merge develop
-git push
-----
 
 == Feature Branch
 
@@ -316,7 +294,7 @@ image::git-workflow-integration-branch.png[alt="git workflow integration branch"
 
 *Who:* SWF
 
-*How:* Create from develop or stable/4.1.x. These branches have no maven version updated. Everything is done in a megabuild like for master build.
+*How:* Create from develop or stable/4.1.x. These branches have no maven version updated.
 
 == PoC Branch
 
