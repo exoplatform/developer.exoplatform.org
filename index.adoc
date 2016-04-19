@@ -4,6 +4,10 @@ include::conf/_properties.adoc[]
 
 This website is centralizing all resources useful for eXo developers and contributors.
 
+[NOTE]
+icon:file-pdf-o[title="eXo Developer PDF Version"]
+{link-exo-developer-guide-pdf}[Download this documentation as PDF version]
+
 include::content/sources.adoc[leveloffset=+1]
 
 include::content/ide.adoc[leveloffset=+1]

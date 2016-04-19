@@ -17,3 +17,5 @@
 :link-git-repo-doc-style: {link-github-exoplatform}/doc-style
 :link-git-repo-gatein: {link-github-exoplatform}/gatein
 :link-git-repo-jcr: {link-github-exoplatform}/jcr
+// PDF file
+:link-exo-developer-guide-pdf: http://developer.exoplatform.org/exo-developer-guide.pdf
