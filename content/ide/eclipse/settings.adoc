@@ -1,0 +1,37 @@
+= Eclipse - Settings
+
+Eclipse settings are available in link:https://github.com/exoplatform/developer.exoplatform.org/tree/master/resources/ide/eclipse/[/resources/ide/eclipse].
+
+Configure Eclipse at "Window" -> "Preferences…"
+
+== Clean Up Settings:
+
+Java -> Code Style -> Clean Up
+
+Choose: "Import…" link:../resources/ide/eclipse/exo-Java-CodeStyle-CleanUp.xml[exo-Java-CodeStyle-CleanUp.xml]
+
+image::eclipse-Java-CodeStyle-CleanUp.png[alt="Eclipse Clean Up Settings")]
+
+== Code Templates Settings:
+
+Java -> Code Style -> Code Templates
+
+Choose: "Import…" link:../resources/ide/eclipse/exo-Java-CodeStyle-CodeTemplates.xml[exo-Java-CodeStyle-CodeTemplates.xml]
+
+image::eclipse-Java-CodeStyle-CodeTemplates.png[alt="Eclipse Code Style Settings")]
+
+== Formatter Settings:
+
+Java -> Code Style -> Formatter
+
+Choose: "Import…" link:../resources/ide/eclipse/exo-Java-CodeStyle-Formatter.xml[exo-Java-CodeStyle-Formatter.xml]
+
+image::eclipse-Java-CodeStyle-Formatter.png[alt="Eclipse Formatter Cleanup")]
+
+== Organize Imports Settings:
+
+Java -> Code Style -> Organize Imports
+
+Choose: "Import…" link:../resources/ide/eclipse/exo-Java-CodeStyle-OrganizeImports.importorder[exo-Java-CodeStyle-OrganizeImports.importorder]
+
+image::eclipse-Java-CodeStyle-OrganizeImports.png[alt="Eclipse Organize Imports Settings")]

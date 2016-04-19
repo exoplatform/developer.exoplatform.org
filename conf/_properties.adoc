@@ -1,0 +1,19 @@
+// Organization links
+:link-exoplatform-website: http://www.exoplatform.com
+:link-github-exoplatform: https://www.github.com/exoplatform
+:link-github-exoaddons: https://www.github.com/exo-addons
+:link-github-exodev: https://www.github.com/exodev
+// Repositories GitHub
+:link-git-repo-platform-public-distributions: {link-github-exoplatform}/platform-public-distributions
+:link-git-repo-platform: {link-github-exoplatform}/platform
+:link-git-repo-integration: {link-github-exoplatform}/integration
+:link-git-repo-calendar: {link-github-exoplatform}/calendar
+:link-git-repo-forum: {link-github-exoplatform}/forum
+:link-git-repo-wiki: {link-github-exoplatform}/wiki
+:link-git-repo-social: {link-github-exoplatform}/social
+:link-git-repo-ecms: {link-github-exoplatform}/ecms
+:link-git-repo-commons: {link-github-exoplatform}/commons
+:link-git-repo-platform-ui: {link-github-exoplatform}/platform-ui
+:link-git-repo-doc-style: {link-github-exoplatform}/doc-style
+:link-git-repo-gatein: {link-github-exoplatform}/gatein
+:link-git-repo-jcr: {link-github-exoplatform}/jcr

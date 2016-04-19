@@ -1,0 +1,412 @@
+= Git - Cheat Sheet
+
+image::git-overview.png[alt="Git Big Picture")]
+
+== Features
+
+=== Create
+
+*From existing data*
+
+[source,shell]
+----
+cd  <DIRECTORY>
+git init
+git add .
+git commit
+----
+
+*From existing repo*
+
+[source,shell]
+----
+git clone <EXISTING_REPO> <NEW_REPO>
+----
+
+default protocol is ssh
+EXISTING_REPO is a local path or a remote URL, for examples :
+
+* _path_ : ~/repository.git
+* _ssh_ : git@host:repository.git
+* _http(s)_ : https://username@host/repository.git
+
+=== Update
+
+*Fetch latest changes from origin*
+
+[source,shell]
+----
+git fetch
+----
+
+this does not merge them
+
+*Pull latest changes from origin*
+
+[source,shell]
+----
+git pull
+----
+
+does a fetch followed by a merge
+
+In case of conflict, resolve the conflict and
+
+[source,shell]
+----
+git am —resolve
+----
+
+=== Track Files
+
+*Start tracking files*
+
+[source,shell]
+----
+git add <FILES>
+----
+
+*Interactive selection of files to track*
+
+[source,shell]
+----
+git add -i
+----
+
+*Move/Rename a file*
+
+[source,shell]
+----
+git mv <OLD_NAME> <NEW_NAME>
+git mv <OLD_PATH> <NEW_PATH>
+----
+
+*Stop tracking and delete files in working directories*
+
+[source,shell]
+----
+git rm <FILES>
+----
+
+*Stop tracking but keep files in working directory*
+
+[source,shell]
+----
+git rm —cached <FILES>
+----
+
+[[commit]]
+Commit
+~~~~~~
+
+*Commit all local changes*
+
+[source,shell]
+----
+git commit -a +
+----
+
+*Commit messages*
+
+Commits must relate to a JIRA issue.
+Convention for messages inspired by http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html[this article] :
+
+* The first line must be short (50 chars or less) and auto-descriptive
+in a format " ", for example `AM-101 : Fix the behavior of archives download`
+* Write your commit message in the present tense: `Fix bug` and not `Fixed bug`.
+* The second line is blank.
+* Next lines optionally define a short summary of changes (wrap them to about 72 chars or so).
+
+Example :
+
+[source,shell]
+----
+AM-101 : Fix the behavior of archives download
+
+* —no-cache has no effect on it
+* The add-ons manager always retry to download the archive from the
+downloadUrl. The download is skipped if the local file exists, it has
+the same size as the remote one and its modifiedDate is > to the remote
+one (It will allow to install new SNAPSHOTs without enforcing to
+download the archive each time)
+* The same behavior is applied for all URLs (http(s), file) +
+----
+
+=== Publish
+
+*Prepare a patch for other developers*
+
+[source,shell]
+----
+git format-patch origin
+----
+
+*Push changes to origin*
+
+[source,shell]
+----
+git push origin <BRANCH>
+----
+
+Use option `--all` to push all local references (branches, tags..), `--tags` to push all tags,
+`--force` to push non fast-forward changes (must be avoided to not risk to loose commits)
+
+*Make a version or milestone*
+
+[source,shell]
+----
+git tag <TAG_NAME>
+----
+
+=== Branch
+
+*List all branches*
+
+[source,shell]
+----
+git branch
+----
+
+*Switch to the BRANCH branch*
+
+[source,shell]
+----
+git checkout <BRANCH>
+----
+
+*Merge branch B1 into branch B2*
+
+[source,shell]
+----
+git checkout <B2>
+git merge <B1>
+----
+
+*Create branch based on HEAD*
+
+[source,shell]
+----
+git branch <BRANCH>
+----
+
+*Create branch based on another*
+
+[source,shell]
+----
+git branch <NEW> <BASE>
+----
+
+*Delete a local branch*
+
+[source,shell]
+----
+git branch -d <BRANCH>
+----
+
+*Delete a remote branch*
+
+[source,shell]
+----
+git push <origin> :<BRANCH>
+----
+
+=== Remote
+
+*List all your remote repositories*
+
+[source,shell]
+----
+$ git remote -v
+origin git@github.com:exodev/platform (fetch)
+origin git@github.com:exodev/platform (push)
+----
+
+*Add a new remote repository*
+
+[source,shell]
+----
+git remote add upstream git@github.com:exoplatform/platform.git
+----
+
+*Rename a remote repository*
+
+[source,shell]
+----
+git remote rename upstream foo
+----
+
+*Delete a remote repository*
+
+[source,shell]
+----
+git remote rm upstream foo
+----
+
+=== Browse
+
+*Files changed in working directory*
+
+[source,shell]
+----
+git status
+----
+
+*Changes to tracked files*
+
+[source,shell]
+----
+git diff
+----
+
+*Changes between ID1 and ID2*
+
+[source,shell]
+----
+git diff <ID1> <ID2>
+----
+
+*History of changes*
+
+[source,shell]
+----
+git log
+----
+
+*Who changed what and when in a file*
+
+[source,shell]
+----
+git blame <FILE>
+----
+
+*A commit identified by ID*
+
+[source,shell]
+----
+git show <ID>
+----
+
+*A specific file from a specific ID*
+
+[source,shell]
+----
+git diff <ID>:<FILE>
+----
+
+*Search for patterns*
+
+[source,shell]
+----
+git grep <PATTERN> <PATH>
+----
+
+=== Revert
+
+*Return to the last committed state*
+
+[source,shell]
+----
+git checkout -f | git reset —hard
+----
+
+you cannot undo a hard reset
+
+*Revert the last commit*
+
+[source,shell]
+----
+git revert HEAD
+----
+
+Creates a new commit
+
+*Revert specific commit*
+
+[source,shell]
+----
+git revert <ID>
+----
+
+Creates a new commit
+
+*Fix the last commit*
+
+[source,shell]
+----
+git commit -a —amend
+----
+
+after editing the broken files
+
+*Checkout the ID version of a file*
+
+[source,shell]
+----
+git checkout <ID> <FILE>
+----
+
+*Restoring lost commits*
+
+So, you just did a `git reset --hard HEAD^` and threw out your last
+commit. Well, it turns out you really did need those changes. You’ll
+never be able to implement that algorithm that perfectly twice, so you
+need it back. Don’t fear, git should still have your commit. When you do
+a reset, the commit you threw out goes to a `dangling` state. It’s
+still in git’s datastore, waiting for the next garbage collection to
+clean it up. So unless you’ve ran a `git gc` since you tossed it, you
+should be in the clear to restore it.
+
+[source,shell]
+----
+git cherry-pick ORIG_HEAD
+----
+
+*HEAD vs ORIG_HEAD*
+
+`ORIG_HEAD` is previous state of `HEAD`, set by commands that have
+possibly dangerous behavior, to be easy to revert them. It is less
+useful now that Git has reflog: `HEAD&#64;{1}` is roughly equivalent to
+`ORIG_HEAD` (`HEAD&#64;{1}` is always last value of `HEAD`, `ORIG_HEAD`
+is last value of `HEAD` before dangerous operation).
+
+*Removing a File from Every Commit (Powerful filter-branch)*
+
+This occurs fairly commonly. Someone accidentally commits a huge binary
+file with a thoughtless `git add .`, and you want to remove it
+everywhere. Perhaps you accidentally committed a file that contained a
+password, and you want to make your project open source. filter-branch
+is the tool you probably want to use to scrub your entire history. To
+remove a file named passwords.txt from your entire history, you can use
+the `--tree-filter` option to `filter-branch`:
+
+[source,shell]
+----
+git filter-branch —tree-filter 'rm -f passwords.txt' HEAD
+----
+
+The `--tree-filter` option runs the specified command after each
+checkout of the project and then recommits the results. In this case,
+you remove a file called passwords.txt from every snapshot, whether it
+exists or not. If you want to remove all accidentally committed editor
+backup files, you can run something like
+`git filter-branch --tree-filter 'rm -f *~' HEAD`.
+Using `--index-filter` with `git rm` yields a significantly faster
+version. Like with using `rm filename`, `git rm --cached filename` will
+fail if the file is absent from the tree of a commit. If you want to
+`completely forget` a file, it does not matter when it entered
+history, so we also add `--ignore-unmatch`:
+
+[source,shell]
+----
+git filter-branch —index-filter 'git rm —cached —ignore-unmatch passwords.txt' HEAD
+----
+
+== Sources
+
+* https://github.com/AlexZeitler/gitcheatsheet[Alex Zeitler Git cheat sheet]
+
+* http://jan-krueger.net/git[Jan Krueger Git cheat sheet]
+
+* http://gitready.com/[Git Ready]
+
+* http://stackoverflow.com/questions/964876/head-and-orig-head-in-git[Stackoverflow - HEAD and ORIG_HEAD in Git]

@@ -1,0 +1,11 @@
+= Welcome on developer.exoplatform.org!
+include::conf/_settings.adoc[]
+include::conf/_properties.adoc[]
+
+This website is centralizing all resources useful for eXo developers and contributors.
+
+include::content/sources.adoc[leveloffset=+1]
+
+include::content/ide.adoc[leveloffset=+1]
+
+include::content/build.adoc[leveloffset=+1]

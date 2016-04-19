@@ -1,0 +1,23 @@
+= Git - Repositories
+
+== Platform codebase
+
+eXo Platform is built from several projects stored in different Git repositories.
+You'll find below the list of blessed (reference) repositories useful to build Platform 4
+
+[[plf_components]]
+.Overview of all eXo Components for PLF 4.3
+image::plf-components.png[Platform Components, align=center, link={imagesdir}/plf-components.png]
+
+** {link-git-repo-platform-public-distributions}[platform-public-distributions]: Platform public distributions. Main project used to package the standalone community edition based on http://tomcat.apache.org[Apache Tomcat].
+** {link-git-repo-platform}[platform]: eXo Platform
+** {link-git-repo-integration}[integration]: Integration of eXo services
+** {link-git-repo-calendar}[calendar]: eXo Calendar
+** {link-git-repo-forum}[forum]: eXo Forum
+** {link-git-repo-wiki}[wiki]: eXo Wiki
+** {link-git-repo-social}[social]: eXo Social
+** {link-git-repo-ecms}[ecms]: eXo Content Management System
+** {link-git-repo-commons}[commons]: Commons services
+** {link-git-repo-platform-ui}[platform-ui]: UI customizations to overrride GateIn styles
+** {link-git-repo-gatein}[GateIn Portal]: GateIn Portal
+** {link-git-repo-jcr}[JCR]: eXo JCR

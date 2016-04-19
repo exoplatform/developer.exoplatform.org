@@ -1,16 +1,11 @@
-_site
 *.iml
 .DS_Store
 .idea
-*.tmproj
-_site/*
-_theme_packages/*
 
-Thumbs.db
-.DS_Store
+# Directory for output files (HTML, PDF...)
+output/
 
-!.gitkeep
-
-.rbenv-version
-.rvmrc
-Gemfile.lock
+# Wercker
+_builds
+_steps
+_cache

@@ -1,0 +1,419 @@
+= Git - Workflow
+
+Our workflow is built on two principles :
+
+* The *repository architecture* (development vs blessed) that has to be followed by *all projects involved in products* produced eXo (and thus that require to be supported).
+* The *branching model* that has to be followed by _all projects_ at eXo
+
+== Repository architecture
+
+Aiming +security+ and backup purpose, we are using two repository kinds (owned by two distinct github organizations).
+
+These are `blessed` and `development` repositories hosted respectively on https://github.com/exoplatform[exoplatform] and https://github.com/exodev[exodev] organizations.
+
+Development repositories are forked from blessed repositories.
+
+*This strategy is applied to all repositories/projects involved in eXo products.* Others projects are using a single repository hosted on "exoplatform" organization.
+
+[[git_organization]]
+.Git Repository Architecture
+image::git-organization.png[Git Organization, 600, align=center, link={imagesdir}/git-organization.png]
+
+=== Development repository
+
+This repository is the developers repository. The main development branch is `develop` branch. Depending the contribution kind (one shot contribution or feature contribution), the developer can use a dedicated `feature` branch if needed.
+The most of development activity will be done in this repository by a lot of contributors :
+
+* `maintainers` (formerly known as `sl3`) : To develop fix. These developments are done in dedicated `fix` branches (more details below).
+* `all development teams` : To do one shot contribution and handle feature branch life cycle.
+
+In this repository, `develop` branch and `feature` branch will be under CI.
+
+=== Blessed repository
+
+In this repository you can find `stable` branches and release tags.
+Only some people are able to write on this repository :
+
+* `maintainers` : To integrate pull request on stable branches.
+* `release manager` : To perform release operations on stable (supported) branches.
+* `keepers` : Repository keepers are `Project Leader`, `Team Leader` and `Technical Leader`. They are able to pull changes from dev to blessed when the develop is stable enough and they can process releases for non supported versions of products (alpha, beta, RCs, …)
+
+The continuous integration is applied on stables branches (`stable/1.0.x`, `stable/1.1.x`, etc) on blessed repository.
+
+== Contribution Workflow
+
+The contribution workflow mainly relies on Github Pull Requests. Here are the rules :
+
+* `PR for everything` +
+For every fix/feature, for all platform projects and supported addons, create a PR.
+Creating a PR is easy and allows to share, discuss on validate more easily the fix/feature.
+To create a PR :
+** create a branch locally with your fix and push it to Github
+** in Github, select your branch, and click on *New pull request* image:git-pr-create-01.png[alt="Git PR Create",align="center"]
+** select the right base branch (most of the time *develop*) and check that the PR contains only your commits image:git-pr-create-02.png[alt="Git PR Create",width="700",align="center"]
+** fill the description
+** click on *Create pull request*
+* `PR on develop` +
+++
+PR must always be done on exodev:develop or exo-addons:develop, not on exoplatform:develop (we fix on develop first, then we backport to stable if needed).
+Remember that exoplatform:develop is read-only.
+There are only 2 exceptions :
+++
+** the fix is different between develop dans stable - in such a case, 2 PRs are necessary, one on develop, one on stable
+** the bug only occurs on stable - in such a case, PR must be done on stable
+* `Explain your PR`
++
+The description of the PR must always be filled to describe precisely what was the root cause of the problem and how it has been solved.
+* `Update the PR, do not recreate it`
++
+To update a PR, just push a new commit in the same branch, no need to create a new branch and a new PR.
+Creating a new PR for each update prevents from following easily the discussion and the updates history.
+* `PR must be validated by peers`
++
+When a PR is submitted, it has to be reviewed by at least one peer.
+When the PR is validated by the peer, the PR can be merged in the target branch.
+* `Merge the PR correctly`
++
+Before merging the PR in the target branch, make sure the branch of the PR is up to date (push --force), otherwise the PR will not appear as *Merged* in Github.
+
+image::git-pr-merged.png[alt="Git PR Merged",width="700",align="center"]
+
+* `Clean your mess`
++
+Once the PR has been merged, delete the branch in Github, and close the PR if it is not already marked as *Merged* or *Closed*.
+
+== Branching model
+
+Branching model are 6 kinds of branch :
+
+* `develop` : Develop branch contains the latest delivered development changes.
+* `feature/xxx` : Feature branches are dedicated branch for one big feature (lot of commits), "xxx" is the feature name.
+* `stable/xxx` : Stable branch are used to perform releases and write / accept fix. "xxx" is the stable version name (e.g 1.0.x).
+* `fix/xxx` : Fix branch is dedicated to integrate bugfix on Develop branch. If needed the fix is then cherry pick on stable branch.
+* `integration/xxx` : Integration branches are dedicated branch to automatic integration task (like Crowdin translation).
+* `poc/xxx` : Poc branches are dedicated branch to develop a Prove of Concept (PoC).
+
+=== Develop Branch
+
+Develop branch contains the latest delivered development changes.
+This is our backbone where all the different fix and new feature are mixed with each other.
+
+[[git-workflow-develop-branch]]
+.Git Workflow - Develop Branch
+image::git-workflow-develop-branch.png[Git Workflow - Develop Branch, 600, align=center, link={imagesdir}/git-workflow-develop-branch.png]
+
+== Feature Branch
+
+Feature branches are dedicated branch to develop a new feature.
+
+[[git-workflow-feature-branch]]
+.Git Workflow - Feature Branch
+image::git-workflow-feature-branch.png[Git Workflow - Feature Branch, 300, align=center, link={imagesdir}/git-workflow-feature-branch.png]
+
+=== Actions
+
+==== Create a new Feature Branch
+
+*When:* A new feature is specified and planified.
+
+*Who:* PL/TL
+
+*How:*
+
+* If you want the branch deploy on Acceptance, do not create the branch by yourself but create a SWF ticket on Jira for the full package (Branches+CI+Acceptance).
+* If it’s a local feature project without need for CI or Acceptance you can create it by yourself.
+
+==== Rebase Develop to Feature Branch
+
+*When:* Frequently
+
+*Who:* Team responsible of the branch with support of team responsible each project.
+
+*How:*
+[source,shell]
+----
+git checkout develop
+git pull
+git checkout feature/x
+git rebase develop
+git push --force
+----
+
+==== Merge Feature Branch to Develop
+
+*When:* Feature has been successfully tested by FQA. VPs give a GO.
+
+*Who:* Team responsible of the branch with support of team responsible of each project
+
+*How:*
+[source,shell]
+----
+git checkout feature/x
+git rebase -i origin/develop
+(remove initial commit)
+git checkout develop
+git pull
+git merge --no-ff feature/x
+git push
+----
+
+==== Remove a Feature Branch
+
+*When:* Just after the merge of the feature branch to Develop
+
+*Who:* PL/TL
+
+*How:* Create SWF ticket on Jira to remove the full package (Branches+CI+Acceptance).
+
+== Fix Branch
+
+Fix Branch are dedicated branch to fix a bug. The validation process may be different if the bug has been raised by FQA/TQA or by SM.
+
+A fix branch is always created from Develop branch (except exceptional circumstance: fix on stable only).
+
+[[git-workflow-fix-branch]]
+.Git Workflow - Fix Branch
+image::git-workflow-fix-branch.png[Git Workflow - Fix Branch, 400, align=center, link={imagesdir}/git-workflow-fix-branch.png]
+
+=== Actions
+
+==== Create a Fix Branch
+
+*When:* A Jira issue has been created, time to resolve it is already estimated.
+
+*Who:* Team responsible to fix the issue.
+
+*How:*
+[source,shell]
+----
+git checkout develop
+git pull
+git checkout -b fix/issue
+git push
+----
+
+==== Merge a Fix Branch to Develop
+
+*When:*
+
+* If issue raised by TQA/FQA: After Engineering test
+* If issue raised by SM: After SM test
+
+*Who:*
+
+* If issue raised by TQA/FQA: Team responsible to fix the issue
+* If issue raised by SM: SM
+
+*How:*
+[source,shell]
+----
+git checkout fix/issue
+git pull
+git rebase origin/develop
+git checkout develop
+git pull
+git merge fix/issue –squash
+git commit -a
+git push
+----
+
+==== Remove a Fix Branch
+
+*When:* After the merge of the fix branch to Develop
+
+*Who:* Team responsible to fix the issue.
+
+*How:*
+[source,shell]
+----
+git push origin –delete fix/issue
+git branch -d fix/issue
+----
+
+== Stable Branch
+
+Stable branch are used to perform releases and write / accept fix.
+
+[[git-workflow-stable-branch]]
+.Git Workflow - Stable Branch
+image::git-workflow-stable-branch.png[Git Workflow - Stable Branch, 600, align=center, link={imagesdir}/git-workflow-stable-branch.png]
+
+
+=== Actions
+
+==== Create a new Stable Branch
+
+*When:* When create the first Release Candidate version
+
+*Who:* SWF
+
+*How:* With a script similar to [createFB.sh](https://github.com/exoplatform/swf-scripts/blob/master/createFB.sh)
+
+==== Create a Fix Branch to fix Stable Branch
+
+*In exceptional circumstance*
+
+*When:* A fix need to be done on a specific version but not on the on development version (fix a performance issue for instance)
+
+*Who:* Team responsible to fix the issue after a Go from SM.
+
+*How:*
+[source,shell]
+----
+git checkout stable/4.1.x
+git pull
+git checkout -b fix/4.1.x-issue
+----
+
+==== Merge a Fix Branch to Stable
+
+*In exceptional circumstance*
+
+*When:* After SM test
+
+*Who:* SM Team
+
+**How:**
+[source,shell]
+----
+git checkout fix/4.1.x-issue
+git checkout stable/4.1.x
+git pull
+git merge fix/4.1.x-issue --squash
+git commit -a
+git push
+----
+
+==== Remove a Fix Branch
+
+*When:* After the merge of the fix branch to stable branch
+
+*Who:* SM
+
+*How:*
+[source,shell]
+----
+git push origin --delete fix/4.1.x-issue
+git branch -d fix/4.1.x-issue
+----
+
+==== Perform a release
+
+*When:* After FQA/TQA test campaign. VPs give a GO.
+
+*Who:* Release managers
+
+*How:*
+[source,shell]
+----
+git clone git@github.com:exoplatform/xxx.git
+cd xxx
+# You checkout the release branch on which you need to perform a release.
+git checkout stable/A.B.x
+# You follow the classical maven release process
+mvn release:prepare
+mvn release:perform
+----
+
+==== Move a release tag
+
+*In really special case* (when the test campaign show a critical issue after tagging but before nexus publishing) release manager still can apply a last minute commit and move the tag.
+
+*When:* After FQA/TQA test campaign. VPs give a GO.
+
+*Who:* Release managers
+
+**How:**
+[source,shell]
+----
+# After your commit, just delete the remote tag, and create another one in this way
+git tag -d 1.0.0
+git push origin :refs/tags/1.0.0
+git tag 1.0.0
+git push origin 1.0.0
+----
+
+== Integration Branch
+
+Integration branches are dedicated branch to automatic integration task (like Crowdin translation for instance).
+
+[[git-workflow-integration-branch]]
+.Git Workflow - Integration Branch
+image::git-workflow-integration-branch.png[Git Workflow - Integration Branch, 800, align=center, link={imagesdir}/git-workflow-integration-branch.png]
+
+
+=== Actions
+
+==== Create a new Integration Branch
+
+*When:* After a PLF release for Translation branches.
+
+*Who:* SWF
+
+*How:* Create from develop or stable/4.1.x. These branches have no maven version updated.
+
+== PoC Branch
+
+`Engineering`
+
+Poc branches are dedicated branch to develop a Prove of Concept (PoC).
+
+[[git-workflow-poc-branch]]
+.Git Workflow - POC Branch
+image::git-workflow-poc-branch.png[Git Workflow - POC Branch, 300, align=center, link={imagesdir}/git-workflow-poc-branch.png]
+
+=== Actions
+
+==== Create a new PoC Branch
+
+*When:* A new PoC is planified.
+
+*Who:* PL/TL
+
+*How:*
+[source,shell]
+----
+$ git checkout develop
+$ git pull
+$ git checkout -b poc/x
+[Modify all pom: initial commit]
+$ git add pom.xml
+$ git commit -m "details"
+$ git push
+----
+
+== Release Process
+
+A release must never involve a freeze of the develop branch.
+This section explain the release process to follow when doing an intermediate release (Milestone, Release Candidate) or the final release.
+
+=== Intermediate Release
+
+*When:* Product Leader give a go to do an intermediate release of PLF (Milestone, Release Candidate)
+
+*Who:* PLF Team with support of team responsible of each project
+
+[[release-intermediate]]
+.Intermediate Release
+image::release-prepare-intermediate.png[Intermediate Release, 600, align=center, link={imagesdir}/release-prepare-intermediate.png]
+
+=== Final Release
+
+*When:* Product Leader give a go to do the final release of PLF
+
+*Who:* PLF Team with support of team responsible of each project
+
+image::release-prepare-final.png[alt="Final Release process", width="500")]
+
+== Improvement
+
+=== What is changing compare to 4.1
+
+* Clean history by using git rebase.
+* No more weekly merge between develop and master.
+* All fixes are push firstly to develop branch. Then SM backport what they need to stable.
+* Rebase develop to feature branch:
+** To do it regularly
+** To do it ONLY if develop branch is ok : build + acceptance are ok otherwise you'll distribute shitty code everywhere
+** To do it for all projects in a given FB at the same time (to keep the coherency)
+* No more master branch on exodev repository. Master is only on blessed repository.
