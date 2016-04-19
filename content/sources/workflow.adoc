@@ -49,7 +49,7 @@ For every fix/feature, for all platform projects and supported addons, create a 
 Creating a PR is easy and allows to share, discuss on validate more easily the fix/feature.
 To create a PR :
 ** create a branch locally with your fix and push it to Github
-** in Github, select your branch, and click on *New pull request* image:git-pr-create-01.png[alt="Git PR Create",align="center"]
+** in Github, select your branch, and click on *New pull request* image:git-pr-create-01.png[alt="Git PR Create",align="center",width="700"]
 ** select the right base branch (most of the time *develop*) and check that the PR contains only your commits image:git-pr-create-02.png[alt="Git PR Create",width="700",align="center"]
 ** fill the description
 ** click on *Create pull request*
