@@ -25,4 +25,4 @@ after_success:
   - git config user.name "${EXO_USER_NAME}"
   - git config user.email "${EXO_USER_EMAIL}"
   - git add . ; git commit -m "Deploy developer.exoplatform.org HTML files"
-  - git push --force --quiet "https://${EXO_TOKEN}@${EXO_REF}" master:asciidoc/html > /dev/null 2>&1
+  - git push --force --quiet "https://${EXO_TOKEN}@${EXO_REF}" master:gh-pages > /dev/null 2>&1
