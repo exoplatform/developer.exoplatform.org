@@ -82,6 +82,12 @@ image::git-pr-merged.png[alt="Git PR Merged",width="700",align="center"]
 +
 Once the PR has been merged, delete the branch in Github, and close the PR if it is not already marked as *Merged* or *Closed*.
 
+WARNING: `Code Review does NOT mean Test, Reviewers are NOT Testers` +
+The role of the reviewers is to review the code changes (code best practices, better/easier solution, ...).
+They do not necessarily have to test (they can if they want/need of course).
+The author of the PR must not rely on the reviewers to test it, he/she is responsible for that (and the QA people will help during their test campaigns).
+
+
 == Branching model
 
 Branching model are 6 kinds of branch :
