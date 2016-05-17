@@ -27,8 +27,8 @@ By default you have at least to setup your default identity that will be used fo
 
 [source,shell]
 ----
-git config –global user.name "John Doe"
-git config –global user.email "jdoe@exoplatform.com"
+git config --global user.name "John Doe"
+git config --global user.email "jdoe@exoplatform.com"
 ----
 
 We recommend also :
@@ -44,30 +44,30 @@ git config color.ui true
 
 [source,shell]
 ----
-git config –global push.default current
+git config --global push.default current
 ----
 
 * to setup line endings preferences for Unix/Mac users
 
 [source,shell]
 ----
-git config –global core.autocrlf input
-git config –global core.safecrlf true
+git config --global core.autocrlf input
+git config --global core.safecrlf true
 ----
 
 * to setup line endings preferences for Windows users
 
 [source,shell]
 ----
-git config –global core.autocrlf true
-git config –global core.safecrlf true
+git config --global core.autocrlf true
+git config --global core.safecrlf true
 ----
 
 * to reduce the number of files to consider when performing rename detection during a merge. The merge is working pretty well on small repositories (with move and rename of files). But it's not working on large repositories as the detection of file renaming is O(n²), so we need to update some threshold (more explanations are available in this post : http://blogs.atlassian.com/2011/10/confluence_git_rename_merge_oh_my/[http://blogs.atlassian.com/2011/10/confluence_git_rename_merge_oh_my/]) :
 
 [source,shell]
 ----
- git config –global merge.renameLimit 10000
+ git config --global merge.renameLimit 10000
 ----
 
 * to configure git to add some command aliases to easily call them with `git &lt;ALIAS_NAME&gt;`.

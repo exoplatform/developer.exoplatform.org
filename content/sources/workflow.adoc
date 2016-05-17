@@ -218,7 +218,7 @@ git pull
 git rebase origin/develop
 git checkout develop
 git pull
-git merge fix/issue –squash
+git merge fix/issue --squash
 git commit -a
 git push
 ----
@@ -232,7 +232,7 @@ git push
 *How:*
 [source,shell]
 ----
-git push origin –delete fix/issue
+git push origin --delete fix/issue
 git branch -d fix/issue
 ----
 

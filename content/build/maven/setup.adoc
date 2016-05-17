@@ -108,7 +108,7 @@ TBD
 
 [source,shell]
 ----
-$ gpg –version
+$ gpg --version
 gpg (GnuPG) 1.4.10
 Copyright (C) 2008 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later http://gnu.org/licenses/gpl.html[http://gnu.org/licenses/gpl.html]
@@ -150,7 +150,7 @@ Launch the key generation
 
 [source,shell]
 ----
-$ gpg –gen-key
+$ gpg --gen-key
 ----
 
 *ALWAYS SELECT DEFAULT CHOICES AND DON'T USE AN EMPTY PASSPHRASE*
@@ -167,7 +167,7 @@ You can list the key you just generated with :
 
 [source,shell]
 ----
-$ gpg –list-key
+$ gpg --list-key
 pub 4096R/2CF0CC82 2009-11-17
 uid Arnaud Héritier (eXo Platform CODE SIGNING KEY) arnaud.heritier@exoplatform.com
 sub 4096R/37540EAE 2009-11-17
@@ -177,7 +177,7 @@ You send your key to a PGP server (you use the ID from the "pub" line)
 
 [source,shell]
 ----
-$ gpg –keyserver hkp://pgp.mit.edu[hkp://pgp.mit.edu] –send-keys 2CF0CC82
+$ gpg --keyserver hkp://pgp.mit.edu[hkp://pgp.mit.edu] --send-keys 2CF0CC82
 ----
 
 Your GPG key is now ready to be used
