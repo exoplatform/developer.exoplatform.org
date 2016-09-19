@@ -10,7 +10,7 @@ To build eXo projects you need to install a Java http://www.oracle.com/technetwo
 
 == Install Apache Maven
 
-The version *3.2.3* of http://maven.apache.org/download.cgi[Apache Maven] is currently recommended to build eXo projects. +
+The version *3.2.5* of http://maven.apache.org/download.cgi[Apache Maven] is currently recommended to build eXo projects. +
 
 [IMPORTANT]
 _The minimal version required is 3.0.4. +
