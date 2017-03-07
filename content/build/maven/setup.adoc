@@ -4,13 +4,14 @@
 
 To build eXo projects you need to install a Java http://www.oracle.com/technetwork/java/javase/downloads/index.html[JDK] 6, 7 or 8 depending of the Platform version you are targeting :
 
-* Platform 4.4+ : Java 8
-* Platform 4.1 / 4.2 / 4.3 : Java 7
-* Platform 4.0.x : Java 6
+* *Platform 5.0*: `*Java 8 / Maven 3.3.9*`
+* Platform 4.4+ : `Java 8 / Maven 3.2.x (PLF & GateIn components) / Maven 3.0.x (CF components)`
+* Platform 4.1 / 4.2 / 4.3 : `Java 7 / Maven 3.2.x (PLF) / Maven 3.0.x (GateIn & CF components)`
+* Platform 4.0.x : `Java 6`
 
 == Install Apache Maven
 
-The version *3.2.5* of http://maven.apache.org/download.cgi[Apache Maven] is currently recommended to build eXo projects. +
+The version *3.3.9* of http://maven.apache.org/download.cgi[Apache Maven] is currently recommended to build eXo projects. +
 
 [IMPORTANT]
 _The minimal version required is 3.0.4. +

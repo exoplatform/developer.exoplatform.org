@@ -15,7 +15,13 @@
 :link-git-repo-commons: {link-github-exoplatform}/commons
 :link-git-repo-platform-ui: {link-github-exoplatform}/platform-ui
 :link-git-repo-doc-style: {link-github-exoplatform}/doc-style
-:link-git-repo-gatein: {link-github-exoplatform}/gatein
+:link-git-repo-gatein-portal: {link-github-exoplatform}/gatein-portal
+:link-git-repo-gatein-wci: {link-github-exoplatform}/gatein-wci
+:link-git-repo-gatein-sso: {link-github-exoplatform}/gatein-sso
+:link-git-repo-gatein-pc: {link-github-exoplatform}/gatein-pc
 :link-git-repo-jcr: {link-github-exoplatform}/jcr
+:link-git-repo-ws: {link-github-exoplatform}/ws
+:link-git-repo-core: {link-github-exoplatform}/core
+:link-git-repo-kernel: {link-github-exoplatform}/kernel
 // PDF file
 :link-exo-developer-guide-pdf: http://developer.exoplatform.org/exo-developer-guide.pdf
