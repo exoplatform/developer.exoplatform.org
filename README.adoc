@@ -1,3 +1,17 @@
 = eXo Developer WebSite (v2)
 
-A new version based on *AsciiDoc* content and Asciidoctor toolchain. 
+A new version based on *AsciiDoc* content and Asciidoctor toolchain.
+
+== How to build the doc locally?
+
+[NOTE]
+Install Wercker CLI via http://www.wercker.com/cli/install/osx
+
+[source,bash]
+----
+$ wercker dev --expose-ports --enable-volumes
+$ open http://localhost:8000
+----
+
+Then the PDF and HTML files are available on `/tmp`. +
+They are *automatically re-generated* each time you save your work.
