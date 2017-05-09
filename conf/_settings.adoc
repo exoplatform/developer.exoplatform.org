@@ -10,3 +10,4 @@
 :idseparator: -
 :source-highlighter: highlightjs
 :nofooter:
+:docinfo: shared
