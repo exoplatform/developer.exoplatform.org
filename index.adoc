@@ -13,3 +13,5 @@ include::content/sources.adoc[leveloffset=+1]
 include::content/ide.adoc[leveloffset=+1]
 
 include::content/build.adoc[leveloffset=+1]
+
+include::content/development.adoc[leveloffset=+1]
