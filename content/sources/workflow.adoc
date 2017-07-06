@@ -343,20 +343,22 @@ git push origin 1.0.0
 
 Integration branches are dedicated branch to automatic integration task (like Crowdin translation for instance).
 
-[[git-workflow-integration-branch]]
-.Git Workflow - Integration Branch
-image::git-workflow-integration-branch.png[Git Workflow - Integration Branch, 800, align=center, link={imagesdir}/git-workflow-integration-branch.png]
-
-
 === Actions
 
 ==== Create a new Integration Branch
 
-*When:* After a PLF release for Translation branches.
+*When:* Whenever an integration is needed with a third-party system.
 
 *Who:* SWF
 
-*How:* Create from develop or stable/4.1.x. These branches have no maven version updated.
+*How:*
+[source,shell]
+----
+git checkout develop
+git pull
+git checkout -b integration/my-integration
+git push
+----
 
 == PoC Branch
 

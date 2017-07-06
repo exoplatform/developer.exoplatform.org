@@ -1,0 +1,44 @@
+= Translations
+
+All the translations are managed in https://crowdin.com[Crowdin].
+For each PLF version, a Crowdin project is created and linked.
+A synchronization between the eXo source code and Crowdin is performed once per day.
+
+== How to update an existing translation string?
+
+Updating a string must be done in Crowdin directly (if it is done in the source code, it will be reset by the next synchronization).
+Once validated the translated string will be pushed in the sources during the next synchronization.
+
+== How to add a new translation string in an existing localization file?
+
+In order to add a new string, simply add it in the english (en) localization file.
+It will automatically be added in Crowdin during the next synchronization.
+You can add the string in others localization files, for testing purpose, but it will be reset during the next synchronization.
+
+== How to delete a translation string?
+
+Deleting a string must be done in the sources by simply removing the string in all the localization files containing this string.
+The string will be automatically deleted in Crowdin during the next synchronization.
+
+== How to add a new localization file?
+
+All localization files of a given project must be referenced in the file translations.properties located at the root of the project.
+Each line must be formatted as follows:
+
+[source,shell]
+----
+crowdin-path=source-path
+----
+
+where
+
+* *crowdin-path* is the path of the localization file in Crowdin relative to the root of the Crowdin project
+* *source-path* is the path of the english (en) localization file in the project sources, relative to the value of the property "baseDir"
+
+For example:
+
+[source,shell]
+----
+baseDir=platform/calendar/
+webapp/CalendarPortlet.properties=calendar-webapp/src/main/resources/locale/portlet/calendar/CalendarPortlet_en.properties
+----
