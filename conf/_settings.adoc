@@ -11,3 +11,4 @@
 :source-highlighter: highlightjs
 :nofooter:
 :docinfo: shared
+:linkcss:
