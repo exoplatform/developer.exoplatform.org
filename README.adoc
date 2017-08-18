@@ -2,6 +2,12 @@
 
 A new version based on *AsciiDoc* content and Asciidoctor toolchain.
 
+== How this doc is deployed?
+
+This project uses the *GitHub Pages feature* with the `/docs` path. All HTML/CSS... files are generated and copied
+in this `docs` folder to be available at https://developer.exoplatform.org.
+
+
 == How to build the doc locally?
 
 [NOTE]
