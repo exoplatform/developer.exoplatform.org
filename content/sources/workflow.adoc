@@ -97,6 +97,9 @@ git rebase develop
 git push --force
 ----
 
+* To do it ONLY if develop branch is ok (build + acceptance ok) otherwise you will distribute shitty code everywhere
+* To do it for all projects in a given FB at the same time (to keep the coherency)
+
 ==== Merge Feature Branch to Develop
 
 *When:* Feature has been successfully tested by FQA. VPs give a GO.
@@ -365,15 +368,10 @@ image::release-prepare-intermediate.png[Intermediate Release, 600, align=center,
 
 image::release-prepare-final.png[alt="Final Release process", width="500")]
 
-== Improvement
+== Community Contributions
 
-=== What is changing compare to 4.1
+Anyone with a Github account can contribute to eXo Platform.
+The only difference for people outside of the eXo Platform organization is they must sign a link:../resources/sources/eXo_Platform_ContributorAgreement_EN_v1.2.pdf[Contribution License Agreement].
+The Contributor License Agreement is needed to clarify the terms of usage of contributions by eXo Platform and the entire open source community.
 
-* Clean history by using git rebase.
-* No more weekly merge between develop and master.
-* All fixes are push firstly to develop branch. Then SM backport what they need to stable.
-* Rebase develop to feature branch:
-** To do it regularly
-** To do it ONLY if develop branch is ok : build + acceptance are ok otherwise you'll distribute shitty code everywhere
-** To do it for all projects in a given FB at the same time (to keep the coherency)
-* No more master branch on exodev repository. Master is only on blessed repository.
+The CLA must be printed, signed, then scanned as a PDF file and sent at cla@exoplatform.com.
