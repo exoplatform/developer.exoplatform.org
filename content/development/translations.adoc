@@ -11,7 +11,9 @@ Once validated the translated string will be pushed in the sources during the ne
 
 == How to add a new translation string in an existing localization file?
 
-In order to add a new string, simply add it in the english (en) localization file.
+In order to add a new string, simply add it in the master localization file.
+The master localization file is the file without a language suffix if it exists, for example `resources.properties`.
+Otherwise it is the english version, for example `resources_en.properties`.
 It will automatically be added in Crowdin during the next synchronization.
 You can add the string in others localization files, for testing purpose, but it will be reset during the next synchronization.
 
