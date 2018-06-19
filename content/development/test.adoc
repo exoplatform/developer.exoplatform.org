@@ -60,7 +60,7 @@ Here is a command example to start a SQL Server 2017 database exposed on the def
 
 [source,shell]
 ----
-docker run -d --name sqlserver -p 1433:1433 -e SA_PASSWORD=Mypassword1 -e SQLSERVER_DATABASE=plf -e SQLSERVER_USER=plf -e SQLSERVER_PASSWORD=Mypassword1 exoplatform/sqlserver:ctp2-1-1
+docker run -d --name sqlserver -p 1433:1433 -e SA_PASSWORD=Mypassword1 -e SQLSERVER_DATABASE=plf -e SQLSERVER_USER=plf -e SQLSERVER_PASSWORD=Mypassword1 exoplatform/sqlserver:2017-CU2
 ----
 
 You can connect from your eXo instance with the the user `plf` and the password `Mypassword1` (All your password must match the SQL Server rule : at least 8 chars, with lower, upper and digits).
