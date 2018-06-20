@@ -1,3 +1,5 @@
 = Development
 
+include::development/test.adoc[leveloffset=+1]
+
 include::development/translations.adoc[leveloffset=+1]
