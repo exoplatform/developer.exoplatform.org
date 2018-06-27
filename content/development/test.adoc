@@ -43,7 +43,7 @@ Please refer to the https://hub.docker.com/_/postgres/[Docker hub page] for full
 === Oracle
 
 A Docker image for Oracle database has been created and pushed to https://hub.docker.com/r/exoplatform/oracle/[Docker hub] for testing purpose.
-Here is a command example to start an Oracle 12cR2 database server exposed on the default port (1521) and creates a database `plf` :
+Here is a command example to start an Oracle 12cR2 database server exposed on the default port (1521) with a database `plf` :
 
 [source,shell]
 ----
