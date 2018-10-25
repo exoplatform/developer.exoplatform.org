@@ -15,7 +15,7 @@ To create a PR :
 ** click on *Create pull request*
 * `PR on develop` +
 ++
-PR must always be done on exodev:develop or exo-addons:develop, not on exoplatform:develop (we fix on develop first, then we backport to stable if needed).
+PR must always be done on `exodev:develop` or `exo-addons:develop`, not on `exoplatform:develop` (we fix on develop first, then we backport to stable if needed).
 Remember that exoplatform:develop is read-only.
 There are only 2 exceptions :
 ++
