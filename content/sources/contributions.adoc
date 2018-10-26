@@ -1,0 +1,374 @@
+= Contributions
+
+== Workflow
+
+The contribution workflow mainly relies on Github Pull Requests. Here are the rules :
+
+* `PR for everything` +
+For every fix/feature, for all platform projects and supported addons, create a PR.
+Creating a PR is easy and allows to share, discuss on validate more easily the fix/feature.
+To create a PR :
+** create a branch locally with your fix and push it to Github
+** in Github, select your branch, and click on *New pull request* image:git-pr-create-01.png[alt="Git PR Create",align="center",width="700"]
+** select the right base branch (most of the time *develop*) and check that the PR contains only your commits image:git-pr-create-02.png[alt="Git PR Create",width="700",align="center"]
+** fill the description
+** click on *Create pull request*
+* `PR on develop` +
+++
+PR must always be done on `exodev:develop` or `exo-addons:develop`, not on `exoplatform:develop` (we fix on develop first, then we backport to stable if needed).
+Remember that exoplatform:develop is read-only.
+There are only 2 exceptions :
+++
+** the fix is different between develop dans stable - in such a case, 2 PRs are necessary, one on develop, one on stable
+** the bug only occurs on stable - in such a case, PR must be done on stable
+* `Explain your PR`
++
+The description of the PR must always be filled to describe precisely what was the root cause of the problem and how it has been solved.
+* `Update the PR, do not recreate it`
++
+To update a PR, just push a new commit in the same branch, no need to create a new branch and a new PR.
+Creating a new PR for each update prevents from following easily the discussion and the updates history.
+* `PR must be validated by peers`
++
+When a PR is submitted, it has to be reviewed by at least one peer.
+When the PR is validated by the peer, the PR can be merged in the target branch.
+* `Merge the PR correctly`
++
+Before merging the PR in the target branch, make sure the branch of the PR is up to date (push --force), otherwise the PR will not appear as *Merged* in Github.
+
+image::git-pr-merged.png[alt="Git PR Merged",width="700",align="center"]
+
+* `Clean your mess`
++
+Once the PR has been merged, delete the branch in Github, and close the PR if it is not already marked as *Merged* or *Closed*.
+
+WARNING: `Code Review does NOT mean Test, Reviewers are NOT Testers` +
+The role of the reviewers is to review the code changes (code best practices, better/easier solution, ...).
+They do not necessarily have to test (they can if they want/need of course).
+The author of the PR must not rely on the reviewers to test it, he/she is responsible for that (and the QA people will help during their test campaigns).
+
+== Community Contributions
+
+Anyone with a Github account can contribute to eXo Platform.
+The only difference for people outside of the eXo Platform organization is they must sign a link:../resources/sources/eXo_Platform_ContributorAgreement_EN_v1.2.pdf[Contribution License Agreement].
+The Contributor License Agreement is needed to clarify the terms of usage of contributions by eXo Platform and the entire open source community.
+
+The CLA must be printed, signed, then scanned as a PDF file and sent at cla@exoplatform.com.
+
+== Commits messages best practices
+
+It is often important to browse the source code history to understand when and why a change has been done. 
+Good commits message are therefore crucial to help developers in maintaining a code base.
+In order to improve the quality of the commit messages, the following rules must be respected:
+
+* use 
++
+[source,shell]
+----
+git commit 
+----
++
+instead of 
++
+[source,shell]
+----
+git commit -m “My commit message” 
+----
+when committing a change, in order to write a more detailed commit message and use the commit template
+
+* the commit message must start with a line containing a short subject (max 100 characters) which starts by the Jira issue number and then describes briefly what the commit does. 
+For example : PLF-7916 : Make Setting Service cache ayncInvalidation
+* the commit subject must not be a copy/paste of the Jira issue summary. 
+As said previously, it must describe what the commit does, as if the sentence would start with “If applied, this commit will ...”.
+* after the subject, one blank line must be added before starting the body
+* the body describes in details what the commit does and must answer 2 questions : why is this change needed and how does this change address the issue. It should give as much information as possible to make it easy for another developer who does not know deeply the context to understand the commit. Therefore the body is never too long.
+* after the body, a list of links to relevant resources can be added (optional). It must be separated from the body by one blank line.
+
+Here is an example of commit message following these rules:
+
+[source,shell]
+----
+PLF-8070 : remove useless configuration about settings and notifications services
+
+At first access after startup, if the eXo instance has never been registered, the servlet /registration/software-register is called, then the servlet /registration/software-register-action when clicking on a button.
+The servlet /registration/software-register-action needs to read and update a setting, so it needs the service org.exoplatform.commons.api.settings.SettingService.
+The JPA implementation of this service needs the EntityManagerService to fetch data, which is available only in the PortalContainer.
+And the available container when accessing the servlet is actually the RootContainer.
+In PLF 5.0.0-M10 (in which the bug does not occur), the SettingService implementation used is the cached impl (org.exoplatform.settings.cache.CacheSettingServiceImpl), and when we call the get method to read a settings, it calls the method org.exoplatform.commons.api.settings.data.SettingContext#getCurrentRepositoryName which creates the PortalContainer instance by calling PortalContainer.getInstance().
+Therefore, luckily, when the EntityManagerService is retrieved from the container, the current container is the PortalContainer and it is available and everything works fine.
+
+From SOC-5917, a configuration has been added in social project which changes the implementation of the SettingService from the cached one to org.exoplatform.settings.jpa.JPAUserSettingServiceImpl :  25c143c#diff-a874bcc27e08363c8bcf7f9ce8eab5a7R346
+And this implementation never calls PortalContainer.getInstance(), which means the container available in the servlet is the RootContainer which does not contain EntityManagerService, which makes the setting read fails.
+
+This fix removes the configuration added in SOC-5917 about settings, so the cached impl will be used again.
+Also, a fix in the servlet is done (in the platform project) to ensure that the PortalContainer is created when fetching the setting, no matter what the implementation of SettingService.
+----
+
+Of course, all commit messages do not need to be that long, but it must contain all relevant information to understand what and why the changes have been done.
+
+In order to help developers, a template is available.
+
+*Template*
+
+[source,shell]
+----
+# <jira-issue-id>: (If applied, this commit will...) <subject>
+# |<----  Using a Maximum Of 100 Characters  ---->|
+
+# Why is this change needed?
+# Prior to this change, ...
+# How does it address the issue?
+# This change ...
+# |<----   Try To Limit Each Line to a Maximum Of 72 Characters   ---->|
+
+# Provide links or keys to any relevant tickets, articles or other resources
+
+# --------------------
+# Remember to
+#    Capitalize the subject line
+#    Use the imperative mood in the subject line
+#    Do not end the subject line with a period
+#    Separate subject from body with a blank line
+#    Use the body to explain what and why vs. how
+#    Can use multiple lines with "-" for bullet points in body
+# --------------------
+----
+
+*How to apply it*
+
+The template can be applied globally with the following command:
+[source,shell]
+----
+git config --global commit.template <.git-commit-template.txt file path>
+----
+
+For example, if you saved it to your home folder, try:
+[source,shell]
+----
+git config --global commit.template ~/.git-commit-template.txt
+----
+
+You can also apply it on a particular project by running it at the root of the project, and without the `--global` option:
+[source,shell]
+----
+git config commit.template <.git-commit-template.txt file path>
+----
+
+== Pull Requests best practices
+
+As well as good commits messages are important for code base maintainers, good PRs descriptions are important for reviewers. 
+It helps to understand what the developer has done and why.
+The PR title must start with the Jira issue, then describe briefly what the PR does. 
+For example : _PLF-7916 : Make Setting Service cache ayncInvalidation_
+
+The PR description must at least provide the information given in the commit message body : why is this change needed and how does this change address the issue (Tip: using the first line of the commit message as the PR title and the commit message body as the PR description is a good start for the PR description).
+
+It can also give the following information when relevant:
+
+* Alternative solutions tried and why they failed
+* Any question, remark or doubt that the developer has
+* Tested environments (tomcat/jboss, databases, ldap, browsers, addons, …)
+* Links to resources which can help to understand the contribution
+
+The PR does not need to describe the issue (functional impacts, reproduction steps, ...) since it is already done in the related Jira issue.
+
+== Contributions reviews
+
+=== How to ask for reviewers ?
+
+After having submitted a PR, the developer must change the status of the related Jira issue to “PR Review” by clicking on the button “review needed”.
+The link to the PR must be set in the field “Git Pull Request”.
+
+If the fix is composed of several PRs, all the PR links must be set in the field “Git Pull Request”, separated by semicolons.
+If the list of PRs is too long, it can exceed the max length of this field.
+In such a case, list all the PRs links in a comment of the Jira issue, and set the permalink of this comment in the field “Git Pull Request”.
+
+Once the jira is set as “PR Review”, others developers are supposed to review it in a reasonable delay.
+If the developer wants to ask a specific person or some specific persons to do the review, the field “Reviewers” of the Github PR can be used:
+
+image:git-pr-ask-reviewers.png[alt="Git PR Ask Reviewers",width="700",align="center"]
+
+=== How to do a review ?
+
+The reviewers must use the review feature of Github to do the review. On the first comment, the button “Start review” must be used. Then, once the review is done, the developer must submit the review by clicking on the button “Review changes”, then select the right option:
+
+* `Comment`: the review contains only remarks or questions which ask for clarifications but do not necessarily ask for changes
+* `Approve`: the PR is approved
+* `Request changes`: the review contains at least a comment asking for a change in the PR
+
+If the option `Approve` is selected, the PR is validated, and the Jira issue status must be changed to `Merge`.
+If the option `Comment` or `Request changes` is selected, the PR is not validated, and the Jira issue status must be changed to `PR Refused`.
+
+=== What should I care when reviewing a Pull Request ?
+
+When reviewing a Pull Request, the following things must be checked:
+
+* Correctness of the fix/feature
+* Learning
+* Coding best practices
+* Unit Tests
+* Security
+* Performance
+* Maintainability
+* Troubleshooting
+* Upgrades
+* API breaking
+* Code formatting (if not yet automated)
+* Documentation
+
+WARNING: This list does not only apply to reviewers, but also to contributors!
+
+==== Correctness of the fix/feature
+
+Most of the time of the review must be spent to understand the ultimate goals of the code changes, which means going back to the issue and understanding how it is fixed. The reviewer must check if the PR fixes the issue, as well as if it handles correctly corner cases and if it does not add regressions or unexpected impacts on related features.
+
+Also, even if the PR review is not QA, if there is any doubt on the correctness of the fix/feature, it should be tested.
+
+Correctment does not only mean that the PR fixes the issue, but also that it is the most adequate and simple solution. The reviewer should not hesitate to propose any others solutions or questions to exchange with the committer and make sure it is the right solution to apply. 
+
+==== Learning
+
+The review is not only a process to validate others people code, it is also an ideal moment to learn from them. Reviewers are encouraged to ask any question if there is something they do not understand or want more details on.
+
+==== Coding best practices
+
+The reviewer must check the PR follows the best practices described in the eXo Coding Best Practices (WIP).
+Beyond this document, the reviewer must check the PR follows the best practices generally admitted in software development.
+If a practice is not described in the eXo Coding Best Practices document and is used in the PR, it is a good opportunity to discuss about it and add it if necessary in the document.
+
+==== Unit Tests
+
+Unit Tests are essential to minimize regressions. The reviewer must check that unit tests are implemented to cover the related bug or the feature, especially:
+
+* Are the test titles adequately descriptive?
+* Are the key scenarios captured?
+* Are there enough edge cases covered for comfort?
+* Are the tests written with good assertions?
+* If a test fails, would it be easy to track down the error?
+* Are the tests independent from each others (especially if they manage data)?
+
+The reviewer must also ensure that the unit tests coverage minimum ratio defined in Maven configuration (`exo.test.coverage.ratio`) is not decreased and advise to increase it if the test coverage has been improved.
+
+==== Security
+
+The reviewer must check that the contribution does not introduce security issues, especially in the following areas:
+
+* Data/Input Validation of data from all untrusted sources
++
+_All input data must be validated before being used and/or stored in the system (UI forms, REST APIs inputs, …)._
+* Authentication
+* Session Management
+* Authorization
++
+_All the resources of the system (web pages, documents, REST APIs, …) must only be accessible by the authorized population._
+* Cryptography (Data at rest and in transit)
++
+_Sensitive information must not be transmitted or persisted in clear text. Also, secure method must be used for cryptography (for example do not use MD5 to encode users’ passwords)._
+* Error Handling / Information Leakage
++
+_Sensitive information should not end up in error messages (logs, UI, …). For example do not include passwords or security tokens in logs._
+* Logging / Auditing
++
+_Some operations require logging/auditing to allow to understand what happened during a security breach or detect security issues as they happen._
+
+==== Performance
+
+The reviewer must try to detect if the fix/feature could have significant bad impacts on the performances of the application. Performances issues can be expensive to find and fix, so it is important to raise any concern on this topic at this stage. Here are some examples of performance issues causes: too many database requests, slow database query, missing index in the database, too many HTTP requests, ...
+
+==== Maintainability
+
+The maintainability measure how easy it is to make changes in a code base (fixing bugs, adding new features, replacing a faulty or obsolete component, ...). This means:
+
+* Tests are implemented to ensure a good test coverage and help understand how code should behave
+* Classes and methods have a clear and single responsibility
+* Classes, methods and variables names are self-descriptive and/or well documented
+* Classes and methods are short
+* Cyclomatic complexity of a method should be low
+* Components are loosely coupled
+* Code duplication should be avoided
+* Code must respect formatting rules
+
+More generally, if it was hard for the reviewer to understand, the code should probably be reworked to make it easy to understand since it means it will be hard to understand for next developers in the future.
+
+==== Troubleshooting
+
+When problems occur in production, it is generally not possible to debug or to update easily the code to find the cause. Therefore, the developer must try to anticipate the potential issues and provide the information and/or tools to help finding the error cause and fixing it. The reviewer must evaluate if the contribution contains the right elements to help this troubleshooting. Here are some examples of question to answer:
+
+* Is there enough logs ?
+* Do the logs have the appropriate level ?
+* If relevant, in case of problem, is there any tool (JMX bean, …) to gather more information or to recover ?
+
+==== Upgrades
+
+Any contribution must be considered to be installed on an existing environment. In such a case it must be ensured that the upgrade is done as transparently as possible:
+
+* If data are impacted, an upgrade plugin must be developed
+* If any configuration change is required, the documentation and the upgrade notes must be updated
+
+==== API breaking
+
+API must be stable and can be broken only in major releases. Contributions targeted to minor or maintenance versions must not break the public API. Public API includes:
+
+* Java API
+* REST API
+* Javascript API
+* Configuration
+
+==== Documentation
+
+A documentation Jira issue must be opened as soon as the fix or the new feature has an impact on the documentation. For example:
+
+* New feature to be described
+* Update of the behavior of an existing feature
+* API change
+* Configuration change
+* …
+
+The documentation issue must be as detailed as possible (especially for technical documentation items) to ease the work of the documentation writer.
+
+=== How to know if someone is not already reviewing a PR ?
+
+You cannot (except by talking to your colleagues of course ;)), there is no status for such a thing in Github and Jira, and we don’t need it.
+It is not a problem if several persons review the same PR. It means more feedbacks, more learning, … therefore it is all positive.
+
+== Tips for …
+
+=== ... contributors
+
+* Provide descriptive PR title and description
++
+_Once again, the more explanation the contributor gives about a PR, the easiest it will be for the reviewer to understand and therefore to review. This will save a lot of time for all people._
+* Make small PRs
++
+_Beyond a certain amount of lines of code, the review becomes very difficult to be done efficiently._
+* Don’t get it personally
++
+_People can feel personally offended by others people’s comments. It is important to understand that the comments and criticisms are related to the code, not to the person._
+
+=== ... reviewers
+
+* Understand and agree to the http://retrospectivewiki.org/index.php?title=The_Prime_Directive[Prime Directive]
++
+_The Prime Directive states that “Regardless of what we discover, we understand and truly believe that everyone did the best job they could, given what they knew at the time, their skills and abilities, the resources available, and the situation at hand.”_
+* Use the right tone
++
+_Kindness is a keyword when doing reviews, but it is not always sufficient. The written language is a difficult art since it is not always easy to see the tone and the intuition behind the words, so it must be done carefully. Here are some examples:_
++
+** _Instead of “This is the wrong way to structure the test. There are too many cases in this test.”, prefer “I think it would help with readability to split this test into multiple tests.”_
+** _Instead of “These 3 lines really belong in a separate method.”, prefer “What do you think about extracting these lines into another method to isolate the calculation logic?”_
+** _Avoid words like “just” which assumes the contributors missed something obvious._
+* It’s OK to say “It’s all good”
++
+_The reviewer does not have to find an issue in every review._
+* Take your time
++
+_It is important to understand what the contributor did and why before validating a contribution, so the reviewer must take his/her time to do the review._
+
+=== ... contributors and reviewers
+
+* Adopt a positive attitude
++
+_A review is not a fight to know who is right and who is wrong, it is a collaboration process to provide the best contribution for the given issue. It is important that both contributors and reviewers adopt of a positive attitude with constructive criticisms to achieve this goal._
+* Switch to live review whenever it is necessary
++
+_When the review takes too much time or when the reviewer and/or the contributor feel the need to switch to a live review, it should be done. It is sometimes more efficient to discuss some minutes. The important point is to write the conclusion of the discussion in the PR comments to let everybody know it._
