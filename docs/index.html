@@ -91,6 +91,12 @@
 <li><a href="#id-configure-apache-maven">3.1.3. Configure Apache Maven</a></li>
 </ul>
 </li>
+<li><a href="#id-maven-checks">3.2. Maven - Checks</a>
+<ul class="sectlevel3">
+<li><a href="#id-unit-tests-2">3.2.1. Unit tests</a></li>
+<li><a href="#id-test-coverage">3.2.2. Test coverage</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#id-development">4. Development</a>
@@ -1658,15 +1664,15 @@ history, so we also add <code>--ignore-unmatch</code>:</p>
 <div class="sect3">
 <h4 id="id-workflow">1.5.1. Workflow</h4>
 <div class="paragraph">
-<p>The contribution workflow mainly relies on Github Pull Requests. Here are the rules :</p>
+<p>The contribution workflow mainly relies on Github Pull Requests.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>PR for everything</code><br>
-For every fix/feature, for all platform projects and supported addons, create a PR.
-Creating a PR is easy and allows to share, discuss on validate more easily the fix/feature.
+<div class="sect4">
+<h5 id="id-creating-the-pr">1.5.1.1. Creating the PR</h5>
+<div class="paragraph">
+<p>Once a contribution is ready to be shared, commit the changes (see <a href="#id-commits-messages-best-practices">Commits messages best practices</a> for Commits best practices) and create a PR.
+Creating a PR is easy and allows to share, discuss and validate more easily the contribution.
 To create a PR :</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -1679,74 +1685,48 @@ To create a PR :</p>
 <p>select the right base branch (most of the time <strong>develop</strong>) and check that the PR contains only your commits <span class="image"><img src="images/git-pr-create-02.png" alt="Git PR Create" width="700"></span></p>
 </li>
 <li>
-<p>fill the description</p>
+<p>fill the description ! See <a href="#id-pull-requests-best-practices">Pull Requests best practices</a> for more details.</p>
 </li>
 <li>
 <p>click on <strong>Create pull request</strong></p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p><code>PR on develop</code><br>
-
-PR must always be done on `exodev:develop` or `exo-addons:develop`, not on `exoplatform:develop` (we fix on develop first, then we backport to stable if needed).
-Remember that exoplatform:develop is read-only.
-There are only 2 exceptions :
-</p>
+<div class="paragraph">
+<p>PR must always be done on <code>exodev:develop</code> or <code>exo-addons:develop</code>, not on <code>exoplatform:develop</code> (we fix on develop first, then we backport to stable if needed).
+There are only 2 exceptions :</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>the fix is different between develop dans stable - in such a case, 2 PRs are necessary, one on develop, one on stable</p>
+<p>the fix is different between develop and stable - in such a case, 2 PRs are necessary, one on develop, one on stable</p>
 </li>
 <li>
-<p>the bug only occurs on stable - in such a case, PR must be done on stable</p>
+<p>the bug only occurs on stable - in such a case, the PR must be done on stable</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p><code>Explain your PR</code></p>
-<div class="paragraph">
-<p>The description of the PR must always be filled to describe precisely what was the root cause of the problem and how it has been solved.</p>
 </div>
-</li>
-<li>
-<p><code>Update the PR, do not recreate it</code></p>
+<div class="sect4">
+<h5 id="id-setting-the-pr-as-ready-to-be-reviewed">1.5.1.2. Setting the PR as ready to be reviewed</h5>
 <div class="paragraph">
-<p>To update a PR, just push a new commit in the same branch, no need to create a new branch and a new PR.
+<p>After having submitted a PR, the developer must change the status of the related Jira issue to <code>PR Review</code> by clicking on the button <code>review needed</code>. The link to the PR must be set in the field <code>Git Pull Request</code>.</p>
+</div>
+<div class="paragraph">
+<p>If the fix is composed of several PRs, all the PR links must be set in the field <code>Git Pull Request</code>, separated by semicolons. If the list of PRs is too long, it can exceed the max length of this field. In such a case, list all the PRs links in a comment of the Jira issue, and set the permalink of this comment in the field <code>Git Pull Request</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="id-reviewing-the-pr">1.5.1.3. Reviewing the PR</h5>
+<div class="paragraph">
+<p>When a PR is submitted, it has to be reviewed by at least one peer.</p>
+</div>
+<div class="paragraph">
+<p>Please refer to the chapter <a href="#id-contributions-reviews">Contributions reviews</a> to learn more about review best practices.</p>
+</div>
+<div class="paragraph">
+<p>During the review iterations, the developer may have to update the contribution. In order to update a PR, just push a new commit in the same branch, no need to create a new branch and a new PR.
 Creating a new PR for each update prevents from following easily the discussion and the updates history.</p>
-</div>
-</li>
-<li>
-<p><code>PR must be validated by peers</code></p>
-<div class="paragraph">
-<p>When a PR is submitted, it has to be reviewed by at least one peer.
-When the PR is validated by the peer, the PR can be merged in the target branch.</p>
-</div>
-</li>
-<li>
-<p><code>Merge the PR correctly</code></p>
-<div class="paragraph">
-<p>Before merging the PR in the target branch, make sure the branch of the PR is up to date (push --force), otherwise the PR will not appear as <strong>Merged</strong> in Github.</p>
-</div>
-</li>
-</ul>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/git-pr-merged.png" alt="Git PR Merged" width="700">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>Clean your mess</code></p>
-<div class="paragraph">
-<p>Once the PR has been merged, delete the branch in Github, and close the PR if it is not already marked as <strong>Merged</strong> or <strong>Closed</strong>.</p>
-</div>
-</li>
-</ul>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -1762,6 +1742,42 @@ The author of the PR must not rely on the reviewers to test it, he/she is respon
 </td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="id-automatic-checks-on-pr">1.5.1.4. Automatic checks on PR</h5>
+<div class="paragraph">
+<p>Besides reviews by peer, all PR are submitted to the following automatic checks:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>compilation</strong> - Each time a PR is submitted or updated, the project is compiled. If the compilation fails, the PR is automatically rejected.</p>
+</li>
+<li>
+<p><strong>unit tests</strong> - Each time a PR is submitted or updated, the unit tests are executed. If at least one test fails, the PR is automatically rejected.</p>
+</li>
+<li>
+<p><strong>minimum test coverage</strong> - Each time a PR is submitted or updated, a check is done on test coverage to make sure it does not decrease (see <a href="#id-test-coverage">Test coverage</a> for more details). If the new test coverage is lower than the one set in the Maven configuration, the PR is automatically rejected.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="id-merging-the-pr">1.5.1.5. Merging the PR</h5>
+<div class="paragraph">
+<p>When the PR has been validated by the peer and has passed all the automatic checks, the PR can be merged in the target branch.
+Before merging the PR in the target branch, make sure the branch of the PR is up to date (rebase &amp;&amp; push --force), otherwise the PR will not appear as <strong>Merged</strong> in Github.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/git-pr-merged.png" alt="Git PR Merged" width="700"></span></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="id-cleaning-the-mess">1.5.1.6. Cleaning the mess</h5>
+<div class="paragraph">
+<p>Once the PR has been merged, delete the branch in Github, and close the PR if it is not already marked as <strong>Merged</strong> or <strong>Closed</strong>.</p>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -2093,7 +2109,7 @@ If a practice is not described in the eXo Coding Best Practices document and is 
 </ul>
 </div>
 <div class="paragraph">
-<p>The reviewer must also ensure that the unit tests coverage minimum ratio defined in Maven configuration (<code>exo.test.coverage.ratio</code>) is not decreased and advise to increase it if the test coverage has been improved.</p>
+<p>The reviewer must also ensure that the unit tests coverage minimum ratio defined in Maven configuration (see <a href="#id-test-coverage">Test coverage</a> for more details) is not decreased and advise to increase it if the test coverage has been improved.</p>
 </div>
 </div>
 <div class="sect5">
@@ -2274,7 +2290,7 @@ If a practice is not described in the eXo Coding Best Practices document and is 
 <div class="sect4">
 <h5 id="id-how-to-know-if-someone-is-not-already-reviewing-a-pr">1.5.5.4. How to know if someone is not already reviewing a PR ?</h5>
 <div class="paragraph">
-<p>You cannot (except by talking to your colleagues of course ;)), there is no status for such a thing in Github and Jira, and we don’t need it.
+<p>You cannot (except by talking to your colleagues of course 😉), there is no status for such a thing in Github and Jira, and we don’t need it.
 It is not a problem if several persons review the same PR. It means more feedbacks, more learning, … therefore it is all positive.</p>
 </div>
 </div>
@@ -3036,6 +3052,103 @@ sub 4096R/37540EAE 2009-11-17</code></pre>
 </li>
 </ul>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="id-maven-checks">3.2. Maven - Checks</h3>
+<div class="paragraph">
+<p>When building a project, beyond compilation and packaging, some checks are performed.</p>
+</div>
+<div class="sect3">
+<h4 id="id-unit-tests-2">3.2.1. Unit tests</h4>
+<div class="paragraph">
+<p>When a project is built, the unit tests are automatically executed.
+If one of the unit tests fails, the project build fails.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="id-test-coverage">3.2.2. Test coverage</h4>
+<div class="paragraph">
+<p>When a project is built on our Continuous Integration server, a check is done on the test coverage ratio to make sure it does not decrease.
+The test coverage ratio is set in each Maven module in the property <code>exo.test.coverage.ratio</code>. For example</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;properties&gt;
+  &lt;exo.test.coverage.ratio&gt;0.72&lt;/exo.test.coverage.ratio&gt;
+&lt;/properties&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The value is set between 0.0 (0%) and 1.0 (100%).
+If the new test coverage is lower than the one set in the Maven configuration, the PR is automatically rejected.
+The rules to change this test coverage ratio are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>it can <strong>NEVER</strong> be decreased</p>
+</li>
+<li>
+<p>when a developer increases the test coverage, he CAN (but this is highly recommended) increase the ratio.</p>
+</li>
+<li>
+<p>ratio must always be defined with a 2 digits precision (for example 0.64, not 0.6)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="id-how-to-run-this-check-locally">3.2.2.1. How to run this check locally</h5>
+<div class="paragraph">
+<p>The test coverage check is triggered when the <code>coverage</code> Maven profile is activated.
+Therefore, in order to run this check locally, you must activate this profile:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mvn clean install -Pcoverage</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In case the check passes succesfully, you will see this kind of message:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">[INFO] --- jacoco-maven-plugin:0.7.6.201602180812:check (check-coverage) @ platform-component-organization ---
+[INFO] Analyzed bundle 'eXo PLF:: Platform - Organization Model Integration' with 36 classes
+[INFO] All coverage checks have been met.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In case the check fails, you will see this kind of message:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">[INFO] --- jacoco-maven-plugin:0.7.6.201602180812:check (check-coverage) @ platform-component-organization ---
+[INFO] Analyzed bundle 'eXo PLF:: Platform - Organization Model Integration' with 36 classes
+[WARNING] Rule violated for bundle eXo PLF:: Platform - Organization Model Integration: instructions covered ratio is 0.34, but expected minimum is 0.35
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="id-how-to-check-if-the-ration-can-be-increased-in-a-module">3.2.2.2. How to check if the ration can be increased in a module</h5>
+<div class="paragraph">
+<p>According to <a href="#id-test-coverage">the rules about the minimum test coverage ratio update</a>, if a contributor increases the test coverage ratio, he/she can update the minimum ratio.
+But Maven does not give the actual value in its standard output (console).
+Instead, this value is available in the jacoco reports, in <code>target/site/test-coverage-ut/index.html</code>.
+Here is an example:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/maven-test-coverage-report.png" alt="Test Coverage Report" width="700"></span></p>
+</div>
+<div class="paragraph">
+<p>This report gives the test coverage on each package and the total test coverage of the Maven module.
+This last value is the one checked during the test coverage check.
+If this value is higher than the one set in the prooperty <code>exo.test.coverage.ratio</code>, it can be updated in the pom.xml.</p>
 </div>
 </div>
 </div>
