@@ -1,0 +1,72 @@
+= Maven - Checks
+
+When building a project, beyond compilation and packaging, some checks are performed.
+
+== Unit tests
+
+When a project is built, the unit tests are automatically executed.
+If one of the unit tests fails, the project build fails.
+
+== Test coverage
+
+When a project is built on our Continuous Integration server, a check is done on the test coverage ratio to make sure it does not decrease.
+The test coverage ratio is set in each Maven module in the property `exo.test.coverage.ratio`. For example
+
+[source,xml]
+----
+<properties>
+  <exo.test.coverage.ratio>0.72</exo.test.coverage.ratio>
+</properties>
+----
+
+The value is set between 0.0 (0%) and 1.0 (100%).
+If the new test coverage is lower than the one set in the Maven configuration, the PR is automatically rejected.
+The rules to change this test coverage ratio are:
+
+** it can *NEVER* be decreased
+** when a developer increases the test coverage, he CAN (but this is highly recommended) increase the ratio. 
+** ratio must always be defined with a 2 digits precision (for example 0.64, not 0.6)
+
+=== How to run this check locally
+
+The test coverage check is triggered when the `coverage` Maven profile is activated.
+Therefore, in order to run this check locally, you must activate this profile:
+
+[source,shell]
+----
+mvn clean install -Pcoverage
+----
+
+In case the check passes succesfully, you will see this kind of message:
+
+[source,shell]
+----
+[INFO] --- jacoco-maven-plugin:0.7.6.201602180812:check (check-coverage) @ platform-component-organization ---
+[INFO] Analyzed bundle 'eXo PLF:: Platform - Organization Model Integration' with 36 classes
+[INFO] All coverage checks have been met.
+----
+
+In case the check fails, you will see this kind of message:
+
+[source,shell]
+----
+[INFO] --- jacoco-maven-plugin:0.7.6.201602180812:check (check-coverage) @ platform-component-organization ---
+[INFO] Analyzed bundle 'eXo PLF:: Platform - Organization Model Integration' with 36 classes
+[WARNING] Rule violated for bundle eXo PLF:: Platform - Organization Model Integration: instructions covered ratio is 0.34, but expected minimum is 0.35
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+----
+
+=== How to check if the ration can be increased in a module
+
+According to <<id-test-coverage,the rules about the minimum test coverage ratio update>>, if a contributor increases the test coverage ratio, he/she can update the minimum ratio.
+But Maven does not give the actual value in its standard output (console).
+Instead, this value is available in the jacoco reports, in `target/site/test-coverage-ut/index.html`. 
+Here is an example:
+
+image:maven-test-coverage-report.png[alt="Test Coverage Report",width="700",align="center"]
+
+This report gives the test coverage on each package and the total test coverage of the Maven module.
+This last value is the one checked during the test coverage check.
+If this value is higher than the one set in the prooperty `exo.test.coverage.ratio`, it can be updated in the pom.xml.

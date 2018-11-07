@@ -1,3 +1,5 @@
 = Build Management
 
 include::build/maven/setup.adoc[leveloffset=+1]
+
+include::build/maven/checks.adoc[leveloffset=+1]

@@ -2,50 +2,65 @@
 
 == Workflow
 
-The contribution workflow mainly relies on Github Pull Requests. Here are the rules :
+The contribution workflow mainly relies on Github Pull Requests. 
 
-* `PR for everything` +
-For every fix/feature, for all platform projects and supported addons, create a PR.
-Creating a PR is easy and allows to share, discuss on validate more easily the fix/feature.
+=== Creating the PR
+
+Once a contribution is ready to be shared, commit the changes (see <<id-commits-messages-best-practices>> for Commits best practices) and create a PR.
+Creating a PR is easy and allows to share, discuss and validate more easily the contribution.
 To create a PR :
-** create a branch locally with your fix and push it to Github
-** in Github, select your branch, and click on *New pull request* image:git-pr-create-01.png[alt="Git PR Create",align="center",width="700"]
-** select the right base branch (most of the time *develop*) and check that the PR contains only your commits image:git-pr-create-02.png[alt="Git PR Create",width="700",align="center"]
-** fill the description
-** click on *Create pull request*
-* `PR on develop` +
-++
+
+* create a branch locally with your fix and push it to Github
+* in Github, select your branch, and click on *New pull request* image:git-pr-create-01.png[alt="Git PR Create",align="center",width="700"]
+
+* select the right base branch (most of the time *develop*) and check that the PR contains only your commits image:git-pr-create-02.png[alt="Git PR Create",width="700",align="center"]
+* fill the description ! See <<id-pull-requests-best-practices>> for more details.
+* click on *Create pull request*
+
 PR must always be done on `exodev:develop` or `exo-addons:develop`, not on `exoplatform:develop` (we fix on develop first, then we backport to stable if needed).
-Remember that exoplatform:develop is read-only.
 There are only 2 exceptions :
-++
-** the fix is different between develop dans stable - in such a case, 2 PRs are necessary, one on develop, one on stable
-** the bug only occurs on stable - in such a case, PR must be done on stable
-* `Explain your PR`
-+
-The description of the PR must always be filled to describe precisely what was the root cause of the problem and how it has been solved.
-* `Update the PR, do not recreate it`
-+
-To update a PR, just push a new commit in the same branch, no need to create a new branch and a new PR.
-Creating a new PR for each update prevents from following easily the discussion and the updates history.
-* `PR must be validated by peers`
-+
+
+** the fix is different between develop and stable - in such a case, 2 PRs are necessary, one on develop, one on stable
+** the bug only occurs on stable - in such a case, the PR must be done on stable
+
+=== Setting the PR as ready to be reviewed
+
+After having submitted a PR, the developer must change the status of the related Jira issue to `PR Review` by clicking on the button `review needed`. The link to the PR must be set in the field `Git Pull Request`.
+
+If the fix is composed of several PRs, all the PR links must be set in the field `Git Pull Request`, separated by semicolons. If the list of PRs is too long, it can exceed the max length of this field. In such a case, list all the PRs links in a comment of the Jira issue, and set the permalink of this comment in the field `Git Pull Request`.
+
+=== Reviewing the PR
+
 When a PR is submitted, it has to be reviewed by at least one peer.
-When the PR is validated by the peer, the PR can be merged in the target branch.
-* `Merge the PR correctly`
-+
-Before merging the PR in the target branch, make sure the branch of the PR is up to date (push --force), otherwise the PR will not appear as *Merged* in Github.
 
-image::git-pr-merged.png[alt="Git PR Merged",width="700",align="center"]
+Please refer to the chapter <<id-contributions-reviews>> to learn more about review best practices.
 
-* `Clean your mess`
-+
-Once the PR has been merged, delete the branch in Github, and close the PR if it is not already marked as *Merged* or *Closed*.
+During the review iterations, the developer may have to update the contribution. In order to update a PR, just push a new commit in the same branch, no need to create a new branch and a new PR.
+Creating a new PR for each update prevents from following easily the discussion and the updates history.
 
 WARNING: `Code Review does NOT mean Test, Reviewers are NOT Testers` +
 The role of the reviewers is to review the code changes (code best practices, better/easier solution, ...).
 They do not necessarily have to test (they can if they want/need of course).
 The author of the PR must not rely on the reviewers to test it, he/she is responsible for that (and the QA people will help during their test campaigns).
+
+=== Automatic checks on PR
+
+Besides reviews by peer, all PR are submitted to the following automatic checks:
+
+* *compilation* - Each time a PR is submitted or updated, the project is compiled. If the compilation fails, the PR is automatically rejected.
+* *unit tests* - Each time a PR is submitted or updated, the unit tests are executed. If at least one test fails, the PR is automatically rejected.
+* *minimum test coverage* - Each time a PR is submitted or updated, a check is done on test coverage to make sure it does not decrease (see <<id-test-coverage>> for more details). If the new test coverage is lower than the one set in the Maven configuration, the PR is automatically rejected.
+
+=== Merging the PR
+
+When the PR has been validated by the peer and has passed all the automatic checks, the PR can be merged in the target branch.
+Before merging the PR in the target branch, make sure the branch of the PR is up to date (rebase && push --force), otherwise the PR will not appear as *Merged* in Github.
+
+image:git-pr-merged.png[alt="Git PR Merged",width="700",align="center"]
+
+=== Cleaning the mess
+
+Once the PR has been merged, delete the branch in Github, and close the PR if it is not already marked as *Merged* or *Closed*.
 
 == Community Contributions
 
@@ -247,7 +262,7 @@ Unit Tests are essential to minimize regressions. The reviewer must check that u
 * If a test fails, would it be easy to track down the error?
 * Are the tests independent from each others (especially if they manage data)?
 
-The reviewer must also ensure that the unit tests coverage minimum ratio defined in Maven configuration (`exo.test.coverage.ratio`) is not decreased and advise to increase it if the test coverage has been improved.
+The reviewer must also ensure that the unit tests coverage minimum ratio defined in Maven configuration (see <<id-test-coverage>> for more details) is not decreased and advise to increase it if the test coverage has been improved.
 
 ==== Security
 
@@ -328,7 +343,7 @@ The documentation issue must be as detailed as possible (especially for technica
 
 === How to know if someone is not already reviewing a PR ?
 
-You cannot (except by talking to your colleagues of course ;)), there is no status for such a thing in Github and Jira, and we don’t need it.
+You cannot (except by talking to your colleagues of course 😉), there is no status for such a thing in Github and Jira, and we don’t need it.
 It is not a problem if several persons review the same PR. It means more feedbacks, more learning, … therefore it is all positive.
 
 == Tips for …
