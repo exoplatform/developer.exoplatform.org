@@ -97,7 +97,7 @@ git rebase develop
 git push --force
 ----
 
-* To do it ONLY if develop branch is ok (build + acceptance ok) otherwise you will distribute shitty code everywhere
+* To do it ONLY if develop branch is ok (build + acceptance ok) otherwise you will distribute bad code everywhere
 * To do it for all projects in a given FB at the same time (to keep the coherency)
 
 ==== Merge Feature Branch to Develop
