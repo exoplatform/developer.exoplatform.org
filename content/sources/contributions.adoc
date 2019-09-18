@@ -70,6 +70,10 @@ The Contributor License Agreement is needed to clarify the terms of usage of con
 
 The CLA must be printed, signed, then scanned as a PDF file and sent at cla@exoplatform.com.
 
+== Development best practices
+
+When contributing code, the best practices defined in https://docs.google.com/spreadsheets/d/1s-op62uot1dy4YwMA-JswxNg0DwS4sdmg1eAll0VHIU[this file] must be considered.
+
 == Commits messages best practices
 
 It is often important to browse the source code history to understand when and why a change has been done. 
