@@ -48,7 +48,7 @@
 <li><a href="#id-integration-branch">1.3.6. Integration Branch</a></li>
 <li><a href="#id-poc-branch">1.3.7. PoC Branch</a></li>
 <li><a href="#id-release-process">1.3.8. Release Process</a></li>
-<li><a href="#id-improvement">1.3.9. Improvement</a></li>
+<li><a href="#id-community-contributions">1.3.9. Community Contributions</a></li>
 </ul>
 </li>
 <li><a href="#id-git-cheat-sheet">1.4. Git - Cheat Sheet</a>
@@ -60,11 +60,12 @@
 <li><a href="#id-contributions">1.5. Contributions</a>
 <ul class="sectlevel3">
 <li><a href="#id-workflow">1.5.1. Workflow</a></li>
-<li><a href="#id-community-contributions">1.5.2. Community Contributions</a></li>
-<li><a href="#id-commits-messages-best-practices">1.5.3. Commits messages best practices</a></li>
-<li><a href="#id-pull-requests-best-practices">1.5.4. Pull Requests best practices</a></li>
-<li><a href="#id-contributions-reviews">1.5.5. Contributions reviews</a></li>
-<li><a href="#id-tips-for">1.5.6. Tips for …</a></li>
+<li><a href="#id-community-contributions-2">1.5.2. Community Contributions</a></li>
+<li><a href="#id-development-best-practices">1.5.3. Development best practices</a></li>
+<li><a href="#id-commits-messages-best-practices">1.5.4. Commits messages best practices</a></li>
+<li><a href="#id-pull-requests-best-practices">1.5.5. Pull Requests best practices</a></li>
+<li><a href="#id-contributions-reviews">1.5.6. Contributions reviews</a></li>
+<li><a href="#id-tips-for">1.5.7. Tips for …</a></li>
 </ul>
 </li>
 </ul>
@@ -727,6 +728,16 @@ git rebase develop
 git push --force</code></pre>
 </div>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>To do it ONLY if develop branch is ok (build + acceptance ok) otherwise you will distribute bad code everywhere</p>
+</li>
+<li>
+<p>To do it for all projects in a given FB at the same time (to keep the coherency)</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect5">
 <h6 id="id-merge-feature-branch-to-develop">Merge Feature Branch to Develop</h6>
@@ -1111,41 +1122,14 @@ This section explain the release process to follow when doing an intermediate re
 </div>
 </div>
 <div class="sect3">
-<h4 id="id-improvement">1.3.9. Improvement</h4>
-<div class="sect4">
-<h5 id="id-what-is-changing-compare-to-4-1">1.3.9.1. What is changing compare to 4.1</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>Clean history by using git rebase.</p>
-</li>
-<li>
-<p>No more weekly merge between develop and master.</p>
-</li>
-<li>
-<p>All fixes are push firstly to develop branch. Then SM backport what they need to stable.</p>
-</li>
-<li>
-<p>Rebase develop to feature branch:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>To do it regularly</p>
-</li>
-<li>
-<p>To do it ONLY if develop branch is ok : build + acceptance are ok otherwise you&#8217;ll distribute shitty code everywhere</p>
-</li>
-<li>
-<p>To do it for all projects in a given FB at the same time (to keep the coherency)</p>
-</li>
-</ul>
+<h4 id="id-community-contributions">1.3.9. Community Contributions</h4>
+<div class="paragraph">
+<p>Anyone with a Github account can contribute to eXo Platform.
+The only difference for people outside of the eXo Platform organization is they must sign a <a href="../resources/sources/eXo_Platform_ContributorAgreement_EN_v1.2.pdf">Contribution License Agreement</a>.
+The Contributor License Agreement is needed to clarify the terms of usage of contributions by eXo Platform and the entire open source community.</p>
 </div>
-</li>
-<li>
-<p>No more master branch on exodev repository. Master is only on blessed repository.</p>
-</li>
-</ul>
-</div>
+<div class="paragraph">
+<p>The CLA must be printed, signed, then scanned as a PDF file and sent at <a href="mailto:cla@exoplatform.com">cla@exoplatform.com</a>.</p>
 </div>
 </div>
 </div>
@@ -1781,7 +1765,7 @@ Before merging the PR in the target branch, make sure the branch of the PR is up
 </div>
 </div>
 <div class="sect3">
-<h4 id="id-community-contributions">1.5.2. Community Contributions</h4>
+<h4 id="id-community-contributions-2">1.5.2. Community Contributions</h4>
 <div class="paragraph">
 <p>Anyone with a Github account can contribute to eXo Platform.
 The only difference for people outside of the eXo Platform organization is they must sign a <a href="../resources/sources/eXo_Platform_ContributorAgreement_EN_v1.3.pdf">Contribution License Agreement</a>.
@@ -1792,7 +1776,13 @@ The Contributor License Agreement is needed to clarify the terms of usage of con
 </div>
 </div>
 <div class="sect3">
-<h4 id="id-commits-messages-best-practices">1.5.3. Commits messages best practices</h4>
+<h4 id="id-development-best-practices">1.5.3. Development best practices</h4>
+<div class="paragraph">
+<p>When contributing code, the best practices defined in <a href="https://docs.google.com/spreadsheets/d/1s-op62uot1dy4YwMA-JswxNg0DwS4sdmg1eAll0VHIU">this file</a> must be considered.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="id-commits-messages-best-practices">1.5.4. Commits messages best practices</h4>
 <div class="paragraph">
 <p>It is often important to browse the source code history to understand when and why a change has been done.
 Good commits message are therefore crucial to help developers in maintaining a code base.
@@ -1921,7 +1911,7 @@ Also, a fix in the servlet is done (in the platform project) to ensure that the 
 </div>
 </div>
 <div class="sect3">
-<h4 id="id-pull-requests-best-practices">1.5.4. Pull Requests best practices</h4>
+<h4 id="id-pull-requests-best-practices">1.5.5. Pull Requests best practices</h4>
 <div class="paragraph">
 <p>As well as good commits messages are important for code base maintainers, good PRs descriptions are important for reviewers.
 It helps to understand what the developer has done and why.
@@ -1955,9 +1945,9 @@ For example : <em>PLF-7916 : Make Setting Service cache ayncInvalidation</em></p
 </div>
 </div>
 <div class="sect3">
-<h4 id="id-contributions-reviews">1.5.5. Contributions reviews</h4>
+<h4 id="id-contributions-reviews">1.5.6. Contributions reviews</h4>
 <div class="sect4">
-<h5 id="id-how-to-ask-for-reviewers">1.5.5.1. How to ask for reviewers ?</h5>
+<h5 id="id-how-to-ask-for-reviewers">1.5.6.1. How to ask for reviewers ?</h5>
 <div class="paragraph">
 <p>After having submitted a PR, the developer must change the status of the related Jira issue to “PR Review” by clicking on the button “review needed”.
 The link to the PR must be set in the field “Git Pull Request”.</p>
@@ -1976,7 +1966,7 @@ If the developer wants to ask a specific person or some specific persons to do t
 </div>
 </div>
 <div class="sect4">
-<h5 id="id-how-to-do-a-review">1.5.5.2. How to do a review ?</h5>
+<h5 id="id-how-to-do-a-review">1.5.6.2. How to do a review ?</h5>
 <div class="paragraph">
 <p>The reviewers must use the review feature of Github to do the review. On the first comment, the button “Start review” must be used. Then, once the review is done, the developer must submit the review by clicking on the button “Review changes”, then select the right option:</p>
 </div>
@@ -1999,7 +1989,7 @@ If the option <code>Comment</code> or <code>Request changes</code> is selected, 
 </div>
 </div>
 <div class="sect4">
-<h5 id="id-what-should-i-care-when-reviewing-a-pull-request">1.5.5.3. What should I care when reviewing a Pull Request ?</h5>
+<h5 id="id-what-should-i-care-when-reviewing-a-pull-request">1.5.6.3. What should I care when reviewing a Pull Request ?</h5>
 <div class="paragraph">
 <p>When reviewing a Pull Request, the following things must be checked:</p>
 </div>
@@ -2288,7 +2278,7 @@ If a practice is not described in the eXo Coding Best Practices document and is 
 </div>
 </div>
 <div class="sect4">
-<h5 id="id-how-to-know-if-someone-is-not-already-reviewing-a-pr">1.5.5.4. How to know if someone is not already reviewing a PR ?</h5>
+<h5 id="id-how-to-know-if-someone-is-not-already-reviewing-a-pr">1.5.6.4. How to know if someone is not already reviewing a PR ?</h5>
 <div class="paragraph">
 <p>You cannot (except by talking to your colleagues of course 😉), there is no status for such a thing in Github and Jira, and we don’t need it.
 It is not a problem if several persons review the same PR. It means more feedbacks, more learning, … therefore it is all positive.</p>
@@ -2296,9 +2286,9 @@ It is not a problem if several persons review the same PR. It means more feedbac
 </div>
 </div>
 <div class="sect3">
-<h4 id="id-tips-for">1.5.6. Tips for …</h4>
+<h4 id="id-tips-for">1.5.7. Tips for …</h4>
 <div class="sect4">
-<h5 id="id-contributors">1.5.6.1. &#8230;&#8203; contributors</h5>
+<h5 id="id-contributors">1.5.7.1. &#8230;&#8203; contributors</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2323,7 +2313,7 @@ It is not a problem if several persons review the same PR. It means more feedbac
 </div>
 </div>
 <div class="sect4">
-<h5 id="id-reviewers">1.5.6.2. &#8230;&#8203; reviewers</h5>
+<h5 id="id-reviewers">1.5.7.2. &#8230;&#8203; reviewers</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2367,7 +2357,7 @@ It is not a problem if several persons review the same PR. It means more feedbac
 </div>
 </div>
 <div class="sect4">
-<h5 id="id-contributors-and-reviewers">1.5.6.3. &#8230;&#8203; contributors and reviewers</h5>
+<h5 id="id-contributors-and-reviewers">1.5.7.3. &#8230;&#8203; contributors and reviewers</h5>
 <div class="ulist">
 <ul>
 <li>
