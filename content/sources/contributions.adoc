@@ -251,7 +251,7 @@ The review is not only a process to validate others people code, it is also an i
 
 ==== Coding best practices
 
-The reviewer must check the PR follows the best practices described in the eXo Coding Best Practices (WIP).
+The reviewer must check the PR follows the best practices described in the https://docs.google.com/spreadsheets/d/1s-op62uot1dy4YwMA-JswxNg0DwS4sdmg1eAll0VHIU[eXo Development Best Practices].
 Beyond this document, the reviewer must check the PR follows the best practices generally admitted in software development.
 If a practice is not described in the eXo Coding Best Practices document and is used in the PR, it is a good opportunity to discuss about it and add it if necessary in the document.
 
