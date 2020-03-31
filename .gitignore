@@ -1,11 +1,2 @@
-*.iml
-.DS_Store
-.idea
-
-# Directory for output files (HTML, PDF...)
-output/
-
-# Wercker
-_builds
-_steps
-_cache
+/bin/
+/target/

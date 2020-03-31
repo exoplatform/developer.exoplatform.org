@@ -30,9 +30,3 @@ image::plf5-components.png[Platform Components, align=center, link={imagesdir}/p
 {link-git-repo-core}[Core]:: eXo Core
 {link-git-repo-kernel}[Kernel]:: eXo Kernel
 {link-git-repo-gatein-wci}[GateIn WCI]:: GateIn WCI
-
-=== Platform 4
-
-[[plf_components]]
-.Overview of eXo Components for PLF 4.4
-image::plf4-components.png[Platform 4.4 Components, align=center, link={imagesdir}/plf4-components.png]
