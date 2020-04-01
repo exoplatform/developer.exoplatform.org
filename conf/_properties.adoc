@@ -4,22 +4,29 @@
 :link-github-exoplatform: https://www.github.com/exoplatform
 :link-github-exoaddons: https://www.github.com/exo-addons
 :link-github-exodev: https://www.github.com/exodev
+
 // Repositories GitHub
+:link-git-repo-private-distribution: {link-github-exoplatform}/platform-private-distributions
+:link-git-repo-chat: {link-github-exoplatform}/chat-application
+:link-git-repo-onlyoffice: {link-github-exoplatform}/onlyoffice
+:link-git-repo-news: {link-github-exoplatform}/news
+:link-git-repo-digital-workplace: {link-github-exoplatform}/digital-workplace
+:link-git-repo-layout-management: {link-github-exoplatform}/layout-management
+:link-git-repo-web-conferencing: {link-github-exoplatform}/web-conferencing
+:link-git-repo-tasks: {link-github-exoplatform}/task
 :link-git-repo-calendar: {link-github-exoplatform}/calendar
-:link-git-repo-forum: {link-github-exoplatform}/forum
-:link-git-repo-wiki: {link-github-exoplatform}/wiki
 :link-git-repo-ecms: {link-github-exoplatform}/ecms
 :link-git-repo-jcr: {link-github-exoplatform}/jcr
-:link-git-repo-meeds: {link-github-meeds-io}/platform-public-distributions
+
+:link-git-repo-meeds: {link-github-meeds-io}/meeds
+:link-git-repo-gamification: {link-github-meeds-io}/gamification
+:link-git-repo-wallet: {link-github-meeds-io}/wallet
+:link-git-repo-kudos: {link-github-meeds-io}/kudos
+:link-git-repo-perk-store: {link-github-meeds-io}/perk-store
+:link-git-repo-push-notifications: {link-github-meeds-io}/push-notifications
+:link-git-repo-app-center: {link-github-meeds-io}/app-center
 :link-git-repo-social: {link-github-meeds-io}/social
-:link-git-repo-commons: {link-github-meeds-io}/commons
 :link-git-repo-platform-ui: {link-github-meeds-io}/platform-ui
-:link-git-repo-gatein-portal: {link-github-meeds-io}/gatein-portal
-:link-git-repo-gatein-wci: {link-github-meeds-io}/gatein-wci
-:link-git-repo-gatein-sso: {link-github-meeds-io}/gatein-sso
-:link-git-repo-gatein-pc: {link-github-meeds-io}/gatein-pc
-:link-git-repo-ws: {link-github-meeds-io}/ws
+:link-git-repo-portal: {link-github-meeds-io}/gatein-portal
 :link-git-repo-core: {link-github-meeds-io}/core
-:link-git-repo-kernel: {link-github-meeds-io}/kernel
-// PDF file
 :link-exo-developer-guide-pdf: http://developer.exoplatform.org/exo-developer-guide.pdf
