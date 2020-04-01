@@ -32,7 +32,7 @@ In this repository, `develop` branch and `feature` branch will be under CI.
 === Blessed repository
 
 In this repository you can find `stable` branches and release tags.
-Only some people use to write on this repository :
+Only some people are able to write on this repository :
 
 * `maintainers` : To integrate pull request on stable branches.
 * `release manager` : To perform release operations on stable (supported) branches.
