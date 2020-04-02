@@ -217,15 +217,15 @@ git push <origin> :<BRANCH>
 [source,shell]
 ----
 $ git remote -v
-origin git@github.com:exodev/platform (fetch)
-origin git@github.com:exodev/platform (push)
+origin git@github.com:exodev/ecms (fetch)
+origin git@github.com:exodev/ecms (push)
 ----
 
 *Add a new remote repository*
 
 [source,shell]
 ----
-git remote add upstream git@github.com:exoplatform/platform.git
+git remote add upstream git@github.com:exoplatform/ecms.git
 ----
 
 *Rename a remote repository*

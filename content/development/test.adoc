@@ -3,20 +3,19 @@
 eXo Platform is delivered as a zip bundle, built on every commit, and available in our https://repository.exoplatform.org/[maven repository] 
 and in our http://acceptance.exoplatform.org/[acceptance platform].
 
-If you want to test the zip bundle with one of the supported databases, it is recommended to use the available Docker images.
+If you want to test the zip bundle with one of the supported databases, you can find more information in https://community.exoplatform.org[eXo Tribe site].
 
 == Databases
 
 eXo Platform uses by default an HSQLDB database.
 eXo Platform supports several RDBMS databases, each of them in multiple versions.
-In order to test easily all these versions, it is recommended to use Docker containers.
 
-First, setup eXo to connect to your database following the https://docs.exoplatform.org/public/topic/PLF50/PLFAdminGuide.Database.ConfiguringPLF.html?cp=5_2_3_1[eXo documentation].
-Then start the database container.
+First, setup eXo to connect to your database following the https://docs.exoplatform.org/en/latest/database_configuration.html[eXo documentation].
+Then start the database.
 
 === MySQL
 
-There is no specific Docker image for MySQL for eXo, you should use the official image from https://hub.docker.com/_/mysql/[Docker hub].
+You should use a docker container from https://hub.docker.com/_/mysql/[Docker hub].
 For example this command starts a MySQL database server exposed on the default port (3306) and creates a database `plf` :
 
 [source,shell]
@@ -39,29 +38,3 @@ docker run -d --name postgres-9.6.6 -p 5432:5432 -e POSTGRES_PASSWORD=plf -e POS
 
 You can connect from your eXo instance with the user `postgres` and the password `plf`.
 Please refer to the https://hub.docker.com/_/postgres/[Docker hub page] for full details and configuration options.
-
-=== Oracle
-
-A Docker image for Oracle database has been created and pushed to https://hub.docker.com/r/exoplatform/oracle/[Docker hub] for testing purpose.
-Here is a command example to start an Oracle 12cR2 database server exposed on the default port (1521) with a database `plf` :
-
-[source,shell]
-----
-docker run -d --name oracle -p 1521:1521 exoplatform/oracle:12cR2_plf
-----
-
-You can connect from your eXo instance with the SID `plf`, the user `plf` and the password `plf`.
-Please refer to the https://hub.docker.com/r/exoplatform/oracle/[Docker hub page] for full details and configuration options.
-
-=== SQL Server
-
-A Docker image for SQL Sserver database has been created and pushed to https://hub.docker.com/r/exoplatform/sqlserver/[Docker hub] for testing purpose.
-Here is a command example to start a SQL Server 2017 database server exposed on the default port (1433) and creates a database `plf` :
-
-[source,shell]
-----
-docker run -d --name sqlserver -p 1433:1433 -e SA_PASSWORD=Mypassword1 -e SQLSERVER_DATABASE=plf -e SQLSERVER_USER=plf -e SQLSERVER_PASSWORD=Mypassword1 exoplatform/sqlserver:2017-CU2
-----
-
-You can connect from your eXo instance with the the user `plf` and the password `Mypassword1` (All your password must match the SQL Server rule : at least 8 chars, with lower, upper and digits).
-Please refer to the https://hub.docker.com/r/exoplatform/sqlserver/[Docker hub page] for full details and configuration options.

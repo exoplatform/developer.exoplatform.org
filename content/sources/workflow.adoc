@@ -9,7 +9,7 @@ Our workflow is built on two principles :
 
 Aiming +security+ and backup purpose, we are using two repository kinds (owned by two distinct github organizations).
 
-These are `blessed` and `development` repositories hosted respectively on https://github.com/exoplatform[exoplatform] and https://github.com/exodev[exodev] organizations.
+These are `blessed` and `development` repositories hosted respectively on https://github.com/exoplatform[exoplatform], https://github.com/exodev[exodev] and https://github.com/exo-addons[exo-addons] organizations.
 
 Development repositories are forked from blessed repositories.
 
@@ -24,8 +24,8 @@ image::git-organization.png[Git Organization, 600, align=center, link={imagesdir
 This repository is the developers repository. The main development branch is `develop` branch. Depending the contribution kind (one shot contribution or feature contribution), the developer can use a dedicated `feature` branch if needed.
 The most of development activity will be done in this repository by a lot of contributors :
 
-* `maintainers` (formerly known as `sl3`) : To develop fix. These developments are done in dedicated `fix` branches (more details below).
-* `all development teams` : To do one shot contribution and handle feature branch life cycle.
+* `maintainers` (formerly known `Maintenance FT`) : To develop fix. These developments are done in dedicated `fix` branches (more details below).
+* `all other feature teams` : To do one shot contribution and handle feature branch life cycle.
 
 In this repository, `develop` branch and `feature` branch will be under CI.
 
@@ -36,9 +36,8 @@ Only some people are able to write on this repository :
 
 * `maintainers` : To integrate pull request on stable branches.
 * `release manager` : To perform release operations on stable (supported) branches.
-* `keepers` : Repository keepers are `Project Leader`, `Team Leader` and `Technical Leader`. They are able to pull changes from dev to blessed when the develop is stable enough and they can process releases for non supported versions of products (alpha, beta, RCs, …)
 
-The continuous integration is applied on stables branches (`stable/1.0.x`, `stable/1.1.x`, etc) on blessed repository.
+The continuous integration is applied on stables branches (`stable/*`) on blessed repository.
 
 == Branching model
 
@@ -74,18 +73,18 @@ image::git-workflow-feature-branch.png[Git Workflow - Feature Branch, 300, align
 
 *When:* A new feature is specified and planified.
 
-*Who:* PL/TL
+*Who:* Ops
 
 *How:*
 
-* If you want the branch deploy on Acceptance, do not create the branch by yourself but create a SWF ticket on Jira for the full package (Branches+CI+Acceptance).
+* If you want the branch deploy on Acceptance, do not create the branch by yourself but create an ITOP ticket on Jira for the full package (Git Branches + CI + Acceptance server(s) ).
 * If it’s a local feature project without need for CI or Acceptance you can create it by yourself.
 
 ==== Rebase Develop to Feature Branch
 
-*When:* Frequently
+*When:* when needed or at least weekly.
 
-*Who:* Team responsible of the branch with support of team responsible each project.
+*Who:* developer or TL.
 
 *How:*
 [source,shell]
@@ -120,11 +119,11 @@ git push
 
 ==== Remove a Feature Branch
 
-*When:* Just after the merge of the feature branch to Develop
+*When:* Just after finishing the work of Feature Team
 
-*Who:* PL/TL
+*Who:* TL
 
-*How:* Create SWF ticket on Jira to remove the full package (Branches+CI+Acceptance).
+*How:* Reopen previously created ITOP ticket on Jira to remove the full package ( Branches + CI + Acceptance ).
 
 == Fix Branch
 
@@ -206,7 +205,7 @@ image::git-workflow-stable-branch.png[Git Workflow - Stable Branch, 600, align=c
 
 *When:* When create the first Release Candidate version
 
-*Who:* SWF
+*Who:* Ops
 
 *How:* With a script similar to [createFB.sh](https://github.com/exoplatform/swf-scripts/blob/master/createFB.sh)
 
@@ -221,9 +220,9 @@ image::git-workflow-stable-branch.png[Git Workflow - Stable Branch, 600, align=c
 *How:*
 [source,shell]
 ----
-git checkout stable/4.1.x
+git checkout stable/5.3.x
 git pull
-git checkout -b fix/4.1.x-issue
+git checkout -b fix/5.3.x/issue
 ----
 
 ==== Merge a Fix Branch to Stable
@@ -237,10 +236,10 @@ git checkout -b fix/4.1.x-issue
 **How:**
 [source,shell]
 ----
-git checkout fix/4.1.x-issue
-git checkout stable/4.1.x
+git checkout fix/5.3.x/issue
+git checkout stable/5.3.x
 git pull
-git merge fix/4.1.x-issue --squash
+git merge fix/5.3.x/issue --squash
 git commit -a
 git push
 ----
@@ -254,15 +253,15 @@ git push
 *How:*
 [source,shell]
 ----
-git push origin --delete fix/4.1.x-issue
-git branch -d fix/4.1.x-issue
+git push origin --delete fix/5.3.x/issue
+git branch -d fix/5.3.x/issue
 ----
 
 ==== Perform a release
 
-*When:* After FQA/TQA test campaign. VPs give a GO.
+*When:* After PO gives a GO.
 
-*Who:* Release managers
+*Who:* Ops release managers
 
 *How:*
 [source,shell]
@@ -280,9 +279,9 @@ mvn release:perform
 
 *In really special case* (when the test campaign show a critical issue after tagging but before nexus publishing) release manager still can apply a last minute commit and move the tag.
 
-*When:* After FQA/TQA test campaign. VPs give a GO.
+*When:* PO gives a GO.
 
-*Who:* Release managers
+*Who:* Ops release managers
 
 **How:**
 [source,shell]
@@ -311,7 +310,7 @@ Integration branches are dedicated branch to automatic integration task (like Cr
 ----
 git checkout develop
 git pull
-git checkout -b integration/my-integration
+git checkout -b ecms/my-ecms
 git push
 ----
 

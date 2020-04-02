@@ -1,8 +1,40 @@
 = Git - Repositories
 
-== Platform codebase
+== Platform 6
 
-=== Platform 5
+eXo Platform is built from several projects stored in different {link-github-exoplatform}[*Git repositories*].
+You will find below the list of repositories used to build *eXo Platform 6*.
+
+.Overview of eXo Components for PLF 6.0
+image::plf6-components.png[Platform Components, align=center, link={imagesdir}/plf6-components.png]
+
+[horizontal]
+{link-git-repo-private-distribution}[platform-private-distribution]:: eXo Enterprise Edition
+{link-git-repo-chat}[chat]:: eXo Chat
+{link-git-repo-onlyoffice}[onlyoffice]:: eXo Only Office
+{link-git-repo-news}[news]:: eXo News
+{link-git-repo-digital-workplace}[digital-workplace]:: eXo Digital Workplace
+{link-git-repo-layout-management}[layout-management]:: eXo Layout Management
+{link-git-repo-web-conferencing}[web-conferencing]:: eXo Web Conferencing
+{link-git-repo-tasks}[tasks]:: eXo Tasks
+{link-git-repo-calendar}[calendar]:: eXo Calendar
+{link-git-repo-ecms}[ecms]:: eXo Content Management System
+{link-git-repo-jcr}[JCR]:: eXo JCR
+
+{link-git-repo-meeds-meeds}[meeds]:: Meeds.io Community Edition package
+{link-git-repo-meeds-app-center}[app-center]:: Meeds.io application center
+{link-git-repo-meeds-push-notifications}[gamification]:: Meeds.io mobile push notifications
+{link-git-repo-meeds-perk-store}[perk-store]:: Meeds.io Perk Store
+{link-git-repo-meeds-kudos}[kudos]:: Meeds.io Kudos
+{link-git-repo-meeds-wallet}[wallet]:: Meeds.io Wallet
+{link-git-repo-meeds-gamification}[gamification]:: Meeds.io gamification
+{link-git-repo-meeds-social}[commons]:: Meeds.io Social
+{link-git-repo-meeds-platform-ui}[platform-ui]:: Meeds.io UI stylesheets
+{link-git-repo-meeds-portal}[Portal]:: Meeds.io Portlet Container and Portal Services
+{link-git-repo-meeds-core}[Core]:: Meeds Core Services : IOC Services, IDM, Security, SSO APIs
+
+
+== Platform 5
 
 eXo Platform is built from several projects stored in different {link-github-exoplatform}[*Git repositories*].
 You will find below the list of repositories used to build *eXo Platform 5*.
@@ -30,9 +62,3 @@ image::plf5-components.png[Platform Components, align=center, link={imagesdir}/p
 {link-git-repo-core}[Core]:: eXo Core
 {link-git-repo-kernel}[Kernel]:: eXo Kernel
 {link-git-repo-gatein-wci}[GateIn WCI]:: GateIn WCI
-
-=== Platform 4
-
-[[plf_components]]
-.Overview of eXo Components for PLF 4.4
-image::plf4-components.png[Platform 4.4 Components, align=center, link={imagesdir}/plf4-components.png]
