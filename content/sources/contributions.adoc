@@ -65,7 +65,7 @@ Once the PR has been merged, delete the branch in Github, and close the PR if it
 == Community Contributions
 
 Anyone with a Github account can contribute to eXo Platform.
-The only difference for people outside of the eXo Platform organization is they must sign a link:../resources/sources/eXo_Platform_ContributorAgreement_EN_v1.3.pdf[Contribution License Agreement].
+The only difference for people outside of the eXo Platform organization is they must sign a link:../resources/sources/eXo_Platform_ContributorAgreement_EN_v1.4.pdf[Contribution License Agreement].
 The Contributor License Agreement is needed to clarify the terms of usage of contributions by eXo Platform and the entire open source community.
 
 The CLA must be printed, signed, then scanned as a PDF file and sent at cla@exoplatform.com.
