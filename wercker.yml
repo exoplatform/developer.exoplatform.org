@@ -9,7 +9,7 @@ dev:
     - script:
         name: start python webserver
         code: |
-          cd /documents && python -m SimpleHTTPServer &
+          cd /documents && python3 -m http.server &
           echo "HTTP Server listening..."
     # listener to adoc files
     - internal/watch:
