@@ -4,10 +4,11 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.10">
+<meta name="generator" content="Asciidoctor 2.0.12">
 <title>Welcome on developer.exoplatform.org!</title>
 <link rel="stylesheet" href="./css/exo.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -556,7 +557,7 @@ For eXo employees it is recommended to create one with the same username as the 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git config --global user.name "John Doe"
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git config --global user.name "John Doe"
 git config --global user.email "jdoe@exoplatform.com"</code></pre>
 </div>
 </div>
@@ -572,7 +573,7 @@ git config --global user.email "jdoe@exoplatform.com"</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git config color.ui true</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git config color.ui true</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -584,7 +585,7 @@ git config --global user.email "jdoe@exoplatform.com"</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git config --global push.default current</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git config --global push.default current</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -596,7 +597,7 @@ git config --global user.email "jdoe@exoplatform.com"</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git config --global core.autocrlf input
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git config --global core.autocrlf input
 git config --global core.safecrlf true</code></pre>
 </div>
 </div>
@@ -609,7 +610,7 @@ git config --global core.safecrlf true</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git config --global core.autocrlf true
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git config --global core.autocrlf true
 git config --global core.safecrlf true</code></pre>
 </div>
 </div>
@@ -622,7 +623,7 @@ git config --global core.safecrlf true</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs"> git config --global merge.renameLimit 10000</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"> git config --global merge.renameLimit 10000</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -635,7 +636,7 @@ You just add a section <code>[alias]</code> in your <code>~/.gitconfig</code> fi
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">[alias]
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">[alias]
 
 [source]
 ##### Basic aliases
@@ -900,7 +901,7 @@ This is our backbone where all the different fix and new feature are mixed with 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git checkout develop
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git checkout develop
 git pull
 git checkout feature/x
 git rebase develop
@@ -931,7 +932,7 @@ git push --force</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git checkout feature/x
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git checkout feature/x
 git rebase -i origin/develop
 (remove initial commit)
 git checkout develop
@@ -984,7 +985,7 @@ git push</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git checkout develop
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git checkout develop
 git pull
 git checkout -b fix/issue
 git push</code></pre>
@@ -1024,7 +1025,7 @@ git push</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git checkout fix/issue
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git checkout fix/issue
 git pull
 git rebase origin/develop
 git checkout develop
@@ -1048,7 +1049,7 @@ git push</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git push origin --delete fix/issue
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git push origin --delete fix/issue
 git branch -d fix/issue</code></pre>
 </div>
 </div>
@@ -1096,7 +1097,7 @@ git branch -d fix/issue</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git checkout stable/5.3.x
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git checkout stable/5.3.x
 git pull
 git checkout -b fix/5.3.x/issue</code></pre>
 </div>
@@ -1118,7 +1119,7 @@ git checkout -b fix/5.3.x/issue</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git checkout fix/5.3.x/issue
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git checkout fix/5.3.x/issue
 git checkout stable/5.3.x
 git pull
 git merge fix/5.3.x/issue --squash
@@ -1140,7 +1141,7 @@ git push</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git push origin --delete fix/5.3.x/issue
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git push origin --delete fix/5.3.x/issue
 git branch -d fix/5.3.x/issue</code></pre>
 </div>
 </div>
@@ -1158,7 +1159,7 @@ git branch -d fix/5.3.x/issue</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git clone git@github.com:exoplatform/xxx.git
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git clone git@github.com:exoplatform/xxx.git
 cd xxx
 # You checkout the release branch on which you need to perform a release.
 git checkout stable/A.B.x
@@ -1184,7 +1185,7 @@ mvn release:perform</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs"># After your commit, just delete the remote tag, and create another one in this way
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># After your commit, just delete the remote tag, and create another one in this way
 git tag -d 1.0.0
 git push origin :refs/tags/1.0.0
 git tag 1.0.0
@@ -1214,7 +1215,7 @@ git push origin 1.0.0</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git checkout develop
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git checkout develop
 git pull
 git checkout -b ecms/my-ecms
 git push</code></pre>
@@ -1252,7 +1253,7 @@ git push</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">$ git checkout develop
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ git checkout develop
 $ git pull
 $ git checkout -b poc/x
 [Modify all pom: initial commit]
@@ -1328,7 +1329,7 @@ The Contributor License Agreement is needed to clarify the terms of usage of con
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">cd  &lt;DIRECTORY&gt;
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">cd  &lt;DIRECTORY&gt;
 git init
 git add .
 git commit</code></pre>
@@ -1339,7 +1340,7 @@ git commit</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git clone &lt;EXISTING_REPO&gt; &lt;NEW_REPO&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git clone &lt;EXISTING_REPO&gt; &lt;NEW_REPO&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1367,7 +1368,7 @@ EXISTING_REPO is a local path or a remote URL, for examples :</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git fetch</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git fetch</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1378,7 +1379,7 @@ EXISTING_REPO is a local path or a remote URL, for examples :</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git pull</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git pull</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1389,7 +1390,7 @@ EXISTING_REPO is a local path or a remote URL, for examples :</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git am —resolve</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git am —resolve</code></pre>
 </div>
 </div>
 </div>
@@ -1400,7 +1401,7 @@ EXISTING_REPO is a local path or a remote URL, for examples :</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git add &lt;FILES&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git add &lt;FILES&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1408,7 +1409,7 @@ EXISTING_REPO is a local path or a remote URL, for examples :</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git add -i</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git add -i</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1416,7 +1417,7 @@ EXISTING_REPO is a local path or a remote URL, for examples :</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git mv &lt;OLD_NAME&gt; &lt;NEW_NAME&gt;
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git mv &lt;OLD_NAME&gt; &lt;NEW_NAME&gt;
 git mv &lt;OLD_PATH&gt; &lt;NEW_PATH&gt;</code></pre>
 </div>
 </div>
@@ -1425,7 +1426,7 @@ git mv &lt;OLD_PATH&gt; &lt;NEW_PATH&gt;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git rm &lt;FILES&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git rm &lt;FILES&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1433,7 +1434,7 @@ git mv &lt;OLD_PATH&gt; &lt;NEW_PATH&gt;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git rm —cached &lt;FILES&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git rm —cached &lt;FILES&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -1444,7 +1445,7 @@ git mv &lt;OLD_PATH&gt; &lt;NEW_PATH&gt;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git commit -a +</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git commit -a +</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1476,7 +1477,7 @@ in a format " ", for example <code>AM-101 : Fix the behavior of archives downloa
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">AM-101 : Fix the behavior of archives download
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">AM-101 : Fix the behavior of archives download
 
 * —no-cache has no effect on it
 * The add-ons manager always retry to download the archive from the
@@ -1495,7 +1496,7 @@ download the archive each time)
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git format-patch origin</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git format-patch origin</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1503,7 +1504,7 @@ download the archive each time)
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git push origin &lt;BRANCH&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git push origin &lt;BRANCH&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1515,7 +1516,7 @@ download the archive each time)
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git tag &lt;TAG_NAME&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git tag &lt;TAG_NAME&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -1526,7 +1527,7 @@ download the archive each time)
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git branch</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git branch</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1534,7 +1535,7 @@ download the archive each time)
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git checkout &lt;BRANCH&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git checkout &lt;BRANCH&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1542,7 +1543,7 @@ download the archive each time)
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git checkout &lt;B2&gt;
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git checkout &lt;B2&gt;
 git merge &lt;B1&gt;</code></pre>
 </div>
 </div>
@@ -1551,7 +1552,7 @@ git merge &lt;B1&gt;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git branch &lt;BRANCH&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git branch &lt;BRANCH&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1559,7 +1560,7 @@ git merge &lt;B1&gt;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git branch &lt;NEW&gt; &lt;BASE&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git branch &lt;NEW&gt; &lt;BASE&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1567,7 +1568,7 @@ git merge &lt;B1&gt;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git branch -d &lt;BRANCH&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git branch -d &lt;BRANCH&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1575,7 +1576,7 @@ git merge &lt;B1&gt;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git push &lt;origin&gt; :&lt;BRANCH&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git push &lt;origin&gt; :&lt;BRANCH&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -1586,7 +1587,7 @@ git merge &lt;B1&gt;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">$ git remote -v
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ git remote -v
 origin git@github.com:exodev/ecms (fetch)
 origin git@github.com:exodev/ecms (push)</code></pre>
 </div>
@@ -1596,7 +1597,7 @@ origin git@github.com:exodev/ecms (push)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git remote add upstream git@github.com:exoplatform/ecms.git</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git remote add upstream git@github.com:exoplatform/ecms.git</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1604,7 +1605,7 @@ origin git@github.com:exodev/ecms (push)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git remote rename upstream foo</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git remote rename upstream foo</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1612,7 +1613,7 @@ origin git@github.com:exodev/ecms (push)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git remote rm upstream foo</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git remote rm upstream foo</code></pre>
 </div>
 </div>
 </div>
@@ -1623,7 +1624,7 @@ origin git@github.com:exodev/ecms (push)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git status</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git status</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1631,7 +1632,7 @@ origin git@github.com:exodev/ecms (push)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git diff</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git diff</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1639,7 +1640,7 @@ origin git@github.com:exodev/ecms (push)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git diff &lt;ID1&gt; &lt;ID2&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git diff &lt;ID1&gt; &lt;ID2&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1647,7 +1648,7 @@ origin git@github.com:exodev/ecms (push)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git log</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git log</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1655,7 +1656,7 @@ origin git@github.com:exodev/ecms (push)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git blame &lt;FILE&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git blame &lt;FILE&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1663,7 +1664,7 @@ origin git@github.com:exodev/ecms (push)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git show &lt;ID&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git show &lt;ID&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1671,7 +1672,7 @@ origin git@github.com:exodev/ecms (push)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git diff &lt;ID&gt;:&lt;FILE&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git diff &lt;ID&gt;:&lt;FILE&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1679,7 +1680,7 @@ origin git@github.com:exodev/ecms (push)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git grep &lt;PATTERN&gt; &lt;PATH&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git grep &lt;PATTERN&gt; &lt;PATH&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -1690,7 +1691,7 @@ origin git@github.com:exodev/ecms (push)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git checkout -f | git reset —hard</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git checkout -f | git reset —hard</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1701,7 +1702,7 @@ origin git@github.com:exodev/ecms (push)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git revert HEAD</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git revert HEAD</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1712,7 +1713,7 @@ origin git@github.com:exodev/ecms (push)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git revert &lt;ID&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git revert &lt;ID&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1723,7 +1724,7 @@ origin git@github.com:exodev/ecms (push)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git commit -a —amend</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git commit -a —amend</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1734,7 +1735,7 @@ origin git@github.com:exodev/ecms (push)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git checkout &lt;ID&gt; &lt;FILE&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git checkout &lt;ID&gt; &lt;FILE&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1752,7 +1753,7 @@ should be in the clear to restore it.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git cherry-pick ORIG_HEAD</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git cherry-pick ORIG_HEAD</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1779,7 +1780,7 @@ the <code>--tree-filter</code> option to <code>filter-branch</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git filter-branch —tree-filter 'rm -f passwords.txt' HEAD</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git filter-branch —tree-filter 'rm -f passwords.txt' HEAD</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1797,7 +1798,7 @@ history, so we also add <code>--ignore-unmatch</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git filter-branch —index-filter 'git rm —cached —ignore-unmatch passwords.txt' HEAD</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git filter-branch —index-filter 'git rm —cached —ignore-unmatch passwords.txt' HEAD</code></pre>
 </div>
 </div>
 </div>
@@ -1973,7 +1974,7 @@ In order to improve the quality of the commit messages, the following rules must
 <p>use</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git commit</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git commit</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1981,7 +1982,7 @@ In order to improve the quality of the commit messages, the following rules must
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git commit -m “My commit message”</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git commit -m “My commit message”</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1990,7 +1991,7 @@ In order to improve the quality of the commit messages, the following rules must
 </li>
 <li>
 <p>the commit message must start with a line containing a short subject (max 100 characters) which starts by the Jira issue number and then describes briefly what the commit does.
-For example : PLF-7916 : Make Setting Service cache ayncInvalidation</p>
+For example : TASK-40308 Allow to update kudos message in activity stream</p>
 </li>
 <li>
 <p>the commit subject must not be a copy/paste of the Jira issue summary.
@@ -2012,20 +2013,9 @@ As said previously, it must describe what the commit does, as if the sentence wo
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">PLF-8070 : remove useless configuration about settings and notifications services
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">TASK-37899 Enhance extension registry to trigger event when extensions updated
 
-At first access after startup, if the eXo instance has never been registered, the servlet /registration/software-register is called, then the servlet /registration/software-register-action when clicking on a button.
-The servlet /registration/software-register-action needs to read and update a setting, so it needs the service org.exoplatform.commons.api.settings.SettingService.
-The JPA implementation of this service needs the EntityManagerService to fetch data, which is available only in the PortalContainer.
-And the available container when accessing the servlet is actually the RootContainer.
-In PLF 5.0.0-M10 (in which the bug does not occur), the SettingService implementation used is the cached impl (org.exoplatform.settings.cache.CacheSettingServiceImpl), and when we call the get method to read a settings, it calls the method org.exoplatform.commons.api.settings.data.SettingContext#getCurrentRepositoryName which creates the PortalContainer instance by calling PortalContainer.getInstance().
-Therefore, luckily, when the EntityManagerService is retrieved from the container, the current container is the PortalContainer and it is available and everything works fine.
-
-From SOC-5917, a configuration has been added in social project which changes the implementation of the SettingService from the cached one to org.exoplatform.settings.jpa.JPAUserSettingServiceImpl :  25c143c#diff-a874bcc27e08363c8bcf7f9ce8eab5a7R346
-And this implementation never calls PortalContainer.getInstance(), which means the container available in the servlet is the RootContainer which does not contain EntityManagerService, which makes the setting read fails.
-
-This fix removes the configuration added in SOC-5917 about settings, so the cached impl will be used again.
-Also, a fix in the servlet is done (in the platform project) to ensure that the PortalContainer is created when fetching the setting, no matter what the implementation of SettingService.</code></pre>
+When updating extensionRegistry asynchronously from different modules, the other modules should be triggered for this update to allow retrieving newly registered extensions. This way, the extension points in all portlets will can be aware, when listening to adequate event, of any change in extensionRegistry.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2039,7 +2029,7 @@ Also, a fix in the servlet is done (in the platform project) to ensure that the 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs"># &lt;jira-issue-id&gt;: (If applied, this commit will...) &lt;subject&gt;
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># TASK-&lt;task-id&gt;: (If applied, this commit will...) &lt;subject&gt;
 # |&lt;----  Using a Maximum Of 100 Characters  ----&gt;|
 
 # Why is this change needed?
@@ -2069,7 +2059,7 @@ Also, a fix in the servlet is done (in the platform project) to ensure that the 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git config --global commit.template &lt;.git-commit-template.txt file path&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git config --global commit.template &lt;.git-commit-template.txt file path&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2077,7 +2067,7 @@ Also, a fix in the servlet is done (in the platform project) to ensure that the 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git config --global commit.template ~/.git-commit-template.txt</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git config --global commit.template ~/.git-commit-template.txt</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2085,7 +2075,7 @@ Also, a fix in the servlet is done (in the platform project) to ensure that the 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">git config commit.template &lt;.git-commit-template.txt file path&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git config commit.template &lt;.git-commit-template.txt file path&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -2095,7 +2085,7 @@ Also, a fix in the servlet is done (in the platform project) to ensure that the 
 <p>As well as good commits messages are important for code base maintainers, good PRs descriptions are important for reviewers.
 It helps to understand what the developer has done and why.
 The PR title must start with the Jira issue, then describe briefly what the PR does.
-For example : <em>PLF-7916 : Make Setting Service cache ayncInvalidation</em></p>
+For example : <em>TASK-40308 Allow to update kudos message in activity stream</em></p>
 </div>
 <div class="paragraph">
 <p>The PR description must at least provide the information given in the commit message body : why is this change needed and how does this change address the issue (Tip: using the first line of the commit message as the PR title and the commit message body as the PR description is a good start for the PR description).</p>
@@ -2794,10 +2784,10 @@ To deactivate the Maven version bundled in OSX, just remove the symlink : <code>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;settings
-  xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;settings 
+  xmlns="http://maven.apache.org/SETTINGS/1.0.0" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
   xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd"&gt;
   &lt;servers&gt;
     &lt;!-- eXo Platform credentials --&gt;
@@ -2843,7 +2833,7 @@ To deactivate the Maven version bundled in OSX, just remove the symlink : <code>
     &lt;profile&gt;
       &lt;id&gt;exo-central&lt;/id&gt;
       &lt;!-- This "hack" change the behavior of maven to let it use our public mirror
-      as the central repository (with snapshots activation).
+      as the central repository (with snapshots activation). 
       The URL is never used and is overrided by the mirror entry.
       --&gt;
       &lt;repositories&gt;
@@ -2870,7 +2860,7 @@ To deactivate the Maven version bundled in OSX, just remove the symlink : <code>
           &lt;/snapshots&gt;
         &lt;/pluginRepository&gt;
       &lt;/pluginRepositories&gt;
-    &lt;/profile&gt;
+    &lt;/profile&gt; 
     &lt;!-- Specific settings used while releasing a project --&gt;
     &lt;profile&gt;
       &lt;id&gt;exo-release&lt;/id&gt;
@@ -2908,7 +2898,7 @@ To deactivate the Maven version bundled in OSX, just remove the symlink : <code>
       &lt;/pluginRepositories&gt;
     &lt;/profile&gt;
     &lt;profile&gt;
-      &lt;!-- Repositories to download eXo custom projects binaries and products patchs --&gt;
+      &lt;!-- Repositories to download eXo custom projects binaries and products patchs --&gt;    
       &lt;id&gt;exo-cp&lt;/id&gt;
       &lt;repositories&gt;
         &lt;repository&gt;
@@ -2971,7 +2961,7 @@ To deactivate the Maven version bundled in OSX, just remove the symlink : <code>
       &lt;!-- Repositories to download JBoss staging binairies --&gt;
       &lt;!-- TAKE CARE TO ACTIVATE IT ONLY IF REQUIRED --&gt;
       &lt;!-- These repositories are delivering binaries marked as released but allowed to be replaced --&gt;
-      &lt;!-- Maven never updates released binaries thus you have to cleanup your local repository to grab an updated version --&gt;
+      &lt;!-- Maven never updates released binaries thus you have to cleanup your local repository to grab an updated version --&gt;      
       &lt;repositories&gt;
         &lt;repository&gt;
           &lt;id&gt;jboss.staging&lt;/id&gt;
@@ -2995,7 +2985,7 @@ To deactivate the Maven version bundled in OSX, just remove the symlink : <code>
         &lt;exo.projects.app.jboss.version&gt;jboss-5.1.0.GA&lt;/exo.projects.app.jboss.version&gt;
         --&gt;
       &lt;/properties&gt;
-    &lt;/profile&gt;
+    &lt;/profile&gt;    
   &lt;/profiles&gt;
   &lt;activeProfiles&gt;
     &lt;!-- make these profiles active all the time --&gt;
@@ -3042,7 +3032,7 @@ To deactivate the Maven version bundled in OSX, just remove the symlink : <code>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">brew install gnupg</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">brew install gnupg</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3050,7 +3040,7 @@ To deactivate the Maven version bundled in OSX, just remove the symlink : <code>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">sudo port install gnupg</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">sudo port install gnupg</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3061,7 +3051,7 @@ To deactivate the Maven version bundled in OSX, just remove the symlink : <code>
 <h7 id="id-ubuntu">Ubuntu</h7>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">sudo aptitude install gnupg</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">sudo aptitude install gnupg</code></pre>
 </div>
 </div>
 </div>
@@ -3076,7 +3066,7 @@ To deactivate the Maven version bundled in OSX, just remove the symlink : <code>
 <h6 id="id-validate-your-installation">Validate your installation</h6>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">$ gpg --version
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ gpg --version
 gpg (GnuPG) 1.4.10
 Copyright (C) 2008 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later http://gnu.org/licenses/gpl.html[http://gnu.org/licenses/gpl.html]
@@ -3102,7 +3092,7 @@ Compression: Uncompressed, ZIP, ZLIB, BZIP2</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">$ vi .gnupg/gpg.conf</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ vi .gnupg/gpg.conf</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3110,7 +3100,7 @@ Compression: Uncompressed, ZIP, ZLIB, BZIP2</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">personal-digest-preferences SHA512
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">personal-digest-preferences SHA512
 cert-digest-algo SHA512
 default-preference-list SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB BZIP2 ZIP Uncompressed</code></pre>
 </div>
@@ -3123,7 +3113,7 @@ default-preference-list SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">$ gpg --gen-key</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ gpg --gen-key</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3153,7 +3143,7 @@ default-preference-list SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">$ gpg --list-key
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ gpg --list-key
 pub 4096R/2CF0CC82 2009-11-17
 uid Arnaud Héritier (eXo Platform CODE SIGNING KEY) arnaud.heritier@exoplatform.com
 sub 4096R/37540EAE 2009-11-17</code></pre>
@@ -3164,7 +3154,7 @@ sub 4096R/37540EAE 2009-11-17</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">$ gpg --keyserver hkp://pgp.mit.edu[hkp://pgp.mit.edu] --send-keys 2CF0CC82</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ gpg --keyserver hkp://pgp.mit.edu[hkp://pgp.mit.edu] --send-keys 2CF0CC82</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3179,7 +3169,7 @@ sub 4096R/37540EAE 2009-11-17</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs"> &lt;profile&gt;
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml"> &lt;profile&gt;
    &lt;id&gt;exo-release&lt;/id&gt;
    &lt;properties&gt;
      &lt;gpg.keyname&gt;2CF0CC82&lt;/gpg.keyname&gt;&lt;!-- This is the public ID is displayed with the gpg list-key command described above --&gt;
@@ -3252,7 +3242,7 @@ The test coverage ratio is set in each Maven module in the property <code>exo.te
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;properties&gt;
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;properties&gt;
   &lt;exo.test.coverage.ratio&gt;0.72&lt;/exo.test.coverage.ratio&gt;
 &lt;/properties&gt;</code></pre>
 </div>
@@ -3283,7 +3273,7 @@ Therefore, in order to run this check locally, you must activate this profile:</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">mvn clean install -Pcoverage</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mvn clean install -Pcoverage</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3291,7 +3281,7 @@ Therefore, in order to run this check locally, you must activate this profile:</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">[INFO] --- jacoco-maven-plugin:0.7.6.201602180812:check (check-coverage) @ platform-component-organization ---
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">[INFO] --- jacoco-maven-plugin:0.7.6.201602180812:check (check-coverage) @ platform-component-organization ---
 [INFO] Analyzed bundle 'eXo PLF:: Platform - Organization Model Integration' with 36 classes
 [INFO] All coverage checks have been met.</code></pre>
 </div>
@@ -3301,7 +3291,7 @@ Therefore, in order to run this check locally, you must activate this profile:</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">[INFO] --- jacoco-maven-plugin:0.7.6.201602180812:check (check-coverage) @ platform-component-organization ---
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">[INFO] --- jacoco-maven-plugin:0.7.6.201602180812:check (check-coverage) @ platform-component-organization ---
 [INFO] Analyzed bundle 'eXo PLF:: Platform - Organization Model Integration' with 36 classes
 [WARNING] Rule violated for bundle eXo PLF:: Platform - Organization Model Integration: instructions covered ratio is 0.34, but expected minimum is 0.35
 [INFO] ------------------------------------------------------------------------
@@ -3361,7 +3351,7 @@ For example this command starts a MySQL database server exposed on the default p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">docker run -d --name mysql-5.7.22 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=plf -e MYSQL_DATABASE=plf mysql:5.7.22</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">docker run -d --name mysql-5.7.22 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=plf -e MYSQL_DATABASE=plf mysql:5.7.22</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3377,7 +3367,7 @@ For example this command starts a PostgreSQL 9.6.6 database server exposed on th
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">docker run -d --name postgres-9.6.6 -p 5432:5432 -e POSTGRES_PASSWORD=plf -e POSTGRES_DB=plf postgres:9.6.6</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">docker run -d --name postgres-9.6.6 -p 5432:5432 -e POSTGRES_PASSWORD=plf -e POSTGRES_DB=plf postgres:9.6.6</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3423,7 +3413,7 @@ language</code> for Crowdin)</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">baseDir=platform/calendar/
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">baseDir=platform/calendar/
 webapp/CalendarPortlet.properties=calendar-webapp/src/main/resources/locale/portlet/calendar/CalendarPortlet_en.properties</code></pre>
 </div>
 </div>
@@ -3460,9 +3450,13 @@ The string will be automatically deleted in Crowdin during the next synchronizat
 </div>
 </div>
 </div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
-<script>hljs.initHighlighting()</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
 <div class="openblock float-group" style="padding-top:10px;border-top: 1px solid #dddddd; background-color:#f2f2f2">
 <div class="content"  id="partners" >
 <div class="paragraph right">
