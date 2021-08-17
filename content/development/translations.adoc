@@ -6,7 +6,7 @@ A synchronization between the eXo source code and Crowdin is performed once per 
 
 == How to add / delete a new localization file?
 
-In root path of each project (ecms, wallet, calendar...), you 'll find a `translation.properties` file where
+In root path of each project (ecms, wallet, agenda...), you 'll find a `translation.properties` file where
 we reference the `MASTER localization file` for each localization file. (in general we reference the _en.properties
 or _en.xml in translation.properties to make sure that english language is considered as `MASTER localization
 language` for Crowdin)
@@ -22,8 +22,8 @@ For example:
 
 [source,shell]
 ----
-baseDir=platform/calendar/
-webapp/CalendarPortlet.properties=calendar-webapp/src/main/resources/locale/portlet/calendar/CalendarPortlet_en.properties
+baseDir=add-ons/agenda/
+Agenda.properties=agenda-webapps/src/main/resources/locale/portlet/Agenda_en.properties
 ----
 
 So if you developed a new application that references a new localization file, you will have to add its reference in root

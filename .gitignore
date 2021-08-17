@@ -46,7 +46,6 @@ pom.xml.versionsBackup
 rebel.xml
 transaction.log
 rebel-remote.xml
-build
 npm-debug.log
 node_modules
 hotswap-agent.properties

@@ -1,0 +1,113 @@
+= Coding best practices
+
+== Guidelines
+
+The developer and reviewer of a Pull Request must check the compliance with following guidelines documents:
+
+* https://community.exoplatform.com/portal/dw/oeditor?docId=bf3f775aac18000d4100d84c97366435[Development Best Practices]
+* https://community.exoplatform.com/portal/g/:spaces:engineering/exo_architects/notes/2040[Authorized third party tools licenses]
+* https://community.exoplatform.com/portal/g/:spaces:engineering/exo_architects/notes/13754[Software architecture guidelines]
+* https://community.exoplatform.com/portal/g/:spaces:engineering/exo_architects/notes/534[REST APIs guidelines]
+* https://community.exoplatform.com/portal/g/:spaces:engineering/exo_architects/notes/2044[RDBMS guidelines]
+
+Beyond those documents and guidelines, the reviewer must check the PR follows the best practices generally admitted in software development. If a practice is not described in the eXo Coding Best Practices document and is used in the PR, it is a good opportunity to discuss about it and add it if necessary in the document.
+
+== Unit Tests
+
+Unit Tests are essential to minimize regressions. The reviewer must check that unit tests are implemented to cover the related bug or the feature, especially:
+
+* Are the test titles adequately descriptive?
+
+* Are the key scenarios captured?
+
+* Are there enough edge cases covered for comfort?
+
+* Are the tests written with good assertions?
+
+* If a test fails, would it be easy to track down the error?
+
+* Are the tests independent from each others (especially if they manage data)?
+
+The reviewer must also ensure that the unit tests coverage minimum ratio defined in Maven configuration is not decreased and advise to increase it if the test coverage has been improved.
+
+== Security
+
+The reviewer must check that the contribution does not introduce security issues, especially in the following areas:
+
+* Data/Input Validation of data from all untrusted sources
+
+* All input data must be validated before being used and/or stored in the system (UI forms, REST APIs inputs, …).
+
+* Authentication
+
+* Session Management
+
+* Authorization
+All the resources of the system (web pages, documents, REST APIs, …) must only be accessible by the **authorized population**.
+
+* Cryptography (Data at rest and in transit)
+Sensitive information must not be transmitted or persisted in clear text. Also, secure method must be used for cryptography (for example **do not use MD5** to encode users’ passwords).
+
+* Error Handling / Information Leakage
+Sensitive information should not end up in error messages (logs, UI, …). For example do not include passwords or security tokens in logs.
+
+* Logging / Auditing
+Some operations require logging/auditing to allow to understand what happened during a security breach or detect security issues as they happen.
+
+== Performance
+
+The reviewer must try to detect if the fix/feature could have significant bad impacts on the performances of the application. Performances issues can be expensive to find and fix, so it is important to raise any concern on this topic at this stage. Here are some examples of performance issues causes: too many database requests, slow database query, missing index in the database, too many HTTP requests, …​
+
+== Maintainability
+
+The maintainability measure how easy it is to make changes in a code base (fixing bugs, adding new features, replacing a faulty or obsolete component, …​). This means:
+
+* Tests are implemented to ensure a good test coverage and help understand how code should behave
+
+* Classes and methods have a clear and single responsibility
+
+* Classes, methods and variables names are self-descriptive and/or well documented
+
+* Classes and methods are short
+
+* Cyclomatic complexity of a method should be low
+
+* Components are loosely coupled
+
+* Code duplication should be avoided
+
+* Code must respect formatting rules
+
+More generally, if it was hard for the reviewer to understand, the code should probably be reworked to make it easy to understand since it means it will be hard to understand for next developers in the future.
+
+== Troubleshooting
+
+When problems occur in production, it is generally not possible to debug or to update easily the code to find the cause. Therefore, the developer must try to anticipate the potential issues and provide the information and/or tools to help finding the error cause and fixing it. The reviewer must evaluate if the contribution contains the right elements to help this troubleshooting. Here are some examples of question to answer:
+
+* Is there enough logs ?
+
+* Do the logs have the appropriate level ?
+
+* If relevant, in case of problem, is there any tool (JMX bean, …) to gather more information or to recover ?
+
+== Upgrades
+
+Any contribution must be considered to be installed on an existing environment. In such a case it must be ensured that the upgrade is done as transparently as possible:
+
+If data are impacted, an upgrade plugin must be developed
+
+If any configuration change is required, the documentation and the upgrade notes must be updated
+
+== API breaking
+
+API must be stable and can be broken only in major releases. Contributions targeted to minor or maintenance versions must not break the public API. Public API includes:
+
+* Java API
+
+* REST API
+
+* Javascript API
+
+* Vue components
+
+* Configuration

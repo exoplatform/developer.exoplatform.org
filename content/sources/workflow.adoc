@@ -1,376 +1,57 @@
 = Git - Workflow
 
-Our workflow is built on two principles :
+eXo Platform product relies on a set of Git repositories :
 
-* The *repository architecture* (development vs blessed) that has to be followed by *all projects involved in products* produced eXo (and thus that require to be supported).
-* The *branching model* that has to be followed by _all projects_ at eXo
+* https://github.com/Meeds-io[*meeds-io*]: Meeds-io association product Git organization. eXo Platform still the main contributor and maintainer of the source code provided by the association. Thus, we will use the same process for this repository as any other eXo Platform repository.
 
-== Repository architecture
+* https://github.com/exoplatform[*exoplatform*]: eXo Platform Git organization having private and public repositories. This organization has the major part of source code of eXo Platform product, Software Factory tools, Tribe addon...
 
-Aiming +security+ and backup purpose, we are using two repository kinds (owned by two distinct github organizations).
+* https://github.com/exo-docker[*exo-docker*]: eXo Platform Docker Images used mainly by Ops for Software Factory and Product Deployments.
 
-These are `blessed` and `development` repositories hosted respectively on https://github.com/exoplatform[exoplatform], https://github.com/exodev[exodev] and https://github.com/exo-addons[exo-addons] organizations.
+* https://github.com/exo-addons[*exo-addons*]: eXo Platform Git organization used for non-supported addons.
 
-Development repositories are forked from blessed repositories.
+* https://github.com/exo-archives[*exo-archives*]: eXo Platform Git archived repositories.
 
-*This strategy is applied to all repositories/projects involved in eXo products.* Others projects are using a single repository hosted on "exoplatform" organization.
+* https://github.com/exo-puppet[*exo-puppet*]: eXo Platform Git repositories for automatic Deployments and its configurations tooling.
 
-[[git_organization]]
-.Git Repository Architecture
-image::git-organization.png[Git Organization, 600, align=center, link={imagesdir}/git-organization.png]
+== CI/CD
 
-=== Development repository
+The CI/CD is applied on the following branches:
 
-This repository is the developers repository. The main development branch is `develop` branch. Depending the contribution kind (one shot contribution or feature contribution), the developer can use a dedicated `feature` branch if needed.
-The most of development activity will be done in this repository by a lot of contributors :
+* `stable/*` : during Test Compaign of a minor or major release, when the FTs disn't started to work on new features yet.
 
-* `maintainers` (formerly known `Maintenance FT`) : To develop fix. These developments are done in dedicated `fix` branches (more details below).
-* `all other feature teams` : To do one shot contribution and handle feature branch life cycle.
-
-In this repository, `develop` branch and `feature` branch will be under CI.
-
-=== Blessed repository
-
-In this repository you can find `stable` branches and release tags.
-Only some people are able to write on this repository :
-
-* `maintainers` : To integrate pull request on stable branches.
-* `release manager` : To perform release operations on stable (supported) branches.
-
-The continuous integration is applied on stables branches (`stable/*`) on blessed repository.
+* `develop` : Feature Teams development phase.
 
 == Branching model
 
 Branching model are 6 kinds of branch :
 
-* `develop` : Develop branch contains the latest delivered development changes.
-* `feature/xxx` : Feature branches are dedicated branch for one big feature (lot of commits), "xxx" is the feature name.
+* `develop : Develop branch contains the latest delivered development changes.
+
+* `feature/xxx : Feature branches are dedicated branch for one big feature (lot of commits), "xxx" is the feature name.
+
 * `stable/xxx` : Stable branch are used to perform releases and write / accept fix. "xxx" is the stable version name (e.g 1.0.x).
+
 * `fix/xxx` : Fix branch is dedicated to integrate bugfix on Develop branch. If needed the fix is then cherry pick on stable branch.
+
 * `integration/xxx` : Integration branches are dedicated branch to automatic integration task (like Crowdin translation).
+
 * `poc/xxx` : Poc branches are dedicated branch to develop a Prove of Concept (PoC).
 
 === Develop Branch
 
-Develop branch contains the latest delivered development changes.
-This is our backbone where all the different fix and new feature are mixed with each other.
+Develop branch is the production ready branch which is, in general case, the CI/CD production branch.
+
+It contains the latest delivered development changes. This is our backbone where all the different fix and new feature are mixed with each other.
 
 [[git-workflow-develop-branch]]
 .Git Workflow - Develop Branch
 image::git-workflow-develop-branch.png[Git Workflow - Develop Branch, 600, align=center, link={imagesdir}/git-workflow-develop-branch.png]
 
-== Feature Branch
+=== Feature Branch
 
 Feature branches are dedicated branch to develop a new feature.
 
 [[git-workflow-feature-branch]]
 .Git Workflow - Feature Branch
 image::git-workflow-feature-branch.png[Git Workflow - Feature Branch, 300, align=center, link={imagesdir}/git-workflow-feature-branch.png]
-
-=== Actions
-
-==== Create a new Feature Branch
-
-*When:* A new feature is specified and planified.
-
-*Who:* Ops
-
-*How:*
-
-* If you want the branch deploy on Acceptance, do not create the branch by yourself but create an ITOP ticket on Jira for the full package (Git Branches + CI + Acceptance server(s) ).
-* If it’s a local feature project without need for CI or Acceptance you can create it by yourself.
-
-==== Rebase Develop to Feature Branch
-
-*When:* when needed or at least weekly.
-
-*Who:* developer or TL.
-
-*How:*
-[source,shell]
-----
-git checkout develop
-git pull
-git checkout feature/x
-git rebase develop
-git push --force
-----
-
-* To do it ONLY if develop branch is ok (build + acceptance ok) otherwise you will distribute bad code everywhere
-* To do it for all projects in a given FB at the same time (to keep the coherency)
-
-==== Merge Feature Branch to Develop
-
-*When:* Feature has been successfully tested by FQA. VPs give a GO.
-
-*Who:* Team responsible of the branch with support of team responsible of each project
-
-*How:*
-[source,shell]
-----
-git checkout feature/x
-git rebase -i origin/develop
-(remove initial commit)
-git checkout develop
-git pull
-git merge --no-ff feature/x
-git push
-----
-
-==== Remove a Feature Branch
-
-*When:* Just after finishing the work of Feature Team
-
-*Who:* TL
-
-*How:* Reopen previously created ITOP ticket on Jira to remove the full package ( Branches + CI + Acceptance ).
-
-== Fix Branch
-
-Fix Branch are dedicated branch to fix a bug. The validation process may be different if the bug has been raised by FQA/TQA or by SM.
-
-A fix branch is always created from Develop branch (except exceptional circumstance: fix on stable only).
-
-[[git-workflow-fix-branch]]
-.Git Workflow - Fix Branch
-image::git-workflow-fix-branch.png[Git Workflow - Fix Branch, 400, align=center, link={imagesdir}/git-workflow-fix-branch.png]
-
-=== Actions
-
-==== Create a Fix Branch
-
-*When:* A Jira issue has been created, time to resolve it is already estimated.
-
-*Who:* Team responsible to fix the issue.
-
-*How:*
-[source,shell]
-----
-git checkout develop
-git pull
-git checkout -b fix/issue
-git push
-----
-
-==== Merge a Fix Branch to Develop
-
-*When:*
-
-* If issue raised by TQA/FQA: After Engineering test
-* If issue raised by SM: After SM test
-
-*Who:*
-
-* If issue raised by TQA/FQA: Team responsible to fix the issue
-* If issue raised by SM: SM
-
-*How:*
-[source,shell]
-----
-git checkout fix/issue
-git pull
-git rebase origin/develop
-git checkout develop
-git pull
-git merge fix/issue --squash
-git commit -a
-git push
-----
-
-==== Remove a Fix Branch
-
-*When:* After the merge of the fix branch to Develop
-
-*Who:* Team responsible to fix the issue.
-
-*How:*
-[source,shell]
-----
-git push origin --delete fix/issue
-git branch -d fix/issue
-----
-
-== Stable Branch
-
-Stable branch are used to perform releases and write / accept fix.
-
-[[git-workflow-stable-branch]]
-.Git Workflow - Stable Branch
-image::git-workflow-stable-branch.png[Git Workflow - Stable Branch, 600, align=center, link={imagesdir}/git-workflow-stable-branch.png]
-
-
-=== Actions
-
-==== Create a new Stable Branch
-
-*When:* When create the first Release Candidate version
-
-*Who:* Ops
-
-*How:* With a script similar to [createFB.sh](https://github.com/exoplatform/swf-scripts/blob/master/createFB.sh)
-
-==== Create a Fix Branch to fix Stable Branch
-
-*In exceptional circumstance*
-
-*When:* A fix need to be done on a specific version but not on the on development version (fix a performance issue for instance)
-
-*Who:* Team responsible to fix the issue after a Go from SM.
-
-*How:*
-[source,shell]
-----
-git checkout stable/5.3.x
-git pull
-git checkout -b fix/5.3.x/issue
-----
-
-==== Merge a Fix Branch to Stable
-
-*In exceptional circumstance*
-
-*When:* After SM test
-
-*Who:* SM Team
-
-**How:**
-[source,shell]
-----
-git checkout fix/5.3.x/issue
-git checkout stable/5.3.x
-git pull
-git merge fix/5.3.x/issue --squash
-git commit -a
-git push
-----
-
-==== Remove a Fix Branch
-
-*When:* After the merge of the fix branch to stable branch
-
-*Who:* SM
-
-*How:*
-[source,shell]
-----
-git push origin --delete fix/5.3.x/issue
-git branch -d fix/5.3.x/issue
-----
-
-==== Perform a release
-
-*When:* After PO gives a GO.
-
-*Who:* Ops release managers
-
-*How:*
-[source,shell]
-----
-git clone git@github.com:exoplatform/xxx.git
-cd xxx
-# You checkout the release branch on which you need to perform a release.
-git checkout stable/A.B.x
-# You follow the classical maven release process
-mvn release:prepare
-mvn release:perform
-----
-
-==== Move a release tag
-
-*In really special case* (when the test campaign show a critical issue after tagging but before nexus publishing) release manager still can apply a last minute commit and move the tag.
-
-*When:* PO gives a GO.
-
-*Who:* Ops release managers
-
-**How:**
-[source,shell]
-----
-# After your commit, just delete the remote tag, and create another one in this way
-git tag -d 1.0.0
-git push origin :refs/tags/1.0.0
-git tag 1.0.0
-git push origin 1.0.0
-----
-
-== Integration Branch
-
-Integration branches are dedicated branch to automatic integration task (like Crowdin translation for instance).
-
-=== Actions
-
-==== Create a new Integration Branch
-
-*When:* Whenever an integration is needed with a third-party system.
-
-*Who:* SWF
-
-*How:*
-[source,shell]
-----
-git checkout develop
-git pull
-git checkout -b ecms/my-ecms
-git push
-----
-
-== PoC Branch
-
-`Engineering`
-
-Poc branches are dedicated branch to develop a Prove of Concept (PoC).
-
-[[git-workflow-poc-branch]]
-.Git Workflow - POC Branch
-image::git-workflow-poc-branch.png[Git Workflow - POC Branch, 300, align=center, link={imagesdir}/git-workflow-poc-branch.png]
-
-=== Actions
-
-==== Create a new PoC Branch
-
-*When:* A new PoC is planified.
-
-*Who:* PL/TL
-
-*How:*
-[source,shell]
-----
-$ git checkout develop
-$ git pull
-$ git checkout -b poc/x
-[Modify all pom: initial commit]
-$ git add pom.xml
-$ git commit -m "details"
-$ git push
-----
-
-== Release Process
-
-A release must never involve a freeze of the develop branch.
-This section explain the release process to follow when doing an intermediate release (Milestone, Release Candidate) or the final release.
-
-=== Intermediate Release
-
-*When:* Product Leader give a go to do an intermediate release of PLF (Milestone, Release Candidate)
-
-*Who:* PLF Team with support of team responsible of each project
-
-[[release-intermediate]]
-.Intermediate Release
-image::release-prepare-intermediate.png[Intermediate Release, 600, align=center, link={imagesdir}/release-prepare-intermediate.png]
-
-=== Final Release
-
-*When:* Product Leader give a go to do the final release of PLF
-
-*Who:* PLF Team with support of team responsible of each project
-
-image::release-prepare-final.png[alt="Final Release process", width="500")]
-
-== Community Contributions
-
-Anyone with a Github account can contribute to eXo Platform.
-The only difference for people outside of the eXo Platform organization is they must sign a link:../resources/sources/eXo_Platform_ContributorAgreement_EN_v1.4.pdf[Contribution License Agreement].
-The Contributor License Agreement is needed to clarify the terms of usage of contributions by eXo Platform and the entire open source community.
-
-The CLA must be printed, signed, then scanned as a PDF file and sent at cla@exoplatform.com.

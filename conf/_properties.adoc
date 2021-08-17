@@ -17,7 +17,8 @@
 :link-git-repo-layout-management: {link-github-exoplatform}/layout-management
 :link-git-repo-web-conferencing: {link-github-exoplatform}/web-conferencing
 :link-git-repo-tasks: {link-github-exoplatform}/task
-:link-git-repo-calendar: {link-github-exoplatform}/calendar
+:link-git-repo-agenda: {link-github-exoplatform}/agenda
+:link-git-repo-analytics: {link-github-exoplatform}/analytics
 :link-git-repo-forum: {link-github-exoplatform}/forum
 :link-git-repo-wiki: {link-github-exoplatform}/wiki
 :link-git-repo-social: {link-github-exoplatform}/social
