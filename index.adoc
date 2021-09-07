@@ -10,6 +10,8 @@ icon:file-pdf-o[title="eXo Developer PDF Version"]
 
 include::content/sources.adoc[leveloffset=+1]
 
+include::content/best_practices.adoc[leveloffset=+1]
+
 include::content/ide.adoc[leveloffset=+1]
 
 include::content/build.adoc[leveloffset=+1]

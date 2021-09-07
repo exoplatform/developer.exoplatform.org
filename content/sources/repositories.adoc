@@ -1,12 +1,6 @@
 = Git - Repositories
 
-== Platform 6
-
 eXo Platform is built from several projects stored in different {link-github-exoplatform}[*Git repositories*].
-You will find below the list of repositories used to build *eXo Platform 6*.
-
-.Overview of eXo Components for PLF 6.0
-image::plf6-components.png[Platform Components, align=center, link={imagesdir}/plf6-components.png]
 
 [horizontal]
 {link-git-repo-private-distribution}[platform-private-distribution]:: eXo Enterprise Edition
@@ -14,10 +8,11 @@ image::plf6-components.png[Platform Components, align=center, link={imagesdir}/p
 {link-git-repo-onlyoffice}[onlyoffice]:: eXo Only Office
 {link-git-repo-news}[news]:: eXo News
 {link-git-repo-digital-workplace}[digital-workplace]:: eXo Digital Workplace
+{link-git-repo-analytics}[analytics]:: eXo Analytics
 {link-git-repo-layout-management}[layout-management]:: eXo Layout Management
 {link-git-repo-web-conferencing}[web-conferencing]:: eXo Web Conferencing
 {link-git-repo-tasks}[tasks]:: eXo Tasks
-{link-git-repo-calendar}[calendar]:: eXo Calendar
+{link-git-repo-agenda}[agenda]:: eXo Agenda
 {link-git-repo-ecms}[ecms]:: eXo Content Management System
 {link-git-repo-jcr}[JCR]:: eXo JCR
 
@@ -32,33 +27,3 @@ image::plf6-components.png[Platform Components, align=center, link={imagesdir}/p
 {link-git-repo-meeds-platform-ui}[platform-ui]:: Meeds.io UI stylesheets
 {link-git-repo-meeds-portal}[Portal]:: Meeds.io Portlet Container and Portal Services
 {link-git-repo-meeds-core}[Core]:: Meeds Core Services : IOC Services, IDM, Security, SSO APIs
-
-
-== Platform 5
-
-eXo Platform is built from several projects stored in different {link-github-exoplatform}[*Git repositories*].
-You will find below the list of repositories used to build *eXo Platform 5*.
-
-[[plf_components]]
-.Overview of eXo Components for PLF 5.0
-image::plf5-components.png[Platform Components, align=center, link={imagesdir}/plf5-components.png]
-
-[horizontal]
-{link-git-repo-platform-public-distributions}[platform-public-distributions]:: Main project used to package the standalone community edition based on http://tomcat.apache.org[Apache Tomcat 8].
-{link-git-repo-platform}[platform]:: eXo Platform
-{link-git-repo-integration}[integration]:: Integration of eXo services
-{link-git-repo-calendar}[calendar]:: eXo Calendar
-{link-git-repo-forum}[forum]:: eXo Forum
-{link-git-repo-wiki}[wiki]:: eXo Wiki
-{link-git-repo-social}[social]:: eXo Social
-{link-git-repo-ecms}[ecms]:: eXo Content Management System
-{link-git-repo-commons}[commons]:: Commons services
-{link-git-repo-platform-ui}[platform-ui]:: eXo Platform UI customizations
-{link-git-repo-gatein-portal}[GateIn Portal]:: GateIn Portal
-{link-git-repo-gatein-sso}[GateIn SSO]:: GateIn SSO
-{link-git-repo-gatein-pc}[GateIn PC]:: GateIn PC
-{link-git-repo-jcr}[JCR]:: eXo JCR
-{link-git-repo-ws}[WS]:: eXo WS
-{link-git-repo-core}[Core]:: eXo Core
-{link-git-repo-kernel}[Kernel]:: eXo Kernel
-{link-git-repo-gatein-wci}[GateIn WCI]:: GateIn WCI

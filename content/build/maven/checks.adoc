@@ -58,14 +58,11 @@ In case the check fails, you will see this kind of message:
 [INFO] ------------------------------------------------------------------------
 ----
 
-=== How to check if the ration can be increased in a module
+=== How to check if the ratio can be increased in a module
 
 According to <<id-test-coverage,the rules about the minimum test coverage ratio update>>, if a contributor increases the test coverage ratio, he/she can update the minimum ratio.
 But Maven does not give the actual value in its standard output (console).
 Instead, this value is available in the jacoco reports, in `target/site/test-coverage-ut/index.html`. 
-Here is an example:
-
-image:maven-test-coverage-report.png[alt="Test Coverage Report",width="700",align="center"]
 
 This report gives the test coverage on each package and the total test coverage of the Maven module.
 This last value is the one checked during the test coverage check.
