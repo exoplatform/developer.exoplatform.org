@@ -56,7 +56,7 @@ Some operations require logging/auditing to allow to understand what happened du
 
 == Performance
 
-The reviewer must try to detect if the fix/feature could have significant bad impacts on the performances of the application. Performances issues can be expensive to find and fix, so it is important to raise any concern on this topic at this stage. Here are some examples of performance issues causes: too many database requests, slow database query, missing index in the database, too many HTTP requests, …
+The reviewer must try to detect if the fix/feature could have significant bad impacts on the performance of the application. Performances issues can be expensive to find and fix, so it is important to raise any concern on this topic at this stage. Here are some examples of performance issues causes: too many database requests, slow database queries, missing index in the database, too many HTTP requests, …
 
 === Front-End Performances
 
