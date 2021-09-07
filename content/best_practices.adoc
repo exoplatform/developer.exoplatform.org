@@ -79,10 +79,10 @@ A Vue application can need one or several HTTP requests to retrieve data from Se
 
 Sometimes, when not having a lot of interactions with user on UI, (like for Wallet & Perkstore widgets), it's more relevant to compute the HTML to display in Server-End using a simple JSP file without having to mount a Vue application for it and to retrieve its information using additional REST calls. Using Vue applications is relevant only when :
 
-* the computed information to display is slow: in this case, using a REST call to asynchronously retrieve information from Server-End will allow to detach heavy computing from critical path of Web-Page DOM retrieving
+* the computed information to display is slow: in this case, using a REST call to asynchronously retrieve information from Server-End will allow detaching heavy computing from the critical path of Web-Page DOM retrieving
 * there are complex UI components and user interactions in application DOM
 
-As a conclusion, to ensure having a good Front-End performances when developing a Vue application, we have multiple techniques that can be applied, but there is no exact coding pattern that we can follow. Each application has its specifities and performances requirement has to be considered in conception phase, else you can looase time to refactor code. In order to help developers to continuously measure developed/maintained applications performances, a tooling has been added to display application performances in Browser console when the server is started in https://docs.exoplatform.org/en/6.1/GetStarted.html#dev-mode[Dev Mode]. To enable this, use:
+In conclusion, to ensure having good Front-End performances when developing a Vue application, we have multiple techniques that can be applied, but there is no exact coding pattern that we can follow. Each application has its specificities and performances requirement has to be considered in the conception phase, else you can lose time to refactor code. In order to help developers continuously measure developed/maintained applications performances, tooling has been added to display application performances in the Browser console when the server is started in https://docs.exoplatform.org/en/6.1/GetStarted.html#dev-mode[Dev Mode]. To enable this, use:
 
 * `Vue.createApp` to create a new Vue application instead of `new Vue`
 * use statement `this.$root.$applicationLoaded()` when all Data is fetched and the UI has been displayed to the End-user.
