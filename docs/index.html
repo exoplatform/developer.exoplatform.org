@@ -1,4 +1,6 @@
-<html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +9,7 @@
 <link rel="stylesheet" href="./css/exo.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
-<script async="" src="https://www.google-analytics.com/analytics.js"></script><script>
+<script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -44,7 +46,7 @@
 </ul>
 </li>
 <li><a href="#id-ide-settings-to-work-on-exo-platform-projects">3. IDE Settings to work on eXo Platform projects</a>
-<ul class="sectlevel3">
+<ul class="sectlevel2">
 <li><a href="#id-eclipse-settings">3.1. Eclipse - Settings</a></li>
 <li><a href="#id-intellij-settings">3.2. IntelliJ - Settings</a></li>
 </ul>
@@ -72,7 +74,7 @@
 </div>
 <div class="admonitionblock note">
 <table>
-<tbody><tr>
+<tr>
 <td class="icon">
 <i class="fa icon-note" title="Note"></i>
 </td>
@@ -81,7 +83,7 @@
 <a href="http://developer.exoplatform.org/exo-developer-guide.pdf">Download this documentation as PDF version</a>
 </td>
 </tr>
-</tbody></table>
+</table>
 </div>
 </div>
 </div>
@@ -95,7 +97,7 @@
 </div>
 <div class="hdlist">
 <table>
-<tbody><tr>
+<tr>
 <td class="hdlist1">
 <a href="https://www.github.com/exoplatform/platform-private-distributions">platform-private-distribution</a>
 </td>
@@ -279,7 +281,7 @@
 <p>Meeds Core Services : IOC Services, IDM, Security, SSO APIs</p>
 </td>
 </tr>
-</tbody></table>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -320,7 +322,7 @@ git config --global user.email "jdoe@exoplatform.com"</code></pre>
 <p><a href="https://github.com/Meeds-io"><strong>meeds-io</strong></a>: Meeds-io association product Git organization. eXo Platform still the main contributor and maintainer of the source code provided by the association. Thus, we will use the same process for this repository as any other eXo Platform repository.</p>
 </li>
 <li>
-<p><a href="https://github.com/exoplatform"><strong>exoplatform</strong></a>: eXo Platform Git organization having private and public repositories. This organization has the major part of source code of eXo Platform product, Software Factory tools, Tribe addon…&ZeroWidthSpace;</p>
+<p><a href="https://github.com/exoplatform"><strong>exoplatform</strong></a>: eXo Platform Git organization having private and public repositories. This organization has the major part of source code of eXo Platform product, Software Factory tools, Tribe addon&#8230;&#8203;</p>
 </li>
 <li>
 <p><a href="https://github.com/exo-docker"><strong>exo-docker</strong></a>: eXo Platform Docker Images used mainly by Ops for Software Factory and Product Deployments.</p>
@@ -344,7 +346,7 @@ git config --global user.email "jdoe@exoplatform.com"</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><code>stable/*</code> : during Test Compaign of a minor or major release, when the FTs disn’t started to work on new features yet.</p>
+<p><code>stable/*</code> : during Test Compaign of a minor or major release, when the FTs disn&#8217;t started to work on new features yet.</p>
 </li>
 <li>
 <p><code>develop</code> : Feature Teams development phase.</p>
@@ -431,10 +433,10 @@ To create a PR :</p>
 <p>go to Github, and select your branch, to create New pull request</p>
 </li>
 <li>
-<p>select the right base branch (<code>develop</code>, <code>feature/</code>, <code>stable/</code>…&ZeroWidthSpace;) and check that the PR contains <strong>only your commits</strong></p>
+<p>select the right base branch (<code>develop</code>, <code>feature/</code>, <code>stable/</code>&#8230;&#8203;) and check that the PR contains <strong>only your commits</strong></p>
 </li>
 <li>
-<p>fill the description ! See Pull Requests best practices for more details.</p>
+<p>fill the description !</p>
 </li>
 <li>
 <p>click on <strong>Create pull request</strong></p>
@@ -465,18 +467,18 @@ Creating a new PR for each update prevents from following easily the discussion 
 </div>
 <div class="admonitionblock warning">
 <table>
-<tbody><tr>
+<tr>
 <td class="icon">
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
 <code>Code Review does NOT mean Test, Reviewers are NOT Testers</code><br>
-The role of the reviewers is to review the code changes (code best practices, better/easier solution, …&ZeroWidthSpace;).
+The role of the reviewers is to review the code changes (code best practices, better/easier solution, &#8230;&#8203;).
 They do not necessarily have to test (they can if they want/need of course).
 The author of the PR must not rely on the reviewers to test it, he/she is responsible for that (and the QA people will help during their test campaigns).
 </td>
 </tr>
-</tbody></table>
+</table>
 </div>
 </div>
 <div class="sect4">
@@ -546,7 +548,7 @@ The Contributor License Agreement is needed to clarify the terms of usage of con
 <p>the commit message must start with a line containing a short subject (max 100 characters) which starts by the Task issue number and then describes briefly what the commit does. For example : TASK-40308 Allow to update kudos message in activity stream</p>
 </li>
 <li>
-<p>the commit subject must not be a copy/paste of the Task issue summary. As said previously, it must describe what the commit does, as if the sentence would start with “If applied, this commit will …&ZeroWidthSpace;”.</p>
+<p>the commit subject must not be a copy/paste of the Task issue summary. As said previously, it must describe what the commit does, as if the sentence would start with “If applied, this commit will …​”.</p>
 </li>
 <li>
 <p>after the subject, one blank line must be added before starting the body</p>
@@ -580,26 +582,26 @@ When updating extensionRegistry asynchronously from different modules, the other
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"><span class="hljs-meta">#</span><span class="bash"> TASK-&lt;task-id&gt;: (If applied, this commit will...) &lt;subject&gt;</span>
-<span class="hljs-meta">#</span><span class="bash"> |&lt;----  Using a Maximum Of 100 Characters  ----&gt;|</span>
-<span class="hljs-meta">
-#</span><span class="bash"> Why is this change needed?</span>
-<span class="hljs-meta">#</span><span class="bash"> Prior to this change, ...</span>
-<span class="hljs-meta">#</span><span class="bash"> How does it address the issue?</span>
-<span class="hljs-meta">#</span><span class="bash"> This change ...</span>
-<span class="hljs-meta">#</span><span class="bash"> |&lt;----   Try To Limit Each Line to a Maximum Of 72 Characters   ----&gt;|</span>
-<span class="hljs-meta">
-#</span><span class="bash"> Provide links or keys to any relevant tickets, articles or other resources</span>
-<span class="hljs-meta">
-#</span><span class="bash"> --------------------</span>
-<span class="hljs-meta">#</span><span class="bash"> Remember to</span>
-<span class="hljs-meta">#</span><span class="bash">    Capitalize the subject line</span>
-<span class="hljs-meta">#</span><span class="bash">    Use the imperative mood <span class="hljs-keyword">in</span> the subject line</span>
-<span class="hljs-meta">#</span><span class="bash">    Do not end the subject line with a period</span>
-<span class="hljs-meta">#</span><span class="bash">    Separate subject from body with a blank line</span>
-<span class="hljs-meta">#</span><span class="bash">    Use the body to explain what and why vs. how</span>
-<span class="hljs-meta">#</span><span class="bash">    Can use multiple lines with <span class="hljs-string">"-"</span> <span class="hljs-keyword">for</span> bullet points <span class="hljs-keyword">in</span> body</span>
-<span class="hljs-meta">#</span><span class="bash"> --------------------</span></code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># TASK-&lt;task-id&gt;: (If applied, this commit will...) &lt;subject&gt;
+# |&lt;----  Using a Maximum Of 100 Characters  ----&gt;|
+
+# Why is this change needed?
+# Prior to this change, ...
+# How does it address the issue?
+# This change ...
+# |&lt;----   Try To Limit Each Line to a Maximum Of 72 Characters   ----&gt;|
+
+# Provide links or keys to any relevant tickets, articles or other resources
+
+# --------------------
+# Remember to
+#    Capitalize the subject line
+#    Use the imperative mood in the subject line
+#    Do not end the subject line with a period
+#    Separate subject from body with a blank line
+#    Use the body to explain what and why vs. how
+#    Can use multiple lines with "-" for bullet points in body
+# --------------------</code></pre>
 </div>
 </div>
 </div>
@@ -631,7 +633,7 @@ When updating extensionRegistry asynchronously from different modules, the other
 </ul>
 </div>
 <div class="paragraph">
-<p>The PR does not need to describe the issue (functional impacts, reproduction steps, …&ZeroWidthSpace;) since it is already done in the related Task issue.</p>
+<p>The PR does not need to describe the issue (functional impacts, reproduction steps, …​) since it is already done in the related Task issue.</p>
 </div>
 </div>
 <div class="sect3">
@@ -705,7 +707,7 @@ When updating extensionRegistry asynchronously from different modules, the other
 </div>
 <div class="admonitionblock warning">
 <table>
-<tbody><tr>
+<tr>
 <td class="icon">
 <i class="fa icon-warning" title="Warning"></i>
 </td>
@@ -713,10 +715,7 @@ When updating extensionRegistry asynchronously from different modules, the other
 This list does not only apply to reviewers, but also to contributors!
 </td>
 </tr>
-</tbody></table>
-</div>
-<div class="paragraph">
-<p>Unresolved directive in content/sources.adoc - include::sources/best_practices.adoc[leveloffset=+1]</p>
+</table>
 </div>
 </div>
 </div>
@@ -734,7 +733,7 @@ This list does not only apply to reviewers, but also to contributors!
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://docs.google.com/spreadsheets/d/1s-op62uot1dy4YwMA-JswxNg0DwS4sdmg1eAll0VHIU">Development Best Practices</a></p>
+<p><a href="https://community.exoplatform.com/portal/dw/oeditor?docId=bf3f775aac18000d4100d84c97366435">Development Best Practices</a></p>
 </li>
 <li>
 <p><a href="https://community.exoplatform.com/portal/g/:spaces:engineering/exo_architects/notes/2040">Authorized third party tools licenses</a></p>
@@ -826,13 +825,13 @@ Some operations require logging/auditing to allow to understand what happened du
 <div class="sect2">
 <h3 id="id-performance">2.4. Performance</h3>
 <div class="paragraph">
-<p>The reviewer must try to detect if the fix/feature could have significant bad impacts on the performances of the application. Performances issues can be expensive to find and fix, so it is important to raise any concern on this topic at this stage. Here are some examples of performance issues causes: too many database requests, slow database query, missing index in the database, too many HTTP requests, …&ZeroWidthSpace;</p>
+<p>The reviewer must try to detect if the fix/feature could have significant bad impacts on the performances of the application. Performances issues can be expensive to find and fix, so it is important to raise any concern on this topic at this stage. Here are some examples of performance issues causes: too many database requests, slow database query, missing index in the database, too many HTTP requests, …​</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="id-maintainability">2.5. Maintainability</h3>
 <div class="paragraph">
-<p>The maintainability measure how easy it is to make changes in a code base (fixing bugs, adding new features, replacing a faulty or obsolete component, …&ZeroWidthSpace;). This means:</p>
+<p>The maintainability measure how easy it is to make changes in a code base (fixing bugs, adding new features, replacing a faulty or obsolete component, …​). This means:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -927,8 +926,8 @@ Some operations require logging/auditing to allow to understand what happened du
 <div class="sect1">
 <h2 id="id-ide-settings-to-work-on-exo-platform-projects">3. IDE Settings to work on eXo Platform projects</h2>
 <div class="sectionbody">
-<div class="sect3">
-<h4 id="id-eclipse-settings">3.1. Eclipse - Settings</h4>
+<div class="sect2">
+<h3 id="id-eclipse-settings">3.1. Eclipse - Settings</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -946,8 +945,8 @@ Some operations require logging/auditing to allow to understand what happened du
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="id-intellij-settings">3.2. IntelliJ - Settings</h4>
+<div class="sect2">
+<h3 id="id-intellij-settings">3.2. IntelliJ - Settings</h3>
 <div class="paragraph">
 <p>Intellij IDEA users must install the plugin <a href="http://plugins.jetbrains.com/plugin/?id=6546">Eclipse Code Formatter</a> and import Eclipse settings files from <a href="https://github.com/exoplatform/developer.exoplatform.org/tree/master/resources/ide/eclipse/">/resources/ide/eclipse</a>.</p>
 </div>
@@ -1022,9 +1021,9 @@ The test coverage ratio is set in each Maven module in the property <code>exo.te
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml"><span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">exo.test.coverage.ratio</span>&gt;</span>0.72<span class="hljs-tag">&lt;/<span class="hljs-name">exo.test.coverage.ratio</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span></code></pre>
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;properties&gt;
+  &lt;exo.test.coverage.ratio&gt;0.72&lt;/exo.test.coverage.ratio&gt;
+&lt;/properties&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1085,8 +1084,7 @@ Therefore, in order to run this check locally, you must activate this profile:</
 <div class="paragraph">
 <p>According to <a href="#id-test-coverage">the rules about the minimum test coverage ratio update</a>, if a contributor increases the test coverage ratio, he/she can update the minimum ratio.
 But Maven does not give the actual value in its standard output (console).
-Instead, this value is available in the jacoco reports, in <code>target/site/test-coverage-ut/index.html</code>.
-Here is an example:</p>
+Instead, this value is available in the jacoco reports, in <code>target/site/test-coverage-ut/index.html</code>.</p>
 </div>
 <div class="paragraph">
 <p>This report gives the test coverage on each package and the total test coverage of the Maven module.
@@ -1164,7 +1162,7 @@ A synchronization between the eXo source code and Crowdin is performed once per 
 <div class="sect3">
 <h4 id="id-how-to-add-delete-a-new-localization-file">5.2.1. How to add / delete a new localization file?</h4>
 <div class="paragraph">
-<p>In root path of each project (ecms, wallet, agenda…&ZeroWidthSpace;), you 'll find a <code>translation.properties</code> file where
+<p>In root path of each project (ecms, wallet, agenda&#8230;&#8203;), you 'll find a <code>translation.properties</code> file where
 we reference the <code>MASTER localization file</code> for each localization file. (in general we reference the _en.properties
 or _en.xml in translation.properties to make sure that english language is considered as <code>MASTER localization
 language</code> for Crowdin)</p>
@@ -1196,7 +1194,7 @@ Agenda.properties=agenda-webapps/src/main/resources/locale/portlet/Agenda_en.pro
 </div>
 <div class="paragraph">
 <p>So if you developed a new application that references a new localization file, you will have to add its reference in root
-file <code>translation.properties</code> to make sure that it’s translated by Crowdin contributors, else it will be ignored.</p>
+file <code>translation.properties</code> to make sure that it&#8217;s translated by Crowdin contributors, else it will be ignored.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1235,7 +1233,7 @@ if (!hljs.initHighlighting.called) {
 }
 </script>
 <div class="openblock float-group" style="padding-top:10px;border-top: 1px solid #dddddd; background-color:#f2f2f2">
-<div class="content" id="partners">
+<div class="content"  id="partners" >
 <div class="paragraph right">
 <p><span class="image"><a class="image" href="https://www.jetbrains.com/idea/" target="IntellIJ IDEA"><img src="images/logo-intellij-idea.png" alt="IntellIJ IDEA" width="40px" title="IntellIJ IDEA"></a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 </div>
@@ -1249,5 +1247,5 @@ if (!hljs.initHighlighting.called) {
 </div>
 </div>
 </div>
-
-</body></html>
+</body>
+</html>
