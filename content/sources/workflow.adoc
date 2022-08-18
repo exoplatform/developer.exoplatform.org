@@ -2,7 +2,7 @@
 
 eXo Platform product relies on a set of Git repositories :
 
-* https://github.com/Meeds-io[*meeds-io*]: Meeds-io association product Git organization. eXo Platform still the main contributor and maintainer of the source code provided by the association. Thus, we will use the same process for this repository as any other eXo Platform repository.
+* https://github.com/Meeds-io[*meeds-io*]: Meeds-io association product Git organization. Meeds Lab is the main contributor of the source code provided by the association. eXo Platform is the main maintener of this source code (the eXo Maintenance Team is in charge to fix bug on maintenance versions)
 
 * https://github.com/exoplatform[*exoplatform*]: eXo Platform Git organization having private and public repositories. This organization has the major part of source code of eXo Platform product, Software Factory tools, Tribe addon...
 
@@ -20,15 +20,17 @@ The CI/CD is applied on the following branches:
 
 * `stable/*` : during Test Compaign of a minor or major release, when the FTs disn't started to work on new features yet.
 
-* `develop` : Feature Teams development phase.
+* `develop-meeds` and `develop-exo` : development branch for each association member
 
 == Branching model
 
 Branching model are 6 kinds of branch :
 
-* `develop : Develop branch contains the latest delivered development changes.
+* `develop` : Develop branch contains the latest delivered and stable development changes.
 
-* `feature/xxx : Feature branches are dedicated branch for one big feature (lot of commits), "xxx" is the feature name.
+* `develop-xxx` : the develop branch for each Meeds association member. This branch is the branch deployed in production by the CI/CD. For example, each night, Builders application is deployed from branch develop-meeds. eXo Tribe is deployed from branch develop-exo. Theses branch are only present on meeds-io repositories.
+
+* `feature/xxx` : Feature branches are dedicated branch for one big feature (lot of commits), "xxx" is the feature name. Theses branches can be created from develop-meeds or develop-exo for meeds repositories, and from develop for exoplatform repositories.
 
 * `stable/xxx` : Stable branch are used to perform releases and write / accept fix. "xxx" is the stable version name (e.g 1.0.x).
 
@@ -40,18 +42,39 @@ Branching model are 6 kinds of branch :
 
 === Develop Branch
 
-Develop branch is the production ready branch which is, in general case, the CI/CD production branch.
+For meeds-io repositories, develop branch is the branch containing all finished and tested features.
+For exoplatform repositories, develop branch is the production ready branch which is, in general case, the CI/CD production branch.
 
 It contains the latest delivered development changes. This is our backbone where all the different fix and new feature are mixed with each other.
 
+For meeds-io repositories, when a member finish a feature, he merges it on develop branch from his develop-xxx branch. Then, on a regularly base, a rebase is done to propagate theses new developments on other members develop branch :
+
 [[git-workflow-develop-branch]]
-.Git Workflow - Develop Branch
-image::git-workflow-develop-branch.png[Git Workflow - Develop Branch, 600, align=center, link={imagesdir}/git-workflow-develop-branch.png]
+.Git Workflow - Rebase Develop Branch
+image::git-worflow-rebase-develop.png[Git Workflow - Rebase Develop Branch, 800, align=center, link={imagesdir}/git-worflow-rebase-develop.png]
 
 === Feature Branch
 
 Feature branches are dedicated branch to develop a new feature.
 
+On meeds-io repositories, feature branches are created from develop-xxx branch (develop-meeds if it is a Meeds Lab feature, or develop-exo if it is an eXo Platform feature).
+On exoplatform repositories, features branches are created from develop branch.
+
 [[git-workflow-feature-branch]]
+.Git Workflow - Meeds Feature Branch
+image::git-workflow-meeds-feature-branch.png[Git Workflow - Meeds Feature Branch, 800, align=center, link={imagesdir}/git-workflow-meeds-feature-branch.png]
+
+In meeds repositories, when a User Story (US) is finished, it is backported to develop-xxx branch. So that, the nightly deployment will push this US in production for the association member which develop it, without impacting other association members.
+When the feature is finished, all US composing it are added in a Pull Request on develop branch. The PR is reviewed by other association members, and merged in develop branch when validated.
+
+**Important : When this last PR is merged, we should keep all commits in the develop, so, not use squash option to merge !!**
+
+.Git Workflow - eXo Feature Branch
+image::git-workflow-exo-feature-branch.png[Git Workflow - eXo Feature Branch, 800, align=center, link={imagesdir}/git-workflow-eXo-feature-branch.png]
+
+In eXo repositories, there is no develop-xxx branch, we only use develop branch.
+
 .Git Workflow - Feature Branch
 image::git-workflow-feature-branch.png[Git Workflow - Feature Branch, 300, align=center, link={imagesdir}/git-workflow-feature-branch.png]
+
+=== Fix Branch
