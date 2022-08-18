@@ -60,9 +60,69 @@ The Contributor License Agreement is needed to clarify the terms of usage of con
 
 The CLA must be printed, signed, then scanned as a PDF file and sent at cla@exoplatform.com.
 
+== Issues references
+
+To keep history about a new feature or a fix, we need to add a reference in the commit message.
+
+=== New Feature
+
+When eXo Platform wants to develop a new feature, we usually have the US described in an eXo Tribe task. If the feature is only about exoplatform repositories, we can only keep the task. But if some meeds-io repositories are impacted, we need to communicate publicly on this new feature and fill a "Feature Request" issue on github : in the repository https://github.com/Meeds-io/meeds[meeds] : choose the tab "Issues" and create a new issue of type "Feature Request". Follow the template to describe your feature request.
+
+----
+**Is your feature request related to a problem? Please describe.**
+A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+
+**Describe the solution you'd like**
+A clear and concise description of what you want to happen.
+
+**Describe alternatives you've considered**
+A clear and concise description of any alternative solutions or features you've considered.
+
+**Additional context**
+Add any other context or screenshots about the feature request here.
+----
+
+=== Fixes
+
+When eXo Platform wants to fix something, the problem description is usually in an eXo Tribe task. If the fix is only localized on exoplatform repositories, we can keep only the task. But if some meeds-io repositories are impacted, we need to communicate publicly on this fix and fill a "Bug Report" issue on github : in the repository https://github.com/Meeds-io/meeds[meeds] : choose the tab "Issues" and create a new issue of type "Bug Report". Follow the template to describe the problem and how you fix it.
+
+----
+**Steps to reproduce**
+
+Steps to reproduce the behavior:
+1. Go to '...'
+2. Click on '....'
+3. Scroll down to '....'
+4. See error
+
+If applicable, add screenshots to help explain your problem.
+
+**(optional) Affected version**
+
+Indicate the version where the bug is observed.
+
+**Current behaviour**
+
+Describe the bug with a clear and concise description of what the problem is.
+
+**Expected behavior**
+
+A clear and concise description of what you expected to happen.
+
+**(optional) Affected environments**
+Please complete the following information:
+ - OS: [e.g. iOS]
+ - Browser [e.g. chrome, safari]
+ - Version [e.g. 22]
+ - Device: [e.g. iPhone6]
+----
+
+
 == Commits messages best practices
 
-It is often important to browse the source code history to understand when and why a change has been done. Good commits message are therefore crucial to help developers in maintaining a code base. In order to improve the quality of the commit messages, the following rules must be respected:
+It is often important to browse the source code history to understand when and why a change has been done. Good commits message are therefore crucial to help developers in maintaining a code base.
+In addition, to facilitate the release note creation, we use https://www.conventionalcommits.org/en/v1.0.0/["Conventional commit"] convention.
+In order to improve the quality of the commit messages, the following rules must be respected:
 
 * use 
 +
@@ -79,17 +139,26 @@ git commit -m “My commit message”
 ----
 when committing a change, in order to write a more detailed commit message and use the commit template
 
-* the commit message must start with a line containing a short subject (max 100 characters) which starts by the Task issue number and then describes briefly what the commit does. For example : TASK-40308 Allow to update kudos message in activity stream
-* the commit subject must not be a copy/paste of the Task issue summary. As said previously, it must describe what the commit does, as if the sentence would start with “If applied, this commit will …​”.
+* the commit message must start with a keyword 'fix:' or 'feature:' in function of the type of the commine, then a short subject (max 100 characters). It must describes briefly what the commit does.The line must end with the issue references : the github issue (if we are in a meeds-io repository) and the task reference. For example :
+----
+fix: Allow to update kudos message in activity stream - EXO-40308 - meeds-io/meeds#1234
+----
+
+* the commit subject must not be a copy/paste of the Task issue summary. As said previously, it must describe what the commit does, as if the sentence would start with “If applied, this commit will …”.
 * after the subject, one blank line must be added before starting the body
-* the body describes in details what the commit does and must answer 2 questions : why is this change needed and how does this change address the issue. It should give as much information as possible to make it easy for another developer who does not know deeply the context to understand the commit. Therefore the body is never too long.
+* the body describes in details what the commit does and must answer 2 questions :
+** why is this change needed ?
+** how does this change address the issue.
+
+It should give as much information as possible to make it easy for another developer who does not know deeply the context to understand the commit. Therefore the body is never too long.
+
 * after the body, a list of links to relevant resources can be added (optional). It must be separated from the body by one blank line.
 
 Here is an example of commit message following these rules:
 
 [source,shell]
 ----
-TASK-37899 Enhance extension registry to trigger event when extensions updated
+fix: Enhance extension registry to trigger event when extensions updated - EXO-37899 - meeds-io/meeds#1234
 
 When updating extensionRegistry asynchronously from different modules, the other modules should be triggered for this update to allow retrieving newly registered extensions. This way, the extension points in all portlets will can be aware, when listening to adequate event, of any change in extensionRegistry.
 ----
@@ -102,7 +171,7 @@ In order to help developers, a template is available (https://gist.github.com/li
 
 [source,shell]
 ----
-# TASK-<task-id>: (If applied, this commit will...) <subject>
+# fix/feature: (If applied, this commit will...) <subject> - EXO-<task-id> - meeds-io/meeds#<github-issue>
 # |<----  Using a Maximum Of 100 Characters  ---->|
 
 # Why is this change needed?
@@ -126,7 +195,10 @@ In order to help developers, a template is available (https://gist.github.com/li
 
 == Pull Requests best practices
 
-As well as good commits messages are important for code base maintainers, good PRs descriptions are important for reviewers. It helps to understand what the developer has done and why. The PR title must start with the Task issue, then describe briefly what the PR does. For example : _TASK-40308 Allow to update kudos message in activity stream_
+As well as good commits messages are important for code base maintainers, good PRs descriptions are important for reviewers. It helps to understand what the developer has done and why. The PR title must start with the keyword fix or feature, then describe briefly what the PR does, then references the task id and the github issue if needed. For example :
+----
+fix: Allow to update kudos message in activity stream - EXO-40308 - meeds-io/meeds#1234
+----
 
 The PR description must at least provide the information given in the commit message body : why is this change needed and how does this change address the issue (Tip: using the first line of the commit message as the PR title and the commit message body as the PR description is a good start for the PR description).
 
@@ -137,7 +209,9 @@ It can also give the following information when relevant:
 * Tested environments (tomcat/jboss, databases, ldap, browsers, addons, …)
 * Links to resources which can help to understand the contribution
 
-The PR does not need to describe the issue (functional impacts, reproduction steps, …​) since it is already done in the related Task issue.
+The PR does not need to describe the issue (functional impacts, reproduction steps, …) since it is already done in the related Task issue.
+
+When you create a PR on meeds repositories, a PR template is available.
 
 == Contributions reviews
 
@@ -157,17 +231,22 @@ If the option `Approve` is selected, the PR is validated, and the Task issue sta
 
 When reviewing a Pull Request, the following things must be checked:
 
+* Title and commit message : does it respect guideline format (https://developer.exoplatform.org/#id-commits-messages-best-practices)
 * Correctness of the fix/feature
-* Learning
 * Coding best practices
+* Does the code is the simpliest possible ?
+* Should it imply a refactoring to make something simplier
+* Code Format
+* If there are new files, check headers
+* If there is a new library or dependency, was it validated by architectes ? What about the library licence ?
+* If there is a new visual component, was it validated by Design Guild ?
+* Check Performance : check loop, sql queries ... ask if the loop or the query can have a larger number of elements
+* Learning
 * Unit Tests
 * Security
-* Performance
-* Maintainability
 * Troubleshooting
 * Upgrades
 * API breaking
-* Code formatting (if not yet automated)
 * Documentation
 
 WARNING: This list does not only apply to reviewers, but also to contributors!
