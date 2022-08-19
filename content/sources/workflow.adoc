@@ -43,11 +43,11 @@ Branching model are 6 kinds of branch :
 === Develop Branch
 
 For meeds-io repositories, develop branch is the branch containing all finished and tested features.
-For exoplatform repositories, develop branch is the production ready branch which is, in general case, the CI/CD production branch.
+For exoplatform repositories, develop branch is the production-ready branch which is, in general case, the CI/CD production branch.
 
 It contains the latest delivered development changes. This is our backbone where all the different fix and new feature are mixed with each other.
 
-For meeds-io repositories, when a member finish a feature, he merges it on develop branch from his develop-xxx branch. Then, on a regularly base, a rebase is done to propagate theses new developments on other members develop branch :
+For meeds-io repositories, when members finish a feature, they merge it on develop branch from their develop-xxx branch. Then, on a regular basis, a rebase is done to propagate these new changes on other members' develop branch :
 
 [[git-workflow-develop-branch]]
 .Git Workflow - Rebase Develop Branch
@@ -58,7 +58,7 @@ image::git-worflow-rebase-develop.png[Git Workflow - Rebase Develop Branch, 800,
 Feature branches are dedicated branch to develop a new feature.
 
 On meeds-io repositories, feature branches are created from develop-xxx branch (develop-meeds if it is a Meeds Lab feature, or develop-exo if it is an eXo Platform feature).
-On exoplatform repositories, features branches are created from develop branch.
+On exoplatform repositories, feature branches are created from develop branch.
 
 [[git-workflow-feature-branch]]
 .Git Workflow - Meeds Feature Branch

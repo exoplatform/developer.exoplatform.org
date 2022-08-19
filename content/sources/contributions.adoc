@@ -139,14 +139,14 @@ git commit -m “My commit message”
 ----
 when committing a change, in order to write a more detailed commit message and use the commit template
 
-* the commit message must start with a keyword 'fix:' or 'feature:' in function of the type of the commine, then a short subject (max 100 characters). It must describes briefly what the commit does.The line must end with the issue references : the github issue (if we are in a meeds-io repository) and the task reference. For example :
+* the commit message must start with a keyword 'fix:' or 'feature:' according to the type of the commit, then a short subject (max 100 characters). It must describe briefly what the commit does.The line must end with the issue references : the github issue (if we are in a meeds-io repository) and the task reference. For example :
 ----
 fix: Allow to update kudos message in activity stream - EXO-40308 - meeds-io/meeds#1234
 ----
 
-* the commit subject must not be a copy/paste of the Task issue summary. As said previously, it must describe what the commit does, as if the sentence would start with “If applied, this commit will …”.
+* the commit subject must not be a copy/paste of the Task issue summary. As said previously, it must describe what the commit does, as if the sentence would start with “If applied, this commit would …”.
 * after the subject, one blank line must be added before starting the body
-* the body describes in details what the commit does and must answer 2 questions :
+* the body describes in detail what the commit does and must answer 2 questions :
 ** why is this change needed ?
 ** how does this change address the issue.
 
@@ -171,7 +171,7 @@ In order to help developers, a template is available (https://gist.github.com/li
 
 [source,shell]
 ----
-# fix/feature: (If applied, this commit will...) <subject> - EXO-<task-id> - meeds-io/meeds#<github-issue>
+# fix/feature: (If applied, this commit would...) <subject> - EXO-<task-id> - meeds-io/meeds#<github-issue>
 # |<----  Using a Maximum Of 100 Characters  ---->|
 
 # Why is this change needed?
@@ -195,7 +195,7 @@ In order to help developers, a template is available (https://gist.github.com/li
 
 == Pull Requests best practices
 
-As well as good commits messages are important for code base maintainers, good PRs descriptions are important for reviewers. It helps to understand what the developer has done and why. The PR title must start with the keyword fix or feature, then describe briefly what the PR does, then references the task id and the github issue if needed. For example :
+As much as good commits messages are important for code base maintainers, good PR descriptions are important for reviewers. They help to understand what the developer has done and why. The PR title must start with the keyword fix or feature, then describe briefly what the PR does, then reference the task id and the github issue if needed. For example :
 ----
 fix: Allow to update kudos message in activity stream - EXO-40308 - meeds-io/meeds#1234
 ----
@@ -231,16 +231,16 @@ If the option `Approve` is selected, the PR is validated, and the Task issue sta
 
 When reviewing a Pull Request, the following things must be checked:
 
-* Title and commit message : does it respect guideline format (https://developer.exoplatform.org/#id-commits-messages-best-practices)
+* Title and commit message : does it respect guideline format (https://developer.exoplatform.org/#id-commits-messages-best-practices) ?
 * Correctness of the fix/feature
 * Coding best practices
 * Does the code is the simpliest possible ?
-* Should it imply a refactoring to make something simplier
+* Should it imply a refactoring to make something simplier ?
 * Code Format
 * If there are new files, check headers
-* If there is a new library or dependency, was it validated by architectes ? What about the library licence ?
-* If there is a new visual component, was it validated by Design Guild ?
-* Check Performance : check loop, sql queries ... ask if the loop or the query can have a larger number of elements
+* If there is a new library or dependency? Was it validated by architects ? What about the library's license ?
+* If there is a new visual component? Was it validated by Designers Guild ?
+* Check Performance : check loops, sql queries ... ask if the loop or the query can have a larger number of elements
 * Learning
 * Unit Tests
 * Security
