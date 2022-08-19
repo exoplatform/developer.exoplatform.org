@@ -2,7 +2,7 @@
 
 eXo Platform product relies on a set of Git repositories :
 
-* https://github.com/Meeds-io[*meeds-io*]: Meeds-io association product Git organization. Meeds Lab is the main contributor of the source code provided by the association. eXo Platform is the main maintener of this source code (the eXo Maintenance Team is in charge to fix bug on maintenance versions)
+* https://github.com/Meeds-io[*meeds-io*]: Meeds-io association product GitHub organization based on Licence LGPL v3 (Open Source and free to use). All members of the association benefits from this product.
 
 * https://github.com/exoplatform[*exoplatform*]: eXo Platform Git organization having private and public repositories. This organization has the major part of source code of eXo Platform product, Software Factory tools, Tribe addon...
 
@@ -20,7 +20,7 @@ The CI/CD is applied on the following branches:
 
 * `stable/*` : during Test Compaign of a minor or major release, when the FTs disn't started to work on new features yet.
 
-* `develop-meeds` and `develop-exo` : development branch for each association member
+* `develop-XXX` : development branch for each association member (by example, `develop-exo` for eXo Platform)
 
 == Branching model
 
@@ -57,7 +57,7 @@ image::git-worflow-rebase-develop.png[Git Workflow - Rebase Develop Branch, 800,
 
 Feature branches are dedicated branch to develop a new feature.
 
-On meeds-io repositories, feature branches are created from develop-xxx branch (develop-meeds if it is a Meeds Lab feature, or develop-exo if it is an eXo Platform feature).
+On meeds-io repositories, feature branches are created from develop-xxx branch (develop-exo for and eXo Platform feature).
 On exoplatform repositories, feature branches are created from develop branch.
 
 [[git-workflow-feature-branch]]
