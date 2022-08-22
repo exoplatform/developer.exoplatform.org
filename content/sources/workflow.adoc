@@ -20,7 +20,7 @@ The CI/CD is applied on the following branches:
 
 * `stable/*` : during Test Compaign of a minor or major release, when the FTs disn't started to work on new features yet.
 
-* `develop-XXX` : development branch for each association member (by example, `develop-exo` for eXo Platform)
+* `develop-XXX` : development branch for each association member (for example, `develop-exo` for eXo Platform)
 
 == Branching model
 
@@ -28,9 +28,9 @@ Branching model are 6 kinds of branch :
 
 * `develop` : Develop branch contains the latest delivered and stable development changes.
 
-* `develop-xxx` : the develop branch for each Meeds association member. This branch is the branch deployed in production by the CI/CD. For example, each night, Builders application is deployed from branch develop-meeds. eXo Tribe is deployed from branch develop-exo. Theses branch are only present on meeds-io repositories.
+* `develop-xxx` : the develop branch for each Meeds Association's member. This branch is the branch deployed in production by the CI/CD. For example, every night, Builders application is deployed from branch develop-meeds. eXo Tribe is deployed from branch develop-exo. These branches only exist on meeds-io repositories.
 
-* `feature/xxx` : Feature branches are dedicated branch for one big feature (lot of commits), "xxx" is the feature name. Theses branches can be created from develop-meeds or develop-exo for meeds repositories, and from develop for exoplatform repositories.
+* `feature/xxx` : Feature branches are dedicated to a single large feature (lots of commits), "xxx" is the feature name. These branches can be created from develop-meeds or develop-exo for meeds repositories, and from develop for exoplatform repositories.
 
 * `stable/xxx` : Stable branch are used to perform releases and write / accept fix. "xxx" is the stable version name (e.g 1.0.x).
 
@@ -42,12 +42,12 @@ Branching model are 6 kinds of branch :
 
 === Develop Branch
 
-For meeds-io repositories, develop branch is the branch containing all finished and tested features.
+For meeds-io repositories, develop branch is the branch containing all completed and properly tested features.
 For exoplatform repositories, develop branch is the production-ready branch which is, in general case, the CI/CD production branch.
 
 It contains the latest delivered development changes. This is our backbone where all the different fix and new feature are mixed with each other.
 
-For meeds-io repositories, when members finish a feature, they merge it on develop branch from their develop-xxx branch. Then, on a regular basis, a rebase is done to propagate these new changes on other members' develop branch :
+For meeds-io repositories, when members complete a feature, they merge it on develop branch from their develop-xxx branch. Then, on a regular basis, a rebase is done to propagate these new changes on other members' develop branch :
 
 [[git-workflow-develop-branch]]
 .Git Workflow - Rebase Develop Branch
@@ -57,14 +57,14 @@ image::git-worflow-rebase-develop.png[Git Workflow - Rebase Develop Branch, 800,
 
 Feature branches are dedicated branch to develop a new feature.
 
-On meeds-io repositories, feature branches are created from develop-xxx branch (develop-exo for and eXo Platform feature).
+On meeds-io repositories, feature branches are created from develop-xxx branch (develop-exo for and eXo Platform features).
 On exoplatform repositories, feature branches are created from develop branch.
 
 [[git-workflow-feature-branch]]
 .Git Workflow - Meeds Feature Branch
 image::git-workflow-meeds-feature-branch.png[Git Workflow - Meeds Feature Branch, 800, align=center, link={imagesdir}/git-workflow-meeds-feature-branch.png]
 
-In meeds repositories, when a User Story (US) is finished, it is backported to develop-xxx branch. So that, the nightly deployment will push this US in production for the association member which develop it, without impacting other association members.
+In meeds repositories, when a User Story (US) is completed, it is backported to develop-xxx branch. So that, the nightly deployment will attempt to push it in production for the association member which develops it, without impacting other association members.
 When the feature is finished, all US composing it are added in a Pull Request on develop branch. The PR is reviewed by other association members, and merged in develop branch when validated.
 
 **Important : When this last PR is merged, we should keep all commits in the develop, so, not use squash option to merge !!**

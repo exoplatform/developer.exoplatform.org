@@ -84,7 +84,7 @@ Add any other context or screenshots about the feature request here.
 
 === Fixes
 
-When eXo Platform wants to fix something, the problem description is usually in an eXo Tribe task. If the fix is only localized on exoplatform repositories, we can keep only the task. But if some meeds-io repositories are impacted, we need to communicate publicly on this fix and fill a "Bug Report" issue on github : in the repository https://github.com/Meeds-io/meeds[meeds] : choose the tab "Issues" and create a new issue of type "Bug Report". Follow the template to describe the problem and how you fix it.
+When eXo Platform wants to fix something, the problem description is usually in an eXo Tribe task. If the fix is only located on exoplatform repositories, we can keep only the task. But if some meeds-io repositories are impacted, we need to communicate publicly on this fix and fill a "Bug Report" issue on github : in the repository https://github.com/Meeds-io/meeds[meeds] : choose the tab "Issues" and create a new issue of type "Bug Report". Follow the template to describe the problem and how you fix it.
 
 ----
 **Steps to reproduce**
@@ -121,7 +121,7 @@ Please complete the following information:
 == Commits messages best practices
 
 It is often important to browse the source code history to understand when and why a change has been done. Good commits message are therefore crucial to help developers in maintaining a code base.
-In addition, to facilitate the release note creation, we use https://www.conventionalcommits.org/en/v1.0.0/["Conventional commit"] convention.
+In addition, to facilitate the release note creation, we use https://www.conventionalcommits.org/en/v1.0.0/["Conventional Commits"].
 In order to improve the quality of the commit messages, the following rules must be respected:
 
 * use 
@@ -139,7 +139,7 @@ git commit -m “My commit message”
 ----
 when committing a change, in order to write a more detailed commit message and use the commit template
 
-* the commit message must start with a keyword 'fix:' or 'feature:' according to the type of the commit, then a short subject (max 100 characters). It must describe briefly what the commit does.The line must end with the issue references : the github issue (if we are in a meeds-io repository) and the task reference. For example :
+* the commit message must start with a keyword 'fix:' or 'feature:' according to the type of the commit, then a short subject (max 100 characters). It must describe briefly what the commit does. The line must end with the github issue reference (only on a meeds-io repositories) AND the task reference. For example :
 ----
 fix: Allow to update kudos message in activity stream - EXO-40308 - meeds-io/meeds#1234
 ----
