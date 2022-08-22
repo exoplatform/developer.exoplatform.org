@@ -18,7 +18,7 @@ eXo Platform product relies on a set of Git repositories :
 
 The CI/CD is applied on the following branches:
 
-* `stable/*` : during Test Compaign of a minor or major release, when the FTs disn't started to work on new features yet.
+* `stable/*` : during Test Campaign of a minor or major release, when the FTs didn't start to work on new features yet.
 
 * `develop-XXX` : development branch for each association member (for example, `develop-exo` for eXo Platform)
 
