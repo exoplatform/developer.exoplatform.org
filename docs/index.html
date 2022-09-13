@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.17">
 <title>Welcome on developer.exoplatform.org!</title>
 <link rel="stylesheet" href="./css/exo.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -299,7 +299,7 @@ git config --global user.email "jdoe@exoplatform.com"</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/Meeds-io"><strong>meeds-io</strong></a>: Meeds-io association product Git organization. eXo Platform still the main contributor and maintainer of the source code provided by the association. Thus, we will use the same process for this repository as any other eXo Platform repository.</p>
+<p><a href="https://github.com/Meeds-io"><strong>meeds-io</strong></a>: Meeds-io association product GitHub organization based on Licence LGPL v3 (Open Source and free to use). All members of the association benefits from this product.</p>
 </li>
 <li>
 <p><a href="https://github.com/exoplatform"><strong>exoplatform</strong></a>: eXo Platform Git organization having private and public repositories. This organization has the major part of source code of eXo Platform product, Software Factory tools, Tribe addon&#8230;&#8203;</p>
@@ -326,10 +326,10 @@ git config --global user.email "jdoe@exoplatform.com"</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><code>stable/*</code> : during Test Compaign of a minor or major release, when the FTs disn&#8217;t started to work on new features yet.</p>
+<p><code>stable/*</code> : during Test Campaign of a minor or major release, when the FTs didn&#8217;t start to work on new features yet.</p>
 </li>
 <li>
-<p><code>develop</code> : Feature Teams development phase.</p>
+<p><code>develop-XXX</code> : development branch for each association member (for example, <code>develop-exo</code> for eXo Platform)</p>
 </li>
 </ul>
 </div>
@@ -342,10 +342,13 @@ git config --global user.email "jdoe@exoplatform.com"</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>`develop : Develop branch contains the latest delivered development changes.</p>
+<p><code>develop</code> : Develop branch contains the latest delivered and stable development changes.</p>
 </li>
 <li>
-<p>`feature/xxx : Feature branches are dedicated branch for one big feature (lot of commits), "xxx" is the feature name.</p>
+<p><code>develop-xxx</code> : the develop branch for each Meeds Association&#8217;s member. This branch is the branch deployed in production by the CI/CD. For example, every night, Builders application is deployed from branch develop-meeds. eXo Tribe is deployed from branch develop-exo. These branches only exist on meeds-io repositories.</p>
+</li>
+<li>
+<p><code>feature/xxx</code> : Feature branches are dedicated to a single large feature (lots of commits), "xxx" is the feature name. These branches can be created from develop-meeds or develop-exo for meeds repositories, and from develop for exoplatform repositories.</p>
 </li>
 <li>
 <p><code>stable/xxx</code> : Stable branch are used to perform releases and write / accept fix. "xxx" is the stable version name (e.g 1.0.x).</p>
@@ -364,16 +367,20 @@ git config --global user.email "jdoe@exoplatform.com"</code></pre>
 <div class="sect4">
 <h5 id="id-develop-branch">1.3.2.1. Develop Branch</h5>
 <div class="paragraph">
-<p>Develop branch is the production ready branch which is, in general case, the CI/CD production branch.</p>
+<p>For meeds-io repositories, develop branch is the branch containing all completed and properly tested features.
+For exoplatform repositories, develop branch is the production-ready branch which is, in general case, the CI/CD production branch.</p>
 </div>
 <div class="paragraph">
 <p>It contains the latest delivered development changes. This is our backbone where all the different fix and new feature are mixed with each other.</p>
 </div>
+<div class="paragraph">
+<p>For meeds-io repositories, when members complete a feature, they merge it on develop branch from their develop-xxx branch. Then, on a regular basis, a rebase is done to propagate these new changes on other members' develop branch :</p>
+</div>
 <div id="git-workflow-develop-branch" class="imageblock text-center">
 <div class="content">
-<a class="image" href="images/git-workflow-develop-branch.png"><img src="images/git-workflow-develop-branch.png" alt="Git Workflow - Develop Branch" width="600"></a>
+<a class="image" href="images/git-worflow-rebase-develop.png"><img src="images/git-worflow-rebase-develop.png" alt="Git Workflow - Rebase Develop Branch" width="800"></a>
 </div>
-<div class="title">Figure 1. Git Workflow - Develop Branch</div>
+<div class="title">Figure 1. Git Workflow - Rebase Develop Branch</div>
 </div>
 </div>
 <div class="sect4">
@@ -381,12 +388,42 @@ git config --global user.email "jdoe@exoplatform.com"</code></pre>
 <div class="paragraph">
 <p>Feature branches are dedicated branch to develop a new feature.</p>
 </div>
+<div class="paragraph">
+<p>On meeds-io repositories, feature branches are created from develop-xxx branch (develop-exo for and eXo Platform features).
+On exoplatform repositories, feature branches are created from develop branch.</p>
+</div>
 <div id="git-workflow-feature-branch" class="imageblock text-center">
+<div class="content">
+<a class="image" href="images/git-workflow-meeds-feature-branch.png"><img src="images/git-workflow-meeds-feature-branch.png" alt="Git Workflow - Meeds Feature Branch" width="800"></a>
+</div>
+<div class="title">Figure 2. Git Workflow - Meeds Feature Branch</div>
+</div>
+<div class="paragraph">
+<p>In meeds repositories, when a User Story (US) is completed, it is backported to develop-xxx branch. So that, the nightly deployment will attempt to push it in production for the association member which develops it, without impacting other association members.
+When the feature is finished, all US composing it are added in a Pull Request on develop branch. The PR is reviewed by other association members, and merged in develop branch when validated.</p>
+</div>
+<div class="paragraph">
+<p><strong>Important : When this last PR is merged, we should keep all commits in the develop, so, not use squash option to merge !!</strong></p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<a class="image" href="images/git-workflow-eXo-feature-branch.png"><img src="images/git-workflow-exo-feature-branch.png" alt="Git Workflow - eXo Feature Branch" width="800"></a>
+</div>
+<div class="title">Figure 3. Git Workflow - eXo Feature Branch</div>
+</div>
+<div class="paragraph">
+<p>In eXo repositories, there is no develop-xxx branch, we only use develop branch.</p>
+</div>
+<div class="imageblock text-center">
 <div class="content">
 <a class="image" href="images/git-workflow-feature-branch.png"><img src="images/git-workflow-feature-branch.png" alt="Git Workflow - Feature Branch" width="300"></a>
 </div>
-<div class="title">Figure 2. Git Workflow - Feature Branch</div>
+<div class="title">Figure 4. Git Workflow - Feature Branch</div>
 </div>
+</div>
+<div class="sect4">
+<h5 id="id-fix-branch">1.3.2.3. Fix Branch</h5>
+
 </div>
 </div>
 </div>
@@ -499,9 +536,76 @@ The Contributor License Agreement is needed to clarify the terms of usage of con
 </div>
 </div>
 <div class="sect3">
-<h4 id="id-commits-messages-best-practices">1.4.3. Commits messages best practices</h4>
+<h4 id="id-issues-references">1.4.3. Issues references</h4>
 <div class="paragraph">
-<p>It is often important to browse the source code history to understand when and why a change has been done. Good commits message are therefore crucial to help developers in maintaining a code base. In order to improve the quality of the commit messages, the following rules must be respected:</p>
+<p>To keep history about a new feature or a fix, we need to add a reference in the commit message.</p>
+</div>
+<div class="sect4">
+<h5 id="id-new-feature">1.4.3.1. New Feature</h5>
+<div class="paragraph">
+<p>When eXo Platform wants to develop a new feature, we usually have the US described in an eXo Tribe task. If the feature is only about exoplatform repositories, we can only keep the task. But if some meeds-io repositories are impacted, we need to communicate publicly on this new feature and fill a "Feature Request" issue on github : in the repository <a href="https://github.com/Meeds-io/meeds">meeds</a> : choose the tab "Issues" and create a new issue of type "Feature Request". Follow the template to describe your feature request.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>**Is your feature request related to a problem? Please describe.**
+A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+
+**Describe the solution you'd like**
+A clear and concise description of what you want to happen.
+
+**Describe alternatives you've considered**
+A clear and concise description of any alternative solutions or features you've considered.
+
+**Additional context**
+Add any other context or screenshots about the feature request here.</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="id-fixes">1.4.3.2. Fixes</h5>
+<div class="paragraph">
+<p>When eXo Platform wants to fix something, the problem description is usually in an eXo Tribe task. If the fix is only located on exoplatform repositories, we can keep only the task. But if some meeds-io repositories are impacted, we need to communicate publicly on this fix and fill a "Bug Report" issue on github : in the repository <a href="https://github.com/Meeds-io/meeds">meeds</a> : choose the tab "Issues" and create a new issue of type "Bug Report". Follow the template to describe the problem and how you fix it.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>**Steps to reproduce**
+
+Steps to reproduce the behavior:
+1. Go to '...'
+2. Click on '....'
+3. Scroll down to '....'
+4. See error
+
+If applicable, add screenshots to help explain your problem.
+
+**(optional) Affected version**
+
+Indicate the version where the bug is observed.
+
+**Current behaviour**
+
+Describe the bug with a clear and concise description of what the problem is.
+
+**Expected behavior**
+
+A clear and concise description of what you expected to happen.
+
+**(optional) Affected environments**
+Please complete the following information:
+ - OS: [e.g. iOS]
+ - Browser [e.g. chrome, safari]
+ - Version [e.g. 22]
+ - Device: [e.g. iPhone6]</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="id-commits-messages-best-practices">1.4.4. Commits messages best practices</h4>
+<div class="paragraph">
+<p>It is often important to browse the source code history to understand when and why a change has been done. Good commits message are therefore crucial to help developers in maintaining a code base.
+In addition, to facilitate the release note creation, we use <a href="https://www.conventionalcommits.org/en/v1.0.0/">"Conventional Commits"</a>.
+In order to improve the quality of the commit messages, the following rules must be respected:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -525,17 +629,43 @@ The Contributor License Agreement is needed to clarify the terms of usage of con
 </div>
 </li>
 <li>
-<p>the commit message must start with a line containing a short subject (max 100 characters) which starts by the Task issue number and then describes briefly what the commit does. For example : TASK-40308 Allow to update kudos message in activity stream</p>
+<p>the commit message must start with a keyword 'fix:' or 'feature:' according to the type of the commit, then a short subject (max 100 characters). It must describe briefly what the commit does. The line must end with the github issue reference (only on a meeds-io repositories) AND the task reference. For example :</p>
 </li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>fix: Allow to update kudos message in activity stream - EXO-40308 - meeds-io/meeds#1234</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>the commit subject must not be a copy/paste of the Task issue summary. As said previously, it must describe what the commit does, as if the sentence would start with “If applied, this commit will …​”.</p>
+<p>the commit subject must not be a copy/paste of the Task issue summary. As said previously, it must describe what the commit does, as if the sentence would start with “If applied, this commit would …”.</p>
 </li>
 <li>
 <p>after the subject, one blank line must be added before starting the body</p>
 </li>
 <li>
-<p>the body describes in details what the commit does and must answer 2 questions : why is this change needed and how does this change address the issue. It should give as much information as possible to make it easy for another developer who does not know deeply the context to understand the commit. Therefore the body is never too long.</p>
+<p>the body describes in detail what the commit does and must answer 2 questions :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>why is this change needed ?</p>
 </li>
+<li>
+<p>how does this change address the issue.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It should give as much information as possible to make it easy for another developer who does not know deeply the context to understand the commit. Therefore the body is never too long.</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>after the body, a list of links to relevant resources can be added (optional). It must be separated from the body by one blank line.</p>
 </li>
@@ -546,7 +676,7 @@ The Contributor License Agreement is needed to clarify the terms of usage of con
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">TASK-37899 Enhance extension registry to trigger event when extensions updated
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">fix: Enhance extension registry to trigger event when extensions updated - EXO-37899 - meeds-io/meeds#1234
 
 When updating extensionRegistry asynchronously from different modules, the other modules should be triggered for this update to allow retrieving newly registered extensions. This way, the extension points in all portlets will can be aware, when listening to adequate event, of any change in extensionRegistry.</code></pre>
 </div>
@@ -562,7 +692,7 @@ When updating extensionRegistry asynchronously from different modules, the other
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># TASK-&lt;task-id&gt;: (If applied, this commit will...) &lt;subject&gt;
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"># fix/feature: (If applied, this commit would...) &lt;subject&gt; - EXO-&lt;task-id&gt; - meeds-io/meeds#&lt;github-issue&gt;
 # |&lt;----  Using a Maximum Of 100 Characters  ----&gt;|
 
 # Why is this change needed?
@@ -586,9 +716,14 @@ When updating extensionRegistry asynchronously from different modules, the other
 </div>
 </div>
 <div class="sect3">
-<h4 id="id-pull-requests-best-practices">1.4.4. Pull Requests best practices</h4>
+<h4 id="id-pull-requests-best-practices">1.4.5. Pull Requests best practices</h4>
 <div class="paragraph">
-<p>As well as good commits messages are important for code base maintainers, good PRs descriptions are important for reviewers. It helps to understand what the developer has done and why. The PR title must start with the Task issue, then describe briefly what the PR does. For example : <em>TASK-40308 Allow to update kudos message in activity stream</em></p>
+<p>As much as good commits messages are important for code base maintainers, good PR descriptions are important for reviewers. They help to understand what the developer has done and why. The PR title must start with the keyword fix or feature, then describe briefly what the PR does, then reference the task id and the github issue if needed. For example :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>fix: Allow to update kudos message in activity stream - EXO-40308 - meeds-io/meeds#1234</pre>
+</div>
 </div>
 <div class="paragraph">
 <p>The PR description must at least provide the information given in the commit message body : why is this change needed and how does this change address the issue (Tip: using the first line of the commit message as the PR title and the commit message body as the PR description is a good start for the PR description).</p>
@@ -613,13 +748,16 @@ When updating extensionRegistry asynchronously from different modules, the other
 </ul>
 </div>
 <div class="paragraph">
-<p>The PR does not need to describe the issue (functional impacts, reproduction steps, …​) since it is already done in the related Task issue.</p>
+<p>The PR does not need to describe the issue (functional impacts, reproduction steps, …) since it is already done in the related Task issue.</p>
+</div>
+<div class="paragraph">
+<p>When you create a PR on meeds repositories, a PR template is available.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="id-contributions-reviews">1.4.5. Contributions reviews</h4>
+<h4 id="id-contributions-reviews">1.4.6. Contributions reviews</h4>
 <div class="sect4">
-<h5 id="id-how-to-do-a-review">1.4.5.1. How to do a review ?</h5>
+<h5 id="id-how-to-do-a-review">1.4.6.1. How to do a review ?</h5>
 <div class="paragraph">
 <p>The reviewers must use the review feature of Github to do the review. On the first comment, the button “Start review” must be used. Then, once the review is done, the developer must submit the review by clicking on the button “Review changes”, then select the right option:</p>
 </div>
@@ -641,32 +779,50 @@ When updating extensionRegistry asynchronously from different modules, the other
 </div>
 </div>
 <div class="sect4">
-<h5 id="id-what-should-i-care-when-reviewing-a-pull-request">1.4.5.2. What should I care when reviewing a Pull Request ?</h5>
+<h5 id="id-what-should-i-care-when-reviewing-a-pull-request">1.4.6.2. What should I care when reviewing a Pull Request ?</h5>
 <div class="paragraph">
 <p>When reviewing a Pull Request, the following things must be checked:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
+<p>Title and commit message : does it respect guideline format (<a href="https://developer.exoplatform.org/#id-commits-messages-best-practices" class="bare">developer.exoplatform.org/#id-commits-messages-best-practices</a>) ?</p>
+</li>
+<li>
 <p>Correctness of the fix/feature</p>
 </li>
 <li>
-<p>Learning</p>
+<p>Coding best practices</p>
 </li>
 <li>
-<p>Coding best practices</p>
+<p>Does the code is the simpliest possible ?</p>
+</li>
+<li>
+<p>Should it imply a refactoring to make something simplier ?</p>
+</li>
+<li>
+<p>Code Format</p>
+</li>
+<li>
+<p>If there are new files, check headers</p>
+</li>
+<li>
+<p>If there is a new library or dependency? Was it validated by architects ? What about the library&#8217;s license ?</p>
+</li>
+<li>
+<p>If there is a new visual component? Was it validated by Designers Guild ?</p>
+</li>
+<li>
+<p>Check Performance : check loops, sql queries &#8230;&#8203; ask if the loop or the query can have a larger number of elements</p>
+</li>
+<li>
+<p>Learning</p>
 </li>
 <li>
 <p>Unit Tests</p>
 </li>
 <li>
 <p>Security</p>
-</li>
-<li>
-<p>Performance</p>
-</li>
-<li>
-<p>Maintainability</p>
 </li>
 <li>
 <p>Troubleshooting</p>
@@ -676,9 +832,6 @@ When updating extensionRegistry asynchronously from different modules, the other
 </li>
 <li>
 <p>API breaking</p>
-</li>
-<li>
-<p>Code formatting (if not yet automated)</p>
 </li>
 <li>
 <p>Documentation</p>
@@ -873,12 +1026,12 @@ Some operations require logging/auditing to allow to understand what happened du
 <div class="sect3">
 <h4 id="id-rest-api-performances">2.4.2. REST API Performances</h4>
 <div class="paragraph">
-<p>By increasing the number of REST calls in a single Web-Page, will allow retrieval of information in parallel. This was a major evolution of eXo Platform product architecture introduced in version 6 which will reduce the classic Server-End stateful DOM rendering (that was made using JSP, Servlet, Portlet, JSF, Spring MVC&#8230;&#8203;). As an advantage of this, the Rendering phase is decentralized and is deported on the Client-Side. Consequently, the Server will hold less information in its memory (Stateful UI Tree) and make less computing related to page rendering. As a significant drawback of this new architecture, making more parallel computing (parallel REST calls for each page) makes the multi-threading aspect more important to consider. In fact, a REST call has to be performant and must not hold any potential thread-blocking statement. In addition, the HTTP cache headers have to be considered for almost all REST calls. We have several mime types retrieved through REST calls:</p>
+<p>The REST API calls count has increased over eXo Platform versions. This was a major evolution of eXo Platform product architecture introduced in version 6 which will reduce the classic Server-End stateful DOM rendering (that was made using JSP, Servlet, Portlet, JSF, Spring MVC&#8230;&#8203;). As an advantage of this, the Rendering phase is decentralized and is deported on the Client-Side. Consequently, the Server will hold less information in its memory (Stateful UI Tree) and make less computing related to page rendering. As a significant drawback of this new architecture, making more parallel computing (parallel REST calls for each page) makes the multi-threading aspect more important to consider. In fact, a REST call has to be performant and must not hold any potential thread-blocking statement. In addition, the HTTP cache headers have to be considered for almost all REST calls. A REST call returns objects of type:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>CSS</p>
+<p>CSS/JS</p>
 </li>
 <li>
 <p>Image</p>
@@ -889,10 +1042,10 @@ Some operations require logging/auditing to allow to understand what happened du
 </ul>
 </div>
 <div class="paragraph">
-<p>For CSS and Images, it&#8217;s important to consider using a <a href="https://developers.google.com/web/fundamentals/performance/get-started/httpcaching-6">long-term cache strategy</a>. By doing this, the Browser will always retrieve the resource from the local cache (Disk or Memory cache) and will not fetch the resource from Server-End again. If the resource can be dynamic, such as illustration on news or Application Center thumbnail, you can add a suffix to the URL that references the <code>lastModifiedDate</code> property of the image (<a href="https://github.com/Meeds-io/app-center/commit/2b50274f84e9c92c05a71514bf76a802f3f60f99#diff-8a61c4f2ca478f64c19717d95c05298629a81bec5eb62dd4539528970d0a67b1R60">See example</a>)</p>
+<p>For CSS/JS and Images, it&#8217;s important to consider using a <a href="https://developers.google.com/web/fundamentals/performance/get-started/httpcaching-6">long-term cache strategy</a>. By doing this, the Browser will always retrieve the resource from the local cache (Disk or Memory cache) and will not fetch the resource from Server-End again. If the resource can be dynamic, such as illustration on news or Application Center thumbnail, you can add a suffix to the URL that references the <code>lastModifiedDate</code> property of the image (<a href="https://github.com/Meeds-io/app-center/commit/2b50274f84e9c92c05a71514bf76a802f3f60f99#diff-8a61c4f2ca478f64c19717d95c05298629a81bec5eb62dd4539528970d0a67b1R60">See example</a>)</p>
 </div>
 <div class="paragraph">
-<p>For the JSON objects retrieved using REST API, you can consider using a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag">ETag</a> to cache objects in browser and to verify that it hasn&#8217;t been modified since the last retrieval. This strategy is very relevant when retrieving information that is not frequently changed, such as an activity that once written, will not change. By using this strategy, you will avoid downloading content from Server-end to save Bandwidth (consequently save time) and even save computing time in Server-End (<a href="https://github.com/Meeds-io/social/blob/ffad68f249e4cbfb270e62091fe50c91eb700ecd/component/service/src/main/java/org/exoplatform/social/rest/impl/activity/ActivityRestResourcesV1.java#L345">See example</a>).</p>
+<p>For the JSON objects retrieved using REST API, you can consider using an <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag">ETag</a> to cache objects in browser and to verify that it hasn&#8217;t been modified since last retrieval. This strategy is very relevant when retrieving information that is not frequently changed, such as an activity that once written, it will not change most of the time. By using this strategy, you will avoid to download the Object content from Server-end which will save Bandwidth consumption (consequently save time) and even save computing time in Server-End for DTO to JSON transformation (<a href="https://github.com/Meeds-io/social/blob/ffad68f249e4cbfb270e62091fe50c91eb700ecd/component/service/src/main/java/org/exoplatform/social/rest/impl/activity/ActivityRestResourcesV1.java#L345">See example</a>).</p>
 </div>
 </div>
 </div>
