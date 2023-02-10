@@ -4,7 +4,7 @@
 
 The developer and reviewer of a Pull Request must check the compliance with following guidelines documents:
 
-* https://community.exoplatform.com/portal/dw/oeditor?docId=bf3f775aac18000d4100d84c97366435[Development Best Practices]
+* https://github.com/Meeds-io/meeds/blob/develop/CODING_GUIDELINES.md[Development Best Practices]
 * https://community.exoplatform.com/portal/g/:spaces:engineering/exo_architects/notes/2040[Authorized third party tools licenses]
 * https://community.exoplatform.com/portal/g/:spaces:engineering/exo_architects/notes/13754[Software architecture guidelines]
 * https://community.exoplatform.com/portal/g/:spaces:engineering/exo_architects/notes/534[REST APIs guidelines]
